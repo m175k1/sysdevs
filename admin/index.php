@@ -1,5 +1,6 @@
 <?php include 'header_login.php';?>
 
+
   <body class="login">
     <div>
     
@@ -30,7 +31,7 @@
 
                 <div>
                   <h1><i class="fa fa-paw"></i> Sales and Inventory System </h1>
-                  <p>©2017 All Rights Reserved CHMSC BSIS Talisay City</p>
+                  <p>©2018 All Rights Reserved Mmil Company</p>
                 </div>
               </div>
             </form>
