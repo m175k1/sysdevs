@@ -1,5 +1,5 @@
 <?php
-$con = mysqli_connect("localhost","rmpgdesign","*}V85=k#1KO9","rmpgdesi_inventory");
+$con = mysqli_connect("localhost","root","","inventory");
 
 // Check connection
 if (mysqli_connect_errno())
