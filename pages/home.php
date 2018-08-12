@@ -1,4 +1,4 @@
-<?php session_start();
+  <?php session_start();
 if(empty($_SESSION['id'])):
 header('Location:../index.php');
 endif;
@@ -25,8 +25,9 @@ endif;
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <style>
       .col-lg-3{
-        margin:50px 0px;
+        margin:50px 0x;
       }
+      
       
     </style>
  </head>
@@ -95,7 +96,7 @@ endif;
                           </div>
                           <a href="customer.php" class="small-box-footer">
                             Go <i class="fa fa-arrow-circle-right"></i>
-                          </a> 
+                          </a>
                         </div>
                       </div><!-- ./col -->
                       <div class="col-lg-4 col-xs-6">
@@ -103,7 +104,7 @@ endif;
                         <div class="small-box bg-red">
                           <div class="inner">
                             <h3>Credit</h3>
-                            <p>Apply</p> 
+                            <p>Apply</p>
                           </div>
                           <div class="icon" style="margin-top:10px">
                             <i class="glyphicon glyphicon-user"></i>

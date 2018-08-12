@@ -102,9 +102,9 @@ endif;
               <div class="modal-body">
 			  <form class="form-horizontal" method="post" action="product_update.php" enctype='multipart/form-data'>
         <div class="form-group">
-          <label class="control-label col-lg-3" for="modal__serial">Serial #</label>
+          <label class="control-label col-lg-3" for="price">Serial #</label>
           <div class="col-lg-9">
-            <input type="text" class="form-control" id="modal__serial" name="serial" value="<?php echo $row['serial'];?>" required>  
+            <input type="text" class="form-control" id="price" name="serial" value="<?php echo $row['serial'];?>" required>  
           </div>
         </div>
                 
@@ -173,7 +173,6 @@ endif;
 				</div>
               </div><br><br><br><br><br><br><br>
               <div class="modal-footer">
-              <button type="button" class="modal__delete-product btn btn-warning" value="<?php echo $row['serial'];?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
@@ -293,8 +292,7 @@ endif;
         </div>
               </div>
               <div class="modal-footer">
-
-                <button type="submit" class="btn btn-primary">Save changes</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
         </form>
@@ -329,43 +327,6 @@ endif;
           "info": true,
           "autoWidth": false
         });
-
-
- $(".modal__delete-product").click(function(e) {
-    e.preventDefault();
-    $.ajax({
-      url : "ajax.php",
-      type: "POST",
-      url: "ajax.php",
-      data: {
-        process: 'delete',
-        serial: $(this).val()       
-      },
-      success: function(result) {
-         if(result == "")            {
-                  alert("Error")       
-            }else{
-                  if(!alert(result)){window.location.reload();}        
-            }        
-      },
-      error: function(result) {
-        alert('error');
-      }
-    });
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-
       });
     </script>
   </body>
