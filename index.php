@@ -22,7 +22,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="sample1.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
   </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -34,14 +34,14 @@
     <section>
       <div class="set">
         
-        <div><img src="leaf2.jpg"></div>
-        <div><img src="leaf3.jpg"></div>
-        <div><img src="leaf4.jpg"></div>
-        <div><img src="leaf5.jpg"></div>
-        <div><img src="leaf2.jpg"></div>
-        <div><img src="leaf3.jpg"></div>
-        <div><img src="leaf4.jpg"></div>
-        <div><img src="leaf5.jpg"></div>
+        <div><img src="./dist/img/leaf2.jpg"></div>
+        <div><img src="./dist/img/leaf3.jpg"></div>
+        <div><img src="./dist/img/leaf4.jpg"></div>
+        <div><img src="./dist/img/leaf5.jpg"></div>
+        <div><img src="./dist/img/leaf2.jpg"></div>
+        <div><img src="./dist/img/leaf3.jpg"></div>
+        <div><img src="./dist/img/leaf4.jpg"></div>
+        <div><img src="./dist/img/leaf5.jpg"></div>
     </section>
 
        
