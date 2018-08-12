@@ -743,12 +743,4 @@ function _init() {
       }
     });
   };
-
-
-
-
-
-
-
-
 }(jQuery));

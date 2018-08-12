@@ -28,13 +28,7 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
               <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                   <!-- Messages: style can be found in dropdown.less-->
-				  <li class="">
-                
-                    <a href="log.php" class="dropdown-toggle">
-                      <i class="glyphicon glyphicon-list-alt"></i>
-                      History Log
-                    </a>
-                  </li>
+				  
                   <!-- Notifications Menu -->
                   <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
