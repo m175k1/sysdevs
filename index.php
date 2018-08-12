@@ -8,7 +8,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-     
+    
     <!-- Font Awesome -->
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
@@ -22,16 +22,34 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="sample1.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
   </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition login-page">
-   
+  <body>
+     <div class="color-overlay">
+       <b>Sales & Inventory with Credit Management System</b>
+     </div>
+
+    <section>
+      <div class="set">
+        
+        <div><img src="leaf2.jpg"></div>
+        <div><img src="leaf3.jpg"></div>
+        <div><img src="leaf4.jpg"></div>
+        <div><img src="leaf5.jpg"></div>
+        <div><img src="leaf2.jpg"></div>
+        <div><img src="leaf3.jpg"></div>
+        <div><img src="leaf4.jpg"></div>
+        <div><img src="leaf5.jpg"></div>
+    </section>
+
+       
     <div class="login-box">
       <div class="login-logo">
-        <b>Sales and Inventory with Credit Management System</b>
       </div><!-- /.login-logo -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+      <div class="login-box-body">  
+        <p class="login-box-msg">sign in to log into the system</p>
         <form action="login.php" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username" required>
@@ -82,5 +100,6 @@
     <script src="dist/js/app.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
+    
   </body>
 </html>
