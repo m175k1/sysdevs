@@ -181,6 +181,8 @@
 		<script type="text/javascript"src="vendors/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript"src="js/highcharts.js"></script>
 		<script type="text/javascript"src="js/exporting.js"></script>
+		    <!-- Custom Theme Scripts -->
+    <script src="build/js/custom.min.js"></script>
 		<script type="text/javascript">
         $(document).ready(function() {
             var options = {
