@@ -234,8 +234,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 				</div>	
                
                   
-                 
-                      <button class="btn btn-lg btn-block btn-primary" id="daterange-btn" name="credit" type="submit"  tabindex="7">
+                    <button class="btn btn-lg btn-block btn-primary" id="daterange-btn" name="credit" type="submit"  tabindex="7">
                         Complete Credit
                       </button>
 					  <button class="btn btn-lg btn-block" id="daterange-btn" type="reset"  tabindex="8">

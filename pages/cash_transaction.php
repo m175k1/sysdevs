@@ -223,26 +223,9 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 								<input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
 								value="<?php echo $grand;?>" onFocus="startCalc();" onBlur="stopCalc();"  tabindex="5" readonly>
            
-
-                <!--CREDIT INPUT -->
-                <form method="post" name="autoSumForm" action="credit_add.php">
-          <div class="row">
-           <div class="col-md-12">
-              
+              </div><!-- /.form group -->
+						  
               <div class="form-group">
-              <label for="date">Total</label>
-                <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>    
-                <input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
-                value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
-           
-
-
-
-
-
-							
-						  </div><!-- /.form group -->
-						  <div class="form-group">
 							<label for="date">Discount</label>
 							
 								<input type="text" class="form-control text-right" id="discount" name="discount" value="0" tabindex="6" placeholder="Discount (Php)" onFocus="startCalc();" onBlur="stopCalc();">
