@@ -100,7 +100,14 @@ $branch=$_SESSION['branch'];
                       </tr>
                       <tr>
                         <th colspan="3"><h6><?php echo $rowb['branch_address'];?></h6></th>
-                        <th><span style="font-size: 16px;color: red">No. <?php echo $row1['or_no'];?></span></th>
+                        <th><span style="font-size: 16px;color: red">
+                          <?php 
+                          if (intval($row1['or_no']) > 99){
+                          ?>
+                          No. 00<?php echo $row1['or_no'];?></span></th>  
+                          <?php } else{ ?>
+                          No. 0<?php echo $row1['or_no'];?></span></th>
+                          <?php }?>
                       </tr>
                       <tr>
                         <th colspan="3"><h6>Contact #: <?php echo $rowb['branch_contact'];?></h6></th>

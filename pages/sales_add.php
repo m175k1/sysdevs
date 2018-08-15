@@ -4,7 +4,7 @@ $id=$_SESSION['id'];
 include('../dist/includes/dbcon.php');
 
 	$discount = $_POST['discount'];
-	$payment = $_POST['payment'];
+	// $payment = $_POST['payment'];
 	$amount_due = $_POST['amount_due'];
 	
 	date_default_timezone_set("Asia/Manila"); 
@@ -42,7 +42,7 @@ include('../dist/includes/dbcon.php');
 
 				if ($or==0)
 				{
-					$or=1901;
+					$or=0;
 				}
 				else
 				{
