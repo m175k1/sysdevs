@@ -44,7 +44,6 @@
 				<div class="panel-heading">
 				  <h3 class="box-title">Select Date</h3>
 				  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-				  <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>
 				</div>
 				<div class="box-body">
 				

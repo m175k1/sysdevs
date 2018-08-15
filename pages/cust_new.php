@@ -63,7 +63,7 @@ endif;
                       <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">Last Name</label>
                         <div class="input-group col-sm-8">
-                          <input type="text" class="form-control pull-right" id="date" name="last" placeholder="Customer Last Name" required>
+                          <input type="text" class="form-control pull-right" id="date" name="last" placeholder="Customer Last Name">
                         </div><!-- /.input group -->
                       </div><!-- /.form group -->
                     </div>
@@ -72,7 +72,7 @@ endif;
                       <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">First Name</label>
                         <div class="input-group col-md-8">
-                          <input type="text" class="form-control pull-right" id="date" name="first" placeholder="Customer First Name" required>
+                          <input type="text" class="form-control pull-right" id="date" name="first" placeholder="Customer First Name">
                         </div><!-- /.input group -->
                       </div><!-- /.form group -->
                     </div>
@@ -81,7 +81,7 @@ endif;
                       <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">Contact #</label>
                         <div class="input-group col-md-8">  
-                          <input type="text" class="form-control pull-right" id="date" name="contact" placeholder="Contact Number" required>
+                          <input type="text" class="form-control pull-right" id="date" name="contact" placeholder="Contact Number">
                         </div>
                       </div>  
                     </div>
@@ -90,7 +90,7 @@ endif;
                       <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">Address</label>   
                         <div class="input-group col-md-8">
-                          <textarea class="form-control pull-right" id="date" name="address" placeholder="Complete Address" required></textarea>
+                          <textarea class="form-control pull-right" id="date" name="address" placeholder="Complete Address"></textarea>
                         </div>
                       </div>
                     </div>     
