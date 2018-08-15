@@ -1,7 +1,9 @@
 
 <?php include 'header.php';
+if(isset($_GET['id'])){
+  $branch_id = $_GET['id'];
+}
 
-$branch_id = $_GET['id'];
 ?>
   <body class="nav-md">
     <div class="container body">
@@ -9,7 +11,7 @@ $branch_id = $_GET['id'];
         <?php include 'main_sidebar.php';?>
 
         <!-- top navigation -->
-       <?php include 'top_nav.php';?>      <!-- /top navigation -->
+        <?php include 'top_nav.php';?>      <!-- /top navigation -->
 
         <!-- page content -->
         <div class="right_col" role="main"> 

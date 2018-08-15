@@ -139,6 +139,7 @@ endif;
 				
               </div><br><br><br><hr>
               <div class="modal-footer">
+              <button class="btn btn-warning deleteButton" value="<?php echo $row['cust_id'];?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
@@ -210,7 +211,7 @@ endif;
       });
     </script>
      <script>
-      $(function () {
+      /* $(function () {
         //Initialize Select2 Elements
         $(".select2").select2();
 
@@ -270,6 +271,35 @@ endif;
           showInputs: false
         });
       });
+      */
+
+      $(document).ready(function(){
+                $(".deleteButton").click(function(e) {
+              e.preventDefault();
+              $.ajax({
+                  type: "POST",
+                  url: "ajax.php",
+                  data: { 
+                      cust_id: $(this).val(), // < note use of 'this' here
+                      process: 'customer'
+                  },
+                  success: function(result) {
+                      if(result == ""){ 
+                        if(alert(result)){}
+                            else    window.location.reload(); 
+                        
+                      }else{
+                        if(alert(result)){}
+                            else    window.location.reload(); 
+                      }                    
+                      
+                  },
+                  error: function(result) {
+                      alert('error');
+                  }
+              });
+        }); // ajax 
+      })
     </script>
   </body>
 </html>

@@ -173,6 +173,7 @@ endif;
 				</div>
               </div><br><br><br><br><br><br><br>
               <div class="modal-footer">
+        <button class="btn btn-warning deleteButton" value="<?php echo $row['serial']?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
@@ -327,7 +328,38 @@ endif;
           "info": true,
           "autoWidth": false
         });
+
+
+
+
+          $(".deleteButton").click(function(e) {
+              e.preventDefault();
+              $.ajax({
+                  type: "POST",
+                  url: "ajax.php",
+                  data: { 
+                      serial: $(this).val(), // < note use of 'this' here
+                      process: 'delete'
+                  },
+                  success: function(result) {
+                      if(result == ""){ 
+                        if(alert(result)){}
+                            else    window.location.reload(); 
+                        
+                      }else{
+                        if(alert(result)){}
+                            else    window.location.reload(); 
+                      }                    
+                      
+                  },
+                  error: function(result) {
+                      alert('error');
+                  }
+              });
+          });
       });
-    </script>
+
+
+          </script>
   </body>
 </html>
