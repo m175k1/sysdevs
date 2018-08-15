@@ -12,7 +12,7 @@ include('../dist/includes/dbcon.php');
 	mysqli_query($con,"update temp_trans set qty='$qty' where temp_trans_id='$id'")or die(mysqli_error());
 	
 	
-	echo "<script>document.location='transaction.php?cid=$cid'</script>";  
+	echo "<script>document.location='cash_transaction.php?cid=$cid'</script>";  
 
 	
 ?>

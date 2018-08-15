@@ -147,7 +147,8 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                 <h4 class="modal-title">Update Sales Details</h4>
               </div>
               <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'>
+			 <!--  <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'> -->
+       <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'>
 					<input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>  	
 					<input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
 				<div class="form-group">
