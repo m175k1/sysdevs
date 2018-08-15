@@ -223,11 +223,6 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 								<input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
 								value="<?php echo $grand;?>" onFocus="startCalc();" onBlur="stopCalc();"  tabindex="5" readonly>
            
-<<<<<<< Updated upstream
-              </div><!-- /.form group -->
-						  
-              <div class="form-group">
-=======
 
                 <!--CREDIT INPUT 
             <form method="post" name="autoSumForm" action="credit_add.php">
@@ -248,7 +243,6 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 							
 						  </div> /.form group -->
 						  <div class="form-group">
->>>>>>> Stashed changes
 							<label for="date">Discount</label>
 							
 								<input type="text" class="form-control text-right" id="discount" name="discount" value="0" tabindex="6" placeholder="Discount (Php)" onFocus="startCalc();" onBlur="stopCalc();">
