@@ -8,9 +8,7 @@ body
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  font-family: 'Raleway', sans-serif;
-	font-family: 'Lobster', cursive;
-	font-family: 'Pacifico', cursive;
+  font-family: 'Comfortaa', cursive;
 	overflow: hidden;
 }
 .color-overlay{
@@ -41,8 +39,8 @@ b
 }
 p
 {
-	font-size: 20px;
-	font-family: 'Raleway', sans-serif;
+	font-size: 15px;
+	font-family: 'Comfortaa', cursive;
 	color:black;
 
 }

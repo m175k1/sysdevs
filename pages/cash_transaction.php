@@ -222,6 +222,24 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 							
 								<input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
 								value="<?php echo $grand;?>" onFocus="startCalc();" onBlur="stopCalc();"  tabindex="5" readonly>
+           
+
+                <!--CREDIT INPUT -->
+                <form method="post" name="autoSumForm" action="credit_add.php">
+          <div class="row">
+           <div class="col-md-12">
+              
+              <div class="form-group">
+              <label for="date">Total</label>
+                <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>    
+                <input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
+                value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
+           
+
+
+
+
+
 							
 						  </div><!-- /.form group -->
 						  <div class="form-group">
@@ -251,12 +269,11 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 					
 
 				</div>	
-               
-                  
-                 
                       <button class="btn btn-lg btn-block btn-primary" id="daterange-btn" name="cash" type="submit"  tabindex="7">
                         Complete Sales
                       </button>
+
+
 					  <button class="btn btn-lg btn-block" id="daterange-btn" type="reset"  tabindex="8">
                         <a href="cancel.php">Cancel Sale</a>
                       </button>
@@ -307,7 +324,53 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
       });
 
       });
+    
+</script>
+
+<!--sample only -->
+<script>
+  
+  
+  
+    $("#credit").click(function(){
+        $("#tendered").hide('slow');
+        $("#change").hide('slow');
+      });
+
+      $("#cash").click(function(){
+          $("#tendered").show('slow');
+          $("#change").show('slow');
+      });
+
+    $(function() {
+
+      $(".btn_delete").click(function(){
+      var element = $(this);
+      var id = element.attr("id");
+      var dataString = 'id=' + id;
+      if(confirm("Sure you want to delete this item?"))
+      {
+  $.ajax({
+  type: "GET",
+  url: "temp_trans_del.php",
+  data: dataString,
+  success: function(){
+    
+        }
+    });
+    
+    $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+    .animate({ opacity: "hide" }, "slow");
+      }
+      return false;
+      });
+
+      });
     </script>
+
+
+
+
 	
 	<script type="text/javascript" src="autosum.js"></script>
     <!-- jQuery 2.1.4 -->
