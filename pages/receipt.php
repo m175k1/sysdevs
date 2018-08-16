@@ -113,7 +113,8 @@ $branch=$_SESSION['branch'];
                         <th>SOLD to</th>
                         <th><u><?php echo $last.", ".$first;?></u></th>
                         <th>Date</th>
-                        <th><u><?php echo date("M d, Y");?> Time <?php echo date("h:i A");?></u></th>
+                        <th><u><?php date_default_timezone_set('Asia/Manila'); echo date('F j, Y g:i:a '); ?>
+                        </u></th>
                       </tr>
                       <tr>
                         <th>Address</th>
