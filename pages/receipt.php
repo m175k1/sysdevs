@@ -5,6 +5,7 @@ endif;
 if(empty($_SESSION['branch'])):
 header('Location:../index.php');
 endif;
+date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html>
