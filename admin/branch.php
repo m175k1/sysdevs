@@ -24,7 +24,6 @@
 									<th>Name</th>
 									<th>Address</th>
 									<th>Contact</th>
-									<th>Skin</th>
 									<th>Action</th>									
 								</tr>
 							 </thead>
@@ -40,7 +39,7 @@
 									<td><?php echo $row1['branch_name'];?></td>
 									<td><?php echo $row1['branch_address'];?></td>
 									<td><?php echo $row1['branch_contact'];?></td>
-									<td><?php echo $row1['skin'];?></td>
+									
 									<td>
 										<a href="#update<?php echo $id;?>" class="btn btn-success btn-xs" data-toggle = "modal" data-target="#update<?php echo $id;?>"><i class = "fa fa-pencil"></i> Edit</a>
 										

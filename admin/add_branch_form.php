@@ -29,21 +29,7 @@
                           <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                         </div>
                       </div>
-                      <div class="form-group">
-                        <label class="col-md-3 col-sm-3 col-xs-3">Skin Color</label>
-                        <div class="col-md-9 col-sm-9 col-xs-9">
-                         <select  name = "skin" class = "form-control">
-							<option value = ""	></option>					 
-							<option value = "red">red</option>					 
-							<option value = "purple">purple</option>					 
-							<option value = "black">black</option>					 
-							<option value = "blue">blue</option>					 
-							<option value = "green">green</option>					 
-							<option value = "yellow">yellow</option>									 
-						 </select>
-                          <span class="fa form-control-feedback right" aria-hidden="true"></span>
-                        </div>
-                      </div>
+                   
                       
                      
                       <div class="ln_solid"></div>

@@ -19,19 +19,11 @@
 								<label>Contact #</label>
 									<input type="text" name = "branch_contact" class="form-control" value = "<?php echo $row1['branch_contact'];?>">
 									<br/>
-								<label>Skin</label>
-									<select name = "skin" class = "form-control">
-										<option value = "<?php echo $row1['skin'];?>"><?php echo $row1['skin'];?></option>
-										<option>red</option>
-										<option>purple</option>	
-										<option>black</option>
-										<option>blue</option>
-										<option>green</option>
-										<option>yellow</option>
-									</select>
-									<br/>
+								
+									
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							<button  name = "update" class="btn btn-primary">Save changes</button>
+							
 						</form>
 						</div>
                         <div class="modal-footer">
@@ -40,3 +32,5 @@
                       </div>
                     </div>
 				</div>
+
+
