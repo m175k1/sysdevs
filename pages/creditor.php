@@ -132,7 +132,7 @@ endif;
         <div class="form-group">
           <label class="control-label col-lg-3" for="name">CI Date</label>
           <div class="col-lg-9">
-            <input type="date" class="form-control" id="id" name="date" value="<?php echo $row['ci_date'];?>" 
+            <input type="date" class="form-control" id="id" name="date" value="<?php echo $row['ci_date'];?>">
           </div>
         </div>        
 				<div class="form-group">
