@@ -2,6 +2,8 @@
 <?php include 'header.php';
 if(isset($_GET['id'])){
   $branch_id = $_GET['id'];
+}else{
+  $branch_id = 1;
 }
 
 ?>
@@ -31,8 +33,9 @@ if(isset($_GET['id'])){
                     </thead>
                     <tbody>
 <?php
-    $branch=$_SESSION['branch'];
-    $query=mysqli_query($con,"select * from customer where branch_id='$branch' and credit_status='pending'")or die(mysqli_error());
+    //$branch=$_SESSION['branch'];
+    echo "<h1>" . $branch_id . "</h1>";
+    $query=mysqli_query($con,"select * from customer where branch_id='$branch_id' and credit_status='pending'")or die(mysqli_error());
     $i=1;
     while($row=mysqli_fetch_array($query)){
       $cid=$row['cust_id'];

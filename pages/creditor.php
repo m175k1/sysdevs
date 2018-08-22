@@ -76,6 +76,8 @@ endif;
 		$branch=$_SESSION['branch'];
 		$query=mysqli_query($con,"select * from customer where branch_id='$branch' and credit_status<>''")or die(mysqli_error());
 		$i=1;
+
+    $payslip1 = $valid_id1 = $cedula1 = $cert1 = $income1 = "";
 		while($row=mysqli_fetch_array($query)){
       $cid=$row['cust_id'];
 		  $ci=$row['ci_remarks'];
