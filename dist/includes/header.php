@@ -13,7 +13,42 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
   $row=mysqli_fetch_array($query);
            $branch_name=$row['branch_name'];
 ?>
+<style>
 
+.navbar-custom-menu{
+  font-family: 'Comfortaa', cursive;
+  background-color:white;
+  border-radius: 15px; 
+
+}
+
+
+
+.main-header{
+  font-family: 'Comfortaa', cursive;
+  background-color:black;
+  padding:1px;
+
+  }
+
+
+ul li a{
+  color:black;
+}
+
+
+
+div ul li ul{
+  background-color: white;
+  font-color:white;
+  border-radius: 15px;
+  border: 1px solid black;
+  
+}
+
+
+
+</style>
       <header class="main-header">
         <nav class="navbar navbar-static-top">
           <div class="container">

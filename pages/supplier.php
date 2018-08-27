@@ -16,7 +16,19 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+    .box-primary{
+        background-color: white;
+        border-radius: 15px;
+        margin-top: 5px;
+        border:1px solid black;
+        box-shadow: 2px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+        }
       
     </style>
  </head>

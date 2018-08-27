@@ -44,6 +44,9 @@ endif;
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="../plugins/daterangepicker/daterangepicker.js"></script>
 <link rel="stylesheet" type="text/css" href="../plugins/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style type="text/css">
       h5,h6{
         text-align:center;

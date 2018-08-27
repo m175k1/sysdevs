@@ -28,7 +28,7 @@ $branch_id = $_GET['id'];
 				  <h5><b>Product Inventory as of today, <?php echo date("M d, Y h:i a");?></b></h5>
                   
 				  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-							<a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+							 
 						
                   <table class="table table-bordered table-striped">
                     <thead>
