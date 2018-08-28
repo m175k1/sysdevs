@@ -26,8 +26,9 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
 
 .main-header{
   font-family: 'Comfortaa', cursive;
-  background-color:black;
-  padding:1px;
+  background: url("../dist/img/nice.jpeg") no-repeat center center fixed;
+  padding:15px;
+
 
   }
 

@@ -21,15 +21,25 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
     .box-primary{
-        background-color: white;
+        background-color: transparent;
         border-radius: 15px;
         margin-top: 5px;
         border:1px solid black;
-        box-shadow: 2px 1px 200px 20px;
+        box-shadow: 0px 0px 200px 10px;
         box-shadow: black;
         color:black;
         }
+      .content{
+        font-family: 'Comfortaa', cursive;
+      }
+      h3{
+        color:white;
+      }
       
+        .content-wrapper{
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

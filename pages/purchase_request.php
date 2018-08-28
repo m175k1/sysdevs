@@ -41,6 +41,9 @@ endif;
 <!-- Include Date Range Picker -->
 <script type="text/javascript" src="../plugins/daterangepicker/daterangepicker.js"></script>
 <link rel="stylesheet" type="text/css" href="../plugins/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
  
     <style type="text/css">
       h5,h6{
@@ -53,12 +56,30 @@ endif;
             display:none !important;
           }
       }
+      .content{
+        font-family: 'Comfortaa', cursive;
+       
+        border-radius: 15px;
+        margin-top: 20px;
+        border:1px solid black;
+        box-shadow: 0px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+      }
+    
+        .content-wrapper{
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+      }
+      .content{
+        padding:30px;
+      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body class="hold-transition skin-blue layout-top-nav">
+  <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav">
     <div class="wrapper">
-      
+      <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
         <div class="container">

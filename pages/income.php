@@ -69,6 +69,16 @@ endif;
 		  
           
       }
+      .content{
+        font-family: 'Comfortaa', cursive;
+        
+        border-radius: 15px;
+        margin-top: 20px;
+        border:1px solid black;
+        box-shadow: 0px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

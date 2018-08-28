@@ -60,7 +60,11 @@ endif;
       .box-body{
         font-family: 'Comfortaa', cursive;
       }
-
+    
+        .content-wrapper{
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+      }
       
     </style>
  </head>
