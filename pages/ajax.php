@@ -112,7 +112,7 @@ if($_POST['process']=='cust_history'){
 	    		  <td>Product</td>
 	    		  <td>Price</td>
 	    		  <td>Date</td>";
-			echo "</tr>";
+			echo "</tr>";			
 	if ($result=mysqli_query($con,$sql)) 
 	  {
 	  // Fetch one and one row

@@ -161,7 +161,7 @@ endif;
 					</div>
 				</div>
         <br>
-				  <div id="history">
+				  <div class="history">
           </div>
               </div><br><br><br><hr>
               <div class="modal-footer">
@@ -327,6 +327,9 @@ endif;
               });
         }); // ajax 
 
+              $(".glyphicon-edit").click(function(){
+                  $(".history").html("")
+              })
 
 
               $(".historyButton").click(function(e) {
@@ -342,7 +345,7 @@ endif;
                       if(result == ""){ 
                           alert("bad")                        
                       }else{
-                          $("#history").html(result);
+                          $(".history").html(result);
                       }
                       
                   },
