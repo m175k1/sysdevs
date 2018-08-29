@@ -24,12 +24,41 @@ endif;
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
       img.profile_pic {
     width: 152px;
     height: 125px;
     border: 5px solid #ccc;
 }
+.box.box-primary{
+        font-family: 'Comfortaa', cursive;
+        background-color: transparent;
+        border-radius: 15px;
+        margin-top: 20px;
+        border:1px solid black;
+        box-shadow: 0px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+
+      }
+      .nav-tabs-custom{
+        font-family: 'Comfortaa', cursive;
+        background-color: transparent;
+        border-radius: 15px;
+        margin-top: 20px;
+        border:1px solid black;
+        box-shadow: 0px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+      }
+      
+      .content-wrapper{
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

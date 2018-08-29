@@ -23,10 +23,52 @@ endif;
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <script src="../dist/js/jquery.min.js"></script>
     <script language="JavaScript"><!--
 javascript:window.history.forward(1);
 //--></script>
+<style>
+.box-primary{
+        font-family: 'Comfortaa', cursive;
+        background-color: transparent;
+        border-radius: 15px;
+        margin-top: 20px;
+        border:1px solid black;
+        box-shadow: 0px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+
+
+      } 
+      .col-md-3{
+        font-family: 'Comfortaa', cursive;
+        background-color: transparent;
+        border-radius: 15px;
+        margin-top: 20px;
+        border:1px solid black;
+        box-shadow:0px 0px 200px 20px;
+        box-shadow: black;
+        color:black;
+
+      }
+      h3{
+        color:white;
+      }
+      .col-md-12{
+        border-radius: 20px;
+        border-left: :10px;
+      }
+      .box-body{
+        border-radius: 20px;
+      }
+
+      
+      
+    
+</style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav" onload="myFunction()">

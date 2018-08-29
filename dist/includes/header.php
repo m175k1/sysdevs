@@ -20,13 +20,15 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
   background-color:white;
   border-radius: 15px; 
 
+
+
 }
 
 
 
 .main-header{
   font-family: 'Comfortaa', cursive;
-  background: url("../dist/img/nice.jpeg") no-repeat center center fixed;
+  background: url("./dist/img/nice.jpeg") no-repeat center center fixed;
   padding:15px;
 
 
@@ -36,16 +38,12 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
 ul li a{
   color:black;
 }
-
-
-
-div ul li ul{
-  background-color: white;
-  font-color:white;
-  border-radius: 15px;
-  border: 1px solid black;
+div ul ul{
+  background-color: black;
   
-}
+  }
+
+
 
 
 

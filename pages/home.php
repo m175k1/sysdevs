@@ -33,7 +33,7 @@ endif;
       
       .box-primary{
         font-family: 'Comfortaa', cursive;
-        background-color: white;
+        background-color: transparent;
         border-radius: 15px;
         margin-top: 20px;
         border:1px solid black;
@@ -65,7 +65,9 @@ endif;
         border-top-left-radius: 100px;
         border-top-right-radius: 100px;
       }
-      
+      h3{
+          color:white;
+        }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
