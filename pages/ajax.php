@@ -94,4 +94,44 @@ if($_POST['process']=='credito'){
 
 
 
+if($_POST['process']=='cust_history'){
+
+
+	$cust_id = $_POST['cust_id'];
+
+
+	$sql="
+		SELECT * FROM customer a 
+			LEFT JOIN sales b ON a.cust_id = b.cust_id 
+			LEFT JOIN sales_details c ON b.sales_id = c.sales_id
+			LEFT JOIN product d ON c.prod_id = d.prod_id
+			WHERE a.cust_id = '".$cust_id."'";
+			echo "<table id='customerTable' style='width:100%'>";
+	    	echo "<tr>";
+	    	echo "<td>Customer</td>
+	    		  <td>Product</td>
+	    		  <td>Price</td>
+	    		  <td>Date</td>";
+			echo "</tr>";
+	if ($result=mysqli_query($con,$sql)) 
+	  {
+	  // Fetch one and one row
+	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+	    {
+	    	echo "<tr>";
+	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td> P " . $row['price'] .  "</td><td>" . $row['date_added'].  "</td>";
+			echo "</tr>";
+	    }
+	  // Free result set
+	  mysqli_free_result($result);
+	}
+	echo "</table>";
+	mysqli_close($con);
+
+
+}
+
+
+
+
 ?>

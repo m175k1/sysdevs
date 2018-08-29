@@ -4731,3 +4731,9 @@ table.text-center th {
     white-space: normal!important;
   }
 }
+
+#customerTable tr {border: 1px solid black;}
+#customerTable td{
+  padding:2px 4px;
+  border: 1px solid black;
+}

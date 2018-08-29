@@ -160,10 +160,13 @@ endif;
 					  <input type="text" class="form-control" id="price" name="contact" value="<?php echo $row['cust_contact'];?>" required>  
 					</div>
 				</div>
-				
+        <br>
+				  <div id="history">
+          </div>
               </div><br><br><br><hr>
               <div class="modal-footer">
               <button class="btn btn-warning deleteButton" value="<?php echo $row['cust_id'];?>">Delete</button>
+              <button class="btn btn-warning historyButton" value="<?php echo $row['cust_id'];?>">History</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
@@ -298,7 +301,7 @@ endif;
       */
 
       $(document).ready(function(){
-                $(".deleteButton").click(function(e) {
+              $(".deleteButton").click(function(e) {
               e.preventDefault();
               $.ajax({
                   type: "POST",
@@ -316,6 +319,31 @@ endif;
                         if(alert(result)){}
                             else    window.location.reload(); 
                       }                    
+                      
+                  },
+                  error: function(result) {
+                      alert('error');
+                  }
+              });
+        }); // ajax 
+
+
+
+              $(".historyButton").click(function(e) {
+              e.preventDefault();
+              $.ajax({
+                  type: "POST",
+                  url: "ajax.php",
+                  data: { 
+                      cust_id: $(this).val(), // < note use of 'this' here
+                      process: 'cust_history'
+                  },
+                  success: function(result) {
+                      if(result == ""){ 
+                          alert("bad")                        
+                      }else{
+                          $("#history").html(result);
+                      }
                       
                   },
                   error: function(result) {
