@@ -23,10 +23,13 @@ endif;
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-    .{
+    .content{
         font-family: 'Comfortaa', cursive;
-        background-color: white;
+        background-color: transparent;
         border-radius: 15px;
         margin-top: 20px;
         border:1px solid black;
@@ -69,7 +72,7 @@ endif;
             <div class="row">
 	           <div class="col-md-12">
               <div class="box box-primary">
-                <div class="box-header with-border">
+                <div class="box-header">
                   <h3 class="box-title">Apply As New Creditor</h3>
                 </div>
                 <div class="box-body">

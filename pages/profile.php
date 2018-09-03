@@ -23,13 +23,32 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-   .content-wrapper{
+    ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#000, green);
+  border-radius: 6px;
+}
+     .content{
+        font-family: 'Comfortaa', cursive;
+        background-color: transparent;
+        border-radius: 15px;
+        margin-top: 5px;
+        border:1px solid black;
+        box-shadow: 2px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+        }
+        p{
+          color:white;
+           font-family: 'Comfortaa', cursive;
+           font-size: 18px;
+        }
+         .content-wrapper{
         border-top-left-radius: 100px;
         border-top-right-radius: 100px;
       }
-      h3{
-          color:white;
-        }
       
   
     </style>
@@ -61,11 +80,11 @@ endif;
 		  ?>	
           <!-- Main content -->
           <section class="content">
+          <p>Update Account Details</p>
             <div class="row">
 	      <div class="col-md-12">
               <div class="box box-primary">
-                <div class="box-header">
-                  <h3 class="box-title">Update Account Details</h3>
+               
                 </div>
                 <div class="box-body">
                   <!-- Date range -->

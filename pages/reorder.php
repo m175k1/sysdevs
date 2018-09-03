@@ -24,13 +24,17 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
     .box-primary{
-        background-color: white;
+      font-family: 'Comfortaa', cursive;
+        background-color: transparent;
         border-radius: 15px;
         margin-top: 5px;
         border:1px solid black;
         box-shadow: 2px 1px 200px 20px;
         box-shadow: black;
         color:black;
+        }
+        h3{
+          color:white;
         }
       
     </style>

@@ -23,6 +23,13 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+  ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#000, green);
+  border-radius: 6px;
+}
     .box-primary{
         background-color: transparent;
         border-radius: 15px;
@@ -39,12 +46,31 @@ endif;
         font-family: 'Comfortaa', cursive;
       }
       h3{
+        font-family: 'Comfortaa', cursive;
         color:white;
       }
-      
+       h4{
+      font-family: 'Comfortaa', cursive;
+      color:white;
+    }
         .content-wrapper{
         border-top-left-radius: 100px;
         border-top-right-radius: 100px;
+      }
+       .modal-header{
+        background-color: black;
+        color:white;
+        border-top-left-radius:20px;
+        border-top-right-radius:20px;
+        font-family: 'Comfortaa', cursive;
+        border:1px solid black;
+      }
+      .modal-content{
+        border-radius: 20px;
+        background-color: white;
+        border:1px solid green;
+        box-shadow: 0px 0 50px 0px;
+        color:green;
       }
     </style>
  </head>

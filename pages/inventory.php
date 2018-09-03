@@ -59,6 +59,13 @@ endif;
         border-top-left-radius: 100px;
         border-top-right-radius: 100px;
       }
+      ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#000, green);
+  border-radius: 6px;
+}
     </style>
     
  </head>

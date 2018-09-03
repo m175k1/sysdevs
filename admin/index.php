@@ -1,4 +1,10 @@
 <?php include 'header_login.php';?>
+<style>
+html{
+  background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+</style>
 
 
   <body class="login">

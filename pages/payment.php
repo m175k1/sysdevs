@@ -28,6 +28,13 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+    ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#000, green);
+  border-radius: 6px;
+}
       img.profile_pic {
     width: 152px;
     height: 125px;
@@ -59,6 +66,33 @@ endif;
         border-top-left-radius: 100px;
         border-top-right-radius: 100px;
       }
+      .modal-header{
+        background-color: black;
+        color:white;
+        border-radius: 20px;
+        font-family: 'Comfortaa', cursive;
+        border:1px solid black;
+      }
+      .modal-content{
+        border-radius: 20px;
+        background-color: white;
+        border:1px solid green;
+      }
+      .box-body{
+       font-family: 'Comfortaa', cursive;
+        border-radius: 15px;
+        border:1px solid black;
+        box-shadow: 0px 1px 200px 20px;
+        box-shadow: black;
+        color:black;
+        }
+        .nav-tabs-custom>.nav-tabs>li>a
+        {
+          color:white;
+        }
+      
+
+      
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

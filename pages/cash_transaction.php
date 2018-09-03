@@ -31,6 +31,13 @@ endif;
 javascript:window.history.forward(1);
 //--></script>
 <style>
+::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#000, #30ff00);
+  border-radius: 6px;
+}
 .box-primary{
         font-family: 'Comfortaa', cursive;
         background-color: transparent;
@@ -42,32 +49,30 @@ javascript:window.history.forward(1);
         color:black;
 
 
-      } 
-      .col-md-3{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow:0px 0px 200px 20px;
-        box-shadow: black;
-        color:black;
-
-      }
+      }       
       h3{
+        font-family: 'Comfortaa', cursive;
         color:white;
       }
-      .col-md-12{
-        border-radius: 20px;
-        border-left: :10px;
+       .modal-header{
+        background-color: black;
+        color:white;
+        border-top-left-radius:20px;
+        border-top-right-radius:20px;
+        font-family: 'Comfortaa', cursive;
+        border:1px solid black;
       }
-      .box-body{
+      .modal-content{
         border-radius: 20px;
+        background-color: white;
+        border:1px solid green;
+        box-shadow: 0px 0 50px 0px;
+        color:green;
       }
-
+      
+        
       
       
-    
 </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

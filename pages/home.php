@@ -68,6 +68,8 @@ endif;
       h3{
           color:white;
         }
+        
+        
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
