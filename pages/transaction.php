@@ -52,6 +52,11 @@ javascript:window.history.forward(1);
           color:white;
           font-family: 'Comfortaa', cursive
         }
+       .row{
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+
 </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

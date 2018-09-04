@@ -70,6 +70,19 @@ javascript:window.history.forward(1);
         color:green;
       }
       
+      .form{
+        border-radius: 20px;
+
+      }
+      .row{
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+      .box.box-primary{
+        border-radius: 20px;
+      }
+
+      
         
       
       

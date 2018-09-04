@@ -4,6 +4,80 @@
 $branch_id = $_GET['id'];
 
 ?>
+<link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+<style>
+::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#000, green);
+  border-radius: 6px;
+}
+.nav-md .container.body .right_col{
+  background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+  background-size: cover;
+  
+
+  
+}
+
+.nav_menu{
+	background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+	background-size: cover;
+  font-family: 'Comfortaa', cursive;
+  border-radius: 20px;
+ border:3px solid white;
+}
+.left_col{
+
+
+  background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+  background-size: cover;
+  
+  
+
+}
+.nav_title{
+
+  background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+  background-size: cover;
+  
+}
+footer{
+   background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+  background-size: cover;
+  
+}
+.sidebar-footer{
+   background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+  background-size: cover;
+  
+}
+a{
+  font-family: 'Comfortaa', cursive;
+}
+th{
+  font-family: 'Comfortaa', cursive;
+}
+.profile_info{
+  font-family: 'Comfortaa', cursive;
+}
+.tile_count{
+	background-color: white;
+	border-radius: 20px;
+	padding: 20px;
+}
+.main_container{
+	background: url('../dist/img/admin.jpg') no-repeat center center fixed;
+  background-size: cover;
+  
+}
+h5, h6{
+	color:white;
+}
+
+</style>
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">

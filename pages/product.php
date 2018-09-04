@@ -68,9 +68,9 @@ endif;
       .modal-content{
         border-radius: 20px;
         background-color: white;
-        border:1px solid green;
+        border:1px solid black;
         box-shadow: 0px 0 50px 0px;
-        color:green;
+        color:black;
       }
     </style>
  </head>

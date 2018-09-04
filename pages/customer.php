@@ -71,7 +71,7 @@ endif;
         background-color: white;
         border:1px solid black;
         box-shadow: 0px 0 50px 0px;
-        color:green;
+        color:black;
       }
           </style>
  </head>
