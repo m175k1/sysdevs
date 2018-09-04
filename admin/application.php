@@ -109,8 +109,7 @@ th{
                     </thead>
                     <tbody>
 <?php
-    //$branch=$_SESSION['branch'];
-    echo "<h1>" . $branch_id . "</h1>";
+    //$branch=$_SESSION['branch'];   
     $query=mysqli_query($con,"select * from customer where branch_id='$branch_id' and credit_status='pending'")or die(mysqli_error());
     $i=1;
     while($row=mysqli_fetch_array($query)){

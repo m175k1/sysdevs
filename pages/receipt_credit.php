@@ -99,26 +99,26 @@ include('../dist/includes/dbcon.php');
                       <tr>
                         <th>Customer's Name</th>
                         <th><?php echo $last.", ".$first;?></th>
-                        <th>Term</th>
-                        <th><?php echo $row['term'];?> </th>
+                        <th></th>
+                        <th></th>
                       </tr>
                       <tr>
                         <th>Contact #</th>
                         <th><?php echo $contact;?></th>
-                        <th>Payable for</th>
-                        <th><?php echo $row['payable_for'];?> month/s</th>
+                        <th></th>
+                        <th></th>
                       </tr>
                       <tr>
                         <th>Complete Address</th>
                         <th><?php echo $address;?></th>
-                        <th>Due Date</th>
-                        <th><?php echo $row['due_date'];?></th>
+                        <th>Amount Due</th>
+                        <th>P<?php echo number_format($row['due'],2);?></th>
                       </tr>
                       <tr>
                         <th></th>
                         <th></th>
-                        <th>Amount Due</th>
-                        <th>P<?php echo number_format($row['due'],2);?></th>
+                        <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                   </table>
