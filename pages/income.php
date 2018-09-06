@@ -79,6 +79,7 @@ endif;
         box-shadow: black;
         color:black;
       }
+      
       ::-webkit-scrollbar{
   width: 12px;
 }

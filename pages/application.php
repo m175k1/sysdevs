@@ -95,11 +95,7 @@ endif;
                       </div><!-- /.input group -->
                       
                     </div>
-                    <div class="col-md-4">  
-                      <label for="date">Middle Initial</label>
-                      <div class="input-group col-md-12">
-                          <input type="text" class="form-control pull-right" id="date" name="mi" placeholder="Middle Initial" required>
-                        </div><!-- /.input group -->
+                    
                       </div><!-- /.form group -->
                   </div><!--row-->
                   <div class="row">
