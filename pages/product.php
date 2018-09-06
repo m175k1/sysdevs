@@ -163,7 +163,7 @@ endif;
             						<td><?php echo $row['reorder'];?></td>
                         <td>
 				<a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
-			
+			 
 						</td>
                       </tr>
 <div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -198,15 +198,10 @@ endif;
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="file">Supplier</label>
 					<div class="col-lg-9">
-					    <select class="form-control select2" style="width: 100%;" name="Distributor" required>
-						  <option value="<?php echo $row['supplier_id'];?>"><?php echo $row['supplier_name'];?></option>
-					      <?php
-						
-							$query2=mysqli_query($con,"select * from supplier")or die(mysqli_error());
-							  while($row2=mysqli_fetch_array($query2)){
-					      ?>
-							    <option value="<?php echo $row['supplier_id'];?>"><?php echo $row2['supplier_name'];?></option>
-					      <?php }?>
+					    <select class="form-control select2" style="width: 100%;" name="supplier" required>
+						  <option value="<?php echo $row['supplier_id'];?>"><?php echo $sup2;?></option>				    
+							   
+					     
 					    </select>
 					</div>
 				</div> 
@@ -221,8 +216,8 @@ endif;
 				<div class="form-group">
 							<label class="control-label col-lg-3" >Category</label>
 							<div class="col-lg-9">
-							  <select class="form-control select2" style="width: 100%;" name="Brand Name" required>
-              <option value="<?php echo $row['cat_id'];?>"><?php echo $row['cat_name'];?></option>
+							  <select class="form-control select2" style="width: 100%;" name="category" required>
+              <option value="<?php echo $row['cat_id'];?>"><?php echo $cat2;?></option>
                 <?php
             
               $queryc=mysqli_query($con,"select * from category order by cat_name")or die(mysqli_error());
@@ -320,7 +315,7 @@ endif;
         <div class="form-group">
           <label class="control-label col-lg-3" for="file">Supplier</label>
           <div class="col-lg-9">
-              <select class="form-control select2" style="width: 100%;" name="Distributor" required>
+              <select class="form-control select2" style="width: 100%;" name="supplier" required>
                 <?php
             
               $query2=mysqli_query($con,"select * from supplier")or die(mysqli_error());
@@ -342,7 +337,7 @@ endif;
         <div class="form-group">
               <label class="control-label col-lg-3" >Category</label>
               <div class="col-lg-9">
-                <select class="form-control select2" style="width: 100%;" name="Brand Name" required>
+                <select class="form-control select2" style="width: 100%;" name="category" required>
               
                 <?php
             
