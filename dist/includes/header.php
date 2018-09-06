@@ -101,7 +101,7 @@ ul li a{
                         <ul class="menu">
 						  <li><!-- start notification -->
                             <a href="category.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Category
+                              <i class="glyphicon glyphicon-user text-green"></i> Brand Name
                             </a>
                           </li><!-- end notification -->
 						              <li><!-- start notification -->
@@ -122,7 +122,7 @@ ul li a{
 						 
 						  <li><!-- start notification -->
                             <a href="supplier.php">
-                              <i class="glyphicon glyphicon-send text-green"></i> Supplier
+                              <i class="glyphicon glyphicon-send text-green"></i> Distributor
                             </a>
                           </li><!-- end notification -->
                          

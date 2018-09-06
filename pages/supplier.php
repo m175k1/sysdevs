@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Supplier | <?php include('../dist/includes/title.php');?></title>
+    <title>Distributor | <?php include('../dist/includes/title.php');?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -94,13 +94,13 @@
               <div class="box box-primary">
     
                 <div class="box-header">
-                  <h3 class="box-title">Supplier List</h3>
+                  <h3 class="box-title">Distributor List</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Supplier Name</th>
+                        <th>Distributor Name</th>
 						            <th>Address</th>
                         <th>Contact #</th>
                         <th>Action</th>
@@ -131,25 +131,25 @@
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Update Supplier Details</h4>
+                <h4 class="modal-title">Update Distributor Details</h4>
               </div>
               <div class="modal-body">
 			  <form class="form-horizontal" method="post" action="supplier_update.php" enctype='multipart/form-data'>
                 
 				<div class="form-group">
-					<label for="name">Supplier Name</label>
+					<label for="name">Distributor Name</label>
 					<div class="input-group col-md-12"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['supplier_id'];?>" required>  
 					  <input type="text" class="form-control" id="name" name="name" value="<?php echo $row['supplier_name'];?>" required>  
 					</div>
 				</div> 
         <div class="form-group">
-                    <label for="date">Supplier Address</label>
+                    <label for="date">Distributor Address</label>
                     <div class="input-group col-md-12">
-                      <textarea class="form-control pull-right" id="date" name="address" placeholder="Supplier Complete Address" required><?php echo $row['supplier_address'];?></textarea>
+                      <textarea class="form-control pull-right" id="date" name="address" placeholder="Distributor Complete Address" required><?php echo $row['supplier_address'];?></textarea>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                <div class="form-group">
-                    <label for="date">Supplier Contact #</label>
+                    <label for="date">Distributor Contact #</label>
                     <div class="input-group col-md-12">
                       <input type="text" class="form-control pull-right" id="date" name="contact" placeholder="Contact # of Supplier" value="<?php echo $row['supplier_contact'];?>" required>
                     </div><!-- /.input group -->
@@ -174,7 +174,7 @@
                     </tbody>
                     <tfoot>
                       <tr>
-                        <th>Supplier Name</th>
+                        <th>Distributor Name</th>
                         <th>Address</th>
                         <th>Contact #</th>
                         <th>Action</th>
@@ -190,26 +190,26 @@
 	  <div class="col-md-3">
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Add New Supplier</h3>
+                  <h3 class="box-title">Add New Distributor</h3>
                 </div>
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="supplier_add.php" enctype="multipart/form-data">
   
 					  <div class="form-group">
-						<label for="date">Supplier Name</label>
+						<label for="date">Distributor Name</label>
 						<div class="input-group col-md-12">
-						  <input type="text" class="form-control pull-right" id="date" name="name" placeholder="Supplier Name" required>
+						  <input type="text" class="form-control pull-right" id="date" name="name" placeholder="Distributor Name" required>
 						</div><!-- /.input group -->
 					  </div><!-- /.form group -->
 		         <div class="form-group">
-                    <label for="date">Supplier Address</label>
+                    <label for="date">Distributor Address</label>
                     <div class="input-group col-md-12">
-                      <textarea class="form-control pull-right" id="date" name="address" placeholder="Supplier Complete Address" required></textarea>
+                      <textarea class="form-control pull-right" id="date" name="address" placeholder="Distributor Complete Address" required></textarea>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                <div class="form-group">
-                    <label for="date">Supplier Contact #</label>
+                    <label for="date">Distributor Contact #</label>
                     <div class="input-group col-md-12">
                       <input type="text" class="form-control pull-right" id="date" name="contact" placeholder="Contact # of Supplier" required>
                     </div><!-- /.input group -->

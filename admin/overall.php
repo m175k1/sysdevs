@@ -253,62 +253,8 @@ th{
       </div>
     </div>
 
-		<script type="text/javascript"src="vendors/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript"src="js/highcharts.js"></script>
-		<script type="text/javascript"src="js/exporting.js"></script>
-		    <!-- Custom Theme Scripts -->
-    <script src="build/js/custom.min.js"></script>
-		<script type="text/javascript">
-        $(document).ready(function() {
-            var options = {
-                chart: {
-                    renderTo: 'graph',
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false,
-										spacingBottom: 50,
-                },
-                title: {
-                    text: '',
-										style: { fontFamily: '\'Lato\', sans-serif', lineHeight: '18px', fontSize: '26px' }
-                },
-                tooltip: {
-                    formatter: function() {
-                        return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                    }
-                },
-                plotOptions: {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            color: '#000000',
-														style: { fontFamily: '\'Lato\', sans-serif', lineHeight: '18px', fontSize: '14px' },
-                            connectorColor: '#000000',
-                            formatter: function() {
-                                return '<b>'+ this.point.name +'</b>: '+ Highcharts.numberFormat(this.percentage, 2) +' %';
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    type: 'pie',
-                    name: 'Employability Rate',
-                    data: []
-                }]
-            }
-            
-            $.getJSON("datapie.php", function(json) {
-                options.series[0].data = json;
-                chart = new Highcharts.Chart(options);
-            });
-            
-            
-            
-        });   
-        </script>
-
+	
+	<?php include 'datatable_script.php';?>
     <!-- /gauge.js -->
   </body>
 </html>

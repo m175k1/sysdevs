@@ -112,10 +112,10 @@ endif;
                         <th>Product Code</th>
                         <th>Product Name</th>
                         <th>Description</th>
-						            <th>Supplier</th>
+						            <th>Distributor</th>
                         <th>Qty</th>
             						<th>Price</th>
-            						<th>Category</th>
+            						<th>Brand Name</th>
             						<th>Reorder</th>
                         <th>Action</th>
                       </tr>
@@ -123,19 +123,43 @@ endif;
                     <tbody>
 <?php
 		
-		$query=mysqli_query($con,"select * from product natural join supplier natural join category where branch_id='$branch' order by prod_name")or die(mysqli_error());
+		$query=mysqli_query($con,"select * from product order by prod_name")or die(mysqli_error());
 		while($row=mysqli_fetch_array($query)){
-		
+              $x = $row['supplier_id'];
+              $cat = $row['cat_id'];
+             
+            $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
+                if (mysqli_num_rows($sup) > 0 ){
+                    while($row2=mysqli_fetch_array($sup)){
+                          $sup2 = $row2['supplier_name'];
+                    }
+                }else{
+                    $sup2 = "Supplier is erased";
+                }
+
+              $cat=mysqli_query($con,"select cat_name from category where cat_id='$cat'")or die(mysqli_error());
+                if (mysqli_num_rows($cat) > 0 ){
+                    while($row3=mysqli_fetch_array($cat)){
+                          $cat2 = $row3['cat_name'];
+                    }
+                }else{
+                    $cat2 = "Category is erased";
+                }
+               
+
 ?>
                       <tr>
                       	<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['prod_pic'];?>"></td>
                         <td><?php echo $row['serial'];?></td>
                         <td><?php echo $row['prod_name'];?></td>
                         <td><?php echo $row['prod_desc'];?></td>
-						            <td><?php echo $row['supplier_name'];?></td>
+						            <td><?php if(isset($sup2)){echo $sup2;
+                        }else{
+                          echo "";
+                        } ?></td>
                         <td><?php echo $row['prod_qty'];?></td>
             						<td><?php echo number_format($row['prod_price'],2);?></td>
-            						<td><?php echo $row['cat_name'];?></td>
+            						<td><?php echo $cat2 ?></td>
             						<td><?php echo $row['reorder'];?></td>
                         <td>
 				<a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
@@ -174,7 +198,7 @@ endif;
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="file">Supplier</label>
 					<div class="col-lg-9">
-					    <select class="form-control select2" style="width: 100%;" name="supplier" required>
+					    <select class="form-control select2" style="width: 100%;" name="Distributor" required>
 						  <option value="<?php echo $row['supplier_id'];?>"><?php echo $row['supplier_name'];?></option>
 					      <?php
 						
@@ -197,7 +221,7 @@ endif;
 				<div class="form-group">
 							<label class="control-label col-lg-3" >Category</label>
 							<div class="col-lg-9">
-							  <select class="form-control select2" style="width: 100%;" name="category" required>
+							  <select class="form-control select2" style="width: 100%;" name="Brand Name" required>
               <option value="<?php echo $row['cat_id'];?>"><?php echo $row['cat_name'];?></option>
                 <?php
             
@@ -242,10 +266,10 @@ endif;
                         <th>Serial #</th>
                         <th>Product Name</th>
                         <th>Description</th>
-						<th>Category</th>
+						<th>Brand Name</th>
                         <th>Qty</th>
 						<th>Price</th>
-						<th>Category</th>
+						<th>Brand Name</th>
 						<th>Reorder</th>
                         <th>Action</th>
                       </tr>					  
@@ -296,7 +320,7 @@ endif;
         <div class="form-group">
           <label class="control-label col-lg-3" for="file">Supplier</label>
           <div class="col-lg-9">
-              <select class="form-control select2" style="width: 100%;" name="supplier" required>
+              <select class="form-control select2" style="width: 100%;" name="Distributor" required>
                 <?php
             
               $query2=mysqli_query($con,"select * from supplier")or die(mysqli_error());
@@ -318,7 +342,7 @@ endif;
         <div class="form-group">
               <label class="control-label col-lg-3" >Category</label>
               <div class="col-lg-9">
-                <select class="form-control select2" style="width: 100%;" name="category" required>
+                <select class="form-control select2" style="width: 100%;" name="Brand Name" required>
               
                 <?php
             

@@ -8,7 +8,7 @@ endif;
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Category | <?php include('../dist/includes/title.php');?></title>
+    <title>Brand Name | <?php include('../dist/includes/title.php');?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -104,9 +104,9 @@ endif;
                   <form method="post" action="cat_add.php" enctype="multipart/form-data">
   
                   <div class="form-group">
-                    <label for="date">Category</label>
+                    <label for="date">Brand Name</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="category" placeholder="Category" required>
+                      <input type="text" class="form-control pull-right" id="date" name="Brand Name" placeholder="Brand Name" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 		  
@@ -129,7 +129,7 @@ endif;
               <div class="box box-primary">
     
                 <div class="box-header">
-                  <h3 class="box-title">Category List</h3>
+                  <h3 class="box-title">Brand Name List</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
@@ -159,15 +159,15 @@ endif;
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Update Category Details</h4>
+                <h4 class="modal-title">Update Brand Name Details</h4>
               </div>
               <div class="modal-body">
 			  <form class="form-horizontal" method="post" action="cat_update.php" enctype='multipart/form-data'>
                 
 				<div class="form-group">
-					<label class="control-label col-lg-3" for="name">Category</label>
+					<label class="control-label col-lg-3" for="name">Brand Name</label>
 					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['cat_id'];?>" required>  
-					  <input type="text" class="form-control" id="name" name="category" value="<?php echo $row['cat_name'];?>" required>  
+					  <input type="text" class="form-control" id="name" name="Brand Name" value="<?php echo $row['cat_name'];?>" required>  
 					</div>
 				</div> 
 				

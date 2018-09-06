@@ -154,7 +154,7 @@ if (isset($_POST['display']))
                       <th>Product Code</th>
                       <th>Product Name</th>
                       <th>Quantity</th>
-                      <th>Supplier Name</th>
+                      <th>Distributor Name</th>
                       <th>Date Requested</th>
                     </tr>    
 <?php
