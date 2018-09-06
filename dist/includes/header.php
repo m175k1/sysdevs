@@ -101,7 +101,7 @@ ul li a{
                         <ul class="menu">
 						  <li><!-- start notification -->
                             <a href="category.php">
-                              <i class="glyphicon glyphicon-user text-green"></i> Brand Name
+                              <i class="glyphicon glyphicon-user text-green"></i> Company Name
                             </a>
                           </li><!-- end notification -->
 						              <li><!-- start notification -->

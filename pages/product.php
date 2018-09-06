@@ -115,7 +115,7 @@ endif;
 						            <th>Distributor</th>
                         <th>Qty</th>
             						<th>Price</th>
-            						<th>Brand Name</th>
+            						<th>Company Name</th>
             						<th>Reorder</th>
                         <th>Action</th>
                       </tr>
@@ -196,7 +196,7 @@ endif;
           </div>
         </div> 
 				<div class="form-group">
-					<label class="control-label col-lg-3" for="file">Supplier</label>
+					<label class="control-label col-lg-3" for="file">Distributor</label>
 					<div class="col-lg-9">
 					    <select class="form-control select2" style="width: 100%;" name="supplier" required>
 						  <option value="<?php echo $row['supplier_id'];?>"><?php echo $sup2;?></option>				    
@@ -214,7 +214,7 @@ endif;
 				</div>
 				
 				<div class="form-group">
-							<label class="control-label col-lg-3" >Category</label>
+							<label class="control-label col-lg-3" >Company Name</label>
 							<div class="col-lg-9">
 							  <select class="form-control select2" style="width: 100%;" name="category" required>
               <option value="<?php echo $row['cat_id'];?>"><?php echo $cat2;?></option>
@@ -241,7 +241,7 @@ endif;
 					  <input type="file" class="form-control" id="price" name="image">  
 					</div>
 				</div>
-              </div><br><br><br><br><br><br><br>
+              </div>
               <div class="modal-footer">
         <button class="btn btn-warning deleteButton" value="<?php echo $row['serial']?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
@@ -261,7 +261,7 @@ endif;
                         <th>Serial #</th>
                         <th>Product Name</th>
                         <th>Description</th>
-						<th>Brand Name</th>
+						<th>Company Name</th>
                         <th>Qty</th>
 						<th>Price</th>
 						<th>Brand Name</th>
@@ -313,7 +313,7 @@ endif;
           </div>
         </div>
         <div class="form-group">
-          <label class="control-label col-lg-3" for="file">Supplier</label>
+          <label class="control-label col-lg-3" for="file">Distributor</label>
           <div class="col-lg-9">
               <select class="form-control select2" style="width: 100%;" name="supplier" required>
                 <?php
@@ -335,7 +335,7 @@ endif;
         </div>
         
         <div class="form-group">
-              <label class="control-label col-lg-3" >Category</label>
+              <label class="control-label col-lg-3" >Company Name</label>
               <div class="col-lg-9">
                 <select class="form-control select2" style="width: 100%;" name="category" required>
               

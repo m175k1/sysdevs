@@ -87,7 +87,7 @@ endif;
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-              <li class="active">Category</li>
+              <li class="active">Comapany Name</li>
             </ol>
           </section>
 
@@ -97,16 +97,16 @@ endif;
 	      <div class="col-md-4">
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Add New Category</h3>
+                  <h3 class="box-title">Add New Company Name</h3>
                 </div>
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="cat_add.php" enctype="multipart/form-data">
   
                   <div class="form-group">
-                    <label for="date">Brand Name</label>
+                    <label for="date">Company Name</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="Brand Name" placeholder="Brand Name" required>
+                      <input type="text" class="form-control pull-right" id="date" name="Brand Name" placeholder="Company Name" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 		  
@@ -129,7 +129,7 @@ endif;
               <div class="box box-primary">
     
                 <div class="box-header">
-                  <h3 class="box-title">Brand Name List</h3>
+                  <h3 class="box-title">Company Name List</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <table id="example1" class="table table-bordered table-striped">
@@ -159,13 +159,13 @@ endif;
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Update Brand Name Details</h4>
+                <h4 class="modal-title">Update Company Name Details</h4>
               </div>
               <div class="modal-body">
 			  <form class="form-horizontal" method="post" action="cat_update.php" enctype='multipart/form-data'>
                 
 				<div class="form-group">
-					<label class="control-label col-lg-3" for="name">Brand Name</label>
+					<label class="control-label col-lg-3" for="name">Company Name</label>
 					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['cat_id'];?>" required>  
 					  <input type="text" class="form-control" id="name" name="Brand Name" value="<?php echo $row['cat_name'];?>" required>  
 					</div>
