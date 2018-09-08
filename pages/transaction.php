@@ -92,7 +92,7 @@ javascript:window.history.forward(1);
 				  <div class="row" style="min-height:400px">
 					
 					 <div class="col-md-6">
-					 <?php echo "<h1>" . $branch . "</h1>"; ?>
+					 
 						  <div class="form-group">
 							<label for="date">Product Name</label>
 							 
