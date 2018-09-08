@@ -47,9 +47,11 @@ javascript:window.history.forward(1);
         box-shadow: 0px 1px 200px 20px;
         box-shadow: black;
         color:black;
-
-
-      }       
+      }      
+      .content-wrapper{
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+      } 
       h3{
         font-family: 'Comfortaa', cursive;
         color:white;

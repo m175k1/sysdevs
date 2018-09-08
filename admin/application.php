@@ -108,9 +108,8 @@ th{
                     </thead>
                     <tbody>
 <?php
-    //$branch=$_SESSION['branch'];   
-	
-    $query=mysqli_query($con,"select * from customer where branch_id='$branch_id' and credit_status='pending'")or die(mysqli_error());
+    $branch=$_SESSION['branch'];   
+	  $query=mysqli_query($con,"select * from customer where branch_id='$branch' and credit_status='pending'")or die(mysqli_error());
     $i=1;
     while($row=mysqli_fetch_array($query)){
       $cid=$row['cust_id'];
@@ -120,6 +119,7 @@ th{
       $cedula=$row['cedula'];if($cedula==1) $cedula1='checked';
       $cert=$row['cert'];if($cert==1) $cert1='checked';
       $income=$row['income'];if($income==1) $income1='checked';
+
 ?>
                       <tr>
                         <td><?php echo $row['cust_last'];?></td>

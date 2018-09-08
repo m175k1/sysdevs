@@ -211,7 +211,7 @@
                <div class="form-group">
                     <label for="date">Distributor Contact #</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="contact" placeholder="Contact # of Supplier" required>
+                      <input type="text" class="form-control pull-right" id="date" name="contact" placeholder="Contact # of Distributor" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->    
 				
