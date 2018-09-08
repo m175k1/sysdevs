@@ -221,7 +221,7 @@ endif;
 				
               </div><br><br><br><hr>
               <div class="modal-footer">
-        <button class="btn btn-warning deleteButton" value="<?php echo $row['supplier_name'];?>">Delete</button>
+        <button class="btn btn-warning deleteButton" value="<?php echo $cid;?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
@@ -361,8 +361,8 @@ endif;
                   type: "POST",
                   url: "ajax.php",
                   data: { 
-                      supplier_name: $(this).val(), // < note use of 'this' here
-                      process: 'supplier'
+                      cust_credit: $(this).val(), // < note use of 'this' here
+                      process: 'creditor'
                   },
                   success: function(result) {
                       if(result == ""){ 

@@ -92,6 +92,25 @@ if($_POST['process']=='credito'){
 }
 
 
+if($_POST['process']=='creditor'){
+	$cust_credit = $_POST['cust_credit'];	
+	if(! $con ) {
+	      die('Could not connect: ' . mysqli_error());
+	   }
+	   echo 'Connected successfully, ';	  
+	   
+	   $sql = "UPDATE customer SET credit_status = '' WHERE cust_id = '" . $cust_credit . "'";
+	   
+	   if (mysqli_query($con, $sql)) {
+	      	echo "Record deleted successfully ";
+	   } else {
+	   		echo "Not successfully ";
+	   }
+	   mysqli_close($con);
+
+}
+
+
 
 
 if($_POST['process']=='cust_history'){
