@@ -133,7 +133,7 @@ endif;
                     <div class="col-md-6">  
                       <label for="date">House Status</label>
                       <div class="input-group col-md-6">
-                          <input type="radio" name="house_status" value="owned">Owned
+                          <input type="radio" name="house_status" value="owned" checked="checked" >Owned
                           <input type="text" class="form-control pull-right" id="date" name="years" placeholder="# of years">
                       </div>
 
