@@ -14,13 +14,13 @@ include('../dist/includes/dbcon.php');
 		$row=mysqli_fetch_array($query);
 		$price=$row['prod_price'];
 		
-		$query1=mysqli_query($con,"select * from temp_trans where branch_id='$branch'")or die(mysqli_error());
+		$query1=mysqli_query($con,"select * from temp_trans where prod_id='$name' and branch_id='$branch'")or die(mysqli_error());
 		$count=mysqli_num_rows($query1);
 		
 		$total=$price*$qty;
 		
 		if ($count>0){
-			mysqli_query($con,"update temp_trans set qty='$qty',price='$total' where branch_id='$branch'")or die(mysqli_error());
+			mysqli_query($con,"update temp_trans set qty=qty+'$qty',price=price+'$total' where prod_id='$name' and branch_id='$branch'")or die(mysqli_error());
 	
 		}
 		else{

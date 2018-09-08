@@ -92,6 +92,7 @@ javascript:window.history.forward(1);
 				  <div class="row" style="min-height:400px">
 					
 					 <div class="col-md-6">
+					 <?php echo "<h1>" . $branch . "</h1>"; ?>
 						  <div class="form-group">
 							<label for="date">Product Name</label>
 							 
@@ -102,6 +103,7 @@ javascript:window.history.forward(1);
 								  include('../dist/includes/dbcon.php');
 									 $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
 									    while($row=mysqli_fetch_array($query2)){
+											
 								?>
 										<option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
 								  <?php }?>
@@ -126,6 +128,8 @@ javascript:window.history.forward(1);
 						</div>	
 					</form>	
 					</div>
+					
+					
 					<div class="col-md-12">
 <?php 
 $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or die(mysqli_error());
@@ -179,6 +183,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
               </div>
               <div class="modal-body">
 			  <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'>
+					<input type="hidden" class="form-control" name="tran" value="credit">
 					<input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>  	
 					<input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
 				<div class="form-group">
