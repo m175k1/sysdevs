@@ -97,29 +97,7 @@ $branch=$_SESSION['branch'];
                         <th>Product Serial #</th>
                         <th><?php echo $row['serial'];?></th>
                       </tr>
-                    </thead>
-                  </table>
-                  <h4 class="text-center">CUSTOMER’S UNDERTAKING AND RESPONSIBILITIES</h4>
-
-<p><b>1.)</b> Item delivered is understood to be in order and without defect if the customer has affixed his/ her signature below.</p>
-
-<p><b>2.)</b> To pay the monthly installment on time and in case of default, a 3% monthly penalty on present balance will be impose.</p>
-
-<p><b>3.)</b> Payments to the office or collectors should be receipted or documented by an AHIRA MARKETING official receipt. Payments with no receipts and unauthorized receipts will not be honored.</p>
-
-<p><b>4.)</b> Not to lend, hire, sell, or pledge the PRODUCT until the balance is fully paid.</p>
-
-<p><b>5.)</b> Not to remove/ transfer the product from the residence or place agreed upon without the consent of AHIRA MARKETING.</p>
-
-<p><b>6.)</b> Failure to pay two (2) or more monthly installments, the unit/ product will be voluntarily deposited, and the customer shall allow AHIRA MARKETING REPRESENTATIVE to enter the premises and pull out the unit/ product.</p>
-
-<p><b>7.)</b> In cases of legal matters, all legal expenses (filling fees, attorney’s fees, ETC.) pertaining to legal problems will be shouldered by the customer.</p>
-
-<p><b>8.)</b> Strictly NO REFUNDS of whatever payments made if the unit/ product will be repossessed.</p>
-
-<p>I acknowledge and fully understood and read the contents of this undertaking listed above from numbers 1 to 8. And below I affix my signature for conformity and acceptance of my obligation.</p>
-                  <table class="table">
-                    <thead>
+                    
                         
                       <tr><br>
                         <th>____________________________________________</th>

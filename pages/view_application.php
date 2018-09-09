@@ -73,12 +73,6 @@ endif;
                       </div><!-- /.input group -->
                       
                     </div>
-                    <div class="col-md-4">  
-                      <label for="date">Middle Initial</label>
-                      <div class="input-group col-md-12">
-                          <?php echo $row['cust_mi'];?>
-                        </div><!-- /.input group -->
-                      </div><!-- /.form group -->
                   </div><!--row-->
                   <div class="row">
                     <div class="col-md-4">  

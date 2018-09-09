@@ -154,7 +154,7 @@ endif;
                       <h3><?php echo number_format($row['balance'],2);?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->				  
-                  <a href="<?php if ($row['balance']>0) echo "transaction.php?cid=$cid&tran=credit";?>" class="btn btn-block btn-primary">
+                  <a href="<?php if ($row['balance']<=0) echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-primary">
                   <i class="glyphicon glyphicon-shopping-cart text-blue"></i>Add New Order</a>
                 
 				</form>	

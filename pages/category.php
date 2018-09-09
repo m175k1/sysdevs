@@ -8,7 +8,7 @@ endif;
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Brand Name | <?php include('../dist/includes/title.php');?></title>
+    <title>Company Name | <?php include('../dist/includes/title.php');?></title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -67,7 +67,6 @@ endif;
       font-family: 'Comfortaa', cursive;
       color:white;
     }
-      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -167,7 +166,7 @@ endif;
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="name">Company Name</label>
 					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['cat_id'];?>" required>  
-					  <input type="text" class="form-control" id="name" name="Brand Name" value="<?php echo $row['cat_name'];?>" required>  
+					  <input type="text" class="form-control" id="name" name="Company Name" value="<?php echo $row['cat_name'];?>" required>  
 					</div>
 				</div> 
 				
