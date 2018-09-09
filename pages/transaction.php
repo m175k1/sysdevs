@@ -56,6 +56,10 @@ javascript:window.history.forward(1);
         margin-right: 0px;
         margin-left: 0px;
       }
+      .content-wrapper{
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+      }
 
 </style>
  </head>

@@ -72,6 +72,10 @@ endif;
         box-shadow: 0px 0 50px 0px;
         color:black;
       }
+      .modal-body{
+        font-size:13px;
+
+      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
