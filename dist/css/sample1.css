@@ -10,6 +10,8 @@ body
   background-size: cover;
   font-family: 'Comfortaa', cursive;
 	overflow: hidden;
+	background-blend-mode: overlay;
+
 }
 .color-overlay{
 	width:100%;
