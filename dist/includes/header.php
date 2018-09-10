@@ -75,7 +75,7 @@ ul li a{
               <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                   <!-- Messages: style can be found in dropdown.less-->
-				  
+          
                   <!-- Notifications Menu -->
                   <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
@@ -84,9 +84,9 @@ ul li a{
                       <span class="label label-danger">
                       <?php 
                       $query=mysqli_query($con,"select COUNT(*) as count from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
-                			$row=mysqli_fetch_array($query);
-                			echo $row['count'];
-                			?>	
+                      $row=mysqli_fetch_array($query);
+                      echo $row['count'];
+                      ?>  
                       </span>
                     </a>
                     <ul class="dropdown-menu">
@@ -96,8 +96,8 @@ ul li a{
                         <ul class="menu">
                         <?php
                         $queryprod=mysqli_query($con,"select prod_name from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
-			  while($rowprod=mysqli_fetch_array($queryprod)){
-			?>
+        while($rowprod=mysqli_fetch_array($queryprod)){
+      ?>
                           <li><!-- start notification -->
                             <a href="reorder.php">
                               <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
@@ -110,7 +110,7 @@ ul li a{
                     </ul>
                   </li>
                   <!-- Tasks Menu -->
-				   <li class="dropdown notifications-menu">
+           <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-wrench"></i> Maintenance
@@ -120,12 +120,12 @@ ul li a{
                       <li>
                         <!-- Inner Menu: contains the notifications -->
                         <ul class="menu">
-						  <li><!-- start notification -->
+              <li><!-- start notification -->
                             <a href="category.php">
                               <i class="glyphicon glyphicon-user text-green"></i> Company Name
                             </a>
                           </li><!-- end notification -->
-						              <li><!-- start notification -->
+                          <li><!-- start notification -->
                             <a href="customer.php">
                               <i class="glyphicon glyphicon-user text-green"></i> Customer
                             </a>
@@ -135,27 +135,27 @@ ul li a{
                               <i class="glyphicon glyphicon-user text-green"></i> Credit Applicants
                             </a>
                           </li><!-- end notification -->
-						  <li><!-- start notification -->
+              <li><!-- start notification -->
                             <a href="product.php">
                               <i class="glyphicon glyphicon-cutlery text-green"></i> Product
                             </a>
                           </li><!-- end notification -->
-						 
-						  <li><!-- start notification -->
+             
+              <li><!-- start notification -->
                             <a href="supplier.php">
                               <i class="glyphicon glyphicon-send text-green"></i> Distributor
                             </a>
                           </li><!-- end notification -->
                          
-						 
+             
                         </ul>
                       </li>
                      
                     </ul>
                   </li>
                   <!-- Tasks Menu -->
-				   <!-- Tasks Menu -->
-				   <li class="dropdown notifications-menu">
+           <!-- Tasks Menu -->
+           <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="stockin.php">
                       <i class="glyphicon glyphicon-list text-green"></i> Stockin
@@ -168,7 +168,7 @@ ul li a{
                     </ul>
                   </li>
                   <!-- Tasks Menu -->
-				   <li class="dropdown notifications-menu">
+           <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <i class="glyphicon glyphicon-stats text-red"></i> Report
@@ -184,17 +184,17 @@ ul li a{
                               <i class="glyphicon glyphicon-ok text-green"></i>Inventory
                             </a>
                           </li><!-- end notification -->
-						            <li><!-- start notification -->
+                        <li><!-- start notification -->
                          <a href="sales.php">
                               <i class="glyphicon glyphicon-usd text-blue"></i>Sales
                             </a>
                           </li><!-- end notification -->
-					    <li><!-- start notification -->
+              <li><!-- start notification -->
                          <a href="receivables.php">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
-						  <li><!-- start notification -->
+              <li><!-- start notification -->
                          <a href="income.php">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
                             </a>
@@ -209,7 +209,7 @@ ul li a{
                     </ul>
                   </li>
                   <!-- Tasks Menu -->
-				  <li class="">
+          <li class="">
                     <!-- Menu Toggle Button -->
                     <a href="profile.php" class="dropdown-toggle">
                       <i class="glyphicon glyphicon-cog text-orange"></i>
