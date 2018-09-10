@@ -7,7 +7,7 @@ include('../dist/includes/dbcon.php');
 	$date = date("Y-m-d H:i:s");
 	$cid=$_REQUEST['cid'];
 	$branch=$_SESSION['branch'];
-	
+	$amount_due = '';
 	$total=$_POST['total'];
 	$cid=$_REQUEST['cid'];
 

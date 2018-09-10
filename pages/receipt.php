@@ -98,7 +98,7 @@ $branch=$_SESSION['branch'];
 
 ?>    
          
-					<?php echo "<h1>" . $row1['or_no'] . "</h1>"; ?>
+					
                    <table class="table">
                     <thead>
                       <tr>

@@ -74,8 +74,8 @@ $branch=$_SESSION['branch'];
 include('../dist/includes/dbcon.php');
 
     $sid=$_REQUEST['sid'];
-    $query=mysqli_query($con,"select * from sales natural join customer natural join term where sales.sales_id='$sid'")or die(mysqli_error($con));
-      
+    $query=mysqli_query($con,"select * from sales natural join customer natural join term  where sales.sales_id='$sid'")or die(mysqli_error($con));
+		
         $row=mysqli_fetch_array($query);
         $last=$row['cust_last'];
         $first=$row['cust_first'];
@@ -84,6 +84,10 @@ include('../dist/includes/dbcon.php');
         $down=$row['down'];
         $interest=$row['interest'];
         $user_id=$row['user_id'];
+		$sale_id = $row["sales_id"];
+	$query2=mysqli_query($con,"select * from payment where sales_id='$sid'")or die(mysqli_error($con));
+	$row2=mysqli_fetch_array($query2);
+		$or = $row2['or_no'];
       
 ?>                    <tr>
                         <th></th>
@@ -91,7 +95,15 @@ include('../dist/includes/dbcon.php');
                         <th></th>
                         <th></th>
                         <th></th>
-                        <th><h4>OR #: <?php echo $row['sales_id'];?> </h4></th>
+                        <th><h4>                          <?php 
+						  if ((intval($row2['or_no']) >= 0) && (intval($row2['or_no']) < 9)) {
+                          ?>						  
+                          No. 000<?php echo $row2['or_no'];?></span></th>  
+                          <?php } elseif((intval($row2['or_no']) >= 10) && (intval($row2['or_no']) < 99)){ ?>
+                          No. 00<?php echo $row2['or_no'];?></span></th>
+						  <?php } elseif((intval($row2['or_no']) >= 100) && (intval($row2['or_no']) < 999)){ ?>
+                          No. 0<?php echo $row2['or_no'];?></span></th>
+                          <?php }?> </h4></th>
                       </tr>    
                       <tr>
                         <th>Customer's Name</th>
