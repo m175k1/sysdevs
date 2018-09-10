@@ -42,11 +42,11 @@ include('../dist/includes/dbcon.php');
 
 				if ($or==0)
 				{
-					$or=0;
+					$or=1;
 				}
 				else
 				{
-					$or=$or+1;
+					$or=intval($or)+1;
 				}
 
 				mysqli_query($con,"INSERT INTO payment(cust_id,user_id,payment,payment_date,branch_id,payment_for,due,status,sales_id,or_no) 
