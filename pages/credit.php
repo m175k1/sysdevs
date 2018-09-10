@@ -181,11 +181,11 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
         $date=$row['payment_start'];
 ?>        
               <div class="form-group">
-              <label for="date">3% interest</label>
-                <?php $interest=$grand*.03;?>
+               <!-- <label for="date">No interest</label> -->
+                <?php $interest=$grand*0;?>
                
                 <input type="hidden" name="cid" value="<?php echo $cid;?>">
-                <input type="text" style="text-align:right" class="form-control" id="date" name="interest" placeholder="Interest" 
+                <input type="hidden" style="text-align:right" class="form-control" id="date" name="interest" placeholder="Interest" 
                 value="<?php echo $interest;?>" tabindex="5" readonly>
               
               </div><!-- /.form group -->
