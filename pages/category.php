@@ -105,7 +105,7 @@ endif;
                   <div class="form-group">
                     <label for="date">Company Name</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="Brand Name" placeholder="Company Name" required>
+                      <input type="text" class="form-control pull-right" id="date" name="category" placeholder="Company Name" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
 		  
@@ -166,7 +166,7 @@ endif;
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="name">Company Name</label>
 					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['cat_id'];?>" required>  
-					  <input type="text" class="form-control" id="name" name="Company Name" value="<?php echo $row['cat_name'];?>" required>  
+					  <input type="text" class="form-control" id="name" name="category" value="<?php echo $row['cat_name'];?>" required>  
 					</div>
 				</div> 
 				
