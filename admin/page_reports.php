@@ -1,4 +1,3 @@
-
 <?php include 'header.php';
 
 $branch_id = $_GET['id'];
@@ -75,6 +74,11 @@ th{
 }
 h5, h6{
 	color:white;
+	font-family: 'Comfortaa', cursive;
+}
+span{
+	font-family: 'Comfortaa', cursive;
+
 }
 
 </style>

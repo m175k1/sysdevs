@@ -37,29 +37,43 @@ ul li a{
   background: url('../dist/img/headerpic.jpg');
 }
 .nav>li>a:hover, .nav>li>a:active, .nav>li>a:focus{
-  background: linear-gradient(to bottom, #ccff66 0%, #ff99cc 100%);
+   background: linear-gradient(to bottom, #ccff66 0%, #ff99cc 100%);
   border-radius: 15px;
   opacity: .8;
   transform:scale(1.3);
-  box-shadow: 2px 2px 2px #000;
+  box-shadow: 0px 0px 20px 0px #fff;
   transition: 1s;
 
 
 }
 .navbar-nav>.notifications-menu>.dropdown-menu, .navbar-nav>.messages-menu>.dropdown-menu, .navbar-nav>.tasks-menu>.dropdown-menu{
-  background: linear-gradient(to bottom, #ccff66 0%, #ff99cc 100%);
+  background-color: black;
   border-radius: 15px;
+  border:1px solid linear-gradient(#ccff66 100%);
+  box-shadow: 0px 0px 20px 0px #fff;
+  
+
+
 
 }
 .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a:hover, .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a:hover, .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a:hover{
-  background-color: black;
+  background: transparent;
   border-radius: 15px;
    transform:scale(1.0);
   transition: 1s;
+  box-shadow: 0px 0px 20px 0px #fff;
 }
 
 
+.skin-red .main-header .navbar{
+  background-color: transparent;
+}
+.navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a{
+  background:transparent;
+   transform:scale(1.0);
+  transition: 1s;
 
+}
 </style>
       <header class="main-header">
         <nav class="navbar navbar-static-top">

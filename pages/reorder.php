@@ -36,6 +36,10 @@ endif;
         h3{
           color:white;
         }
+        .content-wrapper{
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+      }
       
     </style>
  </head>
@@ -61,7 +65,7 @@ endif;
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	      
+        
             
             <div class="col-xs-12">
               <div class="box box-primary">
@@ -76,46 +80,46 @@ endif;
                       
                         <th>Product Code</th>
                         <th>Product Name</th>
-						            <th>Supplier</th>
+                        <th>Supplier</th>
                         <th>Qty</th>
-            						<th>Price</th>
-            						<th>Category</th>
-            						<th>Reorder</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                        <th>Reorder</th>
             
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
-		
-		$query=mysqli_query($con,"select * from product natural join supplier natural join category where branch_id='$branch' and prod_qty<=reorder order by prod_name")or die(mysqli_error());
-		while($row=mysqli_fetch_array($query)){
-		
+    
+    $query=mysqli_query($con,"select * from product natural join supplier natural join category where branch_id='$branch' and prod_qty<=reorder order by prod_name")or die(mysqli_error());
+    while($row=mysqli_fetch_array($query)){
+    
 ?>
                       <tr>
                         <td><?php echo $row['serial'];?></td>
                         <td><?php echo $row['prod_name'];?></td>
-						            <td><?php echo $row['supplier_name'];?></td>
+                        <td><?php echo $row['supplier_name'];?></td>
                         <td><?php echo $row['prod_qty'];?></td>
-            						<td><?php echo number_format($row['prod_price'],2);?></td>
-            						<td><?php echo $row['cat_name'];?></td>
-            						<td><?php echo $row['reorder'];?></td>
+                        <td><?php echo number_format($row['prod_price'],2);?></td>
+                        <td><?php echo $row['cat_name'];?></td>
+                        <td><?php echo $row['reorder'];?></td>
 
                         <td>
-				<a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" class="btn btn-primary">Request Purchase</a>
-			
-						</td>
+        <a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" class="btn btn-primary">Request Purchase</a>
+      
+            </td>
           </tr>
 <div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-	<div class="modal-dialog">
-	  <div class="modal-content" style="height:auto">
+  <div class="modal-dialog">
+    <div class="modal-content" style="height:auto">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Request Purchase</h4>
               </div>
               <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="purchase_add.php" enctype='multipart/form-data'>
+        <form class="form-horizontal" method="post" action="purchase_add.php" enctype='multipart/form-data'>
         <div class="form-group">
           <label class="control-label col-lg-3" for="price">Product Code</label>
           <div class="col-lg-9">
@@ -123,69 +127,69 @@ endif;
           </div>
         </div>
                 
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="name">Product Name</label>
-					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['prod_id'];?>" required>  
-					  <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['prod_name'];?>" readonly>  
-					</div>
-				</div> 
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="file">Supplier</label>
-					<div class="col-lg-9">
+        <div class="form-group">
+          <label class="control-label col-lg-3" for="name">Product Name</label>
+          <div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['prod_id'];?>" required>  
+            <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['prod_name'];?>" readonly>  
+          </div>
+        </div> 
+        <div class="form-group">
+          <label class="control-label col-lg-3" for="file">Supplier</label>
+          <div class="col-lg-9">
               <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['supplier_name'];?>" readonly>  
-					</div>
-				</div> 
-				
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="price">Price</label>
-					<div class="col-lg-9">
-					  <input type="text" class="form-control" id="price" name="prod_price" value="<?php echo $row['prod_price'];?>" readonly>  
-					</div>
-				</div>
-				
-				
+          </div>
+        </div> 
+        
+        <div class="form-group">
+          <label class="control-label col-lg-3" for="price">Price</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" id="price" name="prod_price" value="<?php echo $row['prod_price'];?>" readonly>  
+          </div>
+        </div>
+        
+        
         <div class="form-group">
           <label class="control-label col-lg-3" for="price">Quantity</label>
           <div class="col-lg-9">
             <input type="number" class="form-control" id="price" name="reorder">  
           </div>
         </div>
-				<br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
               </div>
               <div class="modal-footer">
-		<button type="submit" class="btn btn-primary">Save changes</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
-			  </form>
+        </form>
             </div>
-			
+      
         </div><!--end of modal-dialog-->
  </div>
  <!--end of modal-->                    
-<?php }?>					  
+<?php }?>           
                     </tbody>
                     <tfoot>
                       <tr>
                       
                         <th>Serial #</th>
                         <th>Product Name</th>
-						<th>Category</th>
+            <th>Category</th>
                         <th>Qty</th>
-						<th>Price</th>
-						<th>Category</th>
-						<th>Reorder</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Reorder</th>
             
                         <th>Action</th>
-                      </tr>					  
+                      </tr>           
                     </tfoot>
                   </table>
                 </div><!-- /.box-body -->
  
             </div><!-- /.col -->
-			
-			
+      
+      
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
