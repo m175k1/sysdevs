@@ -235,7 +235,10 @@ endif;
         });
 
         $(".deleteButton").click(function(e) {
-              e.preventDefault();
+            e.preventDefault();
+			var confirmation = confirm("are you sure you want to remove the item?");
+
+			if (confirmation) {
               $.ajax({
                   type: "POST",
                   url: "ajax.php",
@@ -257,8 +260,10 @@ endif;
                   error: function(result) {
                       alert('error');
                   }
-              });
-          }); // ajax 
+              }); // ajax 
+			}
+		});
+			
 
 
 

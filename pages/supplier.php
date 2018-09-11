@@ -332,6 +332,9 @@
       $(document).ready(function(){
                 $(".deleteButton").click(function(e) {
               e.preventDefault();
+			 var confirmation = confirm("are you sure you want to remove the item?");
+
+			if (confirmation) {
               $.ajax({
                   type: "POST",
                   url: "ajax.php",
@@ -354,6 +357,7 @@
                       alert('error');
                   }
               });
+			}
         }); // ajax 
       })
 

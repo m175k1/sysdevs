@@ -356,6 +356,9 @@ endif;
 
             $(document).ready(function(){
                 $(".deleteButton").click(function(e) {
+			var confirmation = confirm("are you sure you want to remove the item?");
+
+			if (confirmation) {
               e.preventDefault();
               $.ajax({
                   type: "POST",
@@ -379,6 +382,7 @@ endif;
                       alert('error');
                   }
               });
+			}
         }); // ajax 
       })
 
