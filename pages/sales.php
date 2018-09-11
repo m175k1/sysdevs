@@ -346,5 +346,22 @@ $branch=$_SESSION['branch'];
     });
   });
 </script>
+
+<script language="javascript">
+  
+
+var password;
+var pass="1234";
+password=prompt('Enter Password to View Webpage','');
+
+if(password==pass)
+alert('Correct Password, Click OK to Enter Website.');
+else
+{
+  window.location="http://localhost/sysdevs/pages/home.php"
+}
+
+</script>
+
   </body>
 </html>
