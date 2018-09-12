@@ -215,7 +215,7 @@ if (isset($_POST['display']))
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
-     
+     <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
 	
 	<script src="../plugins/jQuery/jQuery-2.2.0.min.js"></script>
