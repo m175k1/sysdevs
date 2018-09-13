@@ -172,7 +172,7 @@ ul li a{
            <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
                     <a href="stockin.php">
-                      <i class="glyphicon glyphicon-list text-green"></i> Stockin
+                      <i class="glyphicon glyphicon-list text-green"></i> Stock in/out
                       
                     </a>
                     <ul class="dropdown-menu">
