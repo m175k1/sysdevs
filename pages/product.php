@@ -330,9 +330,16 @@ endif;
               </select>
           </div>
         </div> 
-        
+		
         <div class="form-group">
-          <label class="control-label col-lg-3" for="price">Price</label>
+          <label class="control-label col-lg-3" for="price">Base Price</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" id="baseprice" name="prod_baseprice" placeholder="Product Base Price" required>  
+          </div>
+        </div>
+		
+        <div class="form-group">
+          <label class="control-label col-lg-3" for="price">Selling Price</label>
           <div class="col-lg-9">
             <input type="text" class="form-control" id="price" name="prod_price" placeholder="Product Price" required>  
           </div>

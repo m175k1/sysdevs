@@ -298,14 +298,15 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                 <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>    
                 <input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
                 value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
-           
-
-
-
-
-
+           	  </div> /.form group -->
+						  <div class="form-group">
+							<label for="date">Total Profit</label>
 							
-						  </div> /.form group -->
+								<input type="text" class="form-control text-right" id="discount" name="discount" value="" tabindex="6" placeholder="Total Profit (Php)" onFocus="" onBlur="">
+							<input type="hidden" class="form-control text-right" id="profit" name="profit" value="<?php echo $cid;?>">
+						  </div><!-- /.form group -->
+						  
+						  
 						  <div class="form-group">
 							<label for="date">Discount</label>
 							
