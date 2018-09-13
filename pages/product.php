@@ -247,7 +247,7 @@ endif;
 				</div>
               </div><br><br><br><br><br><br><br>
               <div class="modal-footer">
-        <button class="btn btn-warning deleteButton" value="<?php echo $row['serial']?>">Delete</button>
+        <button class="btn btn-warning deleteButton" value="<?php echo $row['prod_id']?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>

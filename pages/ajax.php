@@ -10,7 +10,7 @@ if($_POST['process']=='delete'){
 	      die('Could not connect: ' . mysqli_error());
 	   }
 	   echo 'Connected successfully, ';
-	   $sql = " DELETE FROM product WHERE serial = '$serial'";
+	   $sql = " DELETE FROM product WHERE prod_id = '$serial'";
 	   
 	   if (mysqli_query($con, $sql)) {
 	      	echo "Record deleted successfully ";
