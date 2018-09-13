@@ -148,6 +148,14 @@ javascript:window.history.forward(1);
 							</div><!-- /.input group -->
 						</div><!-- /.form group -->
 					 </div>
+					 <div class=" col-md-2">
+						<div class="form-group">
+							<label for="date">Selling Price</label>
+							<div class="input-group">
+							  <input type="number" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" tabindex="2" value="1"  required>
+							</div><!-- /.input group -->
+						</div><!-- /.form group -->
+					 </div>
 					<div class="col-md-2">
 						<div class="form-group">
 							<label for="date"></label>
@@ -171,8 +179,11 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                         <th>Qty</th>
 						       
                         <th>Product Name</th>
-						            <th>Price</th>
-						            <th>Total</th>
+						            <th>Capital</th>
+						            <th>Selling Price</th>
+						            <th>Total Sales</th>
+						            <th>Profit</th>
+
                         <th>Action</th>
                       </tr>
                     </thead>
