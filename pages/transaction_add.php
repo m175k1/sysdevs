@@ -9,11 +9,14 @@ include('../dist/includes/dbcon.php');
 	$name = $_POST['prod_name'];
 	$qty = $_POST['qty'];
 		
-			
-		$query=mysqli_query($con,"select prod_price,prod_id from product where prod_id='$name'")or die(mysqli_error());
+	
+		$query=mysqli_query($con,"select * from product where prod_id='$name'")or die(mysqli_error());
 		$row=mysqli_fetch_array($query);
 		$price=$row['prod_price'];
+		$prod_qty=$row['prod_qty'];
 		
+	if($qty <= $prod_qty ){
+
 		$query1=mysqli_query($con,"select * from temp_trans where prod_id='$name' and branch_id='$branch'")or die(mysqli_error());
 		$count=mysqli_num_rows($query1);
 		
@@ -26,7 +29,10 @@ include('../dist/includes/dbcon.php');
 		else{
 			mysqli_query($con,"INSERT INTO temp_trans(prod_id,qty,price,branch_id) VALUES('$name','$qty','$price','$branch')")or die(mysqli_error($con));
 		}
-
+	}else{
+		echo "<script>alert('Sorry there is not enough stock for this product')</script>";  
+	}
+		
 	
 		echo "<script>document.location='cash_transaction.php?cid=$cid'</script>";  
 	
