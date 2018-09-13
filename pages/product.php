@@ -240,7 +240,7 @@ endif;
 				</div>
 				<div class="form-group">
 					<label class="control-label col-lg-3" for="price">Picture</label>
-					<div class="col-lg-9">
+					<div class="col-lg-9"> 
 					  <input type="hidden" class="form-control" id="price" name="image1" value="<?php echo $row['prod_pic'];?>"> 
 					  <input type="file" class="form-control" id="price" name="image">  
 					</div>
@@ -332,14 +332,7 @@ endif;
         </div> 
 		
         <div class="form-group">
-          <label class="control-label col-lg-3" for="price">Base Price</label>
-          <div class="col-lg-9">
-            <input type="text" class="form-control" id="baseprice" name="prod_baseprice" placeholder="Product Base Price" required>  
-          </div>
-        </div>
-		
-        <div class="form-group">
-          <label class="control-label col-lg-3" for="price">Selling Price</label>
+          <label class="control-label col-lg-3" for="price">Price</label>
           <div class="col-lg-9">
             <input type="text" class="form-control" id="price" name="prod_price" placeholder="Product Price" required>  
           </div>
