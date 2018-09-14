@@ -171,11 +171,10 @@ $branch=$_SESSION['branch'];
                         <th>Product</th>
                         <th>Product Code</th>
                         <th>Qty</th>
-            					  <th>Stock Price</th>
+            					  <th>Base Price</th>
                         <th>Selling Price</th>
                         <th>Total Sales</th>
                         <th>Profit</th>
-                        <th>Amount Paid</th>
                         <th>Date Paid</th>
                       </tr>
                     </thead>

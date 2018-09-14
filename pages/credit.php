@@ -114,9 +114,7 @@ javascript:window.history.forward(1);
                       <tr>
                         <th>Qty</th>
 						           <th>Product Name</th>
-            						<th>Price</th>
-            						<th class="pull-right">Total</th>
-                       
+            						<th class="pull-right">Total Amount</th>
                       </tr>
                     </thead>
                     <tbody>
