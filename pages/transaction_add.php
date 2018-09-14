@@ -8,11 +8,12 @@ include('../dist/includes/dbcon.php');
 	$cid = $_POST['cid'];
 	$name = $_POST['prod_name'];
 	$qty = $_POST['qty'];
+	$price = $_POST['price'];
 		
 	
 		$query=mysqli_query($con,"select * from product where prod_id='$name'")or die(mysqli_error());
 		$row=mysqli_fetch_array($query);
-		$price=$row['prod_price'];
+		
 		$prod_qty=$row['prod_qty'];
 		
 	if($qty <= $prod_qty ){

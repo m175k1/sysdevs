@@ -152,7 +152,7 @@ javascript:window.history.forward(1);
             <div class="form-group">
               <label for="date">Selling Price</label>
               <div class="input-group">
-                <input type="number" class="form-control pull-right" id="date" name="qty" placeholder="Selling Price">
+                <input type="number" class="form-control pull-right" id="price" name="price" placeholder="Selling Price">
               </div><!-- /.input group -->
             </div><!-- /.form group -->
            </div>
@@ -167,6 +167,8 @@ javascript:window.history.forward(1);
 					</div>
 					<div class="col-md-12">
 <?php 
+$base_total = 0;
+$total_profit = 0;
 $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or die(mysqli_error());
      $rowb=mysqli_fetch_array($queryb);
         $balance=$rowb['balance'];
@@ -192,7 +194,8 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 				$id=$row['temp_trans_id'];
 				$total= $row['qty']*$row['price'];
 				$grand=$grand+$total;
-		
+				$base_price = $row['base_price'] * $row['qty'];
+				$base_total = $base_total + $base_price;						
 ?>
                       <tr >
 						<td><?php echo $row['qty'];?></td>
@@ -208,6 +211,9 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 						</td>
                       </tr>
 					  <div id="updateordinance<?php echo $row['temp_trans_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	
+	
+	
 	<div class="modal-dialog">
 	  <div class="modal-content" style="height:auto">
               <div class="modal-header">
@@ -306,11 +312,14 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                 <input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
                 value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
            	  </div> /.form group -->
+			  
+						<?php $total_profit = $grand - $base_total;
+							
+						?>
 						  <div class="form-group">
 							<label for="date">Total Profit</label>
 							
-								<input type="text" class="form-control text-right" id="discount" name="discount" value="" tabindex="6" placeholder="Total Profit (Php)" onFocus="" onBlur="">
-							<input type="hidden" class="form-control text-right" id="profit" name="profit" value="<?php echo $cid;?>">
+								<input type="text" class="form-control text-right" id="profit" name="profit" value="<?php echo $total_profit;?>" tabindex="6"  onFocus="" onBlur="" readonly>
 						  </div><!-- /.form group -->
 						  
 						  

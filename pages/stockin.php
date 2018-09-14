@@ -114,13 +114,13 @@ endif;
                   <div class="form-group">
                     <label for="date">Stock Price</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="qty" placeholder="Stock Price" required>
+                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="Stock Price" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                   <div class="form-group">
                     <label for="date">New Price</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="qty" placeholder="New Price" required>
+                      <input type="text" class="form-control pull-right" id="price" name="price" placeholder="New Price" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                 
