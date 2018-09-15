@@ -155,7 +155,7 @@ javascript:window.history.forward(1);
                 <input type="number" class="form-control pull-right" id="price" name="price" placeholder="Selling Price">
               </div><!-- /.input group -->
             </div><!-- /.form group -->
-           </div>
+           </div> 
 					<div class="col-md-2">
 						<div class="form-group">
 							<label for="date"></label>
