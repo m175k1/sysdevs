@@ -210,12 +210,7 @@ endif;
 					</div>
 				</div> 
 				
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="price">Price</label>
-					<div class="col-lg-9">
-					  <input type="text" class="form-control" id="price" name="prod_price" value="<?php echo $row['prod_price'];?>">  
-					</div>
-				</div>
+				
 				
 				<div class="form-group">
 							<label class="control-label col-lg-3" >Company Name</label>
