@@ -117,13 +117,7 @@ endif;
                       <input type="text" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
-                  <div class="form-group">
-                    <label for="date">New Price</label>
-                    <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="price" name="price" placeholder="New Price">
-                    </div><!-- /.input group -->
-                  </div><!-- /.form group -->
-                
+                  
                   <div class="form-group">
                     <div class="input-group">
                       <button class="btn btn-primary" id="daterange-btn" name="">
