@@ -7,7 +7,7 @@ include('../dist/includes/dbcon.php');
 	$id = $_POST['id'];
 	$name =$_POST['prod_name'];
 	$supplier =$_POST['supplier'];
-	$price = $_POST['prod_price'];
+	$price = 0;
 	$reorder = $_POST['reorder'];
 	$category = $_POST['category'];
 	$serial = $_POST['serial'];
@@ -19,8 +19,9 @@ include('../dist/includes/dbcon.php');
 				if ($_POST['image1']<>""){
 					$pic=$_POST['image1'];
 				}
-				else
+				else{
 					$pic="default.gif";
+				}
 			}
 			else
 			{
@@ -38,15 +39,16 @@ include('../dist/includes/dbcon.php');
 						{
 						die("Format is not allowed or file size is too big!");
 						}
-				else
+					
+						else
 				      {
 					move_uploaded_file($temp, "../dist/uploads/".$pic);
 				      }
-					}
+				}
 			
 			}
 			
-	mysqli_query($con,"update product set prod_name='$name',prod_price='$price',
+	mysqli_query($con,"update product set prod_name='$name',base_price='$price',prod_price='0',
 	reorder='$reorder',supplier_id='$supplier',cat_id='$category',prod_pic='$pic',serial='$serial',prod_desc='$desc' where prod_id='$id'")or die(mysqli_error($con));
 	
 	echo "<script type='text/javascript'>alert('Successfully updated product details!');</script>";

@@ -108,13 +108,13 @@ endif;
                   <div class="form-group">
                     <label for="date">Quantity</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" required>
+                      <input type="text" class="form-control pull-right" id="qty" name="qty" placeholder="1" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                    <div class="form-group">
                     <label for="date">Base Price</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" required>
+                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="0" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                   
@@ -155,7 +155,17 @@ endif;
                     <tbody>
 <?php
 		$branch=$_SESSION['branch'];
-		$query=mysqli_query($con,"select * from stockin natural join product natural join supplier where branch_id='$branch' order by date desc")or die(mysqli_error());
+			$sql="
+			SELECT * FROM stockin a 
+			LEFT JOIN product b ON a.prod_id = b.prod_id 
+			LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
+			WHERE a.branch_id='$branch'
+			order by date desc
+			";
+		
+		
+		
+		$query=mysqli_query($con,$sql)or die(mysqli_error());
 		while($row=mysqli_fetch_array($query)){
 		
 ?>

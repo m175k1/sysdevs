@@ -99,8 +99,7 @@ endif;
 
           <!-- Main content -->
           <section class="content">
-            <div class="row">
-	     
+            <div class="row">     
             
             <div class="col-xs-12">
               <div class="box box-primary">
@@ -126,12 +125,13 @@ endif;
                     </thead>
                     <tbody>
 <?php
-		
+
 		$query=mysqli_query($con,"select * from product order by prod_name")or die(mysqli_error());
 		while($row=mysqli_fetch_array($query)){
               $x = $row['supplier_id'];
               $cat = $row['cat_id'];
-             
+			  $prod_id = $row['prod_id'];
+			  $base_price = $row['base_price'];
             $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
                 if (mysqli_num_rows($sup) > 0 ){
                     while($row2=mysqli_fetch_array($sup)){
@@ -149,6 +149,8 @@ endif;
                 }else{
                     $cat2 = "Category is erased";
                 }
+		
+			
                
 
 ?>
@@ -162,7 +164,7 @@ endif;
                           echo "";
                         } ?></td>
                         <td><?php echo $row['prod_qty'];?></td>
-            						<td><?php echo number_format($row['prod_price'],2);?></td>
+            						<td><?php echo number_format($base_price,2);?></td>
             						<td><?php echo $cat2 ?></td>
             						<td><?php echo $row['reorder'];?></td>
                         <td>

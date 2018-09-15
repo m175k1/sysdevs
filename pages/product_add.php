@@ -4,7 +4,7 @@ $branch=$_SESSION['branch'];
 include('../dist/includes/dbcon.php');
 
 	$name = $_POST['prod_name'];
-	$price = $_POST['prod_price'];
+	$price = 0;
 	$desc = $_POST['prod_desc'];
 	$supplier = $_POST['supplier'];
 	$reorder = $_POST['reorder'];
