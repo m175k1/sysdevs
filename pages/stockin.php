@@ -148,7 +148,7 @@ endif;
                       <tr>
                         <th>Product Name</th>
                         <th>Qty</th>
-				        <th>Supplier</th>
+				        <th>Distributor</th>
 				        <th>Date Delivered</th>
                       </tr>
                     </thead>
@@ -173,7 +173,7 @@ endif;
                       <tr>
                         <th>Product Name</th>
                         <th>Qty</th>
-                        <th>Supplier</th>
+                        <th>Distributor</th>
                         <th>Date Delivered</th>
                         
                       </tr>					  
