@@ -111,6 +111,12 @@ endif;
                       <input type="text" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
+                   <div class="form-group">
+                    <label for="date">Base Price</label>
+                    <div class="input-group col-md-12">
+                      <input type="text" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" required>
+                    </div><!-- /.input group -->
+                  </div><!-- /.form group -->
                   <div class="form-group">
                     <label for="date">New Price</label>
                     <div class="input-group col-md-12">
