@@ -327,7 +327,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 						  <div class="form-group">
 							<label for="date">Discount</label>
 							
-								<input type="text" class="form-control text-right" id="discount" name="discount" value="0" tabindex="6" placeholder="Discount (Php)" onFocus="startCalc();" onBlur="stopCalc();">
+								<input type="text" class="form-control text-right" id="discount" name="discount" value="0" tabindex="6" placeholder="Discount (Php)" onFocus="startCalc();" onBlur="stopCalc();" readonly>
 							<input type="hidden" class="form-control text-right" id="cid" name="cid" value="<?php echo $cid;?>">
 						  </div><!-- /.form group -->
 						  <div class="form-group">

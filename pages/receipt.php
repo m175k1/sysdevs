@@ -186,13 +186,7 @@ $branch=$_SESSION['branch'];
                         <td class="text-right">Subtotal</td>
                         <td style="text-align:right"><?php echo number_format($grand,2);?></td>
                       </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td class="text-right">Discount</td>
-                        <td style="text-align:right"><?php echo number_format($discount,2);?></td>
-                      </tr>
+                    
                       <tr>
                         <td></td>
                         <td></td>
