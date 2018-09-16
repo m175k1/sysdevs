@@ -129,7 +129,7 @@ span{
 								
 								</div>
 										
-								<span class="count_bottom"><i class="green"></i>For the month of  <?php echo date("F",strtotime($month));?>, <?php echo $year1;?></span>
+								<span class="count_bottom"><i class="green"></i>For the month of <?php echo date("M, Y");?>
 								</div>
 								
 								<div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">

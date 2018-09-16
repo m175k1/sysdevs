@@ -61,7 +61,8 @@ endif;
       .modal-content{
         border-radius: 20px;
         background-color: white;
-        border:1px solid green;
+        border:1px solid black;
+        box-shadow: 0px 0px 200px 0px;
       }
       h4{
       font-family: 'Comfortaa', cursive;

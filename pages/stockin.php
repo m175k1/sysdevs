@@ -114,7 +114,7 @@ endif;
                    <div class="form-group">
                     <label for="date">Base Price</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="0">
+                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="0" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                   
