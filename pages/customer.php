@@ -188,7 +188,8 @@ endif;
 					</div>
 				</div>
         <br>
-				  <div class="history">
+		<div class="clearfix"></div>
+				  <div class="history" style="margin-top:50px">
           </div>
               </div><br><br><br><hr>
               <div class="modal-footer">
@@ -250,7 +251,16 @@ endif;
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-    
+           <style>
+	table tr td{
+		border:1px solid #ddd;
+		padding:8px;
+		
+	}
+	table{
+		margin-bottom:40px;
+	}
+	</style> 
     <script>
       $(function () {
         $("#example1").DataTable();
@@ -385,6 +395,10 @@ endif;
                   }
               });
         }); // ajax 
+		
+				  $(".glyphicon-edit").click(function(){
+			  $(".history").html("");
+		  })
       })
     </script>
   </body>

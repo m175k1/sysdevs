@@ -117,7 +117,7 @@ $branch=$_SESSION['branch'];
 						
             						<th>Price</th>
             						<th>Total</th>
-            						<th>Reorder</th>
+            						<th style="text-align:center">Reorder</th>
                        
                       </tr>
                     </thead>
@@ -127,7 +127,7 @@ $branch=$_SESSION['branch'];
 		$query=mysqli_query($con,"select * from product natural join supplier where branch_id='$branch' order by prod_name")or die(mysqli_error());
 		$grand=0;
 		while($row=mysqli_fetch_array($query)){
-			$total=$row['prod_price']*$row['prod_qty'];
+			$total=$row['base_price']*$row['prod_qty'];
 			$grand+=$total;
 ?>
                       <tr>
@@ -136,10 +136,9 @@ $branch=$_SESSION['branch'];
                         <td><?php echo $row['supplier_name'];?></td>
                         <td><?php echo $row['prod_qty'];?></td>
 						
-						<td><?php echo $row['prod_price'];?></td>
+						<td><?php echo $row['base_price'];?></td>
 						<td><?php echo number_format($total,2);?></td>
-						<td class="text-center"><?php if ($row['prod_qty']<=$row['reorder'])echo "<span class='badge bg-red'><i class='glyphicon glyphicon-refresh'></i>Reorder</span>";?></td>
-                       
+						<td class="text-center"><?php if ($row['prod_qty']<=$row['reorder'])echo "<span class='badge bg-red'><i class='glyphicon glyphicon-refresh'></i>Reorder</span>"; else echo "<span class='badge bg-green'><i class='glyphicon glyphicon-refresh'></i> Good</span>"; ?></td>                       
                       </tr>
 
 <?php }?>					  

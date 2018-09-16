@@ -158,8 +158,10 @@
 				
 				
               </div><hr>
+						  				  <div class="history">
+          </div>
               <div class="modal-footer">
-                <button class="btn btn-warning deleteButton">History</button>
+                <button class="btn btn-warning historyButton" value="<?php echo $row['supplier_id'];?>">History</button>
         <button class="btn btn-warning deleteButton" value="<?php echo $row['supplier_name'];?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -252,7 +254,16 @@
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-    
+    <style>
+	table tr td{
+		border:1px solid #ddd;
+		padding:8px;
+		
+	}
+	table{
+		margin-bottom:40px;
+	}
+	</style>
     <script>
       $(function () {
         $("#example1").DataTable();
@@ -360,6 +371,36 @@
               });
 			}
         }); // ajax 
+		
+		
+		
+		$(".historyButton").click(function(e) {
+              e.preventDefault();
+              $.ajax({
+                  type: "POST",
+                  url: "ajax.php",
+                  data: { 
+                     supplier_id: $(this).val(), // < note use of 'this' here
+                      process: 'supplier_history'
+                  },
+                  success: function(result) {
+                      if(result == ""){ 
+                          alert("bad")                        
+                      }else{
+                          $(".history").html(result);
+                      }
+                      
+                  },
+                  error: function(result) {
+                      alert('error');
+                  }
+              });
+        }); // ajax 	
+		
+		  $(".glyphicon-edit").click(function(){
+			  $(".history").html("");
+		  })
+		
       })
 
 

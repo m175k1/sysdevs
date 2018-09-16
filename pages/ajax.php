@@ -125,7 +125,7 @@ if($_POST['process']=='cust_history'){
 			LEFT JOIN sales_details c ON b.sales_id = c.sales_id
 			LEFT JOIN product d ON c.prod_id = d.prod_id
 			WHERE a.cust_id = '".$cust_id."'";
-			echo "<table id='customerTable' style='width:100%'>";
+			echo "<table id='customerTable' style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
 	    	echo "<td>Customer</td>
 	    		  <td>Product</td>
@@ -134,11 +134,14 @@ if($_POST['process']=='cust_history'){
 			echo "</tr>";			
 	if ($result=mysqli_query($con,$sql)) 
 	  {
+		  		if(mysqli_num_rows($result) == 1){
+			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
+		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {
 	    	echo "<tr>";
-	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td> P " . $row['price'] .  "</td><td>" . $row['date_added'].  "</td>";
+	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['date_added'].  "</td>";
 			echo "</tr>";
 	    }
 	  // Free result set
@@ -151,6 +154,109 @@ if($_POST['process']=='cust_history'){
 }
 
 
+
+if($_POST['process']=='cat_history'){
+
+
+	$cat_id = $_POST['cat_id'];
+
+	$sql="
+		SELECT * FROM category a 
+			LEFT JOIN product b ON a.cat_id = b.cat_id 			
+			WHERE a.cat_id = '".$cat_id."'";		
+			
+			echo "<table id='companyTable'style='width:80%;margin-left:auto;margin-right:auto;'>";
+	    	echo "<tr>";
+	    	echo "<td>Product</td>
+	    		  <td>Price</td>
+	    		  <td>Date</td>";
+			echo "</tr>";			
+	if ($result=mysqli_query($con,$sql)) 
+	  {		
+  		if(mysqli_num_rows($result) == 1){
+			echo "<tr><td colspan='3'><h1 style='text-align:center'>Not found</h1></td></tr>";
+		}
+	  // Fetch one and one row
+	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+	    {
+		$stockinsql="
+			SELECT date FROM stockin 						
+				WHERE prod_id = '".$row['prod_id']."'
+			ORDER BY date asc;
+				";
+		$query2=mysqli_query($con,$stockinsql)or die(mysqli_error());		
+				while($row2=mysqli_fetch_array($query2)){
+					$stockdate = $row2['date']  ;
+				}
+				if(!isset($stockdate)){
+					$stockdate = "";
+				}
+							if(!isset($stockdate)){
+					$stockdate = "";
+				}
+	    	echo "<tr>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $stockdate.  "</td>";
+			echo "</tr>";
+	    }
+	  // Free result set
+	  mysqli_free_result($result);
+	}
+	echo "</table>";
+	mysqli_close($con);
+}
+
+
+if($_POST['process']=='supplier_history'){
+
+
+	$supplier_id = $_POST['supplier_id'];
+	
+	$sql="
+		SELECT * FROM product a 
+			LEFT JOIN supplier b ON a.supplier_id = b.supplier_id 			
+			WHERE a.supplier_id = '".$supplier_id."'";		
+			
+			echo "<table id='distributorTable' style='width:80%;margin-left:auto;margin-right:auto;'>";
+	    	echo "<tr>";
+	    	echo "<td>Product</td>
+	    		  <td>Price</td>
+	    		  <td>Date</td>";
+			echo "</tr>";			
+	if ($result=mysqli_query($con,$sql)) 
+	  {		
+
+		if(mysqli_num_rows($result) == 0){
+			echo "<tr><td colspan='3'><h1 style='text-align:center'>Not found</h1></td></tr>";
+		}
+	  // Fetch one and one row
+	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+	    {
+			
+		$stockinsql="
+			SELECT date FROM stockin 						
+				WHERE prod_id = '".$row['prod_id']."'
+			ORDER BY date asc;
+				";
+		$query2=mysqli_query($con,$stockinsql)or die(mysqli_error());		
+				while($row2=mysqli_fetch_array($query2)){
+					$stockdate = $row2['date']  ;
+				}		
+				
+								if(!isset($stockdate)){
+					$stockdate = "";
+				}
+			
+
+	    	echo "<tr>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $stockdate.  "</td>";
+			echo "</tr>";
+	    }
+	  // Free result set
+	  mysqli_free_result($result);
+	}
+	echo "</table>";
+	mysqli_close($con);
+}
 
 
 ?>

@@ -161,7 +161,7 @@ endif;
                         <td><?php echo $row['prod_desc'];?></td>
 						            <td><?php if(isset($sup2)){echo $sup2;
                         }else{
-                          echo "";
+                          
                         } ?></td>
                         <td><?php echo $row['prod_qty'];?></td>
             						<td><?php echo number_format($base_price,2);?></td>
