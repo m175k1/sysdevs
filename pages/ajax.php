@@ -168,9 +168,10 @@ if($_POST['process']=='cat_history'){
 	$cat_id = $_POST['cat_id'];
 
 	$sql="
-		SELECT * FROM category a 
-			LEFT JOIN product b ON a.cat_id = b.cat_id 			
-			WHERE a.cat_id = '".$cat_id."'";		
+		SELECT * FROM stockin a 
+			LEFT JOIN product b ON a.prod_id = b.prod_id 			
+			LEFT JOIN category c ON b.cat_id = c.cat_id
+			WHERE c.cat_id = '".$cat_id."'";			
 			
 			echo "<table id='companyTable'style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
@@ -179,7 +180,9 @@ if($_POST['process']=='cat_history'){
 				  <td>Qty</td>
 	    		  <td>Date</td>";
 			echo "</tr>";	
+			
 	$totalprice = 0;
+	
 	if ($result=mysqli_query($con,$sql)) 
 	  {		
   		if(mysqli_num_rows($result) == 0){
@@ -188,6 +191,7 @@ if($_POST['process']=='cat_history'){
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {
+		if($row['qty']>0){
 		$stockinsql="
 			SELECT date FROM stockin 						
 				WHERE prod_id = '".$row['prod_id']."'
@@ -204,10 +208,12 @@ if($_POST['process']=='cat_history'){
 					$stockdate = "";
 				}
 	    	echo "<tr>";
-	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['prod_qty'] .  "</td><td>" . $stockdate.  "</td>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['qty'] .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
-			$price = $row['base_price'] * $row['prod_qty'];
-			$totalprice =$totalprice +  $price;
+			$price = $row['base_price'] * $row['qty'];
+			$totalprice =$totalprice +  $price;			
+		}
+
 	    }
 		echo "<tr>";
 	    echo "<td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
@@ -227,7 +233,7 @@ if($_POST['process']=='supplier_history'){
 	
 	$sql="
 		SELECT * FROM stockin a 
-			LEFT JOIN product b ON a.prod_id = b.prod_id 			
+			RIGHT JOIN product b ON a.prod_id = b.prod_id 			
 			LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
 			WHERE c.supplier_id = '".$supplier_id."'";
 			
@@ -249,7 +255,7 @@ if($_POST['process']=='supplier_history'){
 	    {
 		if($row['qty']>0){
 					$stockinsql="
-			SELECT date FROM stockin 						
+			SELECT * FROM stockin 						
 				WHERE prod_id = '".$row['prod_id']."'
 			ORDER BY date asc;
 				";
