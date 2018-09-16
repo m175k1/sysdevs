@@ -245,7 +245,8 @@ endif;
                       if(result == ""){ 
                           alert("bad")                        
                       }else{
-                          alert("success") 
+                          alert("success")
+						  location.reload();
                       }
                       
                   },

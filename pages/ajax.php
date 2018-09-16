@@ -280,7 +280,9 @@ if($_POST['process']=='supplier_history'){
 
 
 if($_POST['process']=='stockout'){
+	date_default_timezone_set('Asia/Manila');
 
+	$date = date("Y-m-d H:i:s");
 	$prod_id = $_POST['prod_id'];
 	$qty = $_POST['qty'];
 	echo "<h1>".$qty. "</h1>";
@@ -296,11 +298,15 @@ if($_POST['process']=='stockout'){
 		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
-	    {			
+	    {	
+			$base_price = $row["base_price"];
 			if($row['prod_qty'] >= $qty){
-					$prod_qty = $row['prod_qty'] - $qty;
-			mysqli_query($con,"UPDATE product SET prod_qty = '$prod_qty' where prod_id='$prod_id'") or die(mysqli_error($con)); 
+					$prod_qty = $row['prod_qty'] - $qty;					
+					$num = 0 - $qty;					
+			mysqli_query($con,"UPDATE product SET prod_qty = '$prod_qty' where prod_id='$prod_id'") or die(mysqli_error($con)); 			
+			mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$prod_id','$num','$date','$branch','$base_price')")or die(mysqli_error($con));
 				echo "Success";
+				
 			} 
 			else{
 				echo "Not enough items";
