@@ -130,6 +130,7 @@ if($_POST['process']=='cust_history'){
 	    	echo "<td>Customer</td>
 	    		  <td>Product</td>
 	    		  <td>Price</td>
+	    		  <td>Qty</td>
 	    		  <td>Date</td>";
 			echo "</tr>";			
 	if ($result=mysqli_query($con,$sql)) 
@@ -142,13 +143,13 @@ if($_POST['process']=='cust_history'){
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {
 	    	echo "<tr>";
-	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['date_added'].  "</td>";
+	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['prod_qty'].  "</td><td>" . $row['date_added'].  "</td>";
 			echo "</tr>";
 			$price = $row['base_price'] * $row['prod_qty'];
 			$totalprice =$totalprice +  $price;
 	    }
 		echo "<tr>";
-	    echo "<td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+	    echo "<td></td><td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
@@ -175,13 +176,14 @@ if($_POST['process']=='cat_history'){
 	    	echo "<tr>";
 	    	echo "<td>Product</td>
 	    		  <td>Price</td>
+				  <td>Qty</td>
 	    		  <td>Date</td>";
 			echo "</tr>";	
 	$totalprice = 0;
 	if ($result=mysqli_query($con,$sql)) 
 	  {		
   		if(mysqli_num_rows($result) == 0){
-			echo "<tr><td colspan='3'><h1 style='text-align:center'>Not found</h1></td></tr>";
+			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
@@ -202,13 +204,13 @@ if($_POST['process']=='cat_history'){
 					$stockdate = "";
 				}
 	    	echo "<tr>";
-	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $stockdate.  "</td>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['prod_qty'] .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
 			$price = $row['base_price'] * $row['prod_qty'];
 			$totalprice =$totalprice +  $price;
 	    }
 		echo "<tr>";
-	    echo "<td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+	    echo "<td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
@@ -232,13 +234,14 @@ if($_POST['process']=='supplier_history'){
 	    	echo "<tr>";
 	    	echo "<td>Product</td>
 	    		  <td>Price</td>
+	    		  <td>Qty</td>
 	    		  <td>Date</td>";
 			echo "</tr>";			
 	if ($result=mysqli_query($con,$sql)) 
 	  {		
 
 		if(mysqli_num_rows($result) == 0){
-			echo "<tr><td colspan='3'><h1 style='text-align:center'>Not found</h1></td></tr>";
+			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
@@ -260,13 +263,13 @@ if($_POST['process']=='supplier_history'){
 			
 
 	    	echo "<tr>";
-	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $stockdate.  "</td>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['prod_qty'] .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
 			$price = $row['base_price'] * $row['prod_qty'];
 			$totalprice =$totalprice +  $price;
 	    }
 		echo "<tr>";
-	    echo "<td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+	    echo "<td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
@@ -294,7 +297,7 @@ if($_POST['process']=='stockout'){
 	if ($result=mysqli_query($con,$sql)) 
 	  {	
 		if(mysqli_num_rows($result) == 0){
-			echo "<tr><td colspan='3'><h1 style='text-align:center'>Not found</h1></td></tr>";
+			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
