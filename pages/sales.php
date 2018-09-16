@@ -172,6 +172,7 @@ $branch=$_SESSION['branch'];
                         <th>Product Code</th>
                         <th>Qty</th>
             					  <th>Selling Price</th>
+                        <th>Discount</th>
                         <th>Total Sales</th>
                         <th>Profit</th>
                         <th>Date Paid</th>
@@ -196,6 +197,7 @@ $branch=$_SESSION['branch'];
             <td><?php echo $row['discount'];?></td>
             <td style="text-align:right"><?php echo number_format($row['total'],2);
 								?></td>
+            <td><?php echo $row[''];?></td>
             <td><?php echo date("M d, Y h:i a",strtotime($row['date_added']));?></td>    
 			
 		
@@ -205,18 +207,22 @@ $branch=$_SESSION['branch'];
                     </tbody>
                     <tfoot>
           <tr>
-            <th colspan="8">Total</th>
+            <th colspan="9">Total</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format($grand,2);?></b></h4></th>
           </tr>             
 					<tr>
-            <th colspan="8">Less: Total Discount</th>
+            <th colspan="9">Less: Total Discount</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format($discount,2);?></b></h4></th>
           </tr>   
           
           <tr>
-            <th colspan="8">Total Cash Sales</th>
+            <th colspan="9">Total Cash Sales</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);}?></b></h4></th>
-			    </tr>		
+			    </tr>	
+          <tr>
+            <th colspan="9">Total Profit</th>
+            <th style="text-align:right;"><h4><b><></b></h4></th>
+          </tr> 	
           <tr>
                         <th></th>
                         <th></th>
