@@ -134,16 +134,22 @@ if($_POST['process']=='cust_history'){
 			echo "</tr>";			
 	if ($result=mysqli_query($con,$sql)) 
 	  {
-		  		if(mysqli_num_rows($result) == 1){
+		  		if(mysqli_num_rows($result) == 0){
 			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
+	  $totalprice = 0;
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {
 	    	echo "<tr>";
 	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['date_added'].  "</td>";
 			echo "</tr>";
+			$price = $row['base_price'] * $row['prod_qty'];
+			$totalprice =$totalprice +  $price;
 	    }
+		echo "<tr>";
+	    echo "<td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
 	}
@@ -170,10 +176,11 @@ if($_POST['process']=='cat_history'){
 	    	echo "<td>Product</td>
 	    		  <td>Price</td>
 	    		  <td>Date</td>";
-			echo "</tr>";			
+			echo "</tr>";	
+	$totalprice = 0;
 	if ($result=mysqli_query($con,$sql)) 
 	  {		
-  		if(mysqli_num_rows($result) == 1){
+  		if(mysqli_num_rows($result) == 0){
 			echo "<tr><td colspan='3'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
@@ -197,7 +204,12 @@ if($_POST['process']=='cat_history'){
 	    	echo "<tr>";
 	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
+			$price = $row['base_price'] * $row['prod_qty'];
+			$totalprice =$totalprice +  $price;
 	    }
+		echo "<tr>";
+	    echo "<td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
 	}
@@ -208,7 +220,7 @@ if($_POST['process']=='cat_history'){
 
 if($_POST['process']=='supplier_history'){
 
-
+	$totalprice = 0;
 	$supplier_id = $_POST['supplier_id'];
 	
 	$sql="
@@ -250,11 +262,53 @@ if($_POST['process']=='supplier_history'){
 	    	echo "<tr>";
 	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
+			$price = $row['base_price'] * $row['prod_qty'];
+			$totalprice =$totalprice +  $price;
 	    }
+		echo "<tr>";
+	    echo "<td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
 	}
 	echo "</table>";
+	mysqli_close($con);
+}
+
+
+
+
+
+if($_POST['process']=='stockout'){
+
+	$prod_id = $_POST['prod_id'];
+	$qty = $_POST['qty'];
+	echo "<h1>".$qty. "</h1>";
+	echo "<h1>".$prod_id. "</h1>";
+
+	$sql="	SELECT * FROM product 
+			WHERE prod_id  = '".$prod_id."'";
+			
+	if ($result=mysqli_query($con,$sql)) 
+	  {	
+		if(mysqli_num_rows($result) == 0){
+			echo "<tr><td colspan='3'><h1 style='text-align:center'>Not found</h1></td></tr>";
+		}
+	  // Fetch one and one row
+	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
+	    {			
+			if($row['prod_qty'] >= $qty){
+					$prod_qty = $row['prod_qty'] - $qty;
+			mysqli_query($con,"UPDATE product SET prod_qty = '$prod_qty' where prod_id='$prod_id'") or die(mysqli_error($con)); 
+				echo "Success";
+			} 
+			else{
+				echo "Not enough items";
+			}
+			
+		}		
+	mysqli_free_result($result);
+	}
 	mysqli_close($con);
 }
 
