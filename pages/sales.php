@@ -181,11 +181,14 @@ $branch=$_SESSION['branch'];
                     <tbody>
 <?php
 	$query=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer where date(date_added)>='$start' and date(date_added)<='$end' and branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
-		$qty=0;$grand=0;$discount=0;
+		$qty=0;$grand=0;$discount=0;$total_profit=0;
 								while($row=mysqli_fetch_array($query)){
                 $total=$row['qty']*$row['price'];
 								$grand=$grand+$total-$row['discount'];
                 $discount=$discount+$row['discount'];
+				$profit = ($row['price'] * $row['qty']) - ($row['base_price'] * $row['qty']);
+				$total_profit = $total_profit + $profit;
+				
 ?>
             <tr>
             <td><?php echo $row['sales_id'];;?></td>
@@ -193,11 +196,11 @@ $branch=$_SESSION['branch'];
             <td><?php echo $row['prod_name'];?></td>
             <td><?php echo $row['serial'];?></td>
             <td><?php echo $row['qty'];?></td>
-						<td><?php echo $row['price'];?></td>
+			<td><?php echo $row['price'];?></td>
             <td><?php echo $row['discount'];?></td>
-            <td style="text-align:right"><?php echo number_format($row['total'],2);
+            <td style="text-align:right"><?php echo number_format($total,2);
 								?></td>
-            <td><?php echo $row[''];?></td>
+            <td><?php echo $profit;?></td>
             <td><?php echo date("M d, Y h:i a",strtotime($row['date_added']));?></td>    
 			
 		
@@ -217,11 +220,11 @@ $branch=$_SESSION['branch'];
           
           <tr>
             <th colspan="9">Total Cash Sales</th>
-            <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);}?></b></h4></th>
+            <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
 			    </tr>	
           <tr>
             <th colspan="9">Total Profit</th>
-            <th style="text-align:right;"><h4><b><></b></h4></th>
+	<th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
           </tr> 	
           <tr>
                         <th></th>
