@@ -188,6 +188,7 @@ endif;
                 </div><!-- /.box-header -->
     <?php
     $branch=$_SESSION['branch'];
+	
     $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());
       $row=mysqli_fetch_array($query);
       

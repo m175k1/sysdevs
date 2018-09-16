@@ -125,8 +125,8 @@ endif;
                     </thead>
                     <tbody>
 <?php
-
-		$query=mysqli_query($con,"select * from product order by prod_name")or die(mysqli_error());
+		$branch=$_SESSION['branch'];
+		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
 		while($row=mysqli_fetch_array($query)){
               $x = $row['supplier_id'];
               $cat = $row['cat_id'];
