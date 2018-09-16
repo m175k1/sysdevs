@@ -131,25 +131,27 @@ if($_POST['process']=='cust_history'){
 	    		  <td>Product</td>
 	    		  <td>Price</td>
 	    		  <td>Qty</td>
+				  <td>Subtotal</td>
 	    		  <td>Date</td>";
 			echo "</tr>";			
 	if ($result=mysqli_query($con,$sql)) 
 	  {
 		  		if(mysqli_num_rows($result) == 0){
-			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
+			echo "<tr><td colspan='5'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
 	  $totalprice = 0;
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
-	    {
+	    {	
+			$price = $row['price'] * $row['prod_qty'];
 	    	echo "<tr>";
-	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['prod_qty'].  "</td><td>" . $row['date_added'].  "</td>";
+	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['prod_qty'].  "</td><td>" . $price.  "</td><td>" . $row['date_added'].  "</td>";
 			echo "</tr>";
-			$price = $row['base_price'] * $row['prod_qty'];
+			
 			$totalprice =$totalprice +  $price;
 	    }
 		echo "<tr>";
-	    echo "<td></td><td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+	    echo "<td></td><td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td><td></td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
@@ -168,7 +170,7 @@ if($_POST['process']=='cat_history'){
 	$cat_id = $_POST['cat_id'];
 
 	$sql="
-		SELECT * FROM stockin a 
+		SELECT *, a.base_price as base_fprice  FROM stockin a 
 			LEFT JOIN product b ON a.prod_id = b.prod_id 			
 			LEFT JOIN category c ON b.cat_id = c.cat_id
 			WHERE c.cat_id = '".$cat_id."'";			
@@ -178,6 +180,7 @@ if($_POST['process']=='cat_history'){
 	    	echo "<td>Product</td>
 	    		  <td>Price</td>
 				  <td>Qty</td>
+				  <td>Subtotal</td>
 	    		  <td>Date</td>";
 			echo "</tr>";	
 			
@@ -186,12 +189,14 @@ if($_POST['process']=='cat_history'){
 	if ($result=mysqli_query($con,$sql)) 
 	  {		
   		if(mysqli_num_rows($result) == 0){
-			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
+			echo "<tr><td colspan='5'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {
+			
 		if($row['qty']>0){
+		$price = $row['base_fprice'] * $row['qty'];
 		$stockinsql="
 			SELECT date FROM stockin 						
 				WHERE prod_id = '".$row['prod_id']."'
@@ -208,15 +213,15 @@ if($_POST['process']=='cat_history'){
 					$stockdate = "";
 				}
 	    	echo "<tr>";
-	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['qty'] .  "</td><td>" . $stockdate.  "</td>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_fprice'] .  "</td><td>" . $row['qty'] .  "</td><td>" .  number_format($price,2) .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
-			$price = $row['base_price'] * $row['qty'];
+			
 			$totalprice =$totalprice +  $price;			
 		}
 
 	    }
 		echo "<tr>";
-	    echo "<td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+	    echo "<td></td><td></td><td>Total</td><td>P" . number_format($totalprice,2).  "</td><td></td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
@@ -232,7 +237,7 @@ if($_POST['process']=='supplier_history'){
 	$supplier_id = $_POST['supplier_id'];
 	
 	$sql="
-		SELECT * FROM stockin a 
+		SELECT *, a.base_price as base_fprice FROM stockin a 
 			RIGHT JOIN product b ON a.prod_id = b.prod_id 			
 			LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
 			WHERE c.supplier_id = '".$supplier_id."'";
@@ -242,18 +247,20 @@ if($_POST['process']=='supplier_history'){
 	    	echo "<td>Product</td>
 	    		  <td>Price</td>
 	    		  <td>Qty</td>
+				  <td>Subtotal</td>
 	    		  <td>Date</td>";
 			echo "</tr>";			
 	if ($result=mysqli_query($con,$sql)) 
 	  {		
 
 		if(mysqli_num_rows($result) == 0){
-			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
+			echo "<tr><td colspan='5'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {
 		if($row['qty']>0){
+			$price = $row['base_fprice'] * $row['qty'];
 					$stockinsql="
 			SELECT * FROM stockin 						
 				WHERE prod_id = '".$row['prod_id']."'
@@ -270,15 +277,15 @@ if($_POST['process']=='supplier_history'){
 			
 
 	    	echo "<tr>";
-	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['qty'] .  "</td><td>" . $stockdate.  "</td>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_fprice'] .  "</td><td>" . $row['qty'] .  "</td><td>" . number_format($price,2) .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
-			$price = $row['base_price'] * $row['qty'];
+			
 			$totalprice =$totalprice +  $price;
 		}
 
 	    }
 		echo "<tr>";
-	    echo "<td></td><td></td><td>Total</td><td>P$totalprice </td>";
+	    echo "<td></td><td></td><td>Total</td><td>P" . number_format($totalprice,2) ." </td><td></td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
@@ -304,7 +311,7 @@ if($_POST['process']=='stockout'){
 	if ($result=mysqli_query($con,$sql)) 
 	  {	
 		if(mysqli_num_rows($result) == 0){
-			echo "<tr><td colspan='4'><h1 style='text-align:center'>Not found</h1></td></tr>";
+			echo "<tr><td colspan='5'><h1 style='text-align:center'>Not found</h1></td></tr>";
 		}
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
