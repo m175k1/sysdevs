@@ -159,6 +159,7 @@
 				
               </div><hr>
               <div class="modal-footer">
+                <button class="btn btn-warning deleteButton">History</button>
         <button class="btn btn-warning deleteButton" value="<?php echo $row['supplier_name'];?>">Delete</button>
 		<button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
