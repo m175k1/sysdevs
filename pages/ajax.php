@@ -124,7 +124,9 @@ if($_POST['process']=='cust_history'){
 			LEFT JOIN sales b ON a.cust_id = b.cust_id 
 			LEFT JOIN sales_details c ON b.sales_id = c.sales_id
 			LEFT JOIN product d ON c.prod_id = d.prod_id
-			WHERE a.cust_id = '".$cust_id."'";
+			WHERE a.cust_id = '".$cust_id."'
+			AND a.branch_id = '$branch'
+			";
 			echo "<table id='customerTable' style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
 	    	echo "<td>Customer</td>
@@ -173,7 +175,9 @@ if($_POST['process']=='cat_history'){
 		SELECT *, a.base_price as base_fprice  FROM stockin a 
 			LEFT JOIN product b ON a.prod_id = b.prod_id 			
 			LEFT JOIN category c ON b.cat_id = c.cat_id
-			WHERE c.cat_id = '".$cat_id."'";			
+			WHERE c.cat_id = '".$cat_id."'
+			AND a.branch_id = '$branch'
+			";			
 			
 			echo "<table id='companyTable'style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
@@ -240,7 +244,9 @@ if($_POST['process']=='supplier_history'){
 		SELECT *, a.base_price as base_fprice FROM stockin a 
 			RIGHT JOIN product b ON a.prod_id = b.prod_id 			
 			LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
-			WHERE c.supplier_id = '".$supplier_id."'";
+			WHERE c.supplier_id = '".$supplier_id."'
+			AND a.branch_id = '$branch'
+			";
 			
 			echo "<table id='distributorTable' style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
