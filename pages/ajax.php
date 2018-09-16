@@ -247,8 +247,8 @@ if($_POST['process']=='supplier_history'){
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {
-			
-		$stockinsql="
+		if($row['qty']>0){
+					$stockinsql="
 			SELECT date FROM stockin 						
 				WHERE prod_id = '".$row['prod_id']."'
 			ORDER BY date asc;
@@ -264,13 +264,15 @@ if($_POST['process']=='supplier_history'){
 			
 
 	    	echo "<tr>";
-	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['prod_qty'] .  "</td><td>" . $stockdate.  "</td>";
+	    	echo "<td>" .$row['prod_name'] . "</td><td>" . $row['base_price'] .  "</td><td>" . $row['qty'] .  "</td><td>" . $stockdate.  "</td>";
 			echo "</tr>";
-			$price = $row['base_price'] * $row['prod_qty'];
+			$price = $row['base_price'] * $row['qty'];
 			$totalprice =$totalprice +  $price;
+		}
+
 	    }
 		echo "<tr>";
-	    echo "<td></td><td></td><td>Total</td><td>P</td>";
+	    echo "<td></td><td></td><td>Total</td><td>P$totalprice </td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
