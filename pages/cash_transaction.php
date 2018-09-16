@@ -181,7 +181,8 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                         <th>Qty</th>
 						       
                         <th>Product Name</th>
-						            <th>Total Amount</th>
+						            <th>Selling Price</th>
+                        <th>Total Amount</th>
                         <th>Action</th>
                       </tr>
                     </thead>
