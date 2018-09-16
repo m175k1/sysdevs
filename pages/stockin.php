@@ -108,13 +108,13 @@ endif;
                   <div class="form-group">
                     <label for="date">Quantity</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="qty" name="qty" placeholder="1" required>
+                      <input type="text" class="form-control pull-right" id="qty" name="qty" placeholder="Input Quantity" required>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                    <div class="form-group">
                     <label for="date">Base Price</label>
                     <div class="input-group col-md-12">
-                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="0" required>
+                      <input type="text" class="form-control pull-right" id="base_price" name="base_price" placeholder="0">
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                   
@@ -122,9 +122,6 @@ endif;
                     <div class="input-group">
                       <button class="btn btn-primary" id="daterange-btn" name="">
                         Save
-                      </button>
-					  <button class="btn" id="daterange-btn">
-                        Clear
                       </button>
                       <button class="btn btn-primary" id="daterange-btn" name="">
                         Stock Out
