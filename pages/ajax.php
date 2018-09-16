@@ -226,9 +226,10 @@ if($_POST['process']=='supplier_history'){
 	$supplier_id = $_POST['supplier_id'];
 	
 	$sql="
-		SELECT * FROM product a 
-			LEFT JOIN supplier b ON a.supplier_id = b.supplier_id 			
-			WHERE a.supplier_id = '".$supplier_id."'";		
+		SELECT * FROM stockin a 
+			LEFT JOIN product b ON a.prod_id = b.prod_id 			
+			LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
+			WHERE c.supplier_id = '".$supplier_id."'";
 			
 			echo "<table id='distributorTable' style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
@@ -257,7 +258,7 @@ if($_POST['process']=='supplier_history'){
 					$stockdate = $row2['date']  ;
 				}		
 				
-								if(!isset($stockdate)){
+					if(!isset($stockdate)){
 					$stockdate = "";
 				}
 			
@@ -269,7 +270,7 @@ if($_POST['process']=='supplier_history'){
 			$totalprice =$totalprice +  $price;
 	    }
 		echo "<tr>";
-	    echo "<td></td><td></td><td>Total</td><td>P" . $totalprice.  "</td>";
+	    echo "<td></td><td></td><td>Total</td><td>P</td>";
 		echo "</tr>";
 	  // Free result set
 	  mysqli_free_result($result);
@@ -288,8 +289,6 @@ if($_POST['process']=='stockout'){
 	$date = date("Y-m-d H:i:s");
 	$prod_id = $_POST['prod_id'];
 	$qty = $_POST['qty'];
-	echo "<h1>".$qty. "</h1>";
-	echo "<h1>".$prod_id. "</h1>";
 
 	$sql="	SELECT * FROM product 
 			WHERE prod_id  = '".$prod_id."'";
