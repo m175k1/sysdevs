@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2017 at 01:03 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.23
+-- Generation Time: Sep 21, 2018 at 01:30 PM
+-- Server version: 10.1.29-MariaDB
+-- PHP Version: 7.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -119,7 +121,11 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`cust_id`, `cust_first`, `cust_last`, `cust_address`, `cust_contact`, `balance`, `cust_pic`, `bday`, `nickname`, `house_status`, `years`, `rent`, `emp_name`, `emp_no`, `emp_address`, `emp_year`, `occupation`, `salary`, `spouse`, `spouse_no`, `spouse_emp`, `spouse_details`, `spouse_income`, `comaker`, `comaker_details`, `branch_id`, `credit_status`, `ci_remarks`, `ci_name`, `ci_date`, `payslip`, `valid_id`, `cert`, `cedula`, `income`) VALUES
 (1, 'Kenneth', 'Aboy', 'Silay City\r\n', '09098', '0.00', 'default.gif', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 1, '', '', '', '0000-00-00', 0, 0, 0, 0, 0),
-(2, 'Honeylee', 'Magbanua', 'Brgy. Busay, bago CIty', '09051914070', '303.20', 'default.gif', '1989-10-14', 'lee', 'owned', '27', 'NA', 'Stratium Software', '034-707-1630', 'Ayala Northpoint', '1', 'Systems Administrator', '12000', 'NA', 'NA', 'NA', 'NA', '0.00', 'Kaye Angela Cueva', 'Cadiz City', 1, 'Approved', '', '', '0000-00-00', 0, 0, 0, 0, 0);
+(2, 'Honeylee', 'Magbanua', 'Brgy. Busay, bago CIty', '09051914070', '37200.00', 'default.gif', '1989-10-14', 'lee', 'owned', '27', 'NA', 'Stratium Software', '034-707-1630', 'Ayala Northpoint', '1', 'Systems Administrator', '12000', 'NA', 'NA', 'NA', 'NA', '0.00', 'Kaye Angela Cueva', 'Cadiz City', 1, '', '', '', '0000-00-00', 0, 0, 0, 0, 0),
+(3, 'dfsdfsd', 'sdfs', 'sdfsdf', 'fsdf', '0.00', 'default.gif', '2018-09-13', 'sdfsd', 'owned', 'dsf', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 1, '', '', '', '0000-00-00', 0, 0, 0, 0, 0),
+(4, 'sdf', 'sdf', 'dfdf', 'dsf', '0.00', 'default.gif', '2018-09-12', 'sdfsdf', 'owned', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 1, '', '', '', '0000-00-00', 0, 0, 0, 0, 0),
+(5, 'x', 'x', 'x', 'x', '-459.00', 'default.gif', '2018-09-12', 'x', 'owned', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 1, 'Approved', '', '', '0000-00-00', 0, 0, 0, 0, 0),
+(6, 'sdfsdf', 'sdf', '1', '1', '299.00', 'default.gif', '2018-09-12', 'sdfdf', 'owned', '', '', '', '', '', '', '', '', '', '', '', '', '0.00', '', '', 1, 'Approved', '', '', '0000-00-00', 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -139,7 +145,7 @@ CREATE TABLE `history_log` (
 --
 
 INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
-(1, 1, 'added 5 of LG 43" UHD TV UH6100', '2017-02-04 01:10:41'),
+(1, 1, 'added 5 of LG 43\" UHD TV UH6100', '2017-02-04 01:10:41'),
 (2, 1, 'added 100 of Lotion', '2017-02-04 01:10:49'),
 (3, 1, 'added 10 of Rice Cooker', '2017-02-04 01:10:55'),
 (4, 1, 'added 5 of Samsung', '2017-02-04 01:11:07'),
@@ -147,7 +153,82 @@ INSERT INTO `history_log` (`log_id`, `user_id`, `action`, `date`) VALUES
 (6, 1, 'has logged in the system at ', '2017-02-04 08:51:11'),
 (7, 1, 'has logged in the system at ', '2017-02-04 13:13:53'),
 (8, 1, 'has logged in the system at ', '2017-02-21 18:56:56'),
-(9, 1, 'added a payment of -76.6 for , ', '2017-02-21 00:00:00');
+(9, 1, 'added a payment of -76.6 for , ', '2017-02-21 00:00:00'),
+(10, 1, 'has logged in the system at ', '2018-09-10 00:12:00'),
+(11, 1, 'has logged in the system at ', '2018-09-10 21:54:49'),
+(12, 1, 'has logged in the system at ', '2018-09-10 21:55:31'),
+(13, 1, 'has logged out the system at ', '2018-09-10 22:03:28'),
+(14, 1, 'has logged in the system at ', '2018-09-10 22:18:26'),
+(15, 1, 'has logged out the system at ', '2018-09-10 22:53:14'),
+(16, 1, 'has logged in the system at ', '2018-09-10 22:54:08'),
+(17, 1, 'has logged in the system at ', '2018-09-10 22:58:24'),
+(18, 6, 'has logged out the system at ', '2018-09-11 01:01:42'),
+(19, 1, 'has logged in the system at ', '2018-09-11 01:01:47'),
+(20, 1, 'has logged in the system at ', '2018-09-11 01:50:10'),
+(21, 1, 'deleted 4 LG 43\" UHD TV UH6100 from purchase request', '2018-09-11 01:55:47'),
+(22, 1, 'has logged in the system at ', '2018-09-11 19:57:30'),
+(23, 1, 'has logged in the system at ', '2018-09-11 21:00:41'),
+(24, 1, 'has logged in the system at ', '2018-09-12 06:33:58'),
+(25, 1, 'has logged in the system at ', '2018-09-13 00:35:42'),
+(26, 1, 'has logged in the system at ', '2018-09-13 09:00:33'),
+(27, 1, 'has logged out the system at ', '2018-09-13 09:06:16'),
+(28, 1, 'has logged in the system at ', '2018-09-13 09:06:20'),
+(29, 1, 'has logged out the system at ', '2018-09-13 09:06:52'),
+(30, 1, 'has logged in the system at ', '2018-09-13 09:06:56'),
+(31, 1, 'added 100 of LG 43\" UHD TV UH6100', '2018-09-13 09:08:57'),
+(32, 1, 'has logged in the system at ', '2018-09-13 15:40:49'),
+(33, 1, 'has logged in the system at ', '2018-09-13 17:17:07'),
+(34, 1, 'has logged in the system at ', '2018-09-13 17:43:57'),
+(35, 1, 'has logged in the system at ', '2018-09-13 20:29:19'),
+(36, 6, 'added a payment of 459 for , ', '2018-09-13 00:00:00'),
+(37, 6, 'added a payment of -1400 for , ', '2018-09-13 00:00:00'),
+(38, 6, 'added a payment of -900 for , ', '2018-09-13 00:00:00'),
+(39, 6, 'added a payment of -1899 for , ', '2018-09-13 00:00:00'),
+(40, 1, 'has logged in the system at ', '2018-09-14 12:28:33'),
+(41, 1, 'added 100 of 1', '2018-09-14 15:26:27'),
+(42, 1, 'added 100 of Rice Cooker', '2018-09-14 15:26:43'),
+(43, 1, 'added 100 of Samsung', '2018-09-14 15:26:55'),
+(44, 1, 'added 100 of Sample', '2018-09-14 15:27:28'),
+(45, 1, 'has logged in the system at ', '2018-09-14 19:45:34'),
+(46, 1, 'added a payment of -1800 for , ', '2018-09-14 00:00:00'),
+(47, 1, 'has logged in the system at ', '2018-09-14 21:46:14'),
+(48, 1, 'has logged in the system at ', '2018-09-15 14:00:23'),
+(49, 1, 'added 54 of Samsung', '2018-09-15 17:40:55'),
+(50, 1, 'added 50 of Samsung', '2018-09-15 18:08:08'),
+(51, 1, 'added 50 of Egg', '2018-09-15 18:20:00'),
+(52, 1, 'added 50 of Ipad', '2018-09-15 18:20:37'),
+(53, 1, 'added 20 of Rexona', '2018-09-15 18:27:33'),
+(54, 1, 'added 20 of Rexona', '2018-09-15 18:29:53'),
+(55, 1, 'added 20 of Rexona', '2018-09-15 18:30:28'),
+(56, 1, 'added 40 of Rexona', '2018-09-15 18:31:12'),
+(57, 1, 'added 20 of Rexona', '2018-09-15 18:37:38'),
+(58, 1, 'added 50 of Egg', '2018-09-15 18:59:02'),
+(59, 1, 'added 50 of Egg', '2018-09-15 18:59:24'),
+(60, 1, 'added 20 of Rexona', '2018-09-15 19:00:46'),
+(61, 1, 'added 40 of Rexona', '2018-09-15 19:03:37'),
+(62, 1, 'has logged in the system at ', '2018-09-16 14:37:49'),
+(63, 1, 'has logged in the system at ', '2018-09-16 20:30:26'),
+(64, 1, 'added 1 of Egg', '2018-09-16 21:13:32'),
+(65, 0, '', '0000-00-00 00:00:00'),
+(66, 1, 'added 10 of tae', '2018-09-16 22:39:38'),
+(67, 1, 'added 10 of Egg', '2018-09-16 22:42:25'),
+(68, 1, 'added 10 of tae', '2018-09-16 22:42:37'),
+(69, 1, 'has logged out the system at ', '2018-09-17 00:38:01'),
+(70, 6, 'has logged out the system at ', '2018-09-17 00:39:10'),
+(71, 7, 'has logged in the system at ', '2018-09-17 00:39:28'),
+(72, 7, 'has logged out the system at ', '2018-09-17 00:40:12'),
+(73, 1, 'has logged in the system at ', '2018-09-17 00:40:18'),
+(74, 1, 'has logged out the system at ', '2018-09-17 00:53:37'),
+(75, 7, 'has logged in the system at ', '2018-09-17 00:53:43'),
+(76, 7, 'has logged out the system at ', '2018-09-17 00:56:58'),
+(77, 1, 'has logged in the system at ', '2018-09-17 00:57:02'),
+(78, 1, 'has logged out the system at ', '2018-09-17 00:58:06'),
+(79, 7, 'has logged in the system at ', '2018-09-17 00:58:12'),
+(80, 7, 'has logged out the system at ', '2018-09-17 01:06:07'),
+(81, 7, 'has logged in the system at ', '2018-09-17 01:06:13'),
+(82, 7, 'added 10 of tae2', '2018-09-17 01:06:47'),
+(83, 1, 'has logged in the system at ', '2018-09-17 20:01:29'),
+(84, 1, 'has logged in the system at ', '2018-09-21 12:22:34');
 
 -- --------------------------------------------------------
 
@@ -177,13 +258,10 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `cust_id`, `sales_id`, `payment`, `payment_date`, `user_id`, `branch_id`, `payment_for`, `due`, `interest`, `remaining`, `status`, `rebate`, `or_no`) VALUES
-(3156, 1, 6, '550.00', '2017-02-21 19:57:12', 1, 1, '2017-02-21', '550.00', '0.00', '0.00', 'paid', '0.00', 1901),
-(3157, 2, 7, '550.00', '2017-02-21 19:57:29', 1, 1, '2017-02-21', '550.00', '0.00', '0.00', 'paid', '0.00', 1902),
-(3163, 2, 9, '113.30', '2017-02-21 21:31:20', 1, 1, '2017-03-21', '113.30', '0.00', '0.00', 'paid', '0.00', 0),
-(3164, 2, 9, '36.70', '2017-02-21 21:31:20', 1, 1, '2017-04-21', '113.30', '0.00', '76.60', 'partially paid', '0.00', 0),
-(3165, 2, 9, '0.00', '0000-00-00 00:00:00', 1, 1, '2017-05-21', '113.30', '0.00', '113.30', '', '0.00', 0),
-(3166, 2, 9, '0.00', '0000-00-00 00:00:00', 1, 1, '2017-06-21', '113.30', '0.00', '113.30', '', '0.00', 0),
-(3167, 2, 9, '113.30', '2017-02-21 00:00:00', 1, 1, '2017-02-21', '113.30', '0.00', '0.00', 'paid', '0.00', 3151);
+(3214, 1, 72, '20.00', '2018-09-15 19:05:39', 1, 1, '2018-09-15', '20.00', '0.00', '0.00', 'paid', '0.00', 1),
+(3215, 1, 73, '120.00', '2018-09-16 14:38:38', 1, 1, '2018-09-16', '120.00', '0.00', '0.00', 'paid', '0.00', 2),
+(3216, 1, 74, '320.00', '2018-09-16 14:54:16', 1, 1, '2018-09-16', '320.00', '0.00', '0.00', 'paid', '0.00', 1),
+(3217, 1, 75, '50.00', '2018-09-16 14:55:25', 1, 1, '2018-09-16', '50.00', '0.00', '0.00', 'paid', '0.00', 2);
 
 -- --------------------------------------------------------
 
@@ -202,19 +280,19 @@ CREATE TABLE `product` (
   `branch_id` int(11) NOT NULL,
   `reorder` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `serial` varchar(50) NOT NULL
+  `serial` varchar(50) NOT NULL,
+  `base_price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`prod_id`, `prod_name`, `prod_desc`, `prod_price`, `prod_pic`, `cat_id`, `prod_qty`, `branch_id`, `reorder`, `supplier_id`, `serial`) VALUES
-(5, 'LG 43" UHD TV UH6100', '', '45000.00', 'tv.jpg', 5, 5, 1, 0, 4, '19898981'),
-(13, 'Rice Cooker', '', '550.00', 'WIN_20160728_16_56_20_Pro (2).jpg', 9, 0, 1, 2, 4, '22ewew'),
-(14, 'Samsung', '', '15000.00', 'WIN_20160209_16_45_20_Pro.jpg', 10, 5, 1, 4, 5, 'erere323'),
-(15, 'Lotion', '', '120.00', 'default.gif', 12, 100, 1, 4, 6, '1101388911'),
-(16, 'Sample', 'description', '110.00', 'default.gif', 10, -1, 1, 1, 2, '878878');
+INSERT INTO `product` (`prod_id`, `prod_name`, `prod_desc`, `prod_price`, `prod_pic`, `cat_id`, `prod_qty`, `branch_id`, `reorder`, `supplier_id`, `serial`, `base_price`) VALUES
+(30, 'Rexona', '11', '0.00', 'RobloxScreenShot20180711_190034903.png', 12, 65, 1, 5, 2, '1', '7.50'),
+(31, 'Egg', 'Masarap kamutin', '0.00', 'RobloxScreenShot20180629_180036972.png', 12, 105, 1, 1, 2, '2', '8.13'),
+(32, 'tae', '123123', '0.00', 'default.gif', 10, 20, 1, 1, 3, '1', '10.00'),
+(33, 'tae2', '', '0.00', 'default.gif', 12, 10, 3, 1, 2, '1', '5.00');
 
 -- --------------------------------------------------------
 
@@ -256,14 +334,8 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`sales_id`, `cust_id`, `user_id`, `cash_tendered`, `discount`, `amount_due`, `cash_change`, `date_added`, `modeofpayment`, `branch_id`, `total`) VALUES
-(1, 1, 1, '500.00', '50.00', '500.00', '0.00', '2017-02-04 01:33:28', 'cash', 1, '450.00'),
-(2, 1, 1, '550.00', '0.00', '550.00', '0.00', '2017-02-21 18:57:26', 'cash', 1, '550.00'),
-(3, 1, 1, '0.00', '550.00', '0.00', '0.00', '2017-02-21 19:49:41', 'cash', 1, '-550.00'),
-(4, 1, 1, '550.00', '0.00', '550.00', '0.00', '2017-02-21 19:55:57', 'cash', 1, '550.00'),
-(5, 2, 1, '110.00', '0.00', '110.00', '0.00', '2017-02-21 19:56:17', 'cash', 1, '110.00'),
-(6, 1, 1, '550.00', '0.00', '550.00', '0.00', '2017-02-21 19:57:12', 'cash', 1, '550.00'),
-(7, 2, 1, '550.00', '0.00', '550.00', '0.00', '2017-02-21 19:57:29', 'cash', 1, '550.00'),
-(9, 2, 1, NULL, NULL, '0.00', NULL, '2017-02-21 21:16:52', 'credit', 1, '550.00');
+(74, 1, 1, '320.00', '0.00', '320.00', '0.00', '2018-09-16 14:54:16', 'cash', 1, '320.00'),
+(75, 1, 1, '50.00', '0.00', '50.00', '0.00', '2018-09-16 14:55:25', 'cash', 1, '50.00');
 
 -- --------------------------------------------------------
 
@@ -284,15 +356,9 @@ CREATE TABLE `sales_details` (
 --
 
 INSERT INTO `sales_details` (`sales_details_id`, `sales_id`, `prod_id`, `price`, `qty`) VALUES
-(1, 1, 13, '550.00', 1),
-(2, 2, 13, '550.00', 1),
-(3, 3, 13, '550.00', 1),
-(4, 4, 13, '550.00', 1),
-(5, 5, 16, '110.00', 1),
-(6, 6, 13, '550.00', 1),
-(7, 7, 13, '550.00', 1),
-(8, 8, 13, '550.00', 1),
-(9, 9, 13, '550.00', 1);
+(76, 74, 31, '10.00', 20),
+(77, 74, 30, '8.00', 15),
+(78, 75, 31, '10.00', 5);
 
 -- --------------------------------------------------------
 
@@ -305,18 +371,31 @@ CREATE TABLE `stockin` (
   `prod_id` int(11) NOT NULL,
   `qty` int(6) NOT NULL,
   `date` datetime NOT NULL,
-  `branch_id` int(11) NOT NULL
+  `branch_id` int(11) NOT NULL,
+  `base_price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `stockin`
 --
 
-INSERT INTO `stockin` (`stockin_id`, `prod_id`, `qty`, `date`, `branch_id`) VALUES
-(1, 5, 5, '2017-02-04 01:10:41', 1),
-(2, 15, 100, '2017-02-04 01:10:49', 1),
-(3, 13, 10, '2017-02-04 01:10:55', 1),
-(4, 14, 5, '2017-02-04 01:11:07', 1);
+INSERT INTO `stockin` (`stockin_id`, `prod_id`, `qty`, `date`, `branch_id`, `base_price`) VALUES
+(15, 30, 20, '2018-09-15 18:29:53', 1, '5.00'),
+(16, 30, 20, '2018-09-15 18:30:28', 1, '5.00'),
+(19, 31, 50, '2018-09-15 18:59:02', 1, '8.00'),
+(20, 31, 50, '2018-09-15 18:59:24', 1, '8.00'),
+(22, 30, 40, '2018-09-15 19:03:37', 1, '10.00'),
+(23, 31, 1, '2018-09-16 21:13:32', 1, '1.00'),
+(24, 31, -1, '0000-00-00 00:00:00', 1, '7.93'),
+(25, 31, -1, '0000-00-00 00:00:00', 1, '7.93'),
+(26, 31, -1, '2018-09-16 22:19:03', 1, '7.93'),
+(27, 31, -1, '2018-09-16 22:19:41', 1, '7.93'),
+(28, 31, -1, '2018-09-16 22:19:41', 1, '7.93'),
+(29, 31, -1, '2018-09-16 22:21:16', 1, '7.93'),
+(30, 32, 10, '2018-09-16 22:39:38', 1, '10.00'),
+(31, 31, 10, '2018-09-16 22:42:25', 1, '10.00'),
+(32, 32, 10, '2018-09-16 22:42:37', 1, '10.00'),
+(33, 33, 10, '2018-09-17 01:06:47', 3, '5.00');
 
 -- --------------------------------------------------------
 
@@ -382,7 +461,25 @@ CREATE TABLE `term` (
 
 INSERT INTO `term` (`term_id`, `sales_id`, `payable_for`, `term`, `due`, `payment_start`, `down`, `due_date`, `interest`, `status`) VALUES
 (1, 8, '4', 'monthly', '113.30', '2017-02-21', '113.30', '2017-06-21', '16.50', ''),
-(2, 9, '4', 'monthly', '113.30', '2017-02-21', '113.30', '2017-06-21', '16.50', '');
+(2, 9, '4', 'monthly', '113.30', '2017-02-21', '113.30', '2017-06-21', '16.50', ''),
+(3, 31, '1', 'monthly', '98.88', '2018-09-10', '24.72', '2018-10-10', '3.60', ''),
+(4, 32, '1', 'monthly', '98.88', '2018-09-10', '24.72', '2018-10-10', '3.60', ''),
+(5, 48, '1', 'monthly', '98.88', '2018-09-10', '24.72', '2018-10-10', '3.60', ''),
+(6, 49, '1', 'monthly', '98.88', '2018-09-10', '24.72', '2018-10-10', '3.60', ''),
+(7, 52, '1', 'monthly', '98.88', '2018-09-10', '24.72', '2018-10-10', '3.60', ''),
+(8, 53, '1', 'monthly', '395.52', '2018-09-10', '98.88', '2018-10-10', '14.40', ''),
+(9, 54, '1', 'monthly', '98.88', '2018-09-10', '24.72', '2018-10-10', '3.60', ''),
+(10, 55, '1', 'monthly', '395.52', '2018-09-11', '98.88', '2018-10-11', '14.40', ''),
+(11, 56, '1', 'monthly', '98.88', '2018-09-11', '24.72', '2018-10-11', '3.60', ''),
+(12, 57, '1', 'monthly', '98.88', '2018-09-11', '24.72', '2018-10-11', '3.60', ''),
+(13, 59, '1', 'monthly', '98.88', '2018-09-11', '24.72', '2018-10-11', '3.60', ''),
+(14, 60, '1', 'weekly', '24.72', '2018-09-11', '24.72', '2018-10-11', '3.60', ''),
+(15, 61, '1', 'monthly', '98.88', '2018-09-11', '24.72', '2018-10-11', '3.60', ''),
+(16, 61, '1', 'monthly', '98.88', '2018-09-11', '24.72', '2018-10-11', '3.60', ''),
+(17, 62, '1', 'monthly', '37080.00', '2018-09-11', '9270.00', '2018-10-11', '1350.00', ''),
+(18, 65, '1', 'monthly', '96.00', '2018-09-13', '24.00', '2018-10-13', '0.00', 'paid'),
+(19, 68, '1', 'monthly', '0.00', '2018-09-13', '0.00', '2018-10-13', '0.00', ''),
+(20, 69, '1', 'monthly', '1900.00', '2018-09-13', '500.00', '2018-10-13', '0.00', '');
 
 -- --------------------------------------------------------
 
@@ -407,7 +504,8 @@ INSERT INTO `user` (`user_id`, `username`, `password`, `name`, `status`, `branch
 (1, 'admin', 'a1Bz20ydqelm8m1wql21232f297a57a5a743894a0e4a801fc3', 'John Smith', 'active', 1),
 (4, 'user', 'a1Bz20ydqelm8m1wql21232f297a57a5a743894a0e4a801fc3', 'Mona Lisa', 'active', 2),
 (5, 'Mikee', 'a1Bz20ydqelm8m1wql70a5119905ec54b3edf78c6f515ac7b2', 'Mikee', 'active', 1),
-(6, 'administrator', 'a1Bz20ydqelm8m1wql21232f297a57a5a743894a0e4a801fc3', 'Giu Matthew', 'active', 0);
+(6, 'administrator', 'a1Bz20ydqelm8m1wql21232f297a57a5a743894a0e4a801fc3', 'Giu Matthew', 'active', 0),
+(7, 'admin', 'a1Bz20ydqelm8m1wql21232f297a57a5a743894a0e4a801fc3', 'tae', 'active', 3);
 
 --
 -- Indexes for dumped tables
@@ -506,71 +604,86 @@ ALTER TABLE `user`
 --
 ALTER TABLE `branch`
   MODIFY `branch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cust_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `history_log`
 --
 ALTER TABLE `history_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3168;
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3218;
+
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `prod_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `purchase_request`
 --
 ALTER TABLE `purchase_request`
   MODIFY `pr_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `sales`
 --
 ALTER TABLE `sales`
-  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `sales_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+
 --
 -- AUTO_INCREMENT for table `sales_details`
 --
 ALTER TABLE `sales_details`
-  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `sales_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
 --
 -- AUTO_INCREMENT for table `stockin`
 --
 ALTER TABLE `stockin`
-  MODIFY `stockin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `stockin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `temp_trans`
 --
 ALTER TABLE `temp_trans`
-  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `temp_trans_id` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT for table `term`
 --
 ALTER TABLE `term`
-  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
