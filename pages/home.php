@@ -171,6 +171,25 @@ endif;
                           </a>
                         </div>
                       </div><!-- ./col -->
+					  
+					  
+                      <div class="col-lg-4 col-xs-6">
+                        <!-- small box -->
+                        <div class="small-box bg-green">
+                          <div class="inner">
+                            <h3>History</h3>
+                            <p>Company/Distributor</p>
+                          </div>
+                          <div class="icon" style="margin-top:10px">
+                            <i class="glyphicon glyphicon-time"></i>
+                          </div>
+                          <a href="product.php" class="small-box-footer">
+                            Go <i class="fa fa-arrow-circle-right"></i>
+                          </a>
+                        </div>
+                      </div><!-- ./col -->
+					  
+					  
                   </div><!--row-->
                   
       

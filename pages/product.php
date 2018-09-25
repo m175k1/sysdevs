@@ -108,7 +108,7 @@ endif;
                   <h3 class="box-title">Product List</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                  <table id="" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                       	<th>Picture</th>
@@ -126,13 +126,20 @@ endif;
                     <tbody>
 <?php
 		$branch=$_SESSION['branch'];
-		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
+		$page = (isset($_SESSION['page'])) ? $_SESSION['page'] : 1;  
+		$pagination = (isset($_GET['pagination'])) ? $_GET['pagination'] : 0;		
+		if ($pagination == 0 ){			
+		$pagination = 1;
+		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_id desc limit 10")or die(mysqli_error());
+		$querycounter = mysqli_query($con,"select prod_id from product where branch_id = '$branch' order by prod_name")or die(mysqli_error());
+		$num_rows = mysqli_num_rows($querycounter);
+		$num_page = intdiv($num_rows,10);
 		while($row=mysqli_fetch_array($query)){
               $x = $row['supplier_id'];
               $cat = $row['cat_id'];
 			  $prod_id = $row['prod_id'];
 			  $base_price = $row['base_price'];
-            $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
+			$sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
                 if (mysqli_num_rows($sup) > 0 ){
                     while($row2=mysqli_fetch_array($sup)){
                           $sup2 = $row2['supplier_name'];
@@ -148,11 +155,7 @@ endif;
                     }
                 }else{
                     $cat2 = "Category is erased";
-                }
-		
-			
-               
-
+                }	
 ?>
                       <tr>
                       	<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['prod_pic'];?>"></td>
@@ -254,8 +257,154 @@ endif;
         </div><!--end of modal-dialog-->
  </div>
  <!--end of modal-->                    
-<?php }?>					  
-                    </tbody>
+<?php 
+		}
+}else{
+		
+		$pagination = (isset($_GET['pagination'])) ? $_GET['pagination'] : 0;
+		$pagination = intval($pagination) + 1;		
+		$pag_url = $pagination * 10;
+		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_id desc limit 10 OFFSET $pag_url")or die(mysqli_error());
+		$querycounter = mysqli_query($con,"select prod_id from product where branch_id = '$branch' order by prod_name")or die(mysqli_error());
+		$num_rows = mysqli_num_rows($querycounter);
+		$num_page = intdiv($num_rows,10);
+		$remainder = $num_rows % 10;
+		while($row=mysqli_fetch_array($query)){
+              $x = $row['supplier_id'];
+              $cat = $row['cat_id'];
+			  $prod_id = $row['prod_id'];
+			  $base_price = $row['base_price'];
+            $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
+                if (mysqli_num_rows($sup) > 0 ){
+                    while($row2=mysqli_fetch_array($sup)){
+                          $sup2 = $row2['supplier_name'];
+                    }
+                }else{
+                    $sup2 = "Supplier is erased";
+                }
+
+              $cat=mysqli_query($con,"select cat_name from category where cat_id='$cat'")or die(mysqli_error());
+                if (mysqli_num_rows($cat) > 0 ){
+                    while($row3=mysqli_fetch_array($cat)){
+                          $cat2 = $row3['cat_name'];
+                    }
+                }else{
+                    $cat2 = "Category is erased";
+                }
+				
+		
+		
+	
+?>
+                      <tr>
+                      	<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['prod_pic'];?>"></td>
+                        <td><?php echo $row['serial'];?></td>
+                        <td><?php echo $row['prod_name'];?></td>
+                        <td><?php echo $row['prod_desc'];?></td>
+						            <td><?php if(isset($sup2)){echo $sup2;
+                        }else{
+                          
+                        } ?></td>
+                        <td><?php echo $row['prod_qty'];?></td>
+            						<td><?php echo number_format($base_price,2);?></td>
+            						<td><?php echo $cat2 ?></td>
+            						<td><?php echo $row['reorder'];?></td>
+                        <td>
+				<a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
+			 
+						</td>
+                      </tr>
+<div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+	<div class="modal-dialog">
+	  <div class="modal-content" style="height:auto">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Update Product Details</h4>
+              </div>
+              <div class="modal-body">
+			  <form class="form-horizontal" method="post" action="product_update.php" enctype='multipart/form-data'>
+        <div class="form-group">
+          <label class="control-label col-lg-3" for="price">Serial #</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" id="price" name="serial" value="<?php echo $row['serial'];?>" required>  
+          </div>
+        </div>
+                
+				<div class="form-group">
+					<label class="control-label col-lg-3" for="name">Product Name</label>
+					<div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['prod_id'];?>" required>  
+					  <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['prod_name'];?>" required>  
+					</div>
+				</div> 
+        <div class="form-group">
+          <label class="control-label col-lg-3" for="name">Description</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" id="name" name="desc" value="<?php echo $row['prod_desc'];?>" required>  
+          </div>
+        </div> 
+				<div class="form-group">
+					<label class="control-label col-lg-3" for="file">Distributor</label>
+					<div class="col-lg-9">
+					    <select class="form-control select2" style="width: 100%;" name="supplier" required>
+						  <option value="<?php echo $row['supplier_id'];?>"><?php echo $sup2;?></option>				    
+							   
+					     
+					    </select>
+					</div>
+				</div> 
+				
+				
+				
+				<div class="form-group">
+							<label class="control-label col-lg-3" >Company Name</label>
+							<div class="col-lg-9">
+							  <select class="form-control select2" style="width: 100%;" name="category" required>
+              <option value="<?php echo $row['cat_id'];?>"><?php echo $cat2;?></option>
+                <?php
+            
+              $queryc=mysqli_query($con,"select * from category order by cat_name")or die(mysqli_error());
+                while($rowc=mysqli_fetch_array($queryc)){
+                ?>
+                  <option value="<?php echo $rowc['cat_id'];?>"><?php echo $rowc['cat_name'];?></option>
+                <?php }?>
+              </select>
+							</div><!-- /.input group -->
+						  </div><!-- /.form group -->
+				<div class="form-group">
+					<label class="control-label col-lg-3" for="price">Reorder</label>
+					<div class="col-lg-9">
+					  <input type="number" class="form-control" id="price" name="reorder" value="<?php echo $row['reorder'];?>" required>  
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-3" for="price">Picture</label>
+					<div class="col-lg-9"> 
+					  <input type="hidden" class="form-control" id="price" name="image1" value="<?php echo $row['prod_pic'];?>"> 
+					  <input type="file" class="form-control" id="price" name="image">  
+					</div>
+				</div>
+              </div><br><br><br><br><br><br><br>
+              <div class="modal-footer">
+        <button class="btn btn-warning deleteButton" value="<?php echo $row['prod_id']?>">Delete</button>
+		<button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+			  </form>
+            </div>
+			
+        </div><!--end of modal-dialog-->
+ </div>
+ <!--end of modal-->   
+
+<?php 
+		}
+	}
+	
+?>
+
+
+ </tbody>
                     <tfoot>
                       <tr>
                       	<th>Picture</th>
@@ -271,6 +420,41 @@ endif;
                       </tr>					  
                     </tfoot>
                   </table>
+
+				  <nav aria-label="Page navigation example">
+<?php 	 
+	if($pagination != 1){
+		$pagination_prev = $pagination - 2;	
+	}	
+	$pagination_1 = $pagination -1;
+	if( $num_page > 1 ){
+		$pagination_2 = $pagination;
+		if( $num_page > 2 ){
+			$pagination_3 = $pagination + 1;
+			if( $num_page > 3 ){
+				$pagination_4 = $pagination + 2;
+			}
+		}
+	}
+		
+	if($pagination <= $num_page){
+		if(($pagination == $num_page) and ($remainder == 0)){
+			
+		}else{
+			$pagination_next = $pagination;	
+		}
+	}		
+	
+?>
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="<?php if(isset($pagination_prev)){ echo 'product.php?pagination=' . $pagination_prev; } ?>">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="product.php?pagination=<?php echo $pagination_1; ?>"><?php if(isset($pagination_2)){echo $pagination_2; }else{ echo '1';} ?></a></li>
+    <?php if(isset($pagination_2)){?><li class="page-item"><a class="page-link" href="product.php?pagination=<?php echo $pagination_2; ?>"><?php if(isset($pagination_3)){ echo $pagination_3; } else echo '2'; ?></a></li> <?php } ?>
+    <li class="page-item"><a class="page-link" href="product.php?pagination=<?php echo $pagination_3; ?>"><?php if(isset($pagination_4)){ echo $pagination_4; } else echo '3'; ?></a></li>
+    <li class="page-item"><a class="page-link" href="product.php?pagination=<?php echo $pagination_next; ?>">Next</a></li>
+  </ul>
+</nav>
+
                 </div><!-- /.box-body -->
  
             </div><!-- /.col -->

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$branch=$_SESSION['branch'];
+$branch = $_SESSION['branch'];
 include('../dist/includes/dbcon.php');
 
 
@@ -18,8 +18,38 @@ if($_POST['process']=='delete'){
 	   		echo "Not successfully ";
 	   }
 	   mysqli_close($con);
-
 }
+
+
+if($_POST['process']=='addproduct'){
+
+	$name = $_POST['prod_name'];
+	$price = 0;
+	$desc = $_POST['prod_desc'];
+	$supplier = $_POST['supplier'];
+	$reorder = $_POST['reorder'];
+	$category = $_POST['category'];
+	$serial = $_POST['serial'];
+
+	
+	$query2=mysqli_query($con,"select * from product where prod_name='$name' and branch_id='$branch'")or die(mysqli_error($con));
+		$count=mysqli_num_rows($query2);
+
+		if ($count>0)
+		{
+			echo "Not added";
+		}
+		else
+		{	
+
+				mysqli_query($con,"INSERT INTO product(prod_name,prod_price,prod_desc,cat_id,reorder,supplier_id,branch_id,serial)
+			VALUES('$name','$price','$desc','$category','$reorder','$supplier','$branch','$serial')")or die(mysqli_error($con));
+
+			echo "Success Add";
+					 
+		}
+}
+	
 
 if($_POST['process']=='categories'){
 	$cat_name = $_POST['cat_name'];
