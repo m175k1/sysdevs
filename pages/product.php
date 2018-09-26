@@ -133,7 +133,7 @@ endif;
 		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_id desc limit 10")or die(mysqli_error());
 		$querycounter = mysqli_query($con,"select prod_id from product where branch_id = '$branch' order by prod_name")or die(mysqli_error());
 		$num_rows = mysqli_num_rows($querycounter);
-		$num_page = intdiv($num_rows,10);
+		$num_page = (int)floor(abs($num_rows/10));
 		while($row=mysqli_fetch_array($query)){
               $x = $row['supplier_id'];
               $cat = $row['cat_id'];
@@ -267,7 +267,7 @@ endif;
 		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_id desc limit 10 OFFSET $pag_url")or die(mysqli_error());
 		$querycounter = mysqli_query($con,"select prod_id from product where branch_id = '$branch' order by prod_name")or die(mysqli_error());
 		$num_rows = mysqli_num_rows($querycounter);
-		$num_page = intdiv($num_rows,10);
+		$num_page = (int)floor(abs($num_rows/10));
 		$remainder = $num_rows % 10;
 		while($row=mysqli_fetch_array($query)){
               $x = $row['supplier_id'];
