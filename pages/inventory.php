@@ -92,7 +92,11 @@ endif;
 				<?php
 include('../dist/includes/dbcon.php');
 
+
+
+
 $branch=$_SESSION['branch'];
+
     $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());
   
         $row=mysqli_fetch_array($query);
@@ -124,16 +128,49 @@ $branch=$_SESSION['branch'];
                     <tbody>
 <?php
 		$branch=$_SESSION['branch'];
-		$query=mysqli_query($con,"select * from product natural join supplier where branch_id='$branch' order by prod_name")or die(mysqli_error());
-		$grand=0;
+		
+		
+				$page = (isset($_SESSION['page'])) ? $_SESSION['page'] : 1;  
+		$pagination = (isset($_GET['pagination'])) ? $_GET['pagination'] : 0;	
+$grand=0;		
+		if ($pagination == 0 ){			
+		$pagination = 1;
+		$query=mysqli_query($con,"select * from product natural join supplier where branch_id='$branch' order by prod_name desc limit 10")or die(mysqli_error());
+		$querycounter = mysqli_query($con,"select * from product natural join supplier where branch_id='$branch' order by prod_name")or die(mysqli_error());
+		$num_rows = mysqli_num_rows($querycounter);
+		$num_page = (int)floor(abs($num_rows/10));
+		
 		while($row=mysqli_fetch_array($query)){
+              $x = $row['supplier_id'];
+              $cat = $row['cat_id'];
+			  $prod_id = $row['prod_id'];
+			  $base_price = $row['base_price'];
+				
+				$sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
+                if (mysqli_num_rows($sup) > 0 ){
+                    while($row2=mysqli_fetch_array($sup)){
+                          $sup2 = $row2['supplier_name'];
+                    }
+                }else{
+                    $sup2 = "Supplier is erased";
+                }
+
+				$cat=mysqli_query($con,"select cat_name from category where cat_id='$cat'")or die(mysqli_error());
+                if (mysqli_num_rows($cat) > 0 ){
+                    while($row3=mysqli_fetch_array($cat)){
+                          $cat2 = $row3['cat_name'];
+                    }
+                }else{
+                    $cat2 = "Category is erased";
+                }		
+		
 			$total=$row['base_price']*$row['prod_qty'];
 			$grand+=$total;
 ?>
                       <tr>
                         <td><?php echo $row['serial'];?></td>
                         <td><?php echo $row['prod_name'];?></td>
-                        <td><?php echo $row['supplier_name'];?></td>
+                        <td><?php echo $sup2;?></td>
                         <td><?php echo $row['prod_qty'];?></td>
 						
 						<td><?php echo $row['base_price'];?></td>
@@ -141,14 +178,75 @@ $branch=$_SESSION['branch'];
 						<td class="text-center"><?php if ($row['prod_qty']<=$row['reorder'])echo "<span class='badge bg-red'><i class='glyphicon glyphicon-refresh'></i>Reorder</span>"; else echo "<span class='badge bg-green'><i class='glyphicon glyphicon-refresh'></i> Good</span>"; ?></td>                       
                       </tr>
 
-<?php }?>					  
+<?php }
+
+}else{
+	
+		
+		$pagination = (isset($_GET['pagination'])) ? $_GET['pagination'] : 0;
+		$pagination = intval($pagination) + 1;		
+		$pag_url = $pagination * 10;
+		$query=mysqli_query($con,"select * from product natural join supplier where branch_id='$branch' order by prod_name desc limit 10 OFFSET $pag_url")or die(mysqli_error());
+		$querycounter = mysqli_query($con,"select * from product natural join supplier where branch_id='$branch' order by prod_name desc")or die(mysqli_error());
+		$num_rows = mysqli_num_rows($querycounter);
+		$num_page = (int)floor(abs($num_rows/10));
+		while($row=mysqli_fetch_array($query)){
+              $x = $row['supplier_id'];
+              $cat = $row['cat_id'];
+			  $prod_id = $row['prod_id'];
+			  $base_price = $row['base_price'];
+			$sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
+                if (mysqli_num_rows($sup) > 0 ){
+                    while($row2=mysqli_fetch_array($sup)){
+                          $sup2 = $row2['supplier_name'];
+                    }
+                }else{
+                    $sup2 = "Supplier is erased";
+                }
+
+              $cat=mysqli_query($con,"select cat_name from category where cat_id='$cat'")or die(mysqli_error());
+                if (mysqli_num_rows($cat) > 0 ){
+                    while($row3=mysqli_fetch_array($cat)){
+                          $cat2 = $row3['cat_name'];
+                    }
+                }else{
+                    $cat2 = "Category is erased";
+                }	
+
+
+
+
+		
+			$total=$row['base_price']*$row['prod_qty'];
+			$grand+=$total;
+?>
+                      <tr>
+                        <td><?php echo $row['serial'];?></td>
+                        <td><?php echo $row['prod_name'];?></td>
+                        <td><?php echo $sup2;?></td>
+                        <td><?php echo $row['prod_qty'];?></td>
+						
+						<td><?php echo $row['base_price'];?></td>
+						<td><?php echo number_format($total,2);?></td>
+						<td class="text-center"><?php if ($row['prod_qty']<=$row['reorder'])echo "<span class='badge bg-red'><i class='glyphicon glyphicon-refresh'></i>Reorder</span>"; else echo "<span class='badge bg-green'><i class='glyphicon glyphicon-refresh'></i> Good</span>"; ?></td>                       
+                      </tr>
+
+
+
+<?php					  
+				
+				
+}
+
+		}
+?>					  
                     </tbody>
                     <tfoot>
                       <tr>
                         <th colspan="5">Total</th>
                         
 						
-						<th colspan="2">P<?php echo number_format($grand,2);?></th>
+						<th colspan="2">To follow</th>
 						
                         
                       </tr>	
@@ -178,6 +276,41 @@ $branch=$_SESSION['branch'];
                       </tr>  				  
                     </tfoot>
                   </table>
+				  
+				  <nav aria-label="Page navigation example">
+<?php 	 
+	if($pagination != 1){
+		$pagination_prev = $pagination - 2;	
+	}	
+	$pagination_1 = $pagination -1;
+	if( $num_page > 1 ){
+		$pagination_2 = $pagination;
+		if( $num_page > 2 ){
+			$pagination_3 = $pagination + 1;
+			if( $num_page > 3 ){
+				$pagination_4 = $pagination + 2;
+			}
+		}
+	}
+		
+	if($pagination <= $num_page){
+		if(($pagination == $num_page) and ($remainder == 0)){
+			
+		}else{
+			$pagination_next = $pagination;	
+		}
+	}		
+	
+?>
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="<?php if(isset($pagination_prev)){ echo 'inventory.php?pagination=' . $pagination_prev; } ?>">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="inventory.php?pagination=<?php echo $pagination_1; ?>"><?php if(isset($pagination_2)){echo $pagination_2; }else{ echo '1';} ?></a></li>
+    <?php if(isset($pagination_2)){?><li class="page-item"><a class="page-link" href="inventory.php?pagination=<?php echo $pagination_2; ?>"><?php if(isset($pagination_3)){ echo $pagination_3; } else echo '2'; ?></a></li> <?php } ?>
+    <li class="page-item"><a class="page-link" href="inventory.php?pagination=<?php echo $pagination_3; ?>"><?php if(isset($pagination_4)){ echo $pagination_4; } else echo '3'; ?></a></li>
+    <li class="page-item"><a class="page-link" href="inventory.php?pagination=<?php echo $pagination_next; ?>">Next</a></li>
+  </ul>
+</nav>
+
                 </div><!-- /.box-body -->
 
 	      </div><!-- /.box -->
