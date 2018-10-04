@@ -4,7 +4,7 @@
                 <ul class="nav side-menu">
            <li><a href = "application.php"><i class="fa fa-file"></i> Application<span class="fa fa-chevron-right"></span></a>     
 				   <li><a href = "reports.php"><i class="fa fa-file"></i> Reports per branch<span class="fa fa-chevron-right"></span></a>
-				   <li><a><i class="fa fa-building"></i>Inventory per branch <span class="fa fa-chevron-down"></span></a>
+				   <li style="display:none;"><a><i class="fa fa-building"></i>Inventory per branch <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
 					<?php 
 					include 'dbcon.php';

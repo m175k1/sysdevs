@@ -75,7 +75,7 @@ endif;
                     </div>
                   </div><!--row-->
                   <div class="row">
-                    <div class="col-md-4">  
+                    <div class="col-md-4" style="display: none;">  
                       <label for="date">Birthday</label>
                       <div class="input-group col-md-12">
                           <?php echo date("M d, Y",strtotime($row['bday']));?>
@@ -105,7 +105,7 @@ endif;
                     </div>
                   
                   </div><!--row-->  
-                  <div class="row">
+                  <div class="row" style="display: none;">
                     <div class="col-md-6">  
                       <label for="date">House Status</label>
                       <div class="input-group col-md-6">

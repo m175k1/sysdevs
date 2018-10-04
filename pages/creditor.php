@@ -108,9 +108,9 @@ endif;
                         <th>First Name</th>
                         <th>Address</th>
 						            <th>Contact #</th>
-                        <th>CI Name</th>
-                        <th>CI Date</th>
-                        <th>Remarks</th>
+                        <th style="display: none;">CI Name</th>
+                        <th style="display: none;">CI Date</th>
+                        <th style="display: none;">Remarks</th>
 						            <th>Application Status</th>
                         <th>Action</th>
                       </tr>
@@ -136,9 +136,9 @@ endif;
                         <td><?php echo $row['cust_first'];?></td>
                         <td><?php echo $row['cust_address'];?></td>
 				            		<td><?php echo $row['cust_contact'];?></td>
-                        <td><?php echo $row['ci_name'];?></td>
-                        <td><?php echo $row['ci_date'];?></td>
-                        <td><?php echo $row['ci_remarks'];?></td>
+                        <td style="display: none;"><?php echo $row['ci_name'];?></td>
+                        <td style="display: none;"><?php echo $row['ci_date'];?></td>
+                        <td style="display: none;"><?php echo $row['ci_remarks'];?></td>
 					
 						<td><?php echo $row['credit_status'];//if ($row['balance']==0) 
 								//echo "<span class='label label-danger'>inactive</span>";
@@ -240,9 +240,9 @@ endif;
                         <th>Customer First Name</th>
                         <th>Address</th>
 						            <th>Contact #</th>
-                        <th>CI Name</th>
-                        <th>CI Date</th>
-                        <th>Remarks</th>
+                        <th style="display: none;">CI Name</th>
+                        <th style="display: none;">CI Date</th>
+                        <th style="display: none;">Remarks</th>
 						            <th>Application Status</th>
                         <th>Action</th>
                       </tr>					  

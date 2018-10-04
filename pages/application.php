@@ -99,10 +99,10 @@ endif;
                       </div><!-- /.form group -->
                   </div><!--row-->
                   <div class="row">
-                    <div class="col-md-4">  
+                    <div class="col-md-4" style="display: none;">  
                       <label for="date">Birthday</label>
                       <div class="input-group col-md-12">
-                          <input type="date" class="form-control pull-right" id="date" name="bday" placeholder="Customer First Name" required>
+                          <input type="date" class="form-control pull-right" id="date" name="bday" placeholder="Customer First Name">
                       </div><!-- /.input group -->
                     </div>
 
@@ -129,7 +129,7 @@ endif;
                     </div>
                   
                   </div><!--row-->  
-                  <div class="row">
+                  <div class="row" style="display: none;">
                     <div class="col-md-6">  
                       <label for="date">House Status</label>
                       <div class="input-group col-md-6">
