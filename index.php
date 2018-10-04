@@ -32,18 +32,6 @@
        <b>Sales & Inventory with Credit Management System</b>
      </div>
 
-    <section>
-      <div class="set">
-        
-        <div><img src="./dist/img/leaf2.png"></div>
-        <div><img src="./dist/img/leaf3.png"></div>
-        <div><img src="./dist/img/leaf4.png"></div>
-        <div><img src="./dist/img/leaf5.png"></div>
-        <div><img src="./dist/img/leaf2.png"></div>
-        <div><img src="./dist/img/leaf3.png"></div>
-        <div><img src="./dist/img/leaf4.png"></div>
-        <div><img src="./dist/img/leaf5.png"></div>
-    </section>
 
        
     <div class="login-box">

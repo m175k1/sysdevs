@@ -23,6 +23,13 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
+       ::-webkit-scrollbar{
+  width: 12px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#000, green);
+  border-radius: 6px;
+}
     .box-primary{
       font-family: 'Comfortaa', cursive;
         background-color: transparent;
