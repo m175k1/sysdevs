@@ -182,7 +182,7 @@ endif;
                         <th>Amount</th>
                         <th>Interest</th>
                         <th>Remaining</th>
-                        <th>Date of Payment</th>
+                        <th></th>
                         <th>Status</th>
                         
                       </tr>
@@ -194,7 +194,7 @@ endif;
     while($row1=mysqli_fetch_array($query1)){
 
       $payment_date=date("M d, Y",strtotime($row1['payment_date']));
-    
+      
     
      ?>
                       <tr>
@@ -204,9 +204,9 @@ endif;
                         echo number_format($row1['interest'],2);
                         ?></td>
                         <td><?php 
-                        echo number_format($row1['due']-$row1['payment'],2);
+                        echo number_format($row1['remaining'],2);
                         ?></td>
-                        <td><?php echo $payment_date;?></td>
+                        <td></td>
                         <td><?php 
                         if ($row1['status']=='paid') 
                         echo "<span class='badge bg-green'>paid</span>";

@@ -340,7 +340,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
 						 
               <div class="form-group" id="tendered">
                 <label for="date">Cash Tendered</label><br>
-                <input type="text" style="text-align:right" class="form-control" onFocus="startCalc();" onBlur="stopCalc();"  id="cash" name="tendered" placeholder="Cash Tendered" value="0">
+                <input type="text" style="text-align:right" class="form-control" onFocus="startCalc();" onBlur="stopCalc();"  id="cash" name="tendered" placeholder="Cash Tendered" required>
               </div><!-- /.form group -->
               <div class="form-group" id="change">
                 <label for="date">Change</label><br>

@@ -91,7 +91,7 @@ endif;
                       <div class="form-group">
                         <label for="date" class="col-sm-3 control-label">Last Name</label>
                         <div class="input-group col-sm-8">
-                          <input type="text" class="form-control pull-right" id="date" name="last" placeholder="Customer Last Name">
+                          <input type="text" class="form-control pull-right" id="date" name="last" placeholder="Customer Last Name" required>
                         </div><!-- /.input group -->
                       </div><!-- /.form group -->
                     </div>

@@ -127,7 +127,7 @@ javascript:window.history.forward(1);
             <div class="form-group">
               <label for="date">Selling Price</label>
               <div class="input-group">
-                <input type="number" class="form-control pull-right" id="date" name="qty" placeholder="Price" tabindex="2" value="1"  required>
+                <input type="number" class="form-control pull-right" id="price" name="price" placeholder="Price" tabindex="2" value="1"  required>
               </div><!-- /.input group -->
             </div><!-- /.form group -->
            </div>
@@ -144,6 +144,8 @@ javascript:window.history.forward(1);
 					
 					<div class="col-md-12">
 <?php 
+$base_total = 0;
+$total_profit = 0;
 $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or die(mysqli_error());
      $rowb=mysqli_fetch_array($queryb);
         $balance=$rowb['balance'];
@@ -154,65 +156,70 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                     <thead>
                       <tr>
                         <th>Qty</th>
-						       
+                   
                         <th>Product Name</th>
-						            <th>Selling Price</th>
+                        <th>Selling Price</th>
                         <th>Total Amount</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
-		
-		$query=mysqli_query($con,"select * from temp_trans natural join product where branch_id='$branch'")or die(mysqli_error());
-			$grand=0;
-		while($row=mysqli_fetch_array($query)){
-				$id=$row['temp_trans_id'];
-				$total= $row['qty']*$row['price'];
-				$grand=$grand+$total;
-		
+    
+    $query=mysqli_query($con,"select * from temp_trans natural join product where branch_id='$branch'")or die(mysqli_error());
+      $grand=0;
+    while($row=mysqli_fetch_array($query)){
+        $id=$row['temp_trans_id'];
+        $total= $row['qty']*$row['price'];
+        $grand=$grand+$total;
+        $base_price = $row['base_price'] * $row['qty'];
+        $base_total = $base_total + $base_price;            
 ?>
                       <tr >
-						<td><?php echo $row['qty'];?></td>
+            <td><?php echo $row['qty'];?></td>
                         <td class="record"><?php echo $row['prod_name'];?></td>
-						<td><?php echo number_format($row['price'],2);?></td>
-						<td><?php echo number_format($total,2);?></td>
+            <td><?php echo number_format($row['price'],2);?></td>
+            <td><?php echo number_format($total,2);?></td>
                         <td>
-							
-							<a href="#updateordinance<?php echo $row['temp_trans_id'];?>" data-target="#updateordinance<?php echo $row['temp_trans_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
+              
+              <a href="#updateordinance<?php echo $row['temp_trans_id'];?>" data-target="#updateordinance<?php echo $row['temp_trans_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
 
               <a href="#delete<?php echo $row['temp_trans_id'];?>" data-target="#delete<?php echo $row['temp_trans_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-trash text-red"></i></a>
               
-						</td>
+            </td>
                       </tr>
-					  <div id="updateordinance<?php echo $row['temp_trans_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-	<div class="modal-dialog">
-	  <div class="modal-content" style="height:auto">
+            <div id="updateordinance<?php echo $row['temp_trans_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  
+  
+  
+  <div class="modal-dialog">
+    <div class="modal-content" style="height:auto">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span></button>
                 <h4 class="modal-title">Update Sales Details</h4>
               </div>
               <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'>
-					<input type="hidden" class="form-control" name="tran" value="credit">
-					<input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>  	
-					<input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
-				<div class="form-group">
-					<label class="control-label col-lg-3" for="price">Qty</label>
-					<div class="col-lg-9">
-					  <input type="text" class="form-control" id="price" name="qty" value="<?php echo $row['qty'];?>" required>  
-					</div>
-				</div>
-				
+       <!--  <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'> -->
+       <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'>
+          <input type="hidden" class="form-control" name="tran" value="purchase">   
+          <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
+          <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
+        <div class="form-group">
+          <label class="control-label col-lg-3" for="price">Qty</label>
+          <div class="col-lg-9">
+            <input type="text" class="form-control" id="price" name="qty" value="<?php echo $row['qty'];?>" required>  
+          </div>
+        </div>
+        
               </div><br>
               <div class="modal-footer">
-		            <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
-			  </form>
+        </form>
             </div>
-			
+      
         </div><!--end of modal-dialog-->
  </div>
  <!--end of modal-->  
@@ -225,7 +232,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                 <h4 class="modal-title">Delete Item</h4>
               </div>
               <div class="modal-body">
-        <form class="form-horizontal" method="post" action="credit_transaction_del.php" enctype='multipart/form-data'>
+        <form class="form-horizontal" method="post" action="transaction_del.php" enctype='multipart/form-data'>
           <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
           <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
         <p>Are you sure you want to remove <?php echo $row['prod_name'];?>?</p>
@@ -241,7 +248,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
         </div><!--end of modal-dialog-->
  </div>
  <!--end of modal-->  
-<?php }?>					  
+<?php }?>           
                     </tbody>
                     
                   </table>

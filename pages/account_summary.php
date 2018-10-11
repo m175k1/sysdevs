@@ -192,7 +192,7 @@ endif;
                     <tbody>
 <?php
    // $cid=$_REQUEST['cid'];
-    $query1=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join term where cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
+    $query1=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer natural join term where cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
     while($row1=mysqli_fetch_array($query1)){
     
 ?>
@@ -200,10 +200,10 @@ endif;
                         <td><?php echo $row1['term_id'];?></td>
                         <td><?php echo $row1['qty'];?></td>
                         <td><?php echo $row1['prod_name'];?></td>
-                        <td><?php echo $row1['prod_price'];?></td>
+                        <td><?php echo $row1['price'];?></td>
                         <td><?php echo $row1['term'];?></td>
                         <td><?php echo $row1['payable_for'];?> month/s</td>
-                        <td><?php echo $row1['due'];?></td>
+                        <td><?php echo $row1['balance'];?></td>
                         <td><?php echo date("M d, Y",strtotime($row1['date_added']));?></td>
                        <td><?php echo date("M d, Y",strtotime($row1['due_date']));?></td>
                         <td><?php 
