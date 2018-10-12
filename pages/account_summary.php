@@ -119,7 +119,7 @@ endif;
    // $cid=$_REQUEST['cid'];
 
 
-    $query5=mysqli_query($con,"select * from sales left join sales_details on sales.sales_id = sales_details.sales_id left join payment on sales.sales_id = payment.sales_id left join term on sales.sales_id = term.sales_id left join product on sales_details.prod_id = product.prod_id left join customer on sales.cust_id = customer.cust_id where sales.cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
+    $query5=mysqli_query($con,"select * from payment where cust_id='$cid'")or die(mysqli_error($con));
     $total = 0;
 
     while($row5=mysqli_fetch_array($query5)){
