@@ -108,6 +108,7 @@ endif;
           <?php 
            $cid=$_REQUEST['cid'];
            $sid=$_REQUEST['sid'];
+           $balance = $_REQUEST['balance'];
           ?>
           <section class="content-header">
             <h1>
@@ -156,7 +157,7 @@ endif;
                   <div class="form-group">
                     <label for="date">Balance</label>
                     <div class="input-group col-md-12">
-                      <h3><?php echo number_format($row['balance'],2);?></h3>
+                      <h3><?php echo number_format($balance,2);?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
                  
@@ -194,7 +195,7 @@ endif;
     while($row1=mysqli_fetch_array($query1)){
 
       $payment_date=date("M d, Y",strtotime($row1['payment_date']));
-      
+      $remainder = $row1['remaining'];
     
      ?>
                       <tr>
@@ -220,7 +221,10 @@ endif;
                       </td>
                         
                       </tr>
-    <?php }?>       
+    <?php 
+
+
+  }?>       
                       </tbody>
                   
                   </table>
@@ -258,7 +262,7 @@ endif;
                              <div class="form-group">
                         				  <label class="control-label col-lg-3" for="tlast">Amount</label>
                         				  <div class="col-lg-8">
-                                    <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $row['balance'];?>">  
+                                    <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $remainder;?>">  
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
 				                           </div>
                              </div> 

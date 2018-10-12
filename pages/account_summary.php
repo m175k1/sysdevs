@@ -105,7 +105,7 @@ endif;
             }
             else
             {
-            $cid=$_POST['cid'];
+            $cid = $_POST['cid'];
           }
           ?>
             <h1>
@@ -114,6 +114,20 @@ endif;
             </h1>
             
           </section>
+
+<?php
+   // $cid=$_REQUEST['cid'];
+
+
+    $query5=mysqli_query($con,"select * from sales left join sales_details on sales.sales_id = sales_details.sales_id left join payment on sales.sales_id = payment.sales_id left join term on sales.sales_id = term.sales_id left join product on sales_details.prod_id = product.prod_id left join customer on sales.cust_id = customer.cust_id where sales.cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
+    $total = 0;
+
+    while($row5=mysqli_fetch_array($query5)){
+      
+    $total = $total + $row5['remaining'];
+    }
+?>
+
 
           <!-- Main content -->
           <section class="content">
@@ -151,7 +165,7 @@ endif;
                   <div class="form-group">
                     <label for="date">Balance</label>
                     <div class="input-group col-md-12">
-                      <h3><?php echo number_format($row['balance'],2);?></h3>
+                      <h3><?php echo number_format($total,2);?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->				  
                   <a href="<?php if ($row['balance']>=0) echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-primary">
@@ -192,7 +206,11 @@ endif;
                     <tbody>
 <?php
    // $cid=$_REQUEST['cid'];
-    $query1=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer natural join term where cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
+
+
+    $query1=mysqli_query($con,"select * from sales left join sales_details on sales.sales_id = sales_details.sales_id left join payment on sales.sales_id = payment.sales_id left join term on sales.sales_id = term.sales_id left join product on sales_details.prod_id = product.prod_id left join customer on sales.cust_id = customer.cust_id where sales.cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
+
+
     while($row1=mysqli_fetch_array($query1)){
     
 ?>
@@ -203,7 +221,7 @@ endif;
                         <td><?php echo $row1['price'];?></td>
                         <td><?php echo $row1['term'];?></td>
                         <td><?php echo $row1['payable_for'];?> month/s</td>
-                        <td><?php echo $row1['balance'];?></td>
+                        <td><?php echo $row1['remaining'];?></td>
                         <td><?php echo date("M d, Y",strtotime($row1['date_added']));?></td>
                        <td><?php echo date("M d, Y",strtotime($row1['due_date']));?></td>
                         <td><?php 
@@ -214,12 +232,16 @@ endif;
 
                       </td>
                       <td>
-                        <a href="payment.php?cid=<?php echo $row['cust_id'];?>&sid=<?php echo $row1['sales_id'];?>"><i class="glyphicon glyphicon-share-alt"></i></a>
+                        <a href="payment.php?cid=<?php echo $row['cust_id'];?>&sid=<?php echo $row1['sales_id'];?>&balance=<?php echo $total;?>"><i class="glyphicon glyphicon-share-alt"></i></a>
                         <a href="reprint.php?sid=<?php echo $row1['sales_id'];?>"><i class="glyphicon glyphicon-print"></i></a>
                         <a href="print.php?sid=<?php echo $row1['sales_id'];?>&cid=<?php echo $row['cust_id'];?>"><i class="glyphicon glyphicon-list"></i></a>
                       </td>  
                       </tr>
-    <?php }?>       
+
+    <?php 
+
+
+    }?>       
                       </tbody>
                   
                   </table>
@@ -340,7 +362,7 @@ endif;
                              <div class="form-group">
 				  <label class="control-label col-lg-3" for="tlast">Amount</label>
 				  <div class="col-lg-8">
-            <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $row['balance'];?>">  
+            <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $total;?>">  
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
 				  </div>
                              </div> 

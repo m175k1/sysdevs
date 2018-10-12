@@ -7,7 +7,8 @@ date_default_timezone_set('Asia/Manila');
 	$cid = $_POST['cid'];	
 	$sid = $_POST['sid'];
 	$amount = $_POST['amount'];
-	$balance = $_POST['balance'];
+	$balance = $_POST['balance'];    
+    $rem = $balance - $amount;
 	//$interest = $_POST['interest'];
 	date_default_timezone_set("Asia/Manila"); 
 	$date = date("Y-m-d");
@@ -15,7 +16,7 @@ date_default_timezone_set('Asia/Manila');
 	$branch = $_SESSION['branch'];
 	$date1 = date("Y-m-d H:i:s");
 	
-	mysqli_query($con,"UPDATE customer SET balance=balance-'$amount' where cust_id='$cid'") or die(mysqli_error($con)); 
+	mysqli_query($con,"UPDATE customer SET balance='$rem' where cust_id='$cid'") or die(mysqli_error($con)); 
 
 	$query3=mysqli_query($con,"select * from payment natural join customer where cust_id='$cid' and remaining<>'0' order by payment_for")or die(mysqli_error($con));
     		while ($row3=mysqli_fetch_array($query3)){
@@ -24,7 +25,7 @@ date_default_timezone_set('Asia/Manila');
     			$due=$row3['due'];
     			$total=$row3['due']+$row3['interest'];
     			$bal=$row3['remaining'];
-    			$sid=$row3['sales_id'];
+    			
     			$payment_date=date("Y-m-d",strtotime($row3['payment_for']));
     			    			
     			if ($amount>=$bal)
@@ -42,20 +43,16 @@ date_default_timezone_set('Asia/Manila');
     						$rebate=0;		
     					}
 
-    				mysqli_query($con,"UPDATE payment SET payment='$total',user_id='$id',payment_date='$date1',status='paid',remaining='0',rebate='$rebate' where payment_id='$pid'") or die(mysqli_error($con));
+    				mysqli_query($con,"UPDATE payment SET payment='$total',user_id='$id',payment_date='$date1',status='paid',remaining='0',rebate='$rebate' where sales_id='$sid'") or die(mysqli_error($con));
 
-					$amount=$amount-$total;
-    			}
-    			elseif ($amount<=0)
-    			{
-
+					
     			}
     			else//if (($amount<$bal) and ($amount<>0))
     			{
     				//$due=$total-$amount;
     				$remaining=$bal-$amount;
-    				mysqli_query($con,"UPDATE payment SET payment='$amount',user_id='$id',payment_date='$date1',status='partially paid',remaining='$remaining' where payment_id='$pid'") or die(mysqli_error($con));
-    				$amount=$amount-$total;
+    				mysqli_query($con,"UPDATE payment SET payment='$amount',user_id='$id',payment_date='$date1',status='partially paid',remaining='$rem' where sales_id='$sid'") or die(mysqli_error($con));
+    				
     			}	
     			    
 
@@ -64,9 +61,9 @@ date_default_timezone_set('Asia/Manila');
 					$row=mysqli_fetch_array($query);
 					
 					//$sid=$row['sales_id'];
-					$balance=$row['balance'];
+					$balance=$bal;
 
-					if ($balance<=0)
+					if ($rem<=0)
 					{
 					mysqli_query($con,"UPDATE term SET status='paid' where sales_id='$sid'") or die(mysqli_error($con)); 
 					}
