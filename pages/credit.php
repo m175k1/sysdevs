@@ -58,8 +58,8 @@ javascript:window.history.forward(1);
        h4{
       font-family: 'Comfortaa', cursive;
       color:white;
-    }
-        .content-wrapper{
+      }
+      .content-wrapper{
         border-top-left-radius: 100px;
         border-top-right-radius: 100px;
       }
@@ -202,7 +202,7 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
 								<input type="text" class="form-control" id="down" name="down" tabindex="6" placeholder="Downpayment" value="<?php $down=($grand+$interest)*.2;echo $down;?>" required>
 						  </div><!-- /.form group -->
 						 
-             <div class="form-group">
+             <div class="form-group" style="display:none">
               <label for="date">Terms</label>
                 <select class="form-control select2" name="terms" tabindex="1" required>
                     
@@ -212,7 +212,7 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
                 </select>
             
               </div><!-- /.form group -->
-              <div class="form-group">
+              <div class="form-group"  style="display:none">>
               <label for="date">Payable for</label>
                 <select class="form-control select2" name="span" tabindex="1" required>
                    
@@ -223,8 +223,8 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
                     <option value="5">5 months</option>
                     <option value="6">6 months</option>
                 </select>
-             
-              </div><!-- /.form group -->
+            
+              </div>
               
               
 					</div>
@@ -236,7 +236,7 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
                   
             
                       
-                      <button class="btn btn-lg btn-block btn-success" id="daterange-btn" name="finish" type="submit"  tabindex="7">
+      <button class="btn btn-lg btn-block btn-success" id="daterange-btn" name="finish" type="submit"  tabindex="7">
                         Finish
                       </button>
 					         

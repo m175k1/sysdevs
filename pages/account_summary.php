@@ -190,7 +190,7 @@ endif;
                     <table id="" class="table table-bordered table-striped">
                   <thead>
                       <tr>
-                        <th>Credit #</th>                      
+                        <th>Credit #</th>                       
                         <th>Qty</th>
                         <th>Product</th>
                         <th>Price</th>
@@ -198,20 +198,29 @@ endif;
                         <th>Payable for</th>
                         <th>Amount Due</th>
                         <th>Order Date</th>
-                        <th>Due Date</th>
+                        <th>Months Unpaid</th>
                         <th>Payment Status</th>
                         <th>View</th>
                       </tr>
-                    </thead> 
+                    </thead>
                     <tbody>
 <?php
    // $cid=$_REQUEST['cid'];
 
+    $date=date("Y-m-d");
 
     $query1=mysqli_query($con,"select * from sales left join sales_details on sales.sales_id = sales_details.sales_id left join payment on sales.sales_id = payment.sales_id left join term on sales.sales_id = term.sales_id left join product on sales_details.prod_id = product.prod_id left join customer on sales.cust_id = customer.cust_id where sales.cust_id='$cid' order by date_added desc")or die(mysqli_error($con));
 
 
     while($row1=mysqli_fetch_array($query1)){
+        $date1=date_create($row1['date_added']);
+        $date2=date_create($date);
+        $diff=date_diff($date1,$date2);
+
+
+       $months = $diff->y * 12 + $diff->m + $diff->d / 30;
+
+        $date_warning = (int) round($months);
     
 ?>
                       <tr>
@@ -223,7 +232,8 @@ endif;
                         <td><?php echo $row1['payable_for'];?> month/s</td>
                         <td><?php echo $row1['remaining'];?></td>
                         <td><?php echo date("M d, Y",strtotime($row1['date_added']));?></td>
-                       <td><?php echo date("M d, Y",strtotime($row1['due_date']));?></td>
+                        <td class="border_marker"><input class="warning_month" type="hidden" name="notimportant" value=" <?php echo $date_warning ?>  ">
+                          <?php echo $date_warning ?></td>
                         <td><?php 
                         if ($row1['status']=='paid') 
                         echo "<span class='badge bg-green'>".$row1['status']."</span>";
@@ -299,7 +309,7 @@ endif;
                     <tbody>
 <?php
     $cid=$_REQUEST['cid'];
-    $query3=mysqli_query($con,"select * from payment natural join sales_details natural join product where cust_id='$cid' and status='paid' order by payment_date desc")or die(mysqli_error());
+    $query3=mysqli_query($con,"select * from payment natural join sales_details natural join product where cust_id='$cid' order by payment_date desc")or die(mysqli_error());
     while($row3=mysqli_fetch_array($query3)){
     
 ?>
@@ -407,7 +417,18 @@ endif;
           "info": true,
           "autoWidth": false
         });
+
       });
+
+      $(document).ready(function(){
+        $x = $(".warning_month").val()
+                  if($x == 1){
+                    $(".border_marker").css({"background-color": "#f1c40f", "color": "#fff"});    
+                  }
+                  if($x > 1){
+                    $(".border_marker").css({"background-color": "#c0392b", "color": "#fff"});    
+                  }
+      }) 
     </script>
      <script>
       $(function () {
