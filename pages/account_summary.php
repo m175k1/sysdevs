@@ -202,7 +202,7 @@ endif;
                         <th>Payment Status</th>
                         <th>View</th>
                       </tr>
-                    </thead>
+                    </thead> 
                     <tbody>
 <?php
    // $cid=$_REQUEST['cid'];

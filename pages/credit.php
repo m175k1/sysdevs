@@ -223,7 +223,7 @@ $query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysql
                     <option value="5">5 months</option>
                     <option value="6">6 months</option>
                 </select>
-            
+             
               </div><!-- /.form group -->
               
               

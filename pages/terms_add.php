@@ -24,7 +24,7 @@ date_default_timezone_set('Asia/Manila');
 	$cid=$_POST['cid'];
 	$date=date("Y-m-d");
 	$query=mysqli_query($con,"select * from term where sales_id='$sid'")or die(mysqli_error($con));
-		$count=mysqli_num_rows($query);
+		$count=mysqli_num_rows($query); 
 
 		$query1=mysqli_query($con,"SELECT or_no FROM payment NATURAL JOIN sales WHERE modeofpayment =  'credit' and or_no<>'0' ORDER BY payment_id DESC LIMIT 0 , 1")or die(mysqli_error($con));
 
