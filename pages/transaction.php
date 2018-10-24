@@ -187,6 +187,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
               <a href="#delete<?php echo $row['temp_trans_id'];?>" data-target="#delete<?php echo $row['temp_trans_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-trash text-red"></i></a>
               
             </td>
+
                       </tr>
             <div id="updateordinance<?php echo $row['temp_trans_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   
@@ -202,7 +203,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
               <div class="modal-body">
        <!--  <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'> -->
        <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'>
-          <input type="hidden" class="form-control" name="tran" value="purchase">   
+          <input type="hidden" class="form-control" name="tran" value="">   
           <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
           <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
         <div class="form-group">
@@ -233,7 +234,8 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
               </div>
               <div class="modal-body">
         <form class="form-horizontal" method="post" action="transaction_del.php" enctype='multipart/form-data'>
-          <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
+          <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>
+          <input type="hidden" class="form-control" name="tran" value="">      
           <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
         <p>Are you sure you want to remove <?php echo $row['prod_name'];?>?</p>
         
