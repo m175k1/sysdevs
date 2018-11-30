@@ -127,12 +127,14 @@ endif;
 <?php
 		$branch=$_SESSION['branch'];
 		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
+    // product query 
+
 		while($row=mysqli_fetch_array($query)){
               $x = $row['supplier_id'];
               $cat = $row['cat_id'];
 			  $prod_id = $row['prod_id'];
 			  $base_price = $row['base_price'];
-            $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
+        $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
                 if (mysqli_num_rows($sup) > 0 ){
                     while($row2=mysqli_fetch_array($sup)){
                           $sup2 = $row2['supplier_name'];
@@ -140,7 +142,7 @@ endif;
                 }else{
                     $sup2 = "Supplier is erased";
                 }
-
+// supplier name checker
               $cat=mysqli_query($con,"select cat_name from category where cat_id='$cat'")or die(mysqli_error());
                 if (mysqli_num_rows($cat) > 0 ){
                     while($row3=mysqli_fetch_array($cat)){
@@ -149,7 +151,7 @@ endif;
                 }else{
                     $cat2 = "Category is erased";
                 }
-		
+		// category name checker
 			
                
 
@@ -284,6 +286,7 @@ endif;
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
+    
 <div id="add" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content" style="height:auto">
@@ -313,38 +316,7 @@ endif;
             <textarea class="form-control" id="price" name="prod_desc" placeholder="Product Description"></textarea>  
           </div>
         </div>
-        <div class="form-group">
-          <label class="control-label col-lg-3" for="file">Distributor</label>
-          <div class="col-lg-9">
-              <select class="form-control select2" style="width: 100%;" name="supplier" required>
-                <?php
-            
-              $query2=mysqli_query($con,"select * from supplier")or die(mysqli_error());
-                while($row2=mysqli_fetch_array($query2)){
-                ?>
-                  <option value="<?php echo $row2['supplier_id'];?>"><?php echo $row2['supplier_name'];?></option>
-                <?php }?>
-              </select>
-          </div>
-        </div> 
-		
-        
-        
-        <div class="form-group">
-              <label class="control-label col-lg-3" >Company Name</label>
-              <div class="col-lg-9">
-                <select class="form-control select2" style="width: 100%;" name="category" required>
-              
-                <?php
-            
-              $queryc=mysqli_query($con,"select * from category order by cat_name")or die(mysqli_error());
-                while($rowc=mysqli_fetch_array($queryc)){
-                ?>
-                  <option value="<?php echo $rowc['cat_id'];?>"><?php echo $rowc['cat_name'];?></option>
-                <?php }?>
-              </select>
-              </div><!-- /.input group -->
-              </div><!-- /.form group -->
+
         <div class="form-group">
           <label class="control-label col-lg-3" for="price">Reorder</label>
           <div class="col-lg-9">

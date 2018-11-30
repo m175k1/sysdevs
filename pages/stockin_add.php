@@ -3,6 +3,9 @@ session_start();
 include('../dist/includes/dbcon.php');
 	$branch=$_SESSION['branch'];
 	$name = $_POST['prod_name'];
+	$supplier_name = $_POST['supplier_name'];
+	$cat_name = $_POST['cat_name'];
+	$qty = 0;
 	$qty = $_POST['qty'];
 	$price = 0;
 	$base_price = $_POST['base_price'];
@@ -11,19 +14,33 @@ include('../dist/includes/dbcon.php');
 
 	$date = date("Y-m-d H:i:s");
 	$id=$_SESSION['id'];
-	
-	$query=mysqli_query($con,"select prod_name from product where prod_id='$name'")or die(mysqli_error());
+	$fullname = $name;
+	$fullname .= " | " . $supplier_name;
+	$fullname .= " | " . $cat_name;
+	$fullname_checker=mysqli_query($con,"select fullname from product where prod_name='$fullname'")or die(mysqli_error());
+
+	if(mysqli_num_rows($fullname_checker)==0){
+			
+		mysqli_query($con,"INSERT INTO history_log(user_id,action,date) VALUES('$id','Add','$date')")or die(mysqli_error($con));
+			
+		mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$id','$qty','$date','$branch','$base_price')")or die(mysqli_error($con));
+
+			mysqli_query($con,"INSERT INTO product (prod_name,prod_qty,base_price,branch_id) VALUES('$fullname','$qty','$base_price','$branch')")or die(mysqli_error($con));
+
+			echo "<script type='text/javascript'>alert('Successfully added new stocks!');</script>";
+
+			echo "<script>document.location='stockin.php'</script>";
+
+	}else{
+		
+	$query=mysqli_query($con,"select prod_name from product where prod_id='$fullname'")or die(mysqli_error());
   
         $row=mysqli_fetch_array($query);
 		$product=$row['prod_name'];
-		$remarks="added $qty of $product";  
+
+		$remarks="added $qty of $product";
 	
 		mysqli_query($con,"INSERT INTO history_log(user_id,action,date) VALUES('$id','$remarks','$date')")or die(mysqli_error($con));
-		
-	
-
-	
-	
 
 			
 			mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$name','$qty','$date','$branch','$base_price')")or die(mysqli_error($con));
@@ -36,6 +53,7 @@ include('../dist/includes/dbcon.php');
 		$total_base_price = 0;
 		$total_qty = 0;
 		$average_base_price	= 0;
+
 			   $average_base_price_query= mysqli_query($con,"select * from stockin where prod_id='$name'")or die(mysqli_error());
                     while($base_price_row =mysqli_fetch_array($average_base_price_query)){
                           $qty = $base_price_row['qty'];
@@ -51,4 +69,6 @@ include('../dist/includes/dbcon.php');
 			echo "<script type='text/javascript'>alert('Successfully added new stocks!');</script>";
 					  echo "<script>document.location='stockin.php'</script>";  
 	
+	}
+
 ?>

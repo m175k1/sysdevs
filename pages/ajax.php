@@ -157,7 +157,7 @@ if($_POST['process']=='cust_history'){
 			WHERE a.cust_id = '".$cust_id."'
 			AND a.branch_id = '$branch'
 			";
-			echo "<table id='customerTable' style='width:80%;margin-left:auto;margin-right:auto;'>";
+			echo "<table id='customerTable' class='table table-bordered table-striped' style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
 	    	echo "<td>Customer</td>
 	    		  <td>Product</td>
@@ -209,7 +209,7 @@ if($_POST['process']=='cat_history'){
 			AND a.branch_id = '$branch'
 			";			
 			
-			echo "<table id='companyTable'style='width:80%;margin-left:auto;margin-right:auto;'>";
+			echo "<table id='companyTable'class='table table-bordered table-striped' style='width:80%;margin-left:auto;margin-right:auto;'>";
 	    	echo "<tr>";
 	    	echo "<td>Product</td>
 	    		  <td>Price</td>
