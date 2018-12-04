@@ -1,8 +1,13 @@
 <style>
 .main-footer{
 	font-family: 'Comfortaa', cursive;
-	
-
+}
+@media print
+{    
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
 }
 
 </style>

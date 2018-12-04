@@ -89,7 +89,7 @@ endif;
           <section class="content-header">
             <h1>
               <a class="btn btn-lg btn-warning" href="home.php">Back</a>
-              <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a>
+              <!-- <a class="btn btn-lg btn-primary" href="#add" data-target="#add" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-plus text-blue"></i></a> -->
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -134,6 +134,7 @@ endif;
               $cat = $row['cat_id'];
 			  $prod_id = $row['prod_id'];
 			  $base_price = $row['base_price'];
+
         $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
                 if (mysqli_num_rows($sup) > 0 ){
                     while($row2=mysqli_fetch_array($sup)){
@@ -152,9 +153,6 @@ endif;
                     $cat2 = "Category is erased";
                 }
 		// category name checker
-			
-               
-
 ?>
                       <tr>
                       	<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['prod_pic'];?>"></td>

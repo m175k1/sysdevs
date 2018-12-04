@@ -3,26 +3,40 @@ session_start();
 $branch=$_SESSION['branch'];
 include('../dist/includes/dbcon.php');
 
-	$name = $_POST['prod_name'];
-	$price = 0;
-	$desc = $_POST['prod_desc'];
-	$supplier = $_POST['supplier'];
-	$reorder = $_POST['reorder'];
-	$category = $_POST['category'];
-	$serial = $_POST['serial'];
 	
-	$query2=mysqli_query($con,"select * from product where prod_name='$name' and branch_id='$branch'")or die(mysqli_error($con));
-		$count=mysqli_num_rows($query2);
+	$branch=$_SESSION['branch'];	
+	
+	date_default_timezone_set('Asia/Manila');
 
-		if ($count>0)
-		{
-			echo "<script type='text/javascript'>alert('Product already exist!');</script>";
-			echo "<script>document.location='product.php'</script>";  
-		}
-		else
-		{	
+	$date = date("Y-m-d H:i:s");	
 
-			$pic = $_FILES["image"]["name"];
+
+	$name = $_POST['prod_name'];
+	$base_price = $_POST['base_price'];
+	$qty = $_POST['qty'];
+	$desc = $_POST['prod_desc'];
+	$supplier = $_POST['supplier_name'];
+	$reorder = $_POST['reorder'];
+	$category = $_POST['cat_name'];
+	$id=$_SESSION['id'];
+	
+	
+	$qxx=mysqli_query($con,"select * from product where prod_name='$name' and branch_id='$branch'")or die(mysqli_error($con));
+
+                                    
+    
+    while($row=mysqli_fetch_array($qxx)){
+    	$id = $row['prod_id'];
+    }
+
+		$count=mysqli_num_rows($qxx);
+
+			if (isset($_FILES["image"]["name"])){
+				$pic = $_FILES["image"]["name"];	
+			} else{
+				$pic = "";
+			}
+			
 			if ($pic=="")
 			{
 				$pic="default.gif";
@@ -50,10 +64,27 @@ include('../dist/includes/dbcon.php');
 					}
 			}	
 
-			mysqli_query($con,"INSERT INTO product(prod_name,prod_price,prod_desc,prod_pic,cat_id,reorder,supplier_id,branch_id,serial)
-			VALUES('$name','$price','$desc','$pic','$category','$reorder','$supplier','$branch','$serial')")or die(mysqli_error($con));
+		mysqli_query($con,"INSERT INTO product(prod_name,prod_qty,base_price,prod_desc,prod_pic,cat_id,reorder,supplier_id,branch_id)
+			VALUES('$name','$qty','$base_price','$desc','$pic','$category','$reorder','$supplier','$branch')")or die(mysqli_error($con));
 
-			echo "<script type='text/javascript'>alert('Successfully added new product!');</script>";
-					  echo "<script>document.location='product.php'</script>";  
-		}
+
+
+$sql="SELECT * from product where prod_name = '$name'";
+$sup_query=mysqli_query($con,$sql)or die(mysqli_error());
+while($supp_row=mysqli_fetch_array($sup_query)){
+    	$pid = $supp_row['prod_id'];    	
+}
+
+
+mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$pid','$qty','$date','$branch','$base_price')")or die(mysqli_error($con));
+
+
+
+
+		mysqli_query($con,"INSERT INTO history_log(user_id,action,date) VALUES('$id','Add a product','$date')")or die(mysqli_error($con));
+
+
+
+	echo "<script type='text/javascript'>alert('Successfully added new stocks!');</script>";
+	echo "<script>document.location='stockin.php'</script>";  	
 ?>
