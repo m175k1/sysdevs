@@ -87,15 +87,37 @@
                            <form method="post" action="stockin_add.php" id="stockin-add" enctype="multipart/form-data">
                               <div class="form-group">
                                  <label for="date">Product Name</label>
-                                 <div class="input-group col-md-12">
+                                 <div class="input-group col-md-12">                                  
                                     <select class="form-control select2" name="prod_name" id="prod_id" required>
                                        <?php
                                           include('../dist/includes/dbcon.php');
                                           $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
                                           
                                           while($row=mysqli_fetch_array($query2)){
-                                            ?>
-                                       <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name'];?></option>
+                                          $supplier_id = $row["supplier_id"];
+                                          $cat_id = $row["cat_id"];
+                                   $sql="SELECT
+                                             *
+                                         from
+                                             supplier      
+                                         where supplier_id = '$supplier_id'
+                                           ";
+                                   $supp_query=mysqli_query($con,$sql)or die(mysqli_error());
+                                   while($supp_row=mysqli_fetch_array($supp_query)){
+                                      $supplier_name = $supp_row['supplier_name'];
+                                   }  
+
+                                 $sqlcat="SELECT
+                                           *
+                                       from
+                                           category      
+                                       where cat_id = '$cat_id'
+                                         ";
+                                 $supp_query=mysqli_query($con,$sqlcat)or die(mysqli_error());
+                                  while($supp_row=mysqli_fetch_array($supp_query)){
+                                      $cat_name = $supp_row['cat_name'];
+                                  }?>      
+                                       <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name'];?> | <?php echo $cat_name;?> | <?php echo $supplier_name;?></option>
                                        <?php }?>
                                     </select>
                                  </div>
@@ -245,7 +267,9 @@
                                  <tr>
                                     <th>Product Name</th>
                                     <th>Qty</th>
+                                    <th>Price</th>
                                     <th>Distributor</th>
+                                    <th>Company</th>
                                     <th>Date Delivered</th>
                                  </tr>
                               </thead>
@@ -253,14 +277,15 @@
                                  <?php
                                     $branch=$_SESSION['branch'];
                                       $sql="
-                                      SELECT * FROM stockin a 
+                                      SELECT a.date, a.base_price, a.qty, b.prod_name, c.supplier_name, d.cat_name   
+                                      FROM stockin a 
                                       LEFT JOIN product b ON a.prod_id = b.prod_id 
                                       LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
+                                      LEFT JOIN category d ON b.cat_id = d.cat_id
                                       WHERE a.branch_id='$branch'
                                       order by date desc
                                       ";                                    
-                                    
-                                    
+                                                               
                                     $query=mysqli_query($con,$sql)or die(mysqli_error());
                                     while($row=mysqli_fetch_array($query)){
                                     
@@ -268,7 +293,9 @@
                                  <tr>
                                     <td><?php echo $row['prod_name'];?></td>
                                     <td><?php echo $row['qty'];?></td>
+                                    <td><?php echo $row['base_price'];?></td>
                                     <td><?php echo $row['supplier_name'];?></td>
+                                    <td><?php echo $row['cat_name'];?></td>
                                     <td><?php echo $row['date'];?></td>
                                  </tr>
                                  <?php }?>            

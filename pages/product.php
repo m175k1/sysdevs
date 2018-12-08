@@ -30,6 +30,9 @@ endif;
   background:linear-gradient(#000, green);
   border-radius: 6px;
 }
+#example1_wrapper{
+  width:100%;
+}
     .box-primary{
         background-color: transparent;
         border-radius: 15px;
@@ -108,34 +111,32 @@ endif;
                   <h3 class="box-title">Product List</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
-                  <table id="example1" class="table table-bordered table-striped">
+                  <table id="example1" class="table table-bordered table-striped" style="width:100%">
                     <thead>
                       <tr>
-                      	<th>Picture</th>
-                        <th>Product Code</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-						            <th>Distributor</th>
+                      	              
+                        <th>Product Name</th>                        
                         <th>Qty</th>
-            						<th>Price</th>
-            						<th>Company Name</th>
-            						<th>Reorder</th>
+            						<th>Price</th>            						            						
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
 		$branch=$_SESSION['branch'];
-		$query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
+		$query=mysqli_query($con,"select * from masterfile where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
     // product query 
 
 		while($row=mysqli_fetch_array($query)){
-              $x = $row['supplier_id'];
-              $cat = $row['cat_id'];
-			  $prod_id = $row['prod_id'];
-			  $base_price = $row['base_price'];
+        /*$x = $row['supplier_id'];
+        $cat = $row['cat_id'];
+			  $prod_id = $row['prod_id'];*/ 
+			  $prod_name = $row['prod_name'];
+        $prod_qty = $row['prod_qty'];
+        $base_price = $row['base_price'];
+        
 
-        $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
+  /*      $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$x'")or die(mysqli_error());
                 if (mysqli_num_rows($sup) > 0 ){
                     while($row2=mysqli_fetch_array($sup)){
                           $sup2 = $row2['supplier_name'];
@@ -152,21 +153,12 @@ endif;
                 }else{
                     $cat2 = "Category is erased";
                 }
-		// category name checker
+		// category name checker*/
 ?>
-                      <tr>
-                      	<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['prod_pic'];?>"></td>
-                        <td><?php echo $row['serial'];?></td>
-                        <td><?php echo $row['prod_name'];?></td>
-                        <td><?php echo $row['prod_desc'];?></td>
-						            <td><?php if(isset($sup2)){echo $sup2;
-                        }else{
-                          
-                        } ?></td>
-                        <td><?php echo $row['prod_qty'];?></td>
-            						<td><?php echo number_format($base_price,2);?></td>
-            						<td><?php echo $cat2 ?></td>
-            						<td><?php echo $row['reorder'];?></td>
+                      <tr>                        
+                        <td><?php echo $prod_name;?></td>                        
+                        <td><?php echo $prod_qty;?></td>
+            						<td><?php echo number_format($base_price,2);?></td>            						            						
                         <td>
 				<a href="#updateordinance<?php echo $row['prod_id'];?>" data-target="#updateordinance<?php echo $row['prod_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
 			 
@@ -258,15 +250,10 @@ endif;
                     </tbody>
                     <tfoot>
                       <tr>
-                      	<th>Picture</th>
-                        <th>Serial #</th>
-                        <th>Product Name</th>
-                        <th>Description</th>
-						<th>Company Name</th>
+                              <th>Picture</th>                  
+                        <th>Product Name</th>                        
                         <th>Qty</th>
-						<th>Price</th>
-						<th>Brand Name</th>
-						<th>Reorder</th>
+                        <th>Price</th>                                                
                         <th>Action</th>
                       </tr>					  
                     </tfoot>

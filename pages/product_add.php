@@ -19,8 +19,11 @@ include('../dist/includes/dbcon.php');
 	$reorder = $_POST['reorder'];
 	$category = $_POST['cat_name'];
 	$id=$_SESSION['id'];
-	
-	
+	$totalprod_qty = 0;
+	$totalbase_price = 0;
+	$total_qty = 0;
+	$total_base_price = 0;
+
 	$qxx=mysqli_query($con,"select * from product where prod_name='$name' and branch_id='$branch'")or die(mysqli_error($con));
 
                                     
@@ -72,7 +75,11 @@ include('../dist/includes/dbcon.php');
 $sql="SELECT * from product where prod_name = '$name'";
 $sup_query=mysqli_query($con,$sql)or die(mysqli_error());
 while($supp_row=mysqli_fetch_array($sup_query)){
-    	$pid = $supp_row['prod_id'];    	
+    	$pid = $supp_row['prod_id'];
+    	$xprod_qty = $supp_row['prod_qty'];
+    	$xbase_price = $supp_row['base_price'];
+    	 $totalprod_qty = $totalprod_qty + $xprod_qty;
+    	 $totalbase_price = $totalbase_price + $xbase_price;
 }
 
 
@@ -84,7 +91,29 @@ mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VA
 		mysqli_query($con,"INSERT INTO history_log(user_id,action,date) VALUES('$id','Add a product','$date')")or die(mysqli_error($con));
 
 
+	$sql="SELECT * from masterfile where prod_name = '$name'";		
+	$xxx=mysqli_query($con,$sql)or die(mysqli_error());
+	$count = mysqli_num_rows( $xxx );
 
-	echo "<script type='text/javascript'>alert('Successfully added new stocks!');</script>";
+	if( $count <= 0 ){
+		// 
+		mysqli_query($con,"INSERT INTO masterfile(prod_name, prod_qty, base_price,branch_id) VALUES('$name','$qty','$base_price','$branch')")or die(mysqli_error($con));
+	}else{
+
+		$masterfile_query= mysqli_query($con,"select * from product where prod_name='$name'")or die(mysqli_error());
+    	while($base_price_row =mysqli_fetch_array($masterfile_query)){
+
+                          $qty = $base_price_row['prod_qty'];
+						  $base_price = $base_price_row['base_price'];
+						  $total_qty = $total_qty + $qty;
+						  $product_base_price = $base_price * $qty;
+						  $total_base_price = $total_base_price + $product_base_price;
+						  
+        }
+        $ave_base_price = $total_base_price / $total_qty;
+		$xxx = mysqli_query($con,"UPDATE masterfile SET prod_qty='$total_qty', base_price = '$ave_base_price' where prod_name='$name' and branch_id='$branch'" ) or die(mysqli_error($con));		
+	}
+
+		echo "<script type='text/javascript'>alert('Successfully added new stocks!');</script>";
 	echo "<script>document.location='stockin.php'</script>";  	
 ?>
