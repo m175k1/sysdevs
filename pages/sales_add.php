@@ -77,7 +77,7 @@ include('../dist/includes/dbcon.php');
 		$result=mysqli_query($con,"DELETE FROM temp_trans where branch_id='$branch'")	or die(mysqli_error($con));
 		
 		
-		echo "<script>document.location='receipt.php?cid=$cid'</script>"; 
+		echo "<script>document.location='receipt.php?cid=$cid'</script>";  
 		
 	
 ?>

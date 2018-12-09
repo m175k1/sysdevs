@@ -124,19 +124,23 @@ javascript:window.history.forward(1);
 					
 					 <div class="col-md-6">
 						  <div class="form-group">
-							<label for="date">Product Name</label>
-							 
-								<select class="form-control select2" name="prod_name" tabindex="1" autofocus required>
-								<?php
+							<label for="date">Product Name</label>              
+                <select class="form-control select2" name="prod_name" tabindex="1" autofocus required>
+
+<?php
                   $branch=$_SESSION['branch'];
                   $cid=$_REQUEST['cid'];
-								  include('../dist/includes/dbcon.php');
-									 $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
-									    while($row=mysqli_fetch_array($query2)){
-								?>
-										<option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
-								  <?php }?>
-								</select>
+                  include('../dist/includes/dbcon.php');
+                  $query2=mysqli_query($con,"select * from masterfile where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                                          
+                                          while($row=mysqli_fetch_array($query2)){
+                                          $prod_name = $row["prod_name"];
+                                          $qty = $row["prod_qty"];
+
+                        ?>      
+                                       <option value=""><?php echo $prod_name;?> | <?php echo $qty;?></option>
+                                       <?php }?>
+                                    </select>
 						    <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
 						  </div><!-- /.form group -->
 					</div>
