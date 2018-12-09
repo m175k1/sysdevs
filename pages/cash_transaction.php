@@ -115,7 +115,7 @@ javascript:window.history.forward(1);
 	      <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Sales Transaction</h3>
+                  <h3 class="box-title">Sales Transaction</h3> 
                 </div>
                 <div class="box-body"> 
                   <!-- Date range -->
