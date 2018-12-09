@@ -117,7 +117,7 @@ javascript:window.history.forward(1);
                 <div class="box-header">
                   <h3 class="box-title">Sales Transaction</h3>
                 </div>
-                <div class="box-body">
+                <div class="box-body"> 
                   <!-- Date range -->
                   <form method="post" action="transaction_add.php">
 				  <div class="row" style="min-height:400px">

@@ -177,7 +177,7 @@
                                                                       }
                                                                   }else{
                                                                       $cat2 = "Category is erased";
-                                                                  }                                                      
+                                                                  }                                                       
 
                                                   $var_prod_qty = $product_row['prod_qty'];
                                                   $var_base_price = $product_row['base_price'];
