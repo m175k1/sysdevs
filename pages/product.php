@@ -79,6 +79,9 @@ endif;
         font-size:13px;
 
       }
+      .text-blue{
+        display:none;
+      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -250,11 +253,11 @@ endif;
                     </tbody>
                     <tfoot>
                       <tr>
-                              <th>Picture</th>                  
+                                              
                         <th>Product Name</th>                        
                         <th>Qty</th>
                         <th>Price</th>                                                
-                        <th>Action</th>
+                        <th style="display:none;">Action</th>
                       </tr>					  
                     </tfoot>
                   </table>
