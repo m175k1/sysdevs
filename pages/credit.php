@@ -30,58 +30,24 @@ javascript:window.history.forward(1);
 //--></script>
 <style>
   ::-webkit-scrollbar{
-  width: 12px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
-  border-radius: 6px;
+  background:linear-gradient(white,green);
+ 
 }
-    .box-primary{
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 5px;
-        border:1px solid black;
-        box-shadow: 2px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-        }
-      .content{
-        font-family: 'Comfortaa', cursive;
+.box.box-primary{
+        border-top-color:green;
       }
-      .content-header{
-        font-family: 'Comfortaa', cursive;
-      }
-      h3{
-        font-family: 'Comfortaa', cursive;
-        color:white;
-      }
-       h4{
-      font-family: 'Comfortaa', cursive;
-      color:white;
-      }
-      .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
-       .modal-header{
-        background-color: black;
-        color:white;
-        border-top-left-radius:20px;
-        border-top-right-radius:20px;
-        font-family: 'Comfortaa', cursive;
-        border:1px solid black;
-      }
-      .modal-content{
-        border-radius: 20px;
-        background-color: white;
-        border:1px solid black;
-        box-shadow: 0px 0 50px 0px;
-        color:black;
-      }
-      .row{
-        margin-right: 0px;
-        margin-left: 0px;
-      }
+   .btn-success {
+    background-color: #b92d2d;
+    border-color: #ffffff;
+}
+.btn-warning {
+    background-color: green!important;
+    border-color: #ffffff;
+}
+
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

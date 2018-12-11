@@ -27,35 +27,28 @@
       <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
       <style>
-         ::-webkit-scrollbar{
-         width: 12px;
-         }
-         ::-webkit-scrollbar-thumb{
-         background:linear-gradient(#000, green);
-         border-radius: 6px;
-         }
-         .box-primary{
-         font-family: 'Comfortaa', cursive;
-         background-color: transparent;
-         border-radius: 15px;
-         margin-top: 5px;
-         border:1px solid black;
-         box-shadow: 2px 1px 200px 20px;
-         box-shadow: black;
-         color:black;
-         }
-         .content{
-         font-family: 'Comfortaa', cursive;
-         }
-         h3{
-         font-family: 'Comfortaa', cursive;
-         color:white;
-         }
-         .content-wrapper{
-         border-top-left-radius: 100px;
-         border-top-right-radius: 100px;
-         } 
-      </style>
+    ::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(white,green);
+ 
+}
+.box.box-primary{
+        border-top-color:green;
+      }
+.btn-warning {
+    background-color: #f72121!important;
+    border-color: #ffffff;
+}
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+      
+    </style>
    </head>
    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
    <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav">

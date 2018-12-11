@@ -28,71 +28,41 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-    ::-webkit-scrollbar{
-  width: 12px;
+     ::-webkit-scrollbar{
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
-  border-radius: 6px;
+  background:linear-gradient(white,green);
+ 
 }
+.box.box-primary{
+        border-top-color:green;
+      }
       img.profile_pic {
     width: 152px;
     height: 125px;
     border: 5px solid #ccc;
 }
-.box.box-primary{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-
-      }
-      .nav-tabs-custom{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-      }
-      
-      .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
-      .modal-header{
-        background-color: black;
-        color:white;
-        border-radius: 20px;
-        font-family: 'Comfortaa', cursive;
-        border:1px solid black;
-      }
-      .modal-content{
-        border-radius: 20px;
-        background-color: white;
-        border:1px solid green;
-      }
-      .box-body{
-       font-family: 'Comfortaa', cursive;
-        border-radius: 15px;
-        border:1px solid black;
-        box-shadow: 0px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-        }
-        .nav-tabs-custom>.nav-tabs>li>a
-        {
-          color:white;
-        }
-      
-
-      
+.nav-tabs-custom>.nav-tabs>li.active {
+    border-top-color: #fb000c;
+  }
+.btn-warning {
+    background-color: green!important;
+    border-color: #ffffff;
+}
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+}   
+.modal-header{
+  background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+  color:white;
+  padding:10px;
+}  
+       
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -134,7 +104,7 @@ endif;
 		      $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
 			       $row=mysqli_fetch_array($query);
 		  ?>	
-		    <img class = "profile_pic" src = "../dist/uploads/<?php echo $row['cust_pic'];?>">
+		    
                   <div class="form-group">
                     <label for="date">Customer Name</label>
                     <div class="input-group col-md-12">

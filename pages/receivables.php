@@ -29,36 +29,16 @@ endif;
       h5,h6{
         text-align:center;
       }
-		
+    
 
       @media print {
           .btn-print {
             display:none !important;
-		  }
-		  .main-footer	{
-			display:none !important;
-		  }
-		  .box.box-primary {
-			  border-top:none !important;
-		  }
-		  
-          
       }
-      .content{
-        font-family: 'Comfortaa', cursive;
-        
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
+      .main-footer  {
+      display:none !important;
       }
       
-        .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

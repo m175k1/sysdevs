@@ -26,33 +26,35 @@ endif;
     <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <style>
-      ::-webkit-scrollbar{
-  width: 12px;
+     <style>
+    ::-webkit-scrollbar{
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
-  border-radius: 6px;
+  background:linear-gradient(white,green);
+ 
 }
-      .box-primary{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 5px;
-        border:1px solid black;
-        box-shadow: 2px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-        }
-
-        h3{
-          font-family: 'Comfortaa', cursive;
-          color:white;
-        }
-        .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
+.box.box-primary{
+        border-top-color:green;
       }
+.btn-warning {
+    background-color: green!important;
+    border-color: #ffffff;
+}
+.content-wrapper{
+  font-family: 'Comfortaa'
+}
+h3{
+  font-family: 'Comfortaa'
+}
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+      
+     
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

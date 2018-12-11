@@ -27,26 +27,9 @@ endif;
   width: 12px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
+  background:linear-gradient(white, green);
   border-radius: 6px;
 }
-    .box-primary{
-      font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 5px;
-        border:1px solid black;
-        box-shadow: 2px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-        }
-        h3{
-          color:white;
-        }
-        .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
       
     </style>
  </head>

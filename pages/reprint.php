@@ -25,6 +25,13 @@ endif;
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
   
     <style type="text/css">
+    ::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(white,green);
+ 
+}
       h5,h6{
         text-align:center;
       }
@@ -222,7 +229,7 @@ $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(m
 
 				</div>	
             <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-                <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+                <a class = "btn btn-primary btn-print" href = "creditor.php"><i class ="glyphicon glyphicon-arrow-left"></i>Back</a>   
                   
                   
 				</form>	

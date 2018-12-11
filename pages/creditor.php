@@ -24,47 +24,33 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-    .box-primary{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 5px;
-        border:1px solid black;
-        box-shadow: 2px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-        }
-      .content{
-        font-family: 'Comfortaa', cursive;
+    ::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(white,green);
+ 
+}
+.box.box-primary{
+        border-top-color:green;
       }
-      h3{
-        font-family: 'Comfortaa', cursive;
-        color:white;
-      }
-      
-        .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
-      .modal-header{
-        background-color: black;
-        color:white;
-        border-top-left-radius:20px;
-        border-top-right-radius:20px;
-        font-family: 'Comfortaa', cursive;
-        border:1px solid black;
-      }
-      .modal-content{
-        border-radius: 20px;
-        background-color: white;
-        border:1px solid black;
-        box-shadow: 0px 0 50px 0px;
-        color:black;
-      }
-      h4{
-        font-family: 'Comfortaa', cursive;
-        
-      }
+.btn-warning {
+    background-color: green!important;
+    border-color: #ffffff;
+}
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+ }
+ .text-orange {
+    display: none;
+  }
+  .text-primary {
+    display: none;
+  }    
       
     </style>
  </head>

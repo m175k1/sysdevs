@@ -30,47 +30,16 @@ endif;
       .col-lg-3{
         margin:50px 0x;
       }
-      
-      .box-primary{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-
-
-      } 
-
-      .content-wrapper{
-        font-family: 'Comfortaa', cursive;
-
+      .box.box-primary{
+        border-top-color:green;
       }
+    h3{
+      text-align: center;
+      font-family: 'Comfortaa', cursive;
+    }
 
-      .box-title{
-        font-family: 'Comfortaa', cursive;
-      }
-
-      h3{
-        font-family: 'Comfortaa', cursive;
-      }
-
-      .box-body{
-        font-family: 'Comfortaa', cursive;
-      }
-    
-        .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
-      h3{
-          color:white;
-        }
-        
-        
     </style>
+     
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav" onload="myFunction()">
@@ -78,23 +47,23 @@ endif;
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
       <div class="content-wrapper">
-        <div class="container">
+        <div class="container" style="font-family: 'Comfortaa', cursive;">
           <!-- Content Header (Page header) -->
          
 
           <!-- Main content -->
-          <section class="content">
+          <section class="content" style="padding: 50px;">
             <div class="row">
 	      <div class="col-md-8">
               <div class="box box-primary">
-                <div class="box-header with-border">
+              <div class="box-header with-border" style="text-align: center;">
                   <h3 class="box-title">Transactions</h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                   <div class="row">
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
                           <div class="inner">
                             <h3>Purchase</h3>
                             <p>Cash</p>
@@ -111,7 +80,7 @@ endif;
 
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-red">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
                           <div class="inner">
                             <h3>Stock i/o</h3>
                             <p>Products</p>
@@ -127,7 +96,7 @@ endif;
                       
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-yellow">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
                           <div class="inner">
                             <h3>Payment</h3>
                             <p>Customer</p>
@@ -142,7 +111,7 @@ endif;
                       </div><!-- ./col -->
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-red">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
                           <div class="inner">
                             <h3>Credit</h3>
                             <p>Apply</p>
@@ -158,7 +127,7 @@ endif;
 
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-orange">
+                       <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
                           <div class="inner">
                             <h3>Products</h3>
                             <p>View/Add</p>
@@ -175,7 +144,7 @@ endif;
 					  
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
                           <div class="inner">
                             <h3>History</h3>
                             <p>Company/Distributor</p>

@@ -47,26 +47,26 @@ endif;
 <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <style type="text/css">
+   <style type="text/css">
       h5,h6{
         text-align:center;
       }
-		
+    
 
       @media print {
           .btn-print {
             display:none !important;
-		  }
-		  .main-footer	{
-			display:none !important;
-		  }
-		  .box.box-primary {
-			  border-top:none !important;
-		  }
-		  .angel{
-			  display:none !important;
-		  }
-		  
+      }
+      .main-footer  {
+      display:none !important;
+      }
+      .box.box-primary {
+        border-top:none !important;
+      }
+      .angel{
+        display:none !important;
+      }
+      
           
       }
       .content{

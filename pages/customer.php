@@ -23,56 +23,40 @@ endif;
     <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <style>
+   <style>
 ::-webkit-scrollbar{
-  width: 12px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
-  border-radius: 6px;
+  background:linear-gradient(white,green);
+ 
 }
-    .box-primary{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 5px;
-        border:1px solid black;
-        box-shadow: 2px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-        }
-
-      .content{
-        font-family: 'Comfortaa', cursive;
+.box.box-primary{
+        border-top-color:green;
       }
-
-    h3{
-      font-family: 'Comfortaa', cursive;
-      color:white;
+.btn-warning {
+    background-color: green!important;
+    border-color: #ffffff;
+}
+.btn-primary {
+    background-color: #c30d15;
+    border-color: #ffffff;
+} 
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+}
+.modal-header{
+  background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+  color:white;
+}
+.form-control {
+      margin-bottom: 15px;
     }
-    h4{
-      font-family: 'Comfortaa', cursive;
-      color:white;
-    }
-        .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
-      .modal-header{
-        background-color: black;
-        color:white;
-        border-top-left-radius:20px;
-        border-top-right-radius:20px;
-        font-family: 'Comfortaa', cursive;
-        border:1px solid black;
-      }
-      .modal-content{
-        border-radius: 20px;
-        background-color: white;
-        border:1px solid black;
-        box-shadow: 0px 0 50px 0px;
-        color:black;
-      }
+        
           </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -112,7 +96,7 @@ endif;
                     <thead>
                       <tr>
             						<th>Account #</th>
-            						<th>Picture</th>
+            						<th style="display:none;">Picture</th>
                         <th>Customer Last Name</th>
                         <th>Customer First Name</th>
                         <th>Address</th>
@@ -134,7 +118,7 @@ endif;
 ?>
                       <tr>
 					    <td><?php echo $row['cust_id'];?></td>
-						<td><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['cust_pic'];?>"></td>
+						<td style="display:none;"><img style="width:80px;height:60px" src="../dist/uploads/<?php echo $row['cust_pic'];?>"></td>
                         <td><?php echo $row['cust_last'];?></td>
                         <td><?php echo $row['cust_first'];?></td>
                         <td><?php echo $row['cust_address'];?></td>
@@ -210,7 +194,7 @@ endif;
                     <tfoot>
                       <tr>
                         <th>#</th>
-						<th>Picture</th>
+						<th style="display:none;">Picture</th>
                         <th>Customer Last Name</th>
                         <th>Customer First Name</th>
                         <th>Address</th>

@@ -25,7 +25,7 @@ date_default_timezone_set('Asia/Manila');
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     
-    <style type="text/css">
+   <style type="text/css">
       tr td{
         padding-top:-10px!important;
         border: 1px solid #000;
@@ -36,12 +36,19 @@ date_default_timezone_set('Asia/Manila');
           }
       }
       ::-webkit-scrollbar{
-  width: 12px;
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
-  border-radius: 6px;
+  background:linear-gradient(white,green);
+ 
 }
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+      
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->

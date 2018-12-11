@@ -24,47 +24,64 @@
       <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
       <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-      <style type="text/css">
-         h5,h6{
-         text-align:center;
-         }
-         @media print {
-         .btn-print {
-         display:none !important;
-         }
-         .main-footer  {
-         display:none !important;
-         }
-         .box.box-primary {
-         border-top:none !important;
-         }
-         }
-         .content{
-         font-family: 'Comfortaa', cursive;
-         border-radius: 15px;
-         margin-top: 20px;
-         border:1px solid black;
-         box-shadow: 0px 1px 200px 20px;
-         box-shadow: black;
-         color:black;
-         }
-         .content-wrapper{
-         border-top-left-radius: 100px;
-         border-top-right-radius: 100px;
-         }
-         ::-webkit-scrollbar{
-         width: 12px;
-         }
-         ::-webkit-scrollbar-thumb{
-         background:linear-gradient(#000, green);
-         border-radius: 6px;
-         }
-         form.form-inline {
-              display: inline-block;
-              float: right;
-              margin-bottom: 20px;
+       <style type="text/css">
+      h5,h6{
+        text-align:center;
+      }
+    
+
+       @media print {
+          .btn-print {
+            display:none !important;
           }
-      </style>
+      .main-footer  {
+      display:none !important;
+      }
+      div.dataTables_length label {
+        display: none !important;
+      }
+      div.dataTables_filter label{
+        display: none !important;
+      }
+      div.dataTables_paginate ul.pagination{
+        display: none !important;
+      }
+      div.dataTables_info{
+        display: none !important;
+      }
+    }
+       @media print{
+table tr td:nth-child(5){
+    visibility:hidden;
+}
+}
+@media print{
+table tr td:nth-child(6){
+    visibility:hidden;
+  }
+}
+      
+      
+      ::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(white,green);
+ 
+}
+.box.box-primary{
+        border-top-color:green;
+      }
+        
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+      
+        
+    </style>
    </head>
    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
    <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav">
@@ -98,17 +115,16 @@
                               <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
                               <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>
                               <form class="form-inline no-print" method="POST" action="search.php">
-                                <div class="form-group mx-sm-3 mb-2">
-                                  <input type="text" class="form-control" name="searchtext" placeholder="Products">
-                                </div>
-                                <button type="submit" class="btn btn-primary mb-2">Search</button>
+                               
+                                
                               </form>
-                              <table class="table table-bordered table-striped">
+                        
+                              <table id="example1" class="table table-bordered table-striped">
                                  <thead>
                                     <tr>
                                        <th>Product Code</th>
                                        <th>Product Name</th>
-                                       <th>Supplier</th>
+                                       <th>Distributor</th>
                                        <th>Qty Left</th>
                                        <th>Price</th>
                                        <th>Total</th>

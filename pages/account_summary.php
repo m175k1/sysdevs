@@ -28,61 +28,110 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
     <style>
-    ::-webkit-scrollbar{
-  width: 12px;
+  ::-webkit-scrollbar{
+  width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(#000, green);
-  border-radius: 6px;
+  background:linear-gradient(white,green);
+ 
 }
-      img.profile_pic {
-    width: 152px;
-    height: 125px;
-    border: 5px solid #ccc;
+.box.box-primary{
+        border-top-color:green;
+      }
+.nav-tabs-custom>.nav-tabs>li.active {
+    border-top-color: #fb000c;
+  }
+.btn-warning {
+    background-color: green!important;
+    border-color: #ffffff;
 }
+.btn-primary {
+  background-color: green;
+}
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+ }       
+.sidebar {  
+    width: 250;
+    height:100%;
+    display: block;
+    left: -240px;
+    top: 0px;
+    transition: left 0.3s linear;
+    }
+
+    .sidebar.visible {
+    left:0px;
+    transition: left 0.3s linear;
+    }
+
+    .nav-txt {
+      color: white;
+    }
+
+    .subnav-txt:hover {
+      color: #ff0000;
+    }
+
+    .nav-txt:hover {
+      background-color: #7d0000;
+      color: white;
+      transition: all .2s;
+    }
+
+    .main-sidebar {
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
+      position: fixed;
+      z-index: 5;
+    }
+
+    .main-sidebar * a {
+      color: white;
+    }
+
+    .treeview-menu {
+      background-color: #7d0000;
+    }
+
+    .reorder-count {
+      font-size: 10px !important;
+    }
+
+    .box-header {
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
+    }
+
+    .menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 10px 15px;
+    }
+
+    .box-title {
+      color: white;
+      text-align: center;
+      display: block !important;
+    }
+
+    .nav-tabs-custom>.nav-tabs>li.active {
+      border-top-color: #dd4b39 !important;
+    }
+
+    .form-group {
+      margin-top: 15px;
+    }
+
+    .btn:hover {
+      transition: all .2s linear;
+    }
 
 
 
-       
-      .box.box-primary{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 0px 200px 20px;
-        box-shadow: black;
-        color:black;
-        
-
-      }
-      .nav-tabs-custom{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 0px 200px 20px;
-        box-shadow: black;
-        color:black;
-      }
-      
-      .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
-      }
-     .box-body{
-       font-family: 'Comfortaa', cursive;
-        border-radius: 15px;
-        border:1px solid black;
-        box-shadow: 0px 0px 200px 20px;
-        box-shadow: black;
-        color:black;
-        }
-        .nav-tabs-custom>.nav-tabs>li>a{
-          color:white;
-        }
-      
+     
 
     </style>
  </head>
@@ -142,7 +191,7 @@ endif;
 		      $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
 			       $row=mysqli_fetch_array($query);
 		  ?>	
-		    <img class = "profile_pic" src = "../dist/uploads/<?php echo $row['cust_pic'];?>">
+		   
                   <div class="form-group">
                     <label for="date">Customer Name</label>
                     <div class="input-group col-md-12">
@@ -244,7 +293,6 @@ endif;
                       <td>
                         <a href="payment.php?cid=<?php echo $row['cust_id'];?>&sid=<?php echo $row1['sales_id'];?>&balance=<?php echo $total;?>"><i class="glyphicon glyphicon-share-alt"></i></a>
                         <a href="reprint.php?sid=<?php echo $row1['sales_id'];?>"><i class="glyphicon glyphicon-print"></i></a>
-                        <a href="print.php?sid=<?php echo $row1['sales_id'];?>&cid=<?php echo $row['cust_id'];?>"><i class="glyphicon glyphicon-list"></i></a>
                       </td>  
                       </tr>
 

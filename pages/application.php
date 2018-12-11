@@ -26,23 +26,29 @@ endif;
     <link rel="stylesheet" type="text/css" href="dist/css/sample1.css">
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <style>
-    .content{
-        font-family: 'Comfortaa', cursive;
-        background-color: transparent;
-        border-radius: 15px;
-        margin-top: 20px;
-        border:1px solid black;
-        box-shadow: 0px 1px 200px 20px;
-        box-shadow: black;
-        color:black;
-
-
-      } 
-     .content-wrapper{
-        border-top-left-radius: 100px;
-        border-top-right-radius: 100px;
+     <style>
+ ::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(white,green);
+ 
+}
+.box.box-primary{
+        border-top-color:green;
       }
+.btn-warning {
+    background-color: green!important;
+    border-color: #ffffff;
+}
+.content{
+  font-family: 'Comfortaa', cursive;
+}
+h3{
+  font-family: 'Comfortaa', cursive;
+ text-align: center;
+      
+       
       
     </style>
  </head>
@@ -106,10 +112,10 @@ endif;
                       </div><!-- /.input group -->
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="display:none;">
                       <label for="date">Nick Name</label>
                       <div class="input-group col-md-12">
-                          <input type="text" class="form-control pull-right" id="date" name="nickname" placeholder="Nicknamer" required>
+                          <input type="text" class="form-control pull-right" id="date" name="nickname" placeholder="Nicknamer">
                         </div>
                     </div>
                     

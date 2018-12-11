@@ -15,12 +15,6 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
 ?>
 <style>
 
-.navbar-custom-menu{
-  font-family: 'Comfortaa', cursive;
-  background-color:transparent;
-  border-radius: 15px; 
-  border:1px solid white;
-}
 
 
 
@@ -31,34 +25,30 @@ $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die
 
 
 ul li a{
-  color:black;
+
 }
 .wrapper{
-  background: url('../dist/img/headerpic.jpg');
+    background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
 }
 .nav>li>a:hover, .nav>li>a:active, .nav>li>a:focus{
-   background: linear-gradient(to bottom, #ccff66 0%, #ff99cc 100%);
+   
   border-radius: 15px;
   opacity: .8;
-  transform:scale(1.3);
   box-shadow: 0px 0px 20px 0px #fff;
   transition: 1s;
 
 
 }
 .navbar-nav>.notifications-menu>.dropdown-menu, .navbar-nav>.messages-menu>.dropdown-menu, .navbar-nav>.tasks-menu>.dropdown-menu{
-  background-color: black;
-  border-radius: 15px;
-  border:1px solid linear-gradient(#ccff66 100%);
-  box-shadow: 0px 0px 20px 0px #fff;
+ background-color: white;
+
   
 
 
 
 }
 .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a:hover, .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a:hover, .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a:hover{
-  background: transparent;
-  border-radius: 15px;
+    
    transform:scale(1.0);
   transition: 1s;
   box-shadow: 0px 0px 20px 0px #fff;
@@ -69,14 +59,15 @@ ul li a{
   background-color: transparent;
 }
 .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a{
-  background:transparent;
+  background:green;
    transform:scale(1.0);
   transition: 1s;
+
 
 }
 </style>
       <header class="main-header">
-        <nav class="navbar navbar-static-top">
+        <nav class="navbar navbar">
           <div class="container">
             <div class="navbar-header" style="padding-left:20px">
               <a href="home.php" class="navbar-brand"><b><i class="glyphicon glyphicon-home"></i> <?php echo $branch_name;?> </b></a>
@@ -103,26 +94,7 @@ ul li a{
                       ?>  
                       </span>
                     </a>
-                    <ul class="dropdown-menu">
-                      <li class="header">You have <?php echo$row['count'];?> products that needs reorder</li>
-                      <li>
-                        <!-- Inner Menu: contains the notifications -->
-                        <ul class="menu">
-                        <?php
-                        $queryprod=mysqli_query($con,"select prod_name from product where prod_qty<=reorder and branch_id='$branch'")or die(mysqli_error());
-        while($rowprod=mysqli_fetch_array($queryprod)){
-      ?>
-                          <li><!-- start notification -->
-                            <a href="reorder.php">
-                              <i class="glyphicon glyphicon-refresh text-red"></i> <?php echo $rowprod['prod_name'];?>
-                            </a>
-                          </li><!-- end notification -->
-                          <?php }?>
-                        </ul>
-                      </li>
-                      <li class="footer"><a href="inventory.php">View all</a></li>
-                    </ul>
-                  </li>
+                   
                   <!-- Tasks Menu -->
            <li class="dropdown notifications-menu">
                     <!-- Menu toggle button -->
@@ -204,17 +176,17 @@ ul li a{
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="receivables.php">
+                         <a href="receivables.php" style="display: none;">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
               <li><!-- start notification -->
-                         <a href="income.php">
+                         <a href="income.php" style="display: none;>
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
                             </a>
                           </li><!-- end notification -->
                           <li><!-- start notification -->
-                         <a href="purchase_request.php">
+                         <a href="purchase_request.php" style="display: none;>
                               <i class="glyphicon glyphicon-usd text-blue"></i>Purchase Request
                             </a>
                           </li><!-- end notification -->

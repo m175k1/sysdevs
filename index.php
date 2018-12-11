@@ -27,18 +27,71 @@
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
   </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-  <body>
-     <div class="color-overlay">
-       <b>Sales & Inventory with Credit Management System</b>
-     </div>
+  <style>
+  .login-box-body, .register-box-body {
+    box-shadow: none;
+  }
+  .login-box-body{
+    border-radius: 0px;
 
+  }
+.btn-primary {
+    background-color: #e43939;
+    border-color: #ffffff;
+    border-radius: 20px;
+}
+
+
+    .info {
+      text-align: center;
+      font-size: 11px;
+      margin-top: 80px;
+    }
+
+    .info h1 {
+      font-size: 15px;
+    }
+    p{
+      color: #718093 !important;
+      text-align: center;
+      font-size: 15px;
+      margin-bottom: 40px;
+    }
+    h1{
+      font-size: 18px;
+      font-weight: bold !important;
+      text-align: center;
+      color:grey;
+    }
+    .login-box-body, .register-box-body {
+      border-radius: 5px;
+    }
+    .form-control{
+      border-bottom:2px solid #dd4b39;
+
+
+    }
+    input[type="text"], input[type="password"] {
+      border: none;
+      border-bottom: 2px solid #dd4252;
+      margin: 0 auto 20px auto;
+    }
+    .btn.btn-flat{
+      border-radius: 20px;
+    }
+
+</style>
+  <body>
+     
+    
 
        
     <div class="login-box">
       <div class="login-logo">
       </div><!-- /.login-logo -->
       <div class="login-box-body">  
-        <p class="login-box-msg">sign in to log into the system</p>
+         <h1>WELCOME</h1>
+        <p>Sign in to log into the System</p>
         <form action="login.php" method="post">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Username" name="username" required>
@@ -48,10 +101,10 @@
             <input type="password" class="form-control" placeholder="Password" name="password" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
-		  <div class="form-group has-feedback">
+      <div class="form-group has-feedback">
             <select class="form-control select2" style="width:100%" name="branch" required>
                 <?php
-				include('dist/includes/dbcon.php');
+        include('dist/includes/dbcon.php');
 
                    $query3=mysqli_query($con,"select * from branch order by branch_name")or die(mysqli_error($con));
                       while($row3=mysqli_fetch_array($query3)){
@@ -61,12 +114,16 @@
                 </select>
           </div>
           <div class="row">
-			<div class="col-xs-6 pull-right">
-			  <button type="reset" class="btn btn-block btn-flat">Clear</button>
+      <div class="col-xs-6 pull-right">
+        <button type="reset" class="btn btn-block btn-flat">Clear</button>
             </div><!-- /.col -->
-			<div class="col-xs-6 pull-right">
+      <div class="col-xs-6 pull-right">
               <button type="submit" class="btn btn-primary btn-block btn-flat" name="login" default>Sign In</button>
             </div><!-- /.col -->
+    <div class="info">
+    <i class="fa fa-paw"></i> Sales and Inventory System </h1>
+    <p>©2018 All Rights Reserved SYDESO</p>
+    </div>
           </div>
         </form>
 
