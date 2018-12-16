@@ -167,7 +167,7 @@ $branch=$_SESSION['branch'];
                     </thead>
                     <tbody>
 <?php
-		$query=mysqli_query($con,"select * from sales_details natural join product where sales_id='$sid'")or die(mysqli_error($con));
+		$query=mysqli_query($con,"select * from sales_details natural join masterfile where sales_id='$sid'")or die(mysqli_error($con));
 			$grand=0;
 		while($row=mysqli_fetch_array($query)){
 				//$id=$row['temp_trans_id'];

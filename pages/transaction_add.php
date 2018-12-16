@@ -9,12 +9,14 @@ include('../dist/includes/dbcon.php');
 	$name = $_POST['prod_name'];
 	$qty = $_POST['qty'];
 	$price = $_POST['price'];
-		
+	$prod_qty = 0;
 	
-		$query=mysqli_query($con,"select * from product where prod_id='$name'")or die(mysqli_error());
-		$row=mysqli_fetch_array($query);
+		$query=mysqli_query($con,"select * from masterfile where master_id='$name'")or die(mysqli_error());
 		
-		$prod_qty=$row['prod_qty'];
+		while($row=mysqli_fetch_array($query)){
+			$prod_qty=$row['prod_qty'];
+		}		
+		
 		
 	if($qty <= $prod_qty ){
 
@@ -35,6 +37,6 @@ include('../dist/includes/dbcon.php');
 	}
 		
 	
-		echo "<script>document.location='cash_transaction.php?cid=$cid'</script>";  
+	echo "<script>document.location='cash_transaction.php'</script>";  
 	
 ?>

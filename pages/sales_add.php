@@ -38,14 +38,14 @@ include('../dist/includes/dbcon.php');
 
 
 
-			$prod_name_q=mysqli_query($con,"select * from product where prod_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));
+		/*	$prod_name_q=mysqli_query($con,"select * from product where prod_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));
 			while ($prod_namex=mysqli_fetch_array($prod_name_q))
 			{
 				$prod_name =$prod_namex['prod_name'];		
 			}
 	
-
-			$prod_qty_q = mysqli_query($con,"select * from masterfile where prod_name = '$prod_name' and branch_id='$branch'")or die(mysqli_error($con));			
+*/
+			$prod_qty_q = mysqli_query($con,"select * from masterfile where master_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));			
 			while ($rowsqty=mysqli_fetch_array($prod_qty_q))
 			{
 				$prod_qty_masterfile =$rowsqty['prod_qty'];		
@@ -53,7 +53,7 @@ include('../dist/includes/dbcon.php');
 
 			$new_qty = $prod_qty_masterfile - $qty;
 
-			mysqli_query($con,"UPDATE masterfile SET prod_qty='$new_qty' where prod_name='$prod_name' and branch_id='$branch'" ) or die(mysqli_error($con));
+			mysqli_query($con,"UPDATE masterfile SET prod_qty='$new_qty' where master_id='$pid' and branch_id='$branch'" ) or die(mysqli_error($con));
 		}
 		
 		$query1=mysqli_query($con,"SELECT or_no FROM payment NATURAL JOIN sales WHERE modeofpayment =  'cash' ORDER BY payment_id DESC LIMIT 0 , 1")or die(mysqli_error($con));
@@ -77,7 +77,7 @@ include('../dist/includes/dbcon.php');
 		$result=mysqli_query($con,"DELETE FROM temp_trans where branch_id='$branch'")	or die(mysqli_error($con));
 		
 		
-		echo "<script>document.location='receipt.php?cid=$cid'</script>";  
+	echo "<script>document.location='receipt.php?cid=$cid'</script>";  
 		
 	
 ?>

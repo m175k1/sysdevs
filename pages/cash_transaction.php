@@ -102,9 +102,10 @@ h3{
                                           while($row=mysqli_fetch_array($query2)){
                                           $prod_name = $row["prod_name"];
                                           $qty = $row["prod_qty"];
+                                          $prod_id = $row["master_id"];
 
                         ?>      
-                                       <option value=""><?php echo $prod_name;?> | <?php echo $qty;?></option>
+                                       <option value="<?php echo $prod_id;?>"><?php echo $prod_name;?> | <?php echo $qty;?></option>
                                        <?php }?>
                                     </select>
 						    <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
@@ -159,7 +160,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                     <tbody>
 <?php
 		
-		$query=mysqli_query($con,"select * from temp_trans natural join product where branch_id='$branch'")or die(mysqli_error());
+		$query=mysqli_query($con,"select * from temp_trans natural join masterfile where branch_id='$branch'")or die(mysqli_error());
 			$grand=0;
 		while($row=mysqli_fetch_array($query)){
 				$id=$row['temp_trans_id'];
