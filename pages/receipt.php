@@ -83,11 +83,16 @@ $branch=$_SESSION['branch'];
 <?php
 
     $branch=$_SESSION['branch'];
-    $query=mysqli_query($con,"select * from sales natural join customer where branch_id='$branch' order by sales_id desc LIMIT 0,1")or die(mysqli_error($con));
+    $query=mysqli_query($con,"select * from sales natural join customer where branch_id='$branch' order by sales_id desc LIMIT 1")or die(mysqli_error($con));
       
         $row=mysqli_fetch_array($query);
        
         $sales_id=$row['sales_id'];
+        if(isset($sales_id)){
+          echo "<h1>TAEK</h1>";
+        }else{
+          echo "<h1>" . $sales_id . "</h1>";
+        }
         $last=$row['cust_last'];
         $first=$row['cust_first'];
         $address=$row['cust_address'];
@@ -104,7 +109,7 @@ $branch=$_SESSION['branch'];
         $row1=mysqli_fetch_array($query1);
 
 ?>    
-         
+        
 					
                    <table class="table">
                     <thead>
@@ -167,7 +172,7 @@ $branch=$_SESSION['branch'];
                     </thead>
                     <tbody>
 <?php
-		$query=mysqli_query($con,"select * from sales_details natural join masterfile where sales_id='$sid'")or die(mysqli_error($con));
+		$query=mysqli_query($con,"select * from sales_details as a left join masterfile as b on a.prod_id = b.master_id where a.sales_id='$sid'")or die(mysqli_error($con));
 			$grand=0;
 		while($row=mysqli_fetch_array($query)){
 				//$id=$row['temp_trans_id'];

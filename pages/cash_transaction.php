@@ -81,7 +81,7 @@ h3{
 	      <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header">
-                  <h3 class="box-title">Sales Transaction</h3> 
+                  <h3 class="box-title">Sales Transaction </h3> 
                 </div>
                 <div class="box-body"> 
                   <!-- Date range -->
@@ -96,6 +96,7 @@ h3{
 <?php
                   $branch=$_SESSION['branch'];
                   $cid=$_REQUEST['cid'];
+
                   include('../dist/includes/dbcon.php');
                   $query2=mysqli_query($con,"select * from masterfile where branch_id='$branch' order by prod_name")or die(mysqli_error());
                                           
@@ -229,6 +230,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
         <form class="form-horizontal" method="post" action="transaction_del.php" enctype='multipart/form-data'>
           <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
           <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
+          <input type="hidden" class="form-control" id="tran" name="tran" value="purchase" required>  
         <p>Are you sure you want to remove <?php echo $row['prod_name'];?>?</p>
         
               </div><br>
@@ -345,40 +347,6 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
-	<script>
-  
-    
-      $("#cash").click(function(){
-          $("#tendered").show('slow');
-          $("#change").show('slow');
-      });
-
-    $(function() {
-
-      $(".btn_delete").click(function(){
-      var element = $(this);
-      var id = element.attr("id");
-      var dataString = 'id=' + id;
-      if(confirm("Sure you want to delete this item?"))
-      {
-	$.ajax({
-	type: "GET",
-	url: "temp_trans_del.php",
-	data: dataString,
-	success: function(){
-		
-	      }
-	  });
-	  
-	  $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-	  .animate({ opacity: "hide" }, "slow");
-      }
-      return false;
-      });
-
-      });
-    
-</script>
 
 <!--sample only -->
 <script>

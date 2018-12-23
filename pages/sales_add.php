@@ -13,8 +13,7 @@ include('../dist/includes/dbcon.php');
 	$branch=$_SESSION['branch'];
 	$prod_qty_masterfile = 0;
 	$total=$amount_due-$discount;
-	$cid=$_REQUEST['cid'];
-
+	echo "<h1>" . $cid . "</h1>";
 		$tendered = $_POST['tendered'];
 		$change = $_POST['change'];
 
@@ -32,7 +31,7 @@ include('../dist/includes/dbcon.php');
 			
 			
 			mysqli_query($con,"INSERT INTO sales_details(prod_id,qty,price,sales_id) VALUES('$pid','$qty','$price','$sales_id')")or die(mysqli_error($con));
-			mysqli_query($con,"UPDATE product SET prod_qty=prod_qty-'$qty' where prod_id='$pid' and branch_id='$branch'") or die(mysqli_error($con)); 
+			mysqli_query($con,"UPDATE masterfile SET prod_qty=prod_qty-'$qty' where master_id='$pid' and branch_id='$branch'") or die(mysqli_error($con)); 
 
 
 
@@ -76,7 +75,7 @@ include('../dist/includes/dbcon.php');
 		
 		$result=mysqli_query($con,"DELETE FROM temp_trans where branch_id='$branch'")	or die(mysqli_error($con));
 		
-		
+	
 	echo "<script>document.location='receipt.php?cid=$cid'</script>";  
 		
 	
