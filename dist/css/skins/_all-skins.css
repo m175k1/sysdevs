@@ -1797,3 +1797,10 @@
     border-left: 1px solid #d2d6de;
   }
 }
+
+.flex{
+  display:flex;  
+}
+.flex p{
+  width:25%;
+}

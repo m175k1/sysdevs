@@ -49,6 +49,31 @@ h3{
    </head>
    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
    <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav">
+                                                    
+                                                   <div class="modal main_modal">
+                                                    <div class="modal-dialog">
+                                                      <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h4 class="modal-title">Data</h4>
+
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        <div>
+                                                          <div class="flex">
+                                                            <p><strong>Supplier</strong></p>
+                                                            <p><strong>Distributor</strong></p>
+                                                            <p><strong>Quantity</strong></p>
+                                                            <p><strong>Base Price</strong></p>
+                                                          </div>
+                                                          <div class="bset">                                                          
+                                                          </div>
+                                                                                        
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    </div>
+                                                  </div>
+                                             
       <div class="wrapper">
       <?php include('../dist/includes/header.php');?>
       <!-- Full Width Column -->
@@ -81,97 +106,38 @@ h3{
                                     <th>Product Name</th>
                                     <th>Qty</th>
                                     <th>Price</th>
-                                    <th>Action</th>
+                                    <th colspan="2">Action</th>
                                  </tr>
                               </thead>
                               <tbody>
+
                                  <?php
                                     $counter=0;
                                     $branch=$_SESSION['branch'];
                                     $query=mysqli_query($con,"select * from masterfile where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
-                                      // product query 
-                                    ?> <div class="modal modal_<?php echo $counter; ?>"> 
-                                                   <div class="modal modal_<?php echo $counter; ?>">
-                                                    <div class="modal-dialog">
-                                                      <div class="modal-content">
-                                                      <div class="modal-header">
-                                                        <h4 class="modal-title">Data</h4>
-
-                                                      </div>
-                                                      <div class="modal-body">
-                                                        <div>
-                                                          <div class="flex">
-                                                            <p><strong>Supplier</strong></p>
-                                                            <p><strong>Distributor</strong></p>
-                                                            <p><strong>Quantity</strong></p>
-                                                            <p><strong>Base Price</strong></p>
-                                                          </div>
-                                      <?php
+                                      // product query                                     
                                     while($row=mysqli_fetch_array($query)){
                                           /*$x = $row['supplier_id'];
-                                          $cat = $row['cat_id'];
-                                        $prod_id = $row['prod_id'];*/ 
+                                          $cat = $row['cat_id'];*/ 
+                                        $prod_id = $row['master_id'];
                                         $prod_name = $row['prod_name'];
                                         $prod_qty = $row['prod_qty'];
                                         $base_price = $row['base_price'];
                                           
-                                        $product_query=mysqli_query($con,"select * from product where prod_name = '$prod_name' and branch_id = '$branch' order by prod_name ")or die(mysqli_error());
-
-                                        while($product_row=mysqli_fetch_array($product_query)){
-                                                  $supplier_id = $product_row['supplier_id'];
-                                                  $cat_id = $product_row['cat_id'];
-                                                  $product_id = $product_row['prod_id'];
-                                                  $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$supplier_id'")or die(mysqli_error());                                                  
-                                                  if (mysqli_num_rows($sup) > 0 ){
-                                                      while($row2=mysqli_fetch_array($sup)){
-                                                        $sup2 = $row2['supplier_name'];
-                                                      }
-                                                  }else{
-                                                      $sup2 = "Supplier is erased";
-                                                  }
-                                                  // supplier name checker
-                                                  $cat=mysqli_query($con,"select cat_name from category where cat_id='$cat_id'")or die(mysqli_error());
-                                                                  if (mysqli_num_rows($cat) > 0 ){
-                                                                      while($row3=mysqli_fetch_array($cat)){
-                                                                            $cat2 = $row3['cat_name'];
-                                                                      }
-                                                                  }else{
-                                                                      $cat2 = "Category is erased";
-                                                                  }                                                       
-
-                                                  $var_prod_qty = $product_row['prod_qty'];
-                                                  $var_base_price = $product_row['base_price'];
-                                                  ?>
-                             
- 
-                                                          <div class="flex">
-                                                            <p><?php echo $sup2; ?></p>
-                                                            <p><?php echo $cat2; ?></p>
-                                                            <p><?php echo $var_prod_qty; ?></p>
-                                                            <p><?php echo $var_base_price; ?></p>
-                                                             </div>
-     
-                                      <?php } ?>
-                                                                                        
-                                                        </div>
-                                                      </div>
-                                                    </div>
-                                                    </div>
-                                                  </div>
-                                         
-                                   
-                                    </div> 
+                                      ?>
                                  <tr>
                                     <td><?php echo $prod_name;?></td>
                                     <td><?php echo $prod_qty;?></td>
                                     <td><?php echo number_format($base_price,2);?></td>
                                     <td>
-                                       <a href="#updateordinance<?php echo $product_id;?>" data-target="#updateordinance<?php echo $product_id;?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
+                                       <!-- <a href="#updateordinance<?php echo $prod_id;?>" data-target="#updateordinance<?php echo $prod_id;?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a> -->
+                                       <button class="btn btn-warning deleteButton" value="<?php echo $prod_id?>">Delete</button>
                                        
                                     </td>
-                                    <td><button class="btn btn-primary fkingbutton" data-attr="<?php echo $counter;?>">Show data</button></td>
+                                    <td><button class="btn btn-primary fkingbutton" data-prod="<?php echo $prod_name;?>" data-branch="<?php echo $branch;?>">Show data</button></td>
                                  </tr>
-                                 <div id="updateordinance<?php echo $row['prod_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                               
+                                 <div id="updateordinance<?php echo $prod_id;?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
                                     <div class="modal-dialog">
                                        <div class="modal-content" style="height:auto">
                                           <div class="modal-header">
@@ -239,7 +205,7 @@ h3{
                                           </div>
                                           <br><br><br><br><br><br><br>
                                           <div class="modal-footer">
-                                          <button class="btn btn-warning deleteButton" value="<?php echo $row['prod_id']?>">Delete</button>
+                                          
                                           <button type="submit" class="btn btn-primary">Save changes</button>
                                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                           </div>
@@ -347,8 +313,30 @@ h3{
 
         $(".fkingbutton").on('click',function(){
             $counter = $(this).attr('data-attr')
-
             $(".modal_" + $counter).show()
+            $.ajax({
+                     type: "POST",
+                     url: "ajax.php",
+                     data: { 
+                         prod_name: $(this).attr('data-prod'), 
+                         branch: $(this).attr('data-branch'), 
+                         process: 'modal_data'
+                     },
+                     success: function(result) {
+                         if(result == ""){ 
+                           alert("no data")
+                         }else{
+                           $(".main_modal").fadeIn(function(){
+                              $(".bset").html(result)
+                           })
+                         }                    
+                         
+                     },
+                     error: function(result) {
+                         alert('error');
+                     }
+            });
+            
          })
 
         $(".modal").on('click',function(){

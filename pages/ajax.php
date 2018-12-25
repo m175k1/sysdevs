@@ -10,7 +10,7 @@ if($_POST['process']=='delete'){
 	      die('Could not connect: ' . mysqli_error());
 	   }
 	   echo 'Connected successfully, ';
-	   $sql = " DELETE FROM product WHERE prod_id = '$serial'";
+	   $sql = " DELETE FROM masterfile WHERE master_id = '$serial'";
 	   
 	   if (mysqli_query($con, $sql)) {
 	      	echo "Record deleted successfully ";
@@ -19,6 +19,53 @@ if($_POST['process']=='delete'){
 	   }
 	   mysqli_close($con);
 }
+
+
+
+if($_POST['process']=='modal_data'){
+										$prod_name = $_POST['prod_name'];
+										$branch = $_POST['branch'];
+                                        $product_query=mysqli_query($con,"select * from product where prod_name = '$prod_name' and branch_id = '$branch' order by prod_name ")or die(mysqli_error());
+
+                                        while($product_row=mysqli_fetch_array($product_query)){
+                                                  $supplier_id = $product_row['supplier_id'];
+                                                  $cat_id = $product_row['cat_id'];
+                                                  $product_id = $product_row['prod_id'];
+                                                  $sup=mysqli_query($con,"select supplier_name from supplier where supplier_id='$supplier_id'")or die(mysqli_error());                                                  
+                                                  if (mysqli_num_rows($sup) > 0 ){
+                                                      while($row2=mysqli_fetch_array($sup)){
+                                                        $sup2 = $row2['supplier_name'];
+                                                      }
+                                                  }else{
+                                                      $sup2 = "Supplier is erased";
+                                                  }
+                                                  // supplier name checker
+                                                  $cat=mysqli_query($con,"select cat_name from category where cat_id='$cat_id'")or die(mysqli_error());
+                                                                  if (mysqli_num_rows($cat) > 0 ){
+                                                                      while($row3=mysqli_fetch_array($cat)){
+                                                                            $cat2 = $row3['cat_name'];
+                                                                      }
+                                                                  }else{
+                                                                      $cat2 = "Category is erased";
+                                                                  }                                                       
+
+                                                  $var_prod_qty = $product_row['prod_qty'];
+                                                  $var_base_price = $product_row['base_price'];
+                                                  echo "<div class='flex'>";
+                                                  echo "<p>" . $sup2 . "</p>";
+                                                  echo "<p>" . $cat2 . "</p>";
+                                                  echo "<p>" . $var_prod_qty . "</p>";
+                                                  echo "<p>" . $var_base_price . "</p>";
+                                                  echo "</div>";
+     }
+}
+
+
+
+
+
+
+
 
 
 if($_POST['process']=='addproduct'){
