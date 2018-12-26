@@ -6,12 +6,12 @@ $branch=$_SESSION['branch'];
 include('../dist/includes/dbcon.php');
 
 	$cid = $_POST['cid'];
-	$name = $_POST['prod_name'];
+	$prod_id = $_POST['prod_id'];
 	$qty = $_POST['qty'];
 	$price = $_POST['price'];
 	$prod_qty = 0;
 	
-		$query=mysqli_query($con,"select * from masterfile where master_id='$name'")or die(mysqli_error());
+		$query=mysqli_query($con,"select * from masterfile where master_id='$prod_id'")or die(mysqli_error());
 		
 		while($row=mysqli_fetch_array($query)){
 			$prod_qty=$row['prod_qty'];
@@ -20,17 +20,17 @@ include('../dist/includes/dbcon.php');
 		
 	if($qty <= $prod_qty ){
 
-		$query1=mysqli_query($con,"select * from temp_trans where prod_id='$name' and branch_id='$branch'")or die(mysqli_error());
+		$query1=mysqli_query($con,"select * from temp_trans where prod_id='$prod_id' and branch_id='$branch'")or die(mysqli_error());
 		$count=mysqli_num_rows($query1);
 		
 		$total=$price*$qty;
 		
 		if ($count>0){
-			mysqli_query($con,"update temp_trans set qty=qty+'$qty',price=price+'$total' where prod_id='$name' and branch_id='$branch'")or die(mysqli_error());
+			mysqli_query($con,"update temp_trans set qty=qty+'$qty',price=price+'$total' where prod_id='$prod_id' and branch_id='$branch'")or die(mysqli_error());
 	
 		}
 		else{
-			mysqli_query($con,"INSERT INTO temp_trans(prod_id,qty,price,branch_id) VALUES('$name','$qty','$price','$branch')")or die(mysqli_error($con));
+			mysqli_query($con,"INSERT INTO temp_trans(prod_id,qty,price,branch_id) VALUES('$prod_id','$qty','$price','$branch')")or die(mysqli_error($con));
 		}
 	}else{
 		echo "<script>alert('Sorry there is not enough stock for this product')</script>";  

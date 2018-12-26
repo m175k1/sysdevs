@@ -31,7 +31,7 @@ include('../dist/includes/dbcon.php');
 			
 			
 			mysqli_query($con,"INSERT INTO sales_details(prod_id,qty,price,sales_id) VALUES('$pid','$qty','$price','$sales_id')")or die(mysqli_error($con));
-			mysqli_query($con,"UPDATE masterfile SET prod_qty=prod_qty-'$qty' where master_id='$pid' and branch_id='$branch'") or die(mysqli_error($con)); 
+			
 
 
 

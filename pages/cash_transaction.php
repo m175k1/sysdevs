@@ -91,7 +91,7 @@ h3{
 					 <div class="col-md-6">
 						  <div class="form-group">
 							<label for="date">Product Name</label>              
-                <select class="form-control select2" name="prod_name" tabindex="1" autofocus required>
+                <select class="form-control select2" name="prod_id" tabindex="1" autofocus required>
 
 <?php
                   $branch=$_SESSION['branch'];
@@ -161,7 +161,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                     <tbody>
 <?php
 		
-		$query=mysqli_query($con,"select * from temp_trans natural join masterfile where branch_id='$branch'")or die(mysqli_error());
+		$query=mysqli_query($con,"select * from temp_trans left join masterfile on temp_trans.prod_id = masterfile.master_id where temp_trans.branch_id='$branch'")or die(mysqli_error());
 			$grand=0;
 		while($row=mysqli_fetch_array($query)){
 				$id=$row['temp_trans_id'];
