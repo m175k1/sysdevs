@@ -167,7 +167,7 @@ $branch=$_SESSION['branch'];
                     </thead>
                     <tbody>
 <?php
-	$query=mysqli_query($con,"select * from sales natural join sales_details natural join product natural join customer where date(date_added)>='$start' and date(date_added)<='$end' and branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
+	$query=mysqli_query($con,"select * from sales natural join sales_details natural join masterfile natural join customer where date(date_added)>='$start' and date(date_added)<='$end' and branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
 		$qty=0;$grand=0;$discount=0;$total_profit=0;
 								while($row=mysqli_fetch_array($query)){
                 $total=$row['qty']*$row['price'];
@@ -180,7 +180,7 @@ $branch=$_SESSION['branch'];
             <td><?php echo $row['sales_id'];;?></td>
             <td><?php echo $row['cust_last'].", ".$row['cust_first'];?></td>
             <td><?php echo $row['prod_name'];?></td>
-            <td><?php echo $row['serial'];?></td>
+            <td><?php echo $row['master_id'];?></td>
             <td><?php echo $row['qty'];?></td>
 			<td><?php echo $row['price'];?></td>
             <td style="text-align:right"><?php echo number_format($total,2);
