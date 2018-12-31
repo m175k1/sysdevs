@@ -122,7 +122,7 @@ h3{
                               <div class="form-group">
                                  <label for="date">Quantity</label>
                                  <div class="input-group col-md-12">
-                                    <input type="text" class="form-control pull-right" id="qty" name="qty" placeholder="Input Quantity" required>
+                                    <input type="number" class="form-control pull-right" id="qty" name="qty" value='1' required>
                                  </div>
                                  <!-- /.input group -->
                               </div>
@@ -140,7 +140,7 @@ h3{
                                     <button type="submit" class="btn btn-primary" id="daterange-btn" name="">
                                     Save
                                     </button>
-                                    <!-- <div class="btn btn-warning stockoutButton">Stock Out</div> -->
+                                    <div class="btn btn-warning stockoutButton">Stock Out</div>
                                  </div>
                               </div>
                               <!-- /.form group -->
@@ -175,7 +175,7 @@ h3{
                               <div class="form-group">
                                  <label for="xqty">Quantity</label>
                                  <div class="input-group col-md-12">
-                                    <input type="text" class="form-control pull-right" id="xqty" name="qty" placeholder="Input Quantity" required>
+                                    <input type="number" class="form-control pull-right" id="xqty" name="qty" placeholder="Input Quantity" required>
                                  </div>
                                  <!-- /.input group -->
                               </div>
@@ -354,8 +354,10 @@ h3{
          
 
          $(".stockoutButton").click(function(e) {
-                 e.preventDefault();                 
-                 $.ajax({
+          e.preventDefault();    
+
+    
+                $.ajax({
                      type: "POST",
                      url: "ajax.php",
                      data: { 
@@ -376,6 +378,9 @@ h3{
                          alert('error');
                      }
                  });
+
+                            
+
            }); // ajax    
          
          

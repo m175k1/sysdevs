@@ -399,21 +399,29 @@ if($_POST['process']=='stockout'){
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {	
+	    	$product_name = $row['prod_name'];
 			$base_price = $row["base_price"];
 			if($row['prod_qty'] >= $qty){
 					$prod_qty = $row['prod_qty'] - $qty;					
-					$num = 0 - $qty;					
-			mysqli_query($con,"UPDATE product SET prod_qty = '$prod_qty' where prod_id='$prod_id'") or die(mysqli_error($con)); 			
+					$num = 0 - $qty;
+			mysqli_query($con,"UPDATE product SET prod_qty = '$prod_qty' where prod_id='$prod_id'") or die(mysqli_error($con));
 			mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$prod_id','$num','$date','$branch','$base_price')")or die(mysqli_error($con));
-				echo "Success";
-				
+				echo "Success";				
 			} 
 			else{
 				echo "Not enough items";
-			}
+			}			
+		}
+
+		
+	
+		$prod_qty_q = mysqli_query($con,"select * from masterfile where prod_name = '$product_name'")or die(mysqli_error($con));			
+			while ($rowsqty=mysqli_fetch_array($prod_qty_q))
+			{
+				$new_qty = $rowsqty['prod_qty'] - $qty;
 			
-		}		
-	mysqli_free_result($result);
+				mysqli_query($con,"UPDATE masterfile SET prod_qty = '$new_qty' where prod_name='$product_name'") or die(mysqli_error($con));				
+			}
 	}
 	mysqli_close($con);
 }
