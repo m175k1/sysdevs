@@ -222,9 +222,9 @@ if($_POST['process']=='cust_history'){
 	  $totalprice = 0;
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {	
-			$price = $row['price'] * $row['prod_qty'];
+			$price = $row['price'] * $row['qty'];
 	    	echo "<tr>";
-	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['prod_qty'].  "</td><td>" . $price.  "</td><td>" . $row['date_added'].  "</td>";
+	    	echo "<td>" . $row['cust_first'] . "</td><td>" .$row['prod_name'] . "</td><td>" . $row['price'] .  "</td><td>" . $row['qty'].  "</td><td>" . $price.  "</td><td>" . $row['date_added'].  "</td>";
 			echo "</tr>";
 			
 			$totalprice =$totalprice +  $price;
