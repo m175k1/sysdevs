@@ -200,7 +200,7 @@ if($_POST['process']=='cust_history'){
 		SELECT * FROM customer a 
 			LEFT JOIN sales b ON a.cust_id = b.cust_id 
 			LEFT JOIN sales_details c ON b.sales_id = c.sales_id
-			LEFT JOIN product d ON c.prod_id = d.prod_id
+			LEFT JOIN masterfile d ON c.prod_id = d.master_id
 			WHERE a.cust_id = '".$cust_id."'
 			AND a.branch_id = '$branch'
 			";

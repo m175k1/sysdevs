@@ -125,6 +125,7 @@ h3{
                                        <th>Product Code</th>
                                        <th>Product Name</th>
                                        <th>Distributor</th>
+                                       <th>Company</th>
                                        <th>Qty Left</th>
                                        <th>Price</th>
                                        <th>Total</th>
@@ -134,16 +135,17 @@ h3{
                                  <tbody>
                                     <?php
                                        $branch=$_SESSION['branch'];
-                                       $query=mysqli_query($con,"select * from product natural join supplier where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                                       $query=mysqli_query($con,"select * from product natural join supplier natural join category where branch_id='$branch' order by prod_name")or die(mysqli_error());
                                        $grand=0;
                                        while($row=mysqli_fetch_array($query)){
                                          $total=$row['base_price']*$row['prod_qty'];
                                          $grand+=$total;
                                        ?>
                                     <tr>
-                                       <td><?php echo $row['serial'];?></td>
+                                       <td><?php echo $row['prod_id'];?></td>
                                        <td><?php echo $row['prod_name'];?></td>
                                        <td><?php echo $row['supplier_name'];?></td>
+                                       <td><?php echo $row['cat_name'];?></td>
                                        <td><?php echo $row['prod_qty'];?></td>
                                        <td><?php echo $row['base_price'];?></td>
                                        <td><?php echo number_format($total,2);?></td>
@@ -153,7 +155,7 @@ h3{
                                  </tbody>
                                  <tfoot>
                                     <tr>
-                                       <th colspan="5">Total</th>
+                                       <th colspan="6">Total</th>
                                        <th colspan="2">P<?php echo number_format($grand,2);?></th>
                                     </tr>
                                     <tr>
