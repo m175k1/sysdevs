@@ -399,6 +399,7 @@ if($_POST['process']=='stockout'){
 	  // Fetch one and one row
 	  while ($row=mysqli_fetch_array($result, MYSQLI_ASSOC))
 	    {	
+	    	$product_name = $row['prod_name'];
 			$base_price = $row["base_price"];
 			if($row['prod_qty'] >= $qty){
 					$prod_qty = $row['prod_qty'] - $qty;					
@@ -413,6 +414,19 @@ if($_POST['process']=='stockout'){
 			}
 			
 		}		
+
+
+	
+		$prod_qty_q = mysqli_query($con,"select * from masterfile where prod_name = '$product_name'")or die(mysqli_error($con));			
+			while ($rowsqty=mysqli_fetch_array($prod_qty_q))
+			{
+				$new_qty = $rowsqty['prod_qty'] - $qty;
+			
+				mysqli_query($con,"UPDATE masterfile SET prod_qty = '$new_qty' where prod_name='$product_name'") or die(mysqli_error($con));				
+			}
+
+
+
 	mysqli_free_result($result);
 	}
 	mysqli_close($con);
