@@ -319,17 +319,7 @@ h3{
                                     <td><?php echo $row['date'];?></td>
                                     <td><?php echo number_format((float)$sub_total, 2, '.', '');?></td>
                                  </tr>
-                                 <?php }?>          
-                                <tr>
-                                  <td><strong>TOTAL</strong></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td></td>
-                                  <td><strong><?php echo number_format((float)$main_total, 2, '.', '');?></strong></td>
-                                 </tr>  
-
+                                 <?php }?>
                               </tbody>
                               <tfoot>
                                  <tr>
@@ -341,7 +331,42 @@ h3{
                                     <th>Date Delivered</th>
                                     <th>Sub Total</th>
                                  </tr>
-                              </tfoot>
+                              </tfoot>                              
+                           </table>
+                           <table class="table table-bordered table-striped" style="width:100%">
+                              <thead class="hidden">
+                                 <tr>
+                                    <th>Product Name</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Distributor</th>
+                                    <th>Company</th>
+                                    <th>Date Delivered</th>
+                                    <th>Sub Total</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td><strong>TOTAL</strong></td>
+                                  <td></td>                                  
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td style="text-align: right"><strong id="stockintotal"><?php echo number_format((float)$main_total, 2, '.', '');?></strong></td>
+                              </tr> 
+                            </tbody>
+                            <tfoot class="hidden">
+                                 <tr>
+                                    <th>Product Name</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Distributor</th>
+                                    <th>Company</th>
+                                    <th>Date Delivered</th>
+                                    <th>Sub Total</th>
+                                 </tr>
+                              </tfoot> 
                            </table>
                         </div>
                         <!-- /.box-body -->
@@ -382,6 +407,21 @@ h3{
              "info": true,
              "autoWidth": false
            });
+
+          $("#example1").on('DOMSubtreeModified',function(e) {
+            $xrows = $("#example1 tr").length - 1;
+            var  i;
+            $main_total = 0;
+            $sub_total = 0;
+            for (i = 1; i < $xrows; i++) {
+              $sub_total = $("#example1 tr").eq(i).find('td').eq(6).html()
+              
+              $main_total = $main_total + parseFloat($sub_total);
+            }
+            $("#stockintotal").html($main_total)
+          })
+
+
            $('#example2').DataTable({
              "paging": false,
              "lengthChange": false,
