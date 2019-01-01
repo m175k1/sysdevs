@@ -88,8 +88,7 @@ $branch=$_SESSION['branch'];
         $row=mysqli_fetch_array($query);
        
         $sales_id=$row['sales_id'];
-        if(isset($sales_id)){
-          echo "<h1>TAEK</h1>";
+        if(isset($sales_id)){          
         }else{
           echo "<h1>" . $sales_id . "</h1>";
         }
