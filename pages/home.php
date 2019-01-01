@@ -146,13 +146,13 @@ endif;
                         <!-- small box -->
                         <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
                           <div class="inner">
-                            <h3>History</h3>
-                            <p>Company/Distributor</p>
+                            <h3>Report</h3>
+                            <p>Sales</p>
                           </div>
                           <div class="icon" style="margin-top:10px">
                             <i class="glyphicon glyphicon-time"></i>
                           </div>
-                          <a href="product.php" class="small-box-footer">
+                          <a href="sales.php" class="small-box-footer">
                             Go <i class="fa fa-arrow-circle-right"></i>
                           </a>
                         </div>

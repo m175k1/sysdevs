@@ -23,6 +23,29 @@
       <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
       <style>
+      @media print {
+          .btn-print {
+            display:none !important;
+          }
+      .main-footer  {
+      display:none !important;
+      }
+      div.dataTables_length label { 
+        display: none !important;
+      }
+      div.dataTables_filter label{
+        display: none !important;
+      }
+      div.dataTables_paginate ul.pagination{
+        display: none !important;
+      }
+      div.dataTables_info{
+        display: none !important;
+      }
+      .col-md-4{
+        display: none;
+      }
+    }
   ::-webkit-scrollbar{
   width: 5px;
 }

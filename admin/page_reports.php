@@ -77,11 +77,11 @@ th{
 								<?php 
 								$date = date("M. d, Y");
 								$branch_id = $_GET['id'];
-									$query = mysqli_query($con,"select SUM(balance) as total_balance from customer where  branch_id ='$branch_id' ") or die(mysqli_error($con));
+									$query = mysqli_query($con,"select SUM(remaining) as remaining from payment where  branch_id ='$branch_id' ") or die(mysqli_error($con));
 										$row1=mysqli_fetch_array($query);
 											
 								?>
-								<div class="count green"><?php echo $row1['total_balance'];?></div>
+								<div class="count green"><?php echo $row1['remaining'];?></div>
 								<span class="count_bottom"><i class="green">Total Receivables as of</i> <?php echo $date;?></span>
 								</div>
 								<div class="col-md-3 col-sm-3 col-xs-3 tile_stats_count">
