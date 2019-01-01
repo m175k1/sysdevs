@@ -130,8 +130,7 @@ h3{
                                     <td><?php echo $prod_qty;?></td>
                                     <td><?php echo number_format($base_price,2);?></td>
                                     <td>
-                                       <!-- <a href="#updateordinance<?php echo $prod_id;?>" data-target="#updateordinance<?php echo $prod_id;?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a> -->
-                                       <button class="btn btn-warning deleteButton" value="<?php echo $prod_id?>">Delete</button>
+                                       <a href="#updateordinance<?php echo $prod_id;?>" data-target="#updateordinance<?php echo $prod_id;?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
                                        
                                     </td>
                                     <td><button class="btn btn-primary fkingbutton" data-prod="<?php echo $prod_name;?>" data-branch="<?php echo $branch;?>">Show data</button></td>
@@ -147,62 +146,18 @@ h3{
                                           </div>
                                           <div class="modal-body">
                                              <form class="form-horizontal" method="post" action="product_update.php" enctype='multipart/form-data'>
-                                                <div class="form-group">
-                                                   <label class="control-label col-lg-3" for="price">Serial #</label>
-                                                   <div class="col-lg-9">
-                                                      <input type="text" class="form-control" id="price" name="serial" value="<?php echo $row['serial'];?>" required>  
-                                                   </div>
-                                                </div>
+                                                
                                                 <div class="form-group">
                                                    <label class="control-label col-lg-3" for="name">Product Name</label>
                                                    <div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['prod_id'];?>" required>  
                                                       <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['prod_name'];?>" required>  
                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                   <label class="control-label col-lg-3" for="name">Description</label>
-                                                   <div class="col-lg-9">
-                                                      <input type="text" class="form-control" id="name" name="desc" value="<?php echo $row['prod_desc'];?>" required>  
-                                                   </div>
-                                                </div>
-                                                <div class="form-group">
-                                                   <label class="control-label col-lg-3" for="file">Distributor</label>
-                                                   <div class="col-lg-9">
-                                                      <select class="form-control select2" style="width: 100%;" name="supplier" required>
-                                                         <option value="<?php echo $row['supplier_id'];?>"><?php echo $sup2;?></option>
-                                                      </select>
-                                                   </div>
-                                                </div>
-                                                <div class="form-group">
-                                                   <label class="control-label col-lg-3" >Company Name</label>
-                                                   <div class="col-lg-9">
-                                                      <select class="form-control select2" style="width: 100%;" name="category" required>
-                                                         <option value="<?php echo $row['cat_id'];?>"><?php echo $cat2;?></option>
-                                                         <?php
-                                                            $queryc=mysqli_query($con,"select * from category order by cat_name")or die(mysqli_error());
-                                                              while($rowc=mysqli_fetch_array($queryc)){
-                                                              ?>
-                                                         <option value="<?php echo $rowc['cat_id'];?>"><?php echo $rowc['cat_name'];?></option>
-                                                         <?php }?>
-                                                      </select>
-                                                   </div>
-                                                   <!-- /.input group -->
-                                                </div>
-                                                <!-- /.form group -->
-                                                <div class="form-group">
-                                                   <label class="control-label col-lg-3" for="price">Reorder</label>
-                                                   <div class="col-lg-9">
-                                                      <input type="number" class="form-control" id="price" name="reorder" value="<?php echo $row['reorder'];?>" required>  
-                                                   </div>
-                                                </div>
-                                                <div class="form-group">
-                                                   <label class="control-label col-lg-3" for="price">Picture</label>
-                                                   <div class="col-lg-9"> 
-                                                      <input type="hidden" class="form-control" id="price" name="image1" value="<?php echo $row['prod_pic'];?>"> 
-                                                      <input type="file" class="form-control" id="price" name="image">  
-                                                   </div>
-                                                </div>
-                                          </div>
+                                               
+                                                
+                                                
+                                                
+                                         
                                           <br><br><br><br><br><br><br>
                                           <div class="modal-footer">
                                           
