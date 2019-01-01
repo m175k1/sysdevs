@@ -149,15 +149,10 @@ h3{
                                                 
                                                 <div class="form-group">
                                                    <label class="control-label col-lg-3" for="name">Product Name</label>
-                                                   <div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $row['prod_id'];?>" required>  
+                                                   <div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="name" value="<?php echo $row['prod_name'];?>" required>  
                                                       <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['prod_name'];?>" required>  
                                                    </div>
-                                                </div>
-                                               
-                                                
-                                                
-                                                
-                                         
+                                                </div>                                         
                                           <br><br><br><br><br><br><br>
                                           <div class="modal-footer">
                                           
@@ -293,8 +288,8 @@ h3{
             
          })
 
-        $(".modal").on('click',function(){
-              $(this).fadeOut()
+        $(".main_modal").on('click',function(){
+            $(this).hide()
         })
 
          $(".deleteButton").click(function(e) {
