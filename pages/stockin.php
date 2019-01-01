@@ -289,6 +289,7 @@ h3{
                                     <th>Distributor</th>
                                     <th>Company</th>
                                     <th>Date Delivered</th>
+                                    <th>Sub Total</th>
                                  </tr>
                               </thead>
                               <tbody>
@@ -303,20 +304,32 @@ h3{
                                       WHERE a.branch_id='$branch'
                                       order by date desc
                                       ";                                    
-                                                               
+                                    $main_total = 0;                            
                                     $query=mysqli_query($con,$sql)or die(mysqli_error());
                                     while($row=mysqli_fetch_array($query)){
-                                    
+                                      $sub_total = $row['qty'] * $row['base_price'];
+                                      $main_total = $main_total + $sub_total;
                                     ?>
                                  <tr>
                                     <td><?php echo $row['prod_name'];?></td>
                                     <td><?php echo $row['qty'];?></td>
-                                    <td><?php echo $row['base_price'];?></td>
+                                    <td><?php echo number_format((float)$row['base_price'], 2, '.', '');?></td>
                                     <td><?php echo $row['supplier_name'];?></td>
                                     <td><?php echo $row['cat_name'];?></td>
                                     <td><?php echo $row['date'];?></td>
+                                    <td><?php echo number_format((float)$sub_total, 2, '.', '');?></td>
                                  </tr>
-                                 <?php }?>            
+                                 <?php }?>          
+                                <tr>
+                                  <td><strong>TOTAL</strong></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td></td>
+                                  <td><strong><?php echo number_format((float)$main_total, 2, '.', '');?></strong></td>
+                                 </tr>  
+
                               </tbody>
                               <tfoot>
                                  <tr>
@@ -326,6 +339,7 @@ h3{
                                     <th>Distributor</th>
                                     <th>Company</th>
                                     <th>Date Delivered</th>
+                                    <th>Sub Total</th>
                                  </tr>
                               </tfoot>
                            </table>
@@ -360,9 +374,16 @@ h3{
       <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
       <script>
          $(function () {
-           $("#example1").DataTable();
+           $("#example1").DataTable({
+             "paging": false,
+             "lengthChange": false,
+             "searching": false,
+             "ordering": true,
+             "info": true,
+             "autoWidth": false
+           });
            $('#example2').DataTable({
-             "paging": true,
+             "paging": false,
              "lengthChange": false,
              "searching": false,
              "ordering": true,
