@@ -220,7 +220,6 @@ h3{
                               </tbody>
                               <tfoot>
                                  <tr>
-                                    <th>Picture</th>
                                     <th>Product Name</th>
                                     <th>Qty</th>
                                     <th>Price</th>

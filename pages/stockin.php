@@ -297,7 +297,9 @@ h3{
                                  <tr>
                                     <th>Product Name</th>
                                     <th>Qty</th>
+                                    <th>Price</th>
                                     <th>Distributor</th>
+                                    <th>Company</th>
                                     <th>Date Delivered</th>
                                  </tr>
                               </tfoot>
