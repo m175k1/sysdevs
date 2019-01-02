@@ -50,11 +50,8 @@
         display: none !important;
       }
     }
-       @media print{
-table tr td:nth-child(5){
-    visibility:hidden;
-}
-}
+  
+
 @media print{
 table tr td:nth-child(6){
     visibility:hidden;

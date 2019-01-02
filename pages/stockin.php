@@ -179,7 +179,7 @@ h3{
                                   </div>
                                 </div> 
 
-                                <div class="form-group">
+                                <div class="form-group" style="display:none;">
                                   <label for="price">Product Description</label>
                                   <div class="col-lg-12">
                                     <textarea class="form-control" id="price" name="prod_desc" placeholder="Product Description"></textarea>  
