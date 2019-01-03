@@ -24,6 +24,52 @@ endif;
     <link href="https://fonts.googleapis.com/css?family=Lobster|Pacifico|Raleway" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
    <style>
+
+       @media print {
+          .btn-print {
+            display:none !important;
+          }
+      .main-footer  {
+      display:none !important;
+      }
+      div.dataTables_paginate ul.pagination{
+        display: none !important;
+      }
+      .box-title{
+        display: none;
+      }
+      .form-group{
+        display:none;
+      }
+      thead{
+        display:none;
+      }
+      tfoot{
+        display:none;
+      }
+     #example1{
+      display: none;
+     }
+     .modal-title{
+      display: none;
+     }
+     #example1{
+      display:none !important;
+     }
+     div.dataTables_info{
+      display:none;
+     }
+     div.dataTables_filter label{
+      display:none;
+     }
+
+div.dataTables_length label{
+  display:none;
+}
+.box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title{
+  display:none;
+}
+    }
 ::-webkit-scrollbar{
   width: 5px;
 }
@@ -172,6 +218,7 @@ h3{
 					</div>
 				</div>
         <br>
+        <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
 		<div class="clearfix"></div>
 				  <div class="history" style="margin-top:50px">
           </div>
