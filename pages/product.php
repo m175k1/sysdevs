@@ -280,42 +280,6 @@ h3{
       <script src="../dist/js/demo.js"></script>
       <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
       <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-
-      <script>
-         $(function () {
-           $("#example1").DataTable({
-             "paging": false,
-             "lengthChange": false,
-             "searching": true,
-             "ordering": true,
-             "info": true,
-             "autoWidth": false
-           });
-
-          $("#example1").on('DOMSubtreeModified',function(e) {
-            $xrows = $("#example1 tr").length - 1;
-            var  i;
-            $main_total = 0;
-            $sub_total = 0;
-            for (i = 1; i < $xrows; i++) {
-              $sub_total = $("#example1 tr").eq(i).find('td').eq(6).html()
-              
-              $main_total = $main_total + parseFloat($sub_total);
-            }
-            $("#stockintotal").html($main_total)
-          })
-
-
-           $('#example2').DataTable({
-             "paging": false,
-             "lengthChange": false,
-             "searching": false,
-             "ordering": true,
-             "info": true,
-             "autoWidth": false
-           });
-         });
-      </script>
       <script>
          $(function () {
  
