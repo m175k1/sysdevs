@@ -144,7 +144,17 @@ h3{
                                        <td><?php echo $row['supplier_name'];?></td>
                                        <td><?php echo $row['cat_name'];?></td>
                                        <td><?php echo $row['prod_qty'];?></td>
-                                       <td><?php echo $row['base_price'];?></td>
+
+                                       <td><?php if ($row['prod_qty'] == 0){
+                                                  echo "0";
+                                                  } 
+                                                  else {
+
+                                                    echo $row['base_price'];
+                                                  }
+                                       ?>
+                                         
+                                       </td>
                                        <td><?php echo number_format($total,2);?></td>
                                        <td class="text-center"><?php if ($row['prod_qty']<=$row['reorder'])echo "<span class='badge bg-red'><i class='glyphicon glyphicon-refresh'></i>Reorder</span>"; else echo "<span class='badge bg-green'><i class='glyphicon glyphicon-refresh'></i> Good</span>"; ?></td>
                                     </tr>

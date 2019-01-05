@@ -152,7 +152,10 @@ h3{
                                  <tr>
                                     <td><?php echo $prod_name;?></td>
                                     <td><?php echo $prod_qty;?></td>
-                                    <td><?php echo number_format($base_price,2);?></td>
+                                    <td>
+                                      <?php if ($prod_qty == 0) echo 0;
+                                      else echo number_format($base_price,2);?>
+                                      </td>
                                     <td>
                                        <a href="#updateordinance<?php echo $prod_id;?>" data-target="#updateordinance<?php echo $prod_id;?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
                                        

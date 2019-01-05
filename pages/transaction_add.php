@@ -25,13 +25,13 @@ include('../dist/includes/dbcon.php');
 		
 		$total=$price*$qty;
 		
-		if ($count>0){
+		/*if ($count>0){
 			mysqli_query($con,"update temp_trans set qty=qty+'$qty',price=price+'$total' where prod_id='$prod_id' and branch_id='$branch'")or die(mysqli_error());
 	
 		}
-		else{
+		else{*/
 			mysqli_query($con,"INSERT INTO temp_trans(prod_id,qty,price,branch_id) VALUES('$prod_id','$qty','$price','$branch')")or die(mysqli_error($con));
-		}
+		//}
 	}else{
 		echo "<script>alert('Sorry there is not enough stock for this product')</script>";  
 	}
