@@ -49,6 +49,9 @@
       div.dataTables_info{
         display: none !important;
       }
+      table.table-bordered th:last-child{
+        display:none;
+      }
     }
   
 
@@ -57,6 +60,23 @@ table tr td:nth-child(6){
     visibility:hidden;
   }
 }
+@media print{
+table tr th:nth-child(6){
+    visibility:hidden;
+  }
+}
+@media print{
+table tr td:nth-child(7){
+    visibility:hidden;
+  }
+}
+@media print{
+table tr th:nth-child(7){
+    visibility:hidden;
+  }
+}
+
+
       
       
       ::-webkit-scrollbar{
@@ -119,7 +139,7 @@ h3{
                               <table id="example1" class="table table-bordered table-striped">
                                  <thead>
                                     <tr>
-                                       <th>Product Code</th>
+                                       <th style="display:none;">Product Code</th>
                                        <th>Product Name</th>
                                        <th>Distributor</th>
                                        <th>Company</th>
@@ -139,7 +159,7 @@ h3{
                                          $grand+=$total;
                                        ?>
                                     <tr>
-                                       <td><?php echo $row['prod_id'];?></td>
+                                       <td style="display:none;"><?php echo $row['prod_id'];?></td>
                                        <td><?php echo $row['prod_name'];?></td>
                                        <td><?php echo $row['supplier_name'];?></td>
                                        <td><?php echo $row['cat_name'];?></td>
