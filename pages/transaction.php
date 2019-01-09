@@ -98,11 +98,11 @@ h3{
                   $branch=$_SESSION['branch'];
                   $cid=$_REQUEST['cid'];
                                   include('../dist/includes/dbcon.php');
-                                     $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                                     $query2=mysqli_query($con,"select * from masterfile where branch_id='$branch' order by prod_name")or die(mysqli_error());
                                         while($row=mysqli_fetch_array($query2)){
                                            
                                 ?>
-                                        <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
+                                        <option value="<?php echo $row['master_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
                                   <?php }?>
                                 </select>
                             <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>  

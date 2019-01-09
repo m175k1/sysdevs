@@ -138,12 +138,12 @@ h3{
                                  <?php
                                     $counter=0;
                                     $branch=$_SESSION['branch'];
-                                    $query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
+                                    $query=mysqli_query($con,"select * from masterfile where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
                                       // product query                                    
                                     while($row=mysqli_fetch_array($query)){
                                           /*$x = $row['supplier_id'];
                                           $cat = $row['cat_id'];*/
-                                        $prod_id = $row['prod_id'];
+                                        $prod_id = $row['master_id'];
                                         $prod_name = $row['prod_name'];
                                         $prod_qty = $row['prod_qty'];
                                         $base_price = $row['base_price'];
