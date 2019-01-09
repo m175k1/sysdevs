@@ -30,7 +30,7 @@
       .main-footer  {
       display:none !important;
       }
-      div.dataTables_length label { 
+      div.dataTables_length label {
         display: none !important;
       }
       div.dataTables_filter label{
@@ -59,7 +59,7 @@
 .btn-warning {
     background-color: #f72121!important;
     border-color: #ffffff;
-} 
+}
 .content{
   font-family: 'Comfortaa', cursive;
 }
@@ -67,18 +67,18 @@ h3{
   font-family: 'Comfortaa', cursive;
  text-align: center;
      
-    
+   
     </style>
    </head>
    <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
    <body class="hold-transition skin-<?php echo $_SESSION['skin'];?> layout-top-nav">
-                                                    
+                                                   
                                                    <div class="modal main_modal">
                                                     <div class="modal-dialog">
                                                       <div class="modal-content">
                                                       <div class="modal-header">
                                                         <h4 class="modal-title">Data</h4>
-
+ 
                                                       </div>
                                                       <div class="modal-body">
                                                         <div>
@@ -90,7 +90,7 @@ h3{
                                                           </div>
                                                           <div class="bset">                                                          
                                                           </div>
-                                                                                        
+                                                                                       
                                                         </div>
                                                       </div>
                                                     </div>
@@ -134,20 +134,20 @@ h3{
                                  </tr>
                               </thead>
                               <tbody>
-
+ 
                                  <?php
                                     $counter=0;
                                     $branch=$_SESSION['branch'];
-                                    $query=mysqli_query($con,"select * from masterfile where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
-                                      // product query                                     
+                                    $query=mysqli_query($con,"select * from product where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
+                                      // product query                                    
                                     while($row=mysqli_fetch_array($query)){
                                           /*$x = $row['supplier_id'];
-                                          $cat = $row['cat_id'];*/ 
-                                        $prod_id = $row['master_id'];
+                                          $cat = $row['cat_id'];*/
+                                        $prod_id = $row['prod_id'];
                                         $prod_name = $row['prod_name'];
                                         $prod_qty = $row['prod_qty'];
                                         $base_price = $row['base_price'];
-                                          
+                                         
                                       ?>
                                  <tr>
                                     <td><?php echo $prod_name;?></td>
@@ -173,16 +173,16 @@ h3{
                                           </div>
                                           <div class="modal-body">
                                              <form class="form-horizontal" method="post" action="product_update.php" enctype='multipart/form-data'>
-                                                
+                                               
                                                 <div class="form-group">
                                                    <label class="control-label col-lg-3" for="name">Product Name</label>
                                                    <div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="name" value="<?php echo $row['prod_name'];?>" required>  
                                                       <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['prod_name'];?>" required>  
                                                    </div>
-                                                </div>                                         
+                                                </div>                                        
                                           <br><br><br><br><br><br><br>
                                           <div class="modal-footer">
-                                          
+                                         
                                           <button type="submit" class="btn btn-primary">Save changes</button>
                                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                           </div>
@@ -268,7 +268,7 @@ h3{
          </div>
          <!--end of modal-dialog-->
       </div>
-      <!--end of modal--> 
+      <!--end of modal-->
       <!-- jQuery 2.1.4 -->
       <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
       <!-- Bootstrap 3.3.5 -->
@@ -286,20 +286,20 @@ h3{
       <script>
          $(function () {
  
-
+ 
         $(".fkingbutton").on('click',function(){
             $counter = $(this).attr('data-attr')
             $(".modal_" + $counter).show()
             $.ajax({
                      type: "POST",
                      url: "ajax.php",
-                     data: { 
-                         prod_name: $(this).attr('data-prod'), 
-                         branch: $(this).attr('data-branch'), 
+                     data: {
+                         prod_name: $(this).attr('data-prod'),
+                         branch: $(this).attr('data-branch'),
                          process: 'modal_data'
                      },
                      success: function(result) {
-                         if(result == ""){ 
+                         if(result == ""){
                            alert("no data")
                          }else{
                            $(".main_modal").fadeIn(function(){
@@ -312,13 +312,13 @@ h3{
                          alert('error');
                      }
             });
-            
+           
          })
-
+ 
         $(".main_modal").on('click',function(){
             $(this).hide()
         })
-
+ 
          $(".deleteButton").click(function(e) {
                  e.preventDefault();
          var confirmation = confirm("are you sure you want to remove the item?");
@@ -327,18 +327,18 @@ h3{
                  $.ajax({
                      type: "POST",
                      url: "ajax.php",
-                     data: { 
+                     data: {
                          serial: $(this).val(), // < note use of 'this' here
                          process: 'delete'
                      },
                      success: function(result) {
-                         if(result == ""){ 
+                         if(result == ""){
                            if(alert(result)){}
-                               else    window.location.reload(); 
+                               else    window.location.reload();
                            
                          }else{
                            if(alert(result)){}
-                               else    window.location.reload(); 
+                               else    window.location.reload();
                          }                    
                          
                      },
@@ -350,7 +350,7 @@ h3{
              });
          });
          
-  
+ 
       </script>
    </body>
 </html>

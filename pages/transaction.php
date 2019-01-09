@@ -1,4 +1,4 @@
-  <?php session_start();
+<?php session_start();
 if(empty($_SESSION['id'])):
 header('Location:../index.php');
 endif;
@@ -51,9 +51,9 @@ javascript:window.history.forward(1);
 h3{
   font-family: 'Comfortaa', cursive;
  text-align: center;
-      
-
-
+     
+ 
+ 
 </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -67,18 +67,18 @@ h3{
           <section class="content-header">
             <h1>
               <a class="btn btn-lg btn-warning" href="home.php">Back</a>
-              
+             
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
               <li class="active">Product</li>
             </ol>
           </section>
-
+ 
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	      <div class="col-md-9">
+          <div class="col-md-9">
               <div class="box box-primary">
                 <div class="box-header">
                   <h3 class="box-title">Sales Transaction</h3>
@@ -86,36 +86,36 @@ h3{
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="credit_transaction_add.php">
-				  <div class="row" style="min-height:400px">
-					
-					 <div class="col-md-6">
-					 
-						  <div class="form-group">
-							<label for="date">Product Name</label>
-							 
-								<select class="form-control select2" name="prod_name" tabindex="1" autofocus required>
-								<?php
+                  <div class="row" style="min-height:400px">
+                   
+                     <div class="col-md-6">
+                     
+                          <div class="form-group">
+                            <label for="date">Product Name</label>
+                             
+                                <select class="form-control select2" name="prod_name" tabindex="1" autofocus required>
+                                <?php
                   $branch=$_SESSION['branch'];
                   $cid=$_REQUEST['cid'];
-								  include('../dist/includes/dbcon.php');
-									 $query2=mysqli_query($con,"select * from masterfile where branch_id='$branch' order by prod_name")or die(mysqli_error());
-									    while($row=mysqli_fetch_array($query2)){
-											
-								?>
-										<option value="<?php echo $row['master_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
-								  <?php }?>
-								</select>
-						    <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
-						  </div><!-- /.form group -->
-					</div>
-					<div class=" col-md-2">
-						<div class="form-group">
-							<label for="date">Quantity</label>
-							<div class="input-group">
-							  <input type="number" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" tabindex="2" value="1"  required>
-							</div><!-- /.input group -->
-						</div><!-- /.form group -->
-					 </div>
+                                  include('../dist/includes/dbcon.php');
+                                     $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                                        while($row=mysqli_fetch_array($query2)){
+                                           
+                                ?>
+                                        <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name']." Available(".$row['prod_qty'].")";?></option>
+                                  <?php }?>
+                                </select>
+                            <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>  
+                          </div><!-- /.form group -->
+                    </div>
+                    <div class=" col-md-2">
+                        <div class="form-group">
+                            <label for="date">Quantity</label>
+                            <div class="input-group">
+                              <input type="number" class="form-control pull-right" id="date" name="qty" placeholder="Quantity" tabindex="2" value="1"  required>
+                            </div><!-- /.input group -->
+                        </div><!-- /.form group -->
+                     </div>
            <div class=" col-md-2">
             <div class="form-group">
               <label for="date">Selling Price</label>
@@ -124,25 +124,25 @@ h3{
               </div><!-- /.input group -->
             </div><!-- /.form group -->
            </div>
-					<div class="col-md-2">
-						<div class="form-group">
-							<label for="date"></label>
-							<div class="input-group">
-								<button class="btn btn-lg btn-primary" type="submit" tabindex="3" name="addtocart">+</button>
-							</div>
-						</div>	
-					</form>	
-					</div>
-					
-					
-					<div class="col-md-12">
-<?php 
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="date"></label>
+                            <div class="input-group">
+                                <button class="btn btn-lg btn-primary" type="submit" tabindex="3" name="addtocart">+</button>
+                            </div>
+                        </div> 
+                    </form>
+                    </div>
+                   
+                   
+                    <div class="col-md-12">
+<?php
 $base_total = 0;
 $total_profit = 0;
 $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or die(mysqli_error());
      $rowb=mysqli_fetch_array($queryb);
         $balance=$rowb['balance'];
-
+ 
         if ($balance>0) $disabled="disabled=true";else{$disabled="";}
 ?>
                   <table class="table table-bordered table-striped">
@@ -158,7 +158,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                     </thead>
                     <tbody>
 <?php
-    
+   
     $query=mysqli_query($con,"select * from temp_trans a left join masterfile b on a.prod_id = b.master_id where a.branch_id='$branch'")or die(mysqli_error());
       $grand=0;
     while($row=mysqli_fetch_array($query)){
@@ -174,18 +174,18 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
             <td><?php echo number_format($row['price'],2);?></td>
             <td><?php echo number_format($total,2);?></td>
                         <td>
-              
+             
               <a href="#updateordinance<?php echo $row['temp_trans_id'];?>" data-target="#updateordinance<?php echo $row['temp_trans_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-edit text-blue"></i></a>
-
+ 
               <a href="#delete<?php echo $row['temp_trans_id'];?>" data-target="#delete<?php echo $row['temp_trans_id'];?>" data-toggle="modal" style="color:#fff;" class="small-box-footer"><i class="glyphicon glyphicon-trash text-red"></i></a>
-              
+             
             </td>
-
+ 
                       </tr>
             <div id="updateordinance<?php echo $row['temp_trans_id'];?>" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  
-  
-  
+ 
+ 
+ 
   <div class="modal-dialog">
     <div class="modal-content" style="height:auto">
               <div class="modal-header">
@@ -196,8 +196,8 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
               <div class="modal-body">
        <!--  <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'> -->
        <form class="form-horizontal" method="post" action="transaction_update.php" enctype='multipart/form-data'>
-          <input type="hidden" class="form-control" name="tran" value="">   
-          <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>   
+          <input type="hidden" class="form-control" name="tran" value="">  
+          <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>  
           <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
         <div class="form-group">
           <label class="control-label col-lg-3" for="price">Qty</label>
@@ -205,7 +205,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
             <input type="text" class="form-control" id="price" name="qty" value="<?php echo $row['qty'];?>" required>  
           </div>
         </div>
-        
+       
               </div><br>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -213,7 +213,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
               </div>
         </form>
             </div>
-      
+     
         </div><!--end of modal-dialog-->
  </div>
  <!--end of modal-->  
@@ -231,7 +231,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
           <input type="hidden" class="form-control" name="tran" value="">      
           <input type="hidden" class="form-control" id="price" name="id" value="<?php echo $row['temp_trans_id'];?>" required>  
         <p>Are you sure you want to remove <?php echo $row['prod_name'];?>?</p>
-        
+       
               </div><br>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Delete</button>
@@ -239,114 +239,114 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
               </div>
         </form>
             </div>
-      
+     
         </div><!--end of modal-dialog-->
  </div>
  <!--end of modal-->  
-<?php }?>           
+<?php }?>          
                     </tbody>
-                    
+                   
                   </table>
                 </div><!-- /.box-body -->
-
-				</div>	
+ 
+                </div> 
                
-                  
-                  
-				</form>	
+                 
+                 
+                </form>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
-            
+           
             <div class="col-md-3">
               <div class="box box-primary">
                
                 <div class="box-body">
                   <!-- Date range -->
           <form method="post" name="autoSumForm" action="credit_add.php">
-				  <div class="row">
-					 <div class="col-md-12">
-						  
-						  <div class="form-group">
-							<label for="date">Total</label>
-							  <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>    
-								<input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total" 
-								value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
-							
-						  </div><!-- /.form group -->
-						 
-						  
-              
-					</div>
-					
-					
-
-				</div>	
+                  <div class="row">
+                     <div class="col-md-12">
+                         
+                          <div class="form-group">
+                            <label for="date">Total</label>
+                              <input type="hidden" class="form-control" name="cid" value="<?php echo $cid;?>" required>    
+                                <input type="text" style="text-align:right" class="form-control" id="total" name="total" placeholder="Total"
+                                value="<?php echo number_format($grand,2);?>" tabindex="5" readonly>
+                           
+                          </div><!-- /.form group -->
+                         
+                         
+             
+                    </div>
+                   
+                   
+ 
+                </div> 
                
-                  
+                 
                     <button class="btn btn-lg btn-block btn-primary" id="daterange-btn" name="credit" type="submit"  tabindex="7">
                         Complete Credit
                       </button>
-					  <button class="btn btn-lg btn-block" id="daterange-btn" type="reset"  tabindex="8">
+                      <button class="btn btn-lg btn-block" id="daterange-btn" type="reset"  tabindex="8">
                         <a href="cancel.php">Cancel Sale</a>
                       </button>
-              
-				</form>	
+             
+                </form>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
-			
-			
+           
+           
           </div><!-- /.row -->
-	  
-            
+     
+           
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
-	<script>
-  
+    <script>
+ 
     $("#credit").click(function(){
         $("#tendered").hide('slow');
         $("#change").hide('slow');
       });
-
+ 
       $("#cash").click(function(){
           $("#tendered").show('slow');
           $("#change").show('slow');
       });
-
+ 
     $(function() {
-
+ 
       $(".btn_delete").click(function(){
       var element = $(this);
       var id = element.attr("id");
       var dataString = 'id=' + id;
       if(confirm("Sure you want to delete this item?"))
       {
-	$.ajax({
-	type: "GET",
-	url: "temp_trans_del.php",
-	data: dataString,
-	success: function(){
-		
-	      }
-	  });
-	  
-	  $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
-	  .animate({ opacity: "hide" }, "slow");
+    $.ajax({
+    type: "GET",
+    url: "temp_trans_del.php",
+    data: dataString,
+    success: function(){
+       
+          }
+      });
+     
+      $(this).parents(".record").animate({ backgroundColor: "#fbc7c7" }, "fast")
+      .animate({ opacity: "hide" }, "slow");
       }
       return false;
       });
-
+ 
       });
     </script>
-	
-	<script type="text/javascript" src="autosum.js"></script>
+   
+    <script type="text/javascript" src="autosum.js"></script>
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
@@ -360,7 +360,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-    
+   
     <script>
       $(function () {
         $("#example1").DataTable();
@@ -378,14 +378,14 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
       $(function () {
         //Initialize Select2 Elements
         $(".select2").select2();
-
+ 
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
         //Datemask2 mm/dd/yyyy
         $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
         //Money Euro
         $("[data-mask]").inputmask();
-
+ 
         //Date range picker
         $('#reservation').daterangepicker();
         //Date range picker with time picker
@@ -408,7 +408,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
           $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         }
         );
-
+ 
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
           checkboxClass: 'icheckbox_minimal-blue',
@@ -424,12 +424,12 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
           checkboxClass: 'icheckbox_flat-green',
           radioClass: 'iradio_flat-green'
         });
-
+ 
         //Colorpicker
         $(".my-colorpicker1").colorpicker();
         //color picker with addon
         $(".my-colorpicker2").colorpicker();
-
+ 
         //Timepicker
         $(".timepicker").timepicker({
           showInputs: false
