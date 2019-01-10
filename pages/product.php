@@ -138,7 +138,7 @@ h3{
                                  <?php
                                     $counter=0;
                                     $branch=$_SESSION['branch'];
-                                    $query=mysqli_query($con,"select * from masterfile where branch_id = '$branch' order by prod_name ")or die(mysqli_error());
+                                    $query=mysqli_query($con,"select * from masterfile where branch_id='$branch' order by prod_name ")or die(mysqli_error());
                                       // product query                                    
                                     while($row=mysqli_fetch_array($query)){
                                           /*$x = $row['supplier_id'];
