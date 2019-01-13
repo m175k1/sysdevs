@@ -19,6 +19,9 @@ include('../dist/includes/dbcon.php');
     date_default_timezone_set('Asia/Manila');
     $date = date("Y-m-d H:i:s");
  
+    $_base_price = $_POST['base_price'];
+    $_qty = $_POST['qty'];
+ 
     $remarks="added $qty of $name";
    
  
@@ -44,10 +47,12 @@ include('../dist/includes/dbcon.php');
         $prod_base_price = $getcurrent_price_row['base_price'];
         $prod_base_qty = $getcurrent_price_row['prod_qty'];
     }
+   
+    $total_qty = $prod_base_qty + $_qty;
  
     if ($prod_base_qty > 0)
     {
-        $average_base_price = ($prod_base_price + $base_price) / 2;
+        $average_base_price = (($_base_price * $_qty) + ($prod_base_price * $prod_base_qty)) / ($total_qty);
     }
     else
     {

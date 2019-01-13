@@ -51,8 +51,8 @@ endif;
       h5,h6{
         text-align:center;
       }
-    
-
+   
+ 
       @media print {
           .btn-print {
             display:none !important;
@@ -77,7 +77,7 @@ endif;
 h3{
   font-family: 'Comfortaa', cursive;
  text-align: center;
-      
+     
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -88,70 +88,70 @@ h3{
       <div class="content-wrapper">
         <div class="container">
           <!-- Content Header (Page header) -->
-          
-
+         
+ 
           <!-- Main content -->
           <section class="content">
             <div class="col-md-12">
-			  <div class="box box-primary angel">
-				<div class="box-header">
-				  <h3 class="box-title">Select Date</h3>
-				</div>
-				<div class="box-body">
-				
-				  <!-- /.form group -->
-				  <form method="post">
-					<div class="form-group col-md-6">
-						<label>Date range:</label>
-
-						<div class="input-group">
-						  <div class="input-group-addon">
-							<i class="fa fa-calendar"></i>
-						  </div>
-						<input type="text" name="date" class="form-control pull-right active" id="reservation" required>
-					</div>
+              <div class="box box-primary angel">
+                <div class="box-header">
+                  <h3 class="box-title">Select Date</h3>
+                </div>
+                <div class="box-body">
+               
+                  <!-- /.form group -->
+                  <form method="post">
+                    <div class="form-group col-md-6">
+                        <label>Date range:</label>
+ 
+                        <div class="input-group">
+                          <div class="input-group-addon">
+                            <i class="fa fa-calendar"></i>
+                          </div>
+                        <input type="text" name="date" class="form-control pull-right active" id="reservation" required>
+                    </div>
                 <!-- /.input group -->
-					</div>
+                    </div>
               <!-- /.form group --><br>
-					<button type="submit" class="btn btn-primary" name="display">Display</button>
-				</form>
-				
+                    <button type="submit" class="btn btn-primary" name="display">Display</button>
+                </form>
+               
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->       
+          <!-- /.box -->      
         </div>
-		<?php
-		if (isset($_POST['display']))
-	{
-		$date=$_POST['date'];
-		$date=explode('-',$date);
-		$branch=$_SESSION['branch'];		
-			$start=date("Y/m/d",strtotime($date[0]));
-			$end=date("Y/m/d",strtotime($date[1]));
-		
-		?>
-		<div class="col-md-12">
-		<?php
+        <?php
+        if (isset($_POST['display']))
+    {
+        $date=$_POST['date'];
+        $date=explode('-',$date);
+        $branch=$_SESSION['branch'];       
+            $start=date("Y/m/d",strtotime($date[0]));
+            $end=date("Y/m/d",strtotime($date[1]));
+       
+        ?>
+        <div class="col-md-12">
+        <?php
 include('../dist/includes/dbcon.php');
-
+ 
 $branch=$_SESSION['branch'];
     $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());
-  
+ 
         $row=mysqli_fetch_array($query);
-        
+       
 ?>      
                   <h5><b><?php echo $row['branch_name'];?></b> </h5>  
                   <h6>Address: <?php echo $row['branch_address'];?></h6>
                   <h6>Contact #: <?php echo $row['branch_contact'];?></h6>
-                  
-				  <h5><b>Cash Sales Report as of <?php echo date("M d, Y",strtotime($start))." to ".date("M d, Y",strtotime($end));?></b></h5>
-                  
-				  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-							<a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
-						
-		
-			<table id="example1" class="table table-bordered table-striped">
+                 
+                  <h5><b>Cash Sales Report as of <?php echo date("M d, Y",strtotime($start))." to ".date("M d, Y",strtotime($end));?></b></h5>
+                 
+                  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
+                            <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>  
+                       
+       
+            <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>Transaction #</th>
@@ -159,7 +159,7 @@ $branch=$_SESSION['branch'];
                         <th>Product</th>
                         <th>Product Code</th>
                         <th>Qty</th>
-            					  <th>Selling Price</th>
+                                  <th>Selling Price</th>
                         <th>Total Sales</th>
                         <th>Profit</th>
                         <th>Date Paid</th>
@@ -167,14 +167,16 @@ $branch=$_SESSION['branch'];
                     </thead>
                     <tbody>
 <?php
-	$query=mysqli_query($con,"select * from sales a left join sales_details b on a.sales_id = b.sales_id left join masterfile c on b.prod_id = c.master_id left join customer d on a.cust_id = d.cust_id where date(date_added)>='$start' and date(date_added)<='$end' and a.branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
-		$qty=0;$grand=0;$discount=0;$total_profit=0;
-								while($row=mysqli_fetch_array($query)){
+    $query=mysqli_query($con,"select * from sales a left join sales_details b on a.sales_id = b.sales_id left join masterfile c on b.prod_id = c.master_id left join customer d on a.cust_id = d.cust_id where date(date_added)>='$start' and date(date_added)<='$end' and a.branch_id='$branch' and modeofpayment='cash'")or die(mysqli_error($con));
+        $qty=0;$grand=0;$discount=0;$total_profit=0;
+                                while($row=mysqli_fetch_array($query)){
                 $total=$row['qty']*$row['price'];
-								$grand=$grand+$total-$row['discount'];
-				$profit = ($row['price'] * $row['qty']) - ($row['base_price'] * $row['qty']);
-				$total_profit = $total_profit + $profit;
-				
+                                $grand=$grand+$total-$row['discount'];
+ 
+ 
+          $profit = $row['profit'];
+          $total_profit += $profit;
+ 
 ?>
             <tr>
             <td><?php echo $row['sales_id'];;?></td>
@@ -182,43 +184,43 @@ $branch=$_SESSION['branch'];
             <td><?php echo $row['prod_name'];?></td>
             <td><?php echo $row['master_id'];?></td>
             <td><?php echo $row['qty'];?></td>
-			<td><?php echo $row['price'];?></td>
+            <td><?php echo $row['price'];?></td>
             <td style="text-align:right"><?php echo number_format($total,2);
-								?></td>
+                                ?></td>
             <td><?php echo $profit;?></td>
             <td><?php echo date("M d, Y h:i a",strtotime($row['date_added']));?></td>    
-			
-		
- <?php }?>                       
+           
+       
+ <?php }?>                      
                       </tr>
-		
+       
                     </tbody>
                     <tfoot>
           <tr>
             <th colspan="8">Total</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format($grand,2);?></b></h4></th>
           </tr>                
-          
+         
           <tr>
             <th colspan="8">Total Cash Sales</th>
             <th style="text-align:right;"><h4><b><?php echo  number_format(($grand-$discount),2);?></b></h4></th>
-			    </tr>	
+                </tr>  
           <tr>
             <th colspan="8">Total Profit</th>
-	<th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
-          </tr> 	
+    <th style="text-align:right;"><h4><b><?php echo  number_format(($total_profit),2);}?></b></h4></th>
+          </tr>    
           <tr>
                         <th></th>
                         <th></th>
                         <th></th>
                         <th></th>
-                      </tr> 
+                      </tr>
                       <tr>
                         <th>Prepared by:</th>
                         <th></th>
                         <th></th>
                         <th></th>
-                      </tr> 
+                      </tr>
 <?php
     $id=$_SESSION['id'];
     $query=mysqli_query($con,"select * from user where user_id='$id'")or die(mysqli_error($con));
@@ -230,57 +232,57 @@ $branch=$_SESSION['branch'];
                         <th></th>
                         <th></th>
                         <th></th>
-                      </tr>  			  
+                      </tr>              
         </tfoot>
        </table>
-		</div>
-            
+        </div>
+           
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
-
+ 
     <script src="../plugins/jQuery/jQuery-2.2.0.min.js"></script>
-	<!-- Bootstrap 3.3.6 -->
-	<script src="../bootstrap/js/bootstrap.min.js"></script>
-	<!-- Select2 -->
-	<script src="../plugins/select2/select2.full.min.js"></script>
-	<!-- InputMask -->
-	<script src="../plugins/input-mask/jquery.inputmask.js"></script>
-	<script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-	<script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-	<!-- date-range-picker -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-	<script src="../plugins/daterangepicker/daterangepicker.js"></script>
-	<!-- bootstrap datepicker -->
-	<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-	<!-- bootstrap color picker -->
-	<script src="../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
-	<!-- bootstrap time picker -->
-	<script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
-	<!-- SlimScroll 1.3.0 -->
-	<script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-	<!-- iCheck 1.0.1 -->
-	<script src="../plugins/iCheck/icheck.min.js"></script>
-	<!-- FastClick -->
-	<script src="../plugins/fastclick/fastclick.js"></script>
-	<!-- AdminLTE App -->
-	<script src="../dist/js/app.min.js"></script>
-	<!-- AdminLTE for demo purposes -->
-	<script src="../dist/js/demo.js"></script>
+    <!-- Bootstrap 3.3.6 -->
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- Select2 -->
+    <script src="../plugins/select2/select2.full.min.js"></script>
+    <!-- InputMask -->
+    <script src="../plugins/input-mask/jquery.inputmask.js"></script>
+    <script src="../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+    <script src="../plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="../plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+    <!-- bootstrap color picker -->
+    <script src="../plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <!-- bootstrap time picker -->
+    <script src="../plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <!-- SlimScroll 1.3.0 -->
+    <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="../plugins/iCheck/icheck.min.js"></script>
+    <!-- FastClick -->
+    <script src="../plugins/fastclick/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../dist/js/demo.js"></script>
     <script>
   $(function () {
     //Initialize Select2 Elements
     $(".select2").select2();
-
+ 
     //Datemask dd/mm/yyyy
     $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
     //Datemask2 mm/dd/yyyy
     $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
     //Money Euro
     $("[data-mask]").inputmask();
-
+ 
     //Date range picker
     $('#reservation').daterangepicker();
     //Date range picker with time picker
@@ -303,12 +305,12 @@ $branch=$_SESSION['branch'];
           $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         }
     );
-
+ 
     //Date picker
     $('#datepicker').datepicker({
       autoclose: true
     });
-
+ 
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
       checkboxClass: 'icheckbox_minimal-blue',
@@ -324,34 +326,34 @@ $branch=$_SESSION['branch'];
       checkboxClass: 'icheckbox_flat-green',
       radioClass: 'iradio_flat-green'
     });
-
+ 
     //Colorpicker
     $(".my-colorpicker1").colorpicker();
     //color picker with addon
     $(".my-colorpicker2").colorpicker();
-
+ 
     //Timepicker
     $(".timepicker").timepicker({
       showInputs: false
     });
   });
 </script>
-
+ 
 <script language="javascript">
-  
-
+ 
+ 
 var password;
 var pass="1234";
 password=prompt('Enter Password to View Webpage','');
-
+ 
 if(password==pass)
 alert('Correct Password, Click OK to Enter Website.');
 else
 {
   window.location="http://localhost/sysdevs/pages/home.php"
 }
-
+ 
 </script>
-
+ 
   </body>
 </html>
