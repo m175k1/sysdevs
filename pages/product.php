@@ -83,9 +83,8 @@ h3{
                                                       <div class="modal-body">
                                                         <div>
                                                           <div class="flex">
-                                                            <p><strong>Supplier</strong></p>
                                                             <p><strong>Distributor</strong></p>
-                                                            <p><strong>Quantity</strong></p>
+                                                            <p><strong>Company Name</strong></p>
                                                             <p><strong>Base Price</strong></p>
                                                           </div>
                                                           <div class="bset">                                                          

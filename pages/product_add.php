@@ -67,7 +67,7 @@ include('../dist/includes/dbcon.php');
     if ($count == 0)
     {
         mysqli_query($con,"INSERT INTO product(prod_name,prod_qty,base_price,prod_desc,prod_pic,cat_id,reorder,supplier_id,branch_id)
-           VALUES('$name','$qty','$base_price','$desc','$pic','$category','$reorder','$supplier','$branch')")or die(mysqli_error($con));
+          VALUES('$name','$qty','$base_price','$desc','$pic','$category','$reorder','$supplier','$branch')")or die(mysqli_error($con));
  
         mysqli_query($con,"INSERT INTO masterfile(prod_name, prod_qty, base_price,branch_id) VALUES('$name','$qty','$base_price','$branch')")or die(mysqli_error($con));
  
@@ -80,7 +80,7 @@ include('../dist/includes/dbcon.php');
             $_id = $get_id_row['prod_id'];
         }
  
-        mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$_id','$qty','$date','$branch','$base_price')")or die(mysqli_error($con));
+        mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price, dist_id, com_id) VALUES('$_id','$qty','$date','$branch','$base_price', '$supplier', '$category')")or die(mysqli_error($con));
             //echo'<script>alert('. '0' .')</script>';
     }
     else
@@ -124,7 +124,7 @@ include('../dist/includes/dbcon.php');
             $_id = $get_id_row['prod_id'];
         }
  
-        mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$_id','$qty','$date','$branch','$base_price')")or die(mysqli_error($con));
+        mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price, dist_id, com_id) VALUES('$_id','$qty','$date','$branch','$base_price', $supplier, $category)")or die(mysqli_error($con));
     }
                
              

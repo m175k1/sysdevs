@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id=$_SESSION['id'];   
+$id=$_SESSION['id'];  
 include('../dist/includes/dbcon.php');
  
     $discount = $_POST['discount'];
@@ -18,7 +18,7 @@ include('../dist/includes/dbcon.php');
         $change = $_POST['change'];
  
     mysqli_query($con,"INSERT INTO sales(cust_id,user_id,discount,amount_due,total,date_added,modeofpayment,cash_tendered,cash_change,branch_id)
-    VALUES('$cid','$id','$discount','$amount_due','$total','$date','cash','$tendered','$change','$branch')")or die(mysqli_error($con));
+   VALUES('$cid','$id','$discount','$amount_due','$total','$date','cash','$tendered','$change','$branch')")or die(mysqli_error($con));
        
     $sales_id=mysqli_insert_id($con);
     $_SESSION['sid']=$sales_id;
@@ -73,7 +73,7 @@ include('../dist/includes/dbcon.php');
                         $cont = 'no';
                     }
                     else{
-                        mysqli_query($con,"UPDATE product SET prod_qty='0' where prod_id='$products_id' and branch_id='$branch'" ) or die(mysqli_error($con));                 
+                        mysqli_query($con,"UPDATE product SET prod_qty='0' where prod_id='$products_id' and branch_id='$branch'" ) or die(mysqli_error($con));                
                     }
                 }              
             }
@@ -102,7 +102,7 @@ include('../dist/includes/dbcon.php');
                 }
  
                 mysqli_query($con,"INSERT INTO payment(cust_id,user_id,payment,payment_date,branch_id,payment_for,due,status,sales_id,or_no)
-    VALUES('$cid','$id','$total','$date','$branch','$date','$total','paid','$sales_id','$or')")or die(mysqli_error($con));
+   VALUES('$cid','$id','$total','$date','$branch','$date','$total','paid','$sales_id','$or')")or die(mysqli_error($con));
                    
        
         $result=mysqli_query($con,"DELETE FROM temp_trans where branch_id='$branch'")   or die(mysqli_error($con));

@@ -11,9 +11,10 @@ include('../dist/includes/dbcon.php');
         $total_qty = 0;
         $average_base_price = 0;
  
+        list($name, $com_id, $dist_id) = explode("|", $_POST['prod_name']);
+ 
     $branch=$_SESSION['branch'];
     $id=$_SESSION['id'];
-    $name = $_POST['prod_name'];  
     $qty = $_POST['qty'];  
     $base_price = $_POST['base_price'];
     date_default_timezone_set('Asia/Manila');
@@ -25,7 +26,7 @@ include('../dist/includes/dbcon.php');
     $remarks="added $qty of $name";
    
  
-    mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price) VALUES('$name','$qty','$date','$branch','$base_price')")or die(mysqli_error($con));
+    mysqli_query($con,"INSERT INTO stockin(prod_id,qty,date,branch_id,base_price, dist_id, com_id) VALUES('$name','$qty','$date','$branch','$base_price', '$dist_id', $com_id)")or die(mysqli_error($con));
  
  
     $average_base_price_query= mysqli_query($con,"select * from stockin where prod_id='$name' AND branch_id = '$branch'")or die(mysqli_error());

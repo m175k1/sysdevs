@@ -149,7 +149,7 @@ $branch=$_SESSION['branch'];
 		$query1=mysqli_query($con,"select * from sales natural join sales_details left join masterfile on sales_details.prod_id = masterfile.master_id where sales_id='$sid'")or die(mysqli_error());
 			$grand=0;
 		while($row1=mysqli_fetch_array($query1)){
-				$code=$row1['serial'];
+				
 				$total= $row1['qty']*$row1['price'];
 				$grand=$grand+$total;
         $due=$row1['amount_due'];

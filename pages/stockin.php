@@ -107,33 +107,17 @@ h3{
                                     <select class="form-control select2" name="prod_name" id="prod_id" required>
                                        <?php
                                           include('../dist/includes/dbcon.php');
-                                          $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                                          $sql = "SELECT DISTINCT a.dist_id, a.com_id, a.prod_id, d.prod_name, b.cat_name, c.supplier_name FROM stockin a LEFT JOIN product d ON d.prod_id = a.prod_id LEFT JOIN category b ON a.com_id = b.cat_id LEFT JOIN supplier c ON a.dist_id = c.supplier_id WHERE (b.cat_name != '' OR c.supplier_name != '') AND a.branch_id = '$branch' ORDER BY d.prod_name";
+                                          //$query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                                          $query2=mysqli_query($con, $sql);
                                           
                                           while($row=mysqli_fetch_array($query2)){
-                                          $supplier_id = $row["supplier_id"];
-                                          $cat_id = $row["cat_id"];
-                                   $sql="SELECT
-                                             *
-                                         from
-                                             supplier      
-                                         where supplier_id = '$supplier_id'
-                                           ";
-                                   $supp_query=mysqli_query($con,$sql)or die(mysqli_error());
-                                   while($supp_row=mysqli_fetch_array($supp_query)){
-                                      $supplier_name = $supp_row['supplier_name'];
-                                   }  
-
-                                 $sqlcat="SELECT
-                                           *
-                                       from
-                                           category      
-                                       where cat_id = '$cat_id'
-                                         ";
-                                 $supp_query=mysqli_query($con,$sqlcat)or die(mysqli_error());
-                                  while($supp_row=mysqli_fetch_array($supp_query)){
-                                      $cat_name = $supp_row['cat_name'];
-                                  }?>      
-                                       <option value="<?php echo $row['prod_id'];?>"><?php echo $row['prod_name'];?> | <?php echo $cat_name;?> | <?php echo $supplier_name;?></option>
+                                              $cat_id = $row['com_id'];
+                                              $supplier_id = $row['dist_id'];
+                                              $cat_name = $row['cat_name'];
+                                              $supplier_name =$row['supplier_name'];
+                                          ?>      
+                                       <option value="<?php echo $row['prod_id'];?>|<?php echo $cat_id; ?>|<?php echo $supplier_id; ?>"><?php echo $row['prod_name'];?> | <?php echo $cat_name;?> | <?php echo $supplier_name;?></option>
                                        <?php }?>
                                     </select>
                                  </div>
@@ -297,10 +281,10 @@ h3{
                                     $branch=$_SESSION['branch'];
                                       $sql="
                                       SELECT a.date, a.base_price, a.qty, b.prod_name, c.supplier_name, d.cat_name   
-                                      FROM stockin a 
+                                      FROM stockin a
                                       LEFT JOIN product b ON a.prod_id = b.prod_id 
-                                      LEFT JOIN supplier c ON b.supplier_id = c.supplier_id
-                                      LEFT JOIN category d ON b.cat_id = d.cat_id
+                                      LEFT JOIN supplier c ON a.dist_id = c.supplier_id
+                                      LEFT JOIN category d ON a.com_id = d.cat_id
                                       WHERE a.branch_id='$branch'
                                       order by date desc
                                       ";                                    
