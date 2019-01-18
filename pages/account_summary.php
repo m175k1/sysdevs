@@ -32,21 +32,21 @@ endif;
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,blue);
+  background:linear-gradient(white,green);
  
 }
 .box.box-primary{
-         border-top-color:rgba(44, 140, 181)!important;
+        border-top-color:green;
       }
 .nav-tabs-custom>.nav-tabs>li.active {
     border-top-color: #fb000c;
   }
 .btn-warning {
-   background-color: rgba(44, 140, 181)!important;
+    background-color: green!important;
     border-color: #ffffff;
 }
 .btn-primary {
-  background-color:rgba(44, 140, 181)!important ;
+  background-color: green;
 }
 .content{
   font-family: 'Comfortaa', cursive;
@@ -78,13 +78,13 @@ h3{
     }
 
     .nav-txt:hover {
-      background-color: blue;
+      background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
 
     .main-sidebar {
-      background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));
+      background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
@@ -94,7 +94,7 @@ h3{
     }
 
     .treeview-menu {
-      background-color: blue;
+      background-color: #7d0000;
     }
 
     .reorder-count {
@@ -102,7 +102,7 @@ h3{
     }
 
     .box-header {
-      background-image: linear-gradient(to right,rgba(44, 140, 181) ,rgba(44, 140, 181));
+      background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
     }
 
     .menu {
@@ -118,7 +118,7 @@ h3{
     }
 
     .nav-tabs-custom>.nav-tabs>li.active {
-      border-top-color: rgba(44, 140, 181) !important;
+      border-top-color: #dd4b39 !important;
     }
 
     .form-group {
@@ -181,24 +181,24 @@ h3{
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	      <div class="col-md-3">
+        <div class="col-md-3">
               <div class="box box-primary">
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="" enctype="multipart/form-data">
-		  <?php
-		    
-		      $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
-			       $row=mysqli_fetch_array($query);
-		  ?>	
-		   
+      <?php
+        
+          $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
+             $row=mysqli_fetch_array($query);
+      ?>  
+       
                   <div class="form-group">
                     <label for="date">Customer Name</label>
                     <div class="input-group col-md-12">
                       <h3><?php echo $row['cust_last'].", ".$row['cust_first'];?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
-		  
+      
                   <div class="form-group">
                     <label for="date">Address</label>
                     <div class="input-group col-md-12">
@@ -216,11 +216,11 @@ h3{
                     <div class="input-group col-md-12">
                       <h3><?php echo number_format($total,2);?></h3>
                     </div><!-- /.input group -->
-                  </div><!-- /.form group -->				  
+                  </div><!-- /.form group -->         
                   <a href="<?php if ($row['balance']>=0) echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-primary">
                   <i class="glyphicon glyphicon-shopping-cart text-blue"></i>Add New Order</a>
                 
-				</form>	
+        </form> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
@@ -230,7 +230,7 @@ h3{
                 <ul class="nav nav-tabs">
                   <li class=""><a href="#fa-icons" data-toggle="tab" aria-expanded="true">Credit History</a></li>
                   <li class=""><a href="#cash" data-toggle="tab">Cash History</a></li>
-                  <li class=""><a href="#payments" data-toggle="tab" aria-expanded="false">Payments</a></li>
+                  <!--<li class=""><a href="#payments" data-toggle="tab" aria-expanded="false">Payments</a></li>-->
                 </ul>
                 <div class="tab-content">
                   <!-- Font Awesome Icons -->
@@ -380,7 +380,7 @@ h3{
               </div><!-- /.nav-tabs-custom -->
             </div>
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
@@ -393,14 +393,14 @@ h3{
       $row1=mysqli_fetch_array($query4);    
 ?>    
 <div id="teacherreg" class="modal fade in primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog">
-		  <div class="modal-content">
+    <div class="modal-dialog">
+      <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title"><i class="glyphicon glyphicon-plus" style="font-size:30px;"></i>Add Payment</h4>
                       </div>
                       <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
+        <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
                              <input type="hidden" class="form-control" id="tlast" name="cid" value="<?php echo $cid;?>">  
                              <input type="hidden" class="form-control" id="tlast" name="term" value="<?php echo $row1['term'];?>">   
                              <div class="form-group">
@@ -418,17 +418,17 @@ h3{
              </div> 
                             
                              <div class="form-group">
-				  <label class="control-label col-lg-3" for="tlast">Amount</label>
-				  <div class="col-lg-8">
+          <label class="control-label col-lg-3" for="tlast">Amount</label>
+          <div class="col-lg-8">
             <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $total;?>">  
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
-				  </div>
+          </div>
                              </div> 
                             
                       </div>       
                       <!--end of modal body-->
                       <div class="modal-footer">
-			<button type="submit" name="save" class="btn btn-primary">Save</button>
+      <button type="submit" name="save" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
                       </div>
                </div>

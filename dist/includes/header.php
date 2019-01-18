@@ -175,12 +175,12 @@ ul li a{
                               <i class="glyphicon glyphicon-usd text-blue"></i>Sales
                             </a>
                           </li><!-- end notification -->
-              <li style="display:none;"><!-- start notification -->
+              <li><!-- start notification -->
                          <a href="receivables.php">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
-              <li style="display:none;"><!-- start notification -->
+              <li><!-- start notification -->
                          <a href="income.php">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
                             </a>

@@ -25,8 +25,16 @@ include('../dist/includes/dbcon.php');
  			$qty=$row['qty'];
 			$price=$row['price'];
 			
+
+			$query_prod = mysqli_query($con, "SELECT * FROM masterfile WHERE master_id = '$pid'");
+            while ($row_prod = mysqli_fetch_array($query_prod))
+            {
+                $base_price = $row_prod['base_price'];
+            }
+ 
+            $profit = ($price - $base_price) * $qty;
 			
-			mysqli_query($con,"INSERT INTO sales_details(prod_id,qty,price,sales_id) VALUES('$pid','$qty','$price','$sales_id')")or die(mysqli_error($con));
+			mysqli_query($con,"INSERT INTO sales_details(prod_id,qty,price,sales_id, profit) VALUES('$pid','$qty','$price','$sales_id', '$profit')")or die(mysqli_error($con));
 			
 			$prod_qty_q = mysqli_query($con,"select * from masterfile where master_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));			
 			while ($rowsqty=mysqli_fetch_array($prod_qty_q))
