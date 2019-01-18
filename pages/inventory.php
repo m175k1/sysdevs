@@ -83,11 +83,11 @@ table tr th:nth-child(7){
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,green);
+  background:linear-gradient(white,blue);
  
 }
 .box.box-primary{
-        border-top-color:green;
+         border-top-color:rgba(44, 140, 181)!important;
       }
         
 .content{
@@ -141,8 +141,8 @@ h3{
                                     <tr>
                                        <th style="display:none;">Product Code</th>
                                        <th>Product Name</th>
-                                       <th>Distributor</th>
-                                       <th>Company</th>
+                                       <th style="display:none;">Distributor</th>
+                                       <th style="display:none;">Company</th>
                                        <th>Qty Left</th>
                                        <th>Price</th>
                                        <th>Total</th>
@@ -161,8 +161,8 @@ h3{
                                     <tr>
                                        <td style="display:none;"><?php echo $row['prod_id'];?></td>
                                        <td><?php echo $row['prod_name'];?></td>
-                                       <td><?php echo $row['supplier_name'];?></td>
-                                       <td><?php echo $row['cat_name'];?></td>
+                                       <td style="display:none;"><?php echo $row['supplier_name'];?></td>
+                                       <td style="display:none;"><?php echo $row['cat_name'];?></td>
                                        <td><?php echo $row['prod_qty'];?></td>
 
                                        <td><?php if ($row['prod_qty'] == 0){

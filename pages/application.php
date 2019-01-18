@@ -31,14 +31,14 @@ endif;
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,green);
+  background:linear-gradient(white,blue);
  
 }
 .box.box-primary{
-        border-top-color:green;
+         border-top-color:rgba(44, 140, 181)!important;
       }
 .btn-warning {
-    background-color: green!important;
+    background-color: rgba(44, 140, 181)!important;
     border-color: #ffffff;
 }
 .content{

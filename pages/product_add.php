@@ -67,7 +67,7 @@ include('../dist/includes/dbcon.php');
     if ($count == 0)
     {
         mysqli_query($con,"INSERT INTO product(prod_name,prod_qty,base_price,prod_desc,prod_pic,cat_id,reorder,supplier_id,branch_id)
-          VALUES('$name','$qty','$base_price','$desc','$pic','$category','$reorder','$supplier','$branch')")or die(mysqli_error($con));
+           VALUES('$name','$qty','$base_price','$desc','$pic','$category','$reorder','$supplier','$branch')")or die(mysqli_error($con));
  
         mysqli_query($con,"INSERT INTO masterfile(prod_name, prod_qty, base_price,branch_id) VALUES('$name','$qty','$base_price','$branch')")or die(mysqli_error($con));
  
@@ -105,7 +105,7 @@ include('../dist/includes/dbcon.php');
         {
             $_total_qty = $qty;
             $_total_price = $base_price;
-            $_total_new = $total_price;
+            $_total_new = $base_price;
         }
  
         //echo $qty.'<br>'.$_qty.'<br><br>'.$base_price.'<br>'.$_price;

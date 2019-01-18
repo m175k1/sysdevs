@@ -28,7 +28,7 @@ ul li a{
 
 }
 .wrapper{
-    background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+    background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));
 }
 .nav>li>a:hover, .nav>li>a:active, .nav>li>a:focus{
    
@@ -59,7 +59,7 @@ ul li a{
   background-color: transparent;
 }
 .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a{
-  background:green;
+  background:rgba(44, 140, 181);
    transform:scale(1.0);
   transition: 1s;
 
@@ -175,18 +175,18 @@ ul li a{
                               <i class="glyphicon glyphicon-usd text-blue"></i>Sales
                             </a>
                           </li><!-- end notification -->
-              <li><!-- start notification -->
-                         <a href="receivables.php" style="display: none;">
+              <li style="display:none;"><!-- start notification -->
+                         <a href="receivables.php">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
-              <li><!-- start notification -->
-                         <a href="income.php" style="display: none;>
+              <li style="display:none;"><!-- start notification -->
+                         <a href="income.php">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
                             </a>
                           </li><!-- end notification -->
-                          <li><!-- start notification -->
-                         <a href="purchase_request.php" style="display: none;>
+              <li style="display:none;"><!-- start notification -->
+                         <a href="purchase_request.php">
                               <i class="glyphicon glyphicon-usd text-blue"></i>Purchase Request
                             </a>
                           </li><!-- end notification -->

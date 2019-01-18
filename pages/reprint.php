@@ -88,7 +88,6 @@ include('../dist/includes/dbcon.php');
         $first=$row['cust_first'];
         $address=$row['cust_address'];
         $contact=$row['cust_contact'];
-        $down=$row['down'];
         $interest=$row['interest'];
         $user_id=$row['user_id'];
 		$sale_id = $row["sales_id"];
@@ -122,7 +121,7 @@ include('../dist/includes/dbcon.php');
                         <th>Contact #</th>
                         <th><?php echo $contact;?></th>
                         <th>Payable for</th>
-                        <th><?php echo $row['payable_for'];?> month/s</th>
+                        <th>120 days</th>
                       </tr>
                       <tr>
                         <th>Complete Address</th>

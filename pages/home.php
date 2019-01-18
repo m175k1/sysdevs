@@ -31,7 +31,7 @@ endif;
         margin:50px 0x;
       }
       .box.box-primary{
-        border-top-color:green;
+         border-top-color:rgba(44, 140, 181)!important;
       }
     h3{
       text-align: center;
@@ -63,7 +63,7 @@ endif;
                   <div class="row">
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));color:white;">
                           <div class="inner">
                             <h3>Purchase</h3>
                             <p>Cash</p>
@@ -80,7 +80,7 @@ endif;
 
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));color:white;">
                           <div class="inner">
                             <h3>Stock i/o</h3>
                             <p>Products</p>
@@ -96,7 +96,7 @@ endif;
                       
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));color:white;">
                           <div class="inner">
                             <h3>Payment</h3>
                             <p>Customer</p>
@@ -111,7 +111,7 @@ endif;
                       </div><!-- ./col -->
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));color:white;">
                           <div class="inner">
                             <h3>Credit</h3>
                             <p>Apply</p>
@@ -127,7 +127,7 @@ endif;
 
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                       <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
+                       <div class="small-box" style="   background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));color:white;">
                           <div class="inner">
                             <h3>Products</h3>
                             <p>View/Add</p>
@@ -144,7 +144,7 @@ endif;
 					  
                       <div class="col-lg-4 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));color:white;">
+                        <div class="small-box" style="   background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));color:white;">
                           <div class="inner">
                             <h3>Report</h3>
                             <p>Sales</p>

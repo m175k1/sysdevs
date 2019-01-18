@@ -32,11 +32,11 @@ endif;
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,green);
+  background:linear-gradient(white,blue);
  
 }
 .box.box-primary{
-        border-top-color:green;
+        border-top-color:rgba(44, 140, 181)!important;
       }
       img.profile_pic {
     width: 152px;
@@ -44,10 +44,10 @@ endif;
     border: 5px solid #ccc;
 }
 .nav-tabs-custom>.nav-tabs>li.active {
-    border-top-color: #fb000c;
+    border-top-color:rgba(44, 140, 181);
   }
 .btn-warning {
-    background-color: green!important;
+    background-color: rgba(44, 140, 181)!important;
     border-color: #ffffff;
 }
 .content{
@@ -58,7 +58,7 @@ h3{
  text-align: center;
 }   
 .modal-header{
-  background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+  background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));
   color:white;
   padding:10px;
 }  
@@ -236,7 +236,7 @@ h3{
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
 				                           </div>
                              </div> 
-                             <div class="form-group">
+                             <div class="form-group" style="display:none;">
                                   <label class="control-label col-lg-3" for="tlast">Rebate</label>
                                   <div class="col-lg-8">
                                      <input type="text" class="form-control" id="tlast" name="rebate" placeholder="Rebate per month">  

@@ -74,14 +74,14 @@ div.dataTables_length label{
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,green);
+  background:linear-gradient(white,blue);
  
 }
 .box.box-primary{
-        border-top-color:green;
+         border-top-color:rgba(44, 140, 181)!important;
       }
 .btn-warning {
-    background-color: green!important;
+    background-color: rgba(44, 140, 181)!important;
     border-color: #ffffff;
 }
 .btn-primary {
@@ -96,7 +96,7 @@ h3{
  text-align: center;
 }
 .modal-header{
-  background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+  background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));
   color:white;
 }
 .form-control {
