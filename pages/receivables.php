@@ -56,7 +56,7 @@ endif;
           <!-- Main content -->
           <section class="content">
             <div class="row">
-	      
+        
             <div class="col-xs-12">
               <div class="box box-primary">
     
@@ -64,7 +64,7 @@ endif;
                  
                 </div><!-- /.box-header -->
                 <div class="box-body">
-				<?php
+        <?php
 include('../dist/includes/dbcon.php');
 
 $branch=$_SESSION['branch'];
@@ -77,28 +77,80 @@ $branch=$_SESSION['branch'];
                   <h6>Address: <?php echo $row['branch_address'];?></h6>
                   <h6>Contact #: <?php echo $row['branch_contact'];?></h6>
                   
-				  <h5><b>Accounts Receivables as of <?php echo date("M d, Y");?></b></h5>
+          <h5><b>Accounts Receivables as of <?php echo date("M d, Y");?></b></h5>
                   
-				  <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-							<a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
-						
+          <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
+              <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
+            
                   <table class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Account #</th>
+                        <th>Credit #</th>
                         <th>Customer Name</th>
                         <th>Product Name</th>
-                        <th>Product Code</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
                         <th>Balance</th>
-			
+      
                       </tr>
                     </thead>
                     <tbody>
+
+
+                      <?php 
+                        $branch = $_SESSION['branch'];
+                        $query = "SELECT f.term_id, f.sales_id, a.cust_id, b.cust_first, b.cust_last, c.prod_name, d.qty, d.price, d.qty * d.price as total, d.sales_details_id, e.remaining FROM sales a LEFT JOIN term f on a.sales_id = f.sales_id LEFT JOIN customer b on a.cust_id = b.cust_id LEFT JOIN sales_details d on a.sales_id = d.sales_id LEFT JOIN product c on d.prod_id = c.prod_id LEFT JOIN payment e on e.sales_id = d.sales_id WHERE a.status = 'notpaid' AND e.remaining != '0.00' AND a.branch_id = '$branch' ORDER BY f.term_id, d.sales_details_id";
+                          $counter = 1;
+
+                        $exe = mysqli_query($con, $query)or die(mysqli_error($con));
+                        while($row = mysqli_fetch_array($exe))
+                        {
+                          $acc_id = $row['term_id'];
+                          $cus_name = $row['cust_first'] . ' ' . $row['cust_last'];
+                          $prod_name = $row['prod_name'];
+                          $prod_qty = $row['qty'];
+                          $prod_price = $row['price'];
+                          $prod_total = $row['total'];
+                          $sid = $row['sales_id'];
+
+                          $query1 = "SELECT COUNT(sales_id) as count FROM sales_details WHERE sales_id = '$sid'";
+                          $exe1 = mysqli_query($con, $query1);
+                          $row1 = mysqli_fetch_array($exe1);
+
+                          $count = $row1['count'];
+                          if ($counter != $count)
+                          {
+                            $counter ++;
+                            //echo "blank";
+                            $balance = '';
+
+                          }
+                          else
+                          {
+                            //echo "havevalue";
+                            $balance = $row['remaining'];
+
+                            $counter = 1;
+                          }
+
+                      ?>
+                      <tr>
+                        <td><?php echo $acc_id; ?></td>
+                        <td><?php echo $cus_name; ?></td>
+                        <td><?php echo $prod_name; ?></td>
+                        <td><?php echo $prod_qty; ?></td>
+                        <td><?php echo $prod_price; ?></td>
+                        <td><?php echo $prod_total; ?></td>
+                        <td><?php echo $balance; ?></td>
+                      </tr>
+                    <?php }?>
+
 <?php
-		$branch=$_SESSION['branch'];
-		$query=mysqli_query($con,"select * from customer natural join sales natural join sales_details natural join term natural join product where balance<>0 and branch_id='$branch' and status<>'paid' order by cust_last desc")or die(mysqli_error());
-		while($row=mysqli_fetch_array($query)){
-		
+    $branch=$_SESSION['branch'];
+    $query=mysqli_query($con,"select * from customer natural join sales natural join sales_details natural join term natural join product where balance<>0 and branch_id='$branch' and status<>'paid' order by cust_last desc")or die(mysqli_error());
+    while($row=mysqli_fetch_array($query)){
+    
 ?>
                       <tr>
                         <td><?php echo $row['term_id'];?></td>
@@ -106,21 +158,21 @@ $branch=$_SESSION['branch'];
                         <td><?php echo $row['prod_name'];?></td>
                         <td><?php echo $row['serial'];?></td>
                         <td><?php echo number_format($row['balance'],2);?></td>
-			
+      
                       </tr>
-		<?php }?>			  
+    <?php }?>       
                     </tbody>
                     <tfoot>
                       <tr>
-                        <th colspan="4">Total</th>
+                        <th colspan="6">Total</th>
                         <th><h4><b><?php 
-                        $querytotal=mysqli_query($con,"select SUM(balance) as total from customer where branch_id='$branch'")or die(mysqli_error());
-			  $row=mysqli_fetch_array($querytotal);
-			  echo number_format($row['total'],2);
-			?></b></h4>
-		</th>
-			 
-                      </tr>	
+                        $querytotal=mysqli_query($con,"select SUM(remaining) as total from payment where branch_id='$branch'")or die(mysqli_error());
+        $row=mysqli_fetch_array($querytotal);
+        echo number_format($row['total'],2);
+      ?></b></h4>
+    </th>
+       
+                      </tr> 
                       <tr>
                         <th></th>
                         <th></th>
@@ -144,16 +196,16 @@ $branch=$_SESSION['branch'];
                         <th></th>
                         <th></th>
                         <th></th>
-                      </tr>   				  
+                      </tr>             
                     </tfoot>
                   </table>
                 </div><!-- /.box-body -->
  
             </div><!-- /.col -->
-			
-			
+      
+      
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
@@ -161,36 +213,36 @@ $branch=$_SESSION['branch'];
       <?php include('../dist/includes/footer.php');?>
     </div><!-- ./wrapper -->
 <div id="teacherreg" class="modal fade in primary" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-		<div class="modal-dialog">
-		  <div class="modal-content">
+    <div class="modal-dialog">
+      <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         <h4 class="modal-title"><i class="glyphicon glyphicon-plus" style="font-size:30px;"></i>Add New Account</h4>
                       </div>
                       <div class="modal-body">
-			  <form class="form-horizontal" method="post" action="account_add.php" enctype='multipart/form-data'>
+        <form class="form-horizontal" method="post" action="account_add.php" enctype='multipart/form-data'>
                              <!-- Title -->
                              <div class="form-group"><input type="hidden" class="form-control" id="id" name="id" value="<?php echo $cid;?>" required>  
-				  <label class="control-label col-lg-3" for="type">Account Type</label>
-				  <div class="col-lg-8">
+          <label class="control-label col-lg-3" for="type">Account Type</label>
+          <div class="col-lg-8">
                                      <select class="form-control" id="type" name="type" required>  
-					<option>Receivables</option>
-					<option>Payment</option>
-					
+          <option>Receivables</option>
+          <option>Payment</option>
+          
                                      </select>
-				  </div>
+          </div>
                              </div> 
                              <div class="form-group">
-				  <label class="control-label col-lg-3" for="tlast">Amount</label>
-				  <div class="col-lg-8">
+          <label class="control-label col-lg-3" for="tlast">Amount</label>
+          <div class="col-lg-8">
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
-				  </div>
+          </div>
                              </div> 
                             
                       </div>       
                       <!--end of modal body-->
                       <div class="modal-footer">
-			<button type="submit" name="save" class="btn btn-primary">Save</button>
+      <button type="submit" name="save" class="btn btn-primary">Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal" aria-hidden="true">Close</button>
                       </div>
                </div>

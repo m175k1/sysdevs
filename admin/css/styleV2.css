@@ -2,7 +2,7 @@
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,green);
+  background:linear-gradient(white,blue);
  
 }
 
@@ -25,11 +25,11 @@ body {
 }
 
 .navbar {
-   background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+   background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));
 }
 
 .left_col {
-  background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+  background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));
   height: 100vh;
   
 }
@@ -85,7 +85,7 @@ footer {
 }
 
 .panel-success>.panel-heading {
-  background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+  background-image: linear-gradient(to left, rgba(44, 140, 181) ,rgba(44, 140, 181));
   border: none;
   padding: 17px;
 }
@@ -117,7 +117,7 @@ li:hover {
 }
 
 .box-header {
-  background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+  background-image: linear-gradient(to left, rgba(44, 140, 181) , rgba(44, 140, 181));
   padding: 13px;
   font-size: 18px;
   color: white;

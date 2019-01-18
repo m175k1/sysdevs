@@ -32,21 +32,22 @@ endif;
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,green);
+  background:linear-gradient(white,blue);
  
 }
 .box.box-primary{
-        border-top-color:green;
+        border-top-color:rgba(44, 140, 181)!important;
       }
 .nav-tabs-custom>.nav-tabs>li.active {
     border-top-color: #fb000c;
   }
 .btn-warning {
-    background-color: green!important;
+    background-color: rgba(44, 140, 181)!important;
     border-color: #ffffff;
 }
 .btn-primary {
-  background-color: green;
+  background-color: rgba(44, 140, 181)!important;
+    border-color: #ffffff;
 }
 .content{
   font-family: 'Comfortaa', cursive;
@@ -230,7 +231,7 @@ h3{
                 <ul class="nav nav-tabs">
                   <li class=""><a href="#fa-icons" data-toggle="tab" aria-expanded="true">Credit History</a></li>
                   <li class=""><a href="#cash" data-toggle="tab">Cash History</a></li>
-                  <!--<li class=""><a href="#payments" data-toggle="tab" aria-expanded="false">Payments</a></li>-->
+                  <li class=""><a href="#payments" data-toggle="tab" aria-expanded="false">Payments</a></li>
                 </ul>
                 <div class="tab-content">
                   <!-- Font Awesome Icons -->
@@ -347,26 +348,20 @@ h3{
                     <table id="" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>Product Code</th>
-                        <th>Product Name</th>
                         <th>Amount Paid</th>
-                        <th>Due Date</th>
                         <th>Date of Payment</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
     $cid=$_REQUEST['cid'];
-    $query3=mysqli_query($con,"select * from payment natural join sales_details natural join product where cust_id='$cid' order by payment_date desc")or die(mysqli_error());
+    $query3=mysqli_query($con,"select * from payment_history where cust_id='$cid' order by date desc")or die(mysqli_error());
     while($row3=mysqli_fetch_array($query3)){
     
 ?>
                       <tr>
-                        <td><?php echo $row3['serial'];?></td>
-                        <td><?php echo $row3['prod_name'];?></td>
-                        <td><?php echo $row3['payment'];?></td>
-                        <td><?php echo date("M d, Y",strtotime($row3['payment_for']));?></td>
-                        <td><?php echo date("M d, Y",strtotime($row3['payment_date']));?></td>
+                        <td><?php echo $row3['amount'];?></td>
+                        <td><?php echo date("M d, Y",strtotime($row3['date']));?></td>
     
                         
                       </tr>

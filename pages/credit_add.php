@@ -12,8 +12,8 @@ include('../dist/includes/dbcon.php');
 	$cid=$_REQUEST['cid'];
 
 		
-		mysqli_query($con,"INSERT INTO sales(cust_id,user_id,amount_due,total,date_added,branch_id,modeofpayment) 
-	VALUES('$cid','$id','$amount_due','$total','$date','$branch','credit')")or die(mysqli_error($con));
+		mysqli_query($con,"INSERT INTO sales(cust_id,user_id,amount_due,total,date_added,branch_id,modeofpayment,status) 
+	VALUES('$cid','$id','$amount_due','$total','$date','$branch','credit', 'notpaid')")or die(mysqli_error($con));
 	
 	
 	$sales_id=mysqli_insert_id($con);

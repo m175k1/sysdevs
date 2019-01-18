@@ -180,7 +180,7 @@ ul li a{
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Account Receivables
                             </a>
                           </li><!-- end notification -->
-              <li><!-- start notification -->
+              <li style="display:none;"><!-- start notification -->
                          <a href="income.php">
                               <i class="glyphicon glyphicon-th-list text-redr"></i>Branch Income
                             </a>

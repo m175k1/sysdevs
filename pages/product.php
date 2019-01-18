@@ -146,6 +146,10 @@ h3{
                                         $prod_name = $row['prod_name'];
                                         $prod_qty = $row['prod_qty'];
                                         $base_price = $row['base_price'];
+
+                                        $query1 = mysqli_query($con, "SELECT reorder FROM product WHERE prod_id ='$prod_id' AND branch_id = '$branch'")or die(mysqli_error());
+                                        
+                                        $row1=mysqli_fetch_array($query1);
                                          
                                       ?>
                                  <tr>
@@ -178,7 +182,13 @@ h3{
                                                    <div class="col-lg-9"><input type="hidden" class="form-control" id="id" name="name" value="<?php echo $row['prod_name'];?>" required>  
                                                       <input type="text" class="form-control" id="name" name="prod_name" value="<?php echo $row['prod_name'];?>" required>  
                                                    </div>
-                                                </div>                                        
+                                                </div>   
+                                                <div class="form-group">
+                                                   <label class="control-label col-lg-3" for="reorder">Reorder</label>
+                                                   <div class="col-lg-9"><input type="hidden" class="form-control" id="reorder" name="reorder" value="<?php echo $row1['reorder'];?>" required>  
+                                                      <input type="text" class="form-control" id="prod_reorder" name="prod_reorder" value="<?php echo $row1['reorder'];?>" required>  
+                                                   </div>
+                                                </div>                                   
                                           <br><br><br><br><br><br><br>
                                           <div class="modal-footer">
                                          

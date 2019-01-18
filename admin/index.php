@@ -5,7 +5,7 @@
 
 <style>
     html {
-      background-image: linear-gradient(to left, rgba(0,0,20,10) , rgba(150,130,25,0.94));
+      background-image: linear-gradient(to left,rgba(44, 140, 181) , rgba(44, 140, 181));
       height: 100%;
       width: 100%;
       background-size: cover;

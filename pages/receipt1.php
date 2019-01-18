@@ -45,7 +45,7 @@ javascript:window.history.forward(1);
 
           <section class="content">
             <div class="row">
-	      <div class="col-md-12">
+        <div class="col-md-12">
               <div class="">
                 
                 <div class="box-body">
@@ -77,6 +77,9 @@ $branch=$_SESSION['branch'];
         $user_id=$row['user_id'];
 
          $query1=mysqli_query($con,"select * from payment where sales_id='$sid' order by payment_id desc LIMIT 0,1")or die(mysqli_error($con));
+
+         $query2 = mysqli_query($con, 'SELECT MAX(sales_id) as or_no FROM sales')or die(mysqli_error($con));
+        $row2 = mysqli_fetch_array($query2); 
       
         $row1=mysqli_fetch_array($query1);
       
@@ -90,13 +93,13 @@ $branch=$_SESSION['branch'];
                       <tr>
                         <th colspan="3"><h6><?php echo $rowb['branch_address'];?></h6></th>
                         <th><span style="font-size: 16px;color: red"><?php 
-						  if ((intval($row1['or_no']) >= 0) && (intval($row1['or_no']) < 9)) {
-                          ?>						  
-                          No. 000<?php echo $row1['or_no'];?></span></th>  
-                          <?php } elseif((intval($row1['or_no']) >= 10) && (intval($row1['or_no']) < 99)){ ?>
-                          No. 00<?php echo $row1['or_no'];?></span></th>
-						  <?php } elseif((intval($row1['or_no']) >= 100) && (intval($row1['or_no']) < 999)){ ?>
-                          No. 0<?php echo $row1['or_no'];?></span></th>
+              if ((intval($row2['or_no']) >= 0) && (intval($row2['or_no']) < 9)) {
+                          ?>              
+                          No. 000<?php echo $row2['or_no'];?></span></th>  
+                          <?php } elseif((intval($row2['or_no']) >= 10) && (intval($row2['or_no']) < 99)){ ?>
+                          No. 00<?php echo $row2['or_no'];?></span></th>
+              <?php } elseif((intval($row2['or_no']) >= 100) && (intval($row2['or_no']) < 999)){ ?>
+                          No. 0<?php echo $row2['or_no'];?></span></th>
                           <?php }?></span></th>
                       </tr>
                       <tr>
@@ -140,33 +143,33 @@ $branch=$_SESSION['branch'];
                         <th>QTY</th>
                         <th>UNIT</th>
                         <th>ARTICLES</th>
-            						<th>Unit Price</th>
-            						<th class="text-right">AMOUNT</th>
+                        <th>Unit Price</th>
+                        <th class="text-right">AMOUNT</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
-		$query1=mysqli_query($con,"select * from sales natural join sales_details left join masterfile on sales_details.prod_id = masterfile.master_id where sales_id='$sid'")or die(mysqli_error());
-			$grand=0;
-		while($row1=mysqli_fetch_array($query1)){
-				
-				$total= $row1['qty']*$row1['price'];
-				$grand=$grand+$total;
+    $query1=mysqli_query($con,"select * from sales natural join sales_details left join masterfile on sales_details.prod_id = masterfile.master_id where sales_id='$sid'")or die(mysqli_error());
+      $grand=0;
+    while($row1=mysqli_fetch_array($query1)){
+        
+        $total= $row1['qty']*$row1['price'];
+        $grand=$grand+$total;
         $due=$row1['amount_due'];
         
-		   
+       
 ?>
                       <tr>
-            						<td><?php echo $row1['qty'];?></td>
+                        <td><?php echo $row1['qty'];?></td>
                         <td>pc/s</td>
                         <td class="record"><?php echo $row1['prod_name'];?></td>
-            						<td><?php echo number_format($row1['price'],2);?></td>
-            						<td style="text-align:right"><?php echo number_format($total,2);?></td>
+                        <td><?php echo number_format($row1['price'],2);?></td>
+                        <td style="text-align:right"><?php echo number_format($total,2);?></td>
                                     
                       </tr>
-					  
+            
 
-<?php }?>					
+<?php }?>         
                       <tr>
                         <td></td>
                         <td></td>
@@ -222,30 +225,30 @@ $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(m
                   </table>
                 </div><!-- /.box-body -->
 
-				</div>	
+        </div>  
             <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
                 <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
                   
                   
-				</form>	
+        </form> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
            
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
      
     </div><!-- ./wrapper -->
-	
-	
-	<script type="text/javascript" src="autosum.js"></script>
+  
+  
+  <script type="text/javascript" src="autosum.js"></script>
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script src="../dist/js/jquery.min.js"></script>
+  <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>

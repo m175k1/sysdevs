@@ -6,6 +6,7 @@ endif;
 include('../dist/includes/dbcon.php');
 	$name = $_POST['name'];
 	$new_name = $_POST['prod_name'];
+	$reorder = $_POST['prod_reorder'];
 	/* $id = $_POST['id'];
 	$supplier =$_POST['supplier'];
 	$price = 0;
@@ -50,7 +51,7 @@ include('../dist/includes/dbcon.php');
 			}
 	*/		
 	mysqli_query($con,"update masterfile set prod_name='$new_name' where prod_name='$name'")or die(mysqli_error($con));
-	mysqli_query($con,"update product set prod_name='$new_name' where prod_name='$name'")or die(mysqli_error($con));
+	mysqli_query($con,"update product set prod_name='$new_name', reorder='$reorder' where prod_name='$name'")or die(mysqli_error($con));
 
 	echo "<script type='text/javascript'>alert('Successfully updated product details!');</script>";
 	echo "<script>document.location='product.php'</script>";  

@@ -48,13 +48,13 @@ endif;
 
           <section class="content">
             <div class="row">
-	      <div class="col-md-12">
+        <div class="col-md-12">
               <div class="">
                 
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="">
-				<?php
+        <?php
 include('../dist/includes/dbcon.php');
 
 $branch=$_SESSION['branch'];
@@ -72,6 +72,7 @@ $branch=$_SESSION['branch'];
                     <thead>
 <?php
 include('../dist/includes/dbcon.php');
+$idc =$_GET['cid'];
 
     $sid=$_REQUEST['sid'];
     $query=mysqli_query($con,"select * from sales natural join customer natural join term where sales.sales_id='$sid'")or die(mysqli_error($con));
@@ -86,8 +87,12 @@ include('../dist/includes/dbcon.php');
         $user_id=$row['user_id'];
       
          $queryp=mysqli_query($con,"select * from payment where sales_id='$sid'")or die(mysqli_error($con));
+         
       
         $row=mysqli_fetch_array($queryp);
+
+        $queryc = mysqli_query($con, "SELECT * FROM customer WHERE cust_id = '$idc'")or die(mysqli_error($con));
+        $rowc =mysqli_fetch_array($queryc);
 ?>                    <tr>
                         <th></th>
                         <th></th>
@@ -98,19 +103,19 @@ include('../dist/includes/dbcon.php');
                       </tr>    
                       <tr>
                         <th>Customer's Name</th>
-                        <th><?php echo $last.", ".$first;?></th>
+                        <th><?php echo $rowc['cust_last'].", ".$rowc['cust_first'];?></th>
                         <th></th>
                         <th></th>
                       </tr>
                       <tr>
                         <th>Contact #</th>
-                        <th><?php echo $contact;?></th>
+                        <th><?php echo $rowc['cust_contact'];?></th>
                         <th></th>
                         <th></th>
                       </tr>
                       <tr>
                         <th>Complete Address</th>
-                        <th><?php echo $address;?></th>
+                        <th><?php echo $rowc['cust_address'];?></th>
                         <th>Amount Due</th>
                         <th>P<?php echo number_format($row['due'],2);?></th>
                       </tr>
@@ -129,34 +134,34 @@ include('../dist/includes/dbcon.php');
                         <th>QTY</th>
                         <th>Product Code</th>
                         <th>ARTICLES</th>
-            						<th>Unit Price</th>
-            						<th class="text-right">AMOUNT</th>
+                        <th>Unit Price</th>
+                        <th class="text-right">AMOUNT</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
-		$query1=mysqli_query($con,"select * from sales natural join sales_details natural join product where sales_id='$sid'")or die(mysqli_error());
-			$grand=0;
-		while($row1=mysqli_fetch_array($query1)){
+    $query1=mysqli_query($con,"select * from sales natural join sales_details natural join product where sales_id='$sid'")or die(mysqli_error());
+      $grand=0;
+    while($row1=mysqli_fetch_array($query1)){
 
-				$total= $row1['qty']*$row1['price'];
-				$grand=$grand+$total;
+        $total= $row1['qty']*$row1['price'];
+        $grand=$grand+$total;
         $due=$row1['amount_due'];
         $cid=$row1['cust_id'];
         
-		   
+       
 ?>
                       <tr >
-            						<td><?php echo $row1['qty'];?></td>
+                        <td><?php echo $row1['qty'];?></td>
                         <td><?php echo $row1['serial'];?></td>
                         <td class="record"><?php echo $row1['prod_name'];?></td>
-            						<td><?php echo number_format($row1['price'],2);?></td>
-            						<td style="text-align:right"><?php echo number_format($total,2);?></td>
+                        <td><?php echo number_format($row1['price'],2);?></td>
+                        <td style="text-align:right"><?php echo number_format($total,2);?></td>
                                     
                       </tr>
-					  
+            
 
-<?php }?>					
+<?php }?>         
                       <tr>
                         <td></td>
                         <td></td>
@@ -207,7 +212,7 @@ include('../dist/includes/dbcon.php');
                       </tr>
 <?php }?>           
 <?php
-    $query4=mysqli_query($con,"select balance from customer where cust_id='$cid'")or die(mysqli_error($con));
+    $query4=mysqli_query($con,"select balance from customer where cust_id='$idc'")or die(mysqli_error($con));
     $row4=mysqli_fetch_array($query4);
        
 ?>          
@@ -245,30 +250,30 @@ $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(m
                   </table>
                 </div><!-- /.box-body -->
 
-				</div>	
+        </div>  
             <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
                 <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
                   
                   
-				</form>	
+        </form> 
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
            
           </div><!-- /.row -->
-	  
+    
             
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
      
     </div><!-- ./wrapper -->
-	
-	
-	<script type="text/javascript" src="autosum.js"></script>
+  
+  
+  <script type="text/javascript" src="autosum.js"></script>
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script src="../dist/js/jquery.min.js"></script>
+  <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
