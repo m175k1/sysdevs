@@ -1,11 +1,11 @@
- <?php session_start();
+<?php session_start();
 if(empty($_SESSION['id'])):
 header('Location:../index.php');
 endif;
 if(empty($_SESSION['branch'])):
 header('Location:../index.php');
 endif;
-
+ 
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,22 +32,21 @@ endif;
   width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-  background:linear-gradient(white,blue);
+  background:linear-gradient(white,green);
  
 }
 .box.box-primary{
-        border-top-color:rgba(44, 140, 181)!important;
+        border-top-color:green;
       }
 .nav-tabs-custom>.nav-tabs>li.active {
     border-top-color: #fb000c;
   }
 .btn-warning {
-    background-color: rgba(44, 140, 181)!important;
+    background-color: green!important;
     border-color: #ffffff;
 }
 .btn-primary {
-  background-color: rgba(44, 140, 181)!important;
-    border-color: #ffffff;
+  background-color: green;
 }
 .content{
   font-family: 'Comfortaa', cursive;
@@ -55,7 +54,7 @@ endif;
 h3{
   font-family: 'Comfortaa', cursive;
  text-align: center;
- }       
+ }      
 .sidebar {  
     width: 250;
     height:100%;
@@ -64,76 +63,76 @@ h3{
     top: 0px;
     transition: left 0.3s linear;
     }
-
+ 
     .sidebar.visible {
     left:0px;
     transition: left 0.3s linear;
     }
-
+ 
     .nav-txt {
       color: white;
     }
-
+ 
     .subnav-txt:hover {
       color: #ff0000;
     }
-
+ 
     .nav-txt:hover {
       background-color: #7d0000;
       color: white;
       transition: all .2s;
     }
-
+ 
     .main-sidebar {
       background-image: linear-gradient(to left, rgba(232,76,61,1) , rgba(193,57,43,1));
       position: fixed;
       z-index: 5;
     }
-
+ 
     .main-sidebar * a {
       color: white;
     }
-
+ 
     .treeview-menu {
       background-color: #7d0000;
     }
-
+ 
     .reorder-count {
       font-size: 10px !important;
     }
-
+ 
     .box-header {
       background-image: linear-gradient(to right, rgba(232,76,61,1) , rgba(193,57,43,1));
     }
-
+ 
     .menu {
       list-style-type: none;
       margin: 0;
       padding: 10px 15px;
     }
-
+ 
     .box-title {
       color: white;
       text-align: center;
       display: block !important;
     }
-
+ 
     .nav-tabs-custom>.nav-tabs>li.active {
       border-top-color: #dd4b39 !important;
     }
-
+ 
     .form-group {
       margin-top: 15px;
     }
-
+ 
     .btn:hover {
       transition: all .2s linear;
     }
-
-
-
+ 
+ 
+ 
      
-
+ 
     </style>
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
@@ -147,7 +146,7 @@ h3{
         <div class="container">
           <!-- Content Header (Page header) -->
           <section class="content-header">
-        
+       
           <?php
           if(isset($_REQUEST['cid']))
             {
@@ -160,25 +159,25 @@ h3{
           ?>
             <h1>
               <a class="btn btn-lg btn-warning" href="customer.php">Back</a>
-              
+             
             </h1>
-            
+           
           </section>
-
+ 
 <?php
    // $cid=$_REQUEST['cid'];
-
-
+ 
+ 
     $query5=mysqli_query($con,"select * from payment where cust_id='$cid'")or die(mysqli_error($con));
     $total = 0;
-
+ 
     while($row5=mysqli_fetch_array($query5)){
-      
+     
     $total = $total + $row5['remaining'];
     }
 ?>
-
-
+ 
+ 
           <!-- Main content -->
           <section class="content">
             <div class="row">
@@ -188,7 +187,7 @@ h3{
                   <!-- Date range -->
                   <form method="post" action="" enctype="multipart/form-data">
       <?php
-        
+       
           $query=mysqli_query($con,"select * from customer where cust_id='$cid'")or die(mysqli_error());
              $row=mysqli_fetch_array($query);
       ?>  
@@ -199,7 +198,7 @@ h3{
                       <h3><?php echo $row['cust_last'].", ".$row['cust_first'];?></h3>
                     </div><!-- /.input group -->
                   </div><!-- /.form group -->
-      
+     
                   <div class="form-group">
                     <label for="date">Address</label>
                     <div class="input-group col-md-12">
@@ -217,15 +216,15 @@ h3{
                     <div class="input-group col-md-12">
                       <h3><?php echo number_format($total,2);?></h3>
                     </div><!-- /.input group -->
-                  </div><!-- /.form group -->         
+                  </div><!-- /.form group -->        
                   <a href="<?php if ($row['balance']>=0) echo "transaction.php?cid=$cid";?>" class="btn btn-block btn-primary">
                   <i class="glyphicon glyphicon-shopping-cart text-blue"></i>Add New Order</a>
-                
-        </form> 
+               
+        </form>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
-            
+           
             <div class="col-xs-9">
               <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
@@ -235,12 +234,12 @@ h3{
                 </ul>
                 <div class="tab-content">
                   <!-- Font Awesome Icons -->
-                  
+                 
                   <div class="tab-pane active" id="fa-icons">
                     <table id="" class="table table-bordered table-striped">
                   <thead>
                       <tr>
-                        <th>Credit #</th>                       
+                        <th>Credit #</th>                      
                         <th>Qty</th>
                         <th>Product</th>
                         <th>Price</th>
@@ -256,22 +255,22 @@ h3{
                     <tbody>
 <?php
    // $cid=$_REQUEST['cid'];
-
+ 
     $date=date("Y-m-d");
-
+ 
     $query1=mysqli_query($con,"select * from sales left join sales_details on sales.sales_id = sales_details.sales_id left join payment on sales.sales_id = payment.sales_id left join term on sales.sales_id = term.sales_id left join masterfile on sales_details.prod_id = masterfile.master_id left join customer on sales.cust_id = customer.cust_id where sales.cust_id='$cid' and modeofpayment='credit' order by date_added desc")or die(mysqli_error($con));
-
-
+ 
+ 
     while($row1=mysqli_fetch_array($query1)){
         $date1=date_create($row1['date_added']);
         $date2=date_create($date);
         $diff=date_diff($date1,$date2);
-
-
+ 
+ 
        $months = $diff->y * 12 + $diff->m + $diff->d / 30;
-
+ 
         $date_warning = (int) round($months);
-    
+   
 ?>
                       <tr>
                         <td><?php echo $row1['term_id'];?></td>
@@ -284,28 +283,28 @@ h3{
                         <td><?php echo date("M d, Y",strtotime($row1['date_added']));?></td>
                         <td class="border_marker"><input class="warning_month" type="hidden" name="notimportant" value=" <?php echo $date_warning ?>  ">
                           <?php echo $date_warning ?></td>
-                        <td><?php 
-                        if ($row1['status']=='paid') 
+                        <td><?php
+                        if ($row1['status']=='paid')
                         echo "<span class='badge bg-green'>".$row1['status']."</span>";
                         else echo "<span class='badge bg-red'>unpaid</span>";
                         ?>
-
+ 
                       </td>
                       <td>
                         <a href="payment.php?cid=<?php echo $row['cust_id'];?>&sid=<?php echo $row1['sales_id'];?>&balance=<?php echo $total;?>"><i class="glyphicon glyphicon-share-alt"></i></a>
                         <a href="reprint.php?sid=<?php echo $row1['sales_id'];?>"><i class="glyphicon glyphicon-print"></i></a>
                       </td>  
                       </tr>
-
-    <?php 
-
-
-    }?>       
+ 
+    <?php
+ 
+ 
+    }?>      
                       </tbody>
-                  
+                 
                   </table>
                   </div><!-- /#fa-icons -->
-
+ 
                   <div class="tab-pane" id="cash">
                     <table id="" class="table table-bordered table-striped">
                   <thead>
@@ -325,7 +324,7 @@ h3{
    // $cid=$_REQUEST['cid'];
     $query1=mysqli_query($con,"select * from sales natural join sales_details natural join product where cust_id='$cid' and modeofpayment='cash' order by date_added desc")or die(mysqli_error($con));
     while($row1=mysqli_fetch_array($query1)){
-    
+   
 ?>
                       <tr>
                         <td><?php echo $row1['sales_id'];?></td>
@@ -338,9 +337,9 @@ h3{
                         <td><a href="reprint_cash.php?sid=<?php echo $row1['sales_id'];?>"><i class="glyphicon glyphicon-print"></i></a>
                       </td>  
                       </tr>
-    <?php }?>       
+    <?php }?>      
                       </tbody>
-                  
+                 
                   </table>
                   </div><!-- /#fa-icons -->
                   <!-- glyphicons-->
@@ -357,26 +356,26 @@ h3{
     $cid=$_REQUEST['cid'];
     $query3=mysqli_query($con,"select * from payment_history where cust_id='$cid' order by date desc")or die(mysqli_error());
     while($row3=mysqli_fetch_array($query3)){
-    
+   
 ?>
                       <tr>
                         <td><?php echo $row3['amount'];?></td>
                         <td><?php echo date("M d, Y",strtotime($row3['date']));?></td>
-    
-                        
+   
+                       
                       </tr>
-    <?php }?>       
+    <?php }?>      
                     </tbody>
-                  
+                 
                   </table>
-                    
+                   
                   </div><!-- /#ion-icons -->
                 </div><!-- /.tab-content -->
               </div><!-- /.nav-tabs-custom -->
             </div>
           </div><!-- /.row -->
-    
-            
+   
+           
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
@@ -397,7 +396,7 @@ h3{
                       <div class="modal-body">
         <form class="form-horizontal" method="post" action="payment_add.php" enctype='multipart/form-data'>
                              <input type="hidden" class="form-control" id="tlast" name="cid" value="<?php echo $cid;?>">  
-                             <input type="hidden" class="form-control" id="tlast" name="term" value="<?php echo $row1['term'];?>">   
+                             <input type="hidden" class="form-control" id="tlast" name="term" value="<?php echo $row1['term'];?>">  
                              <div class="form-group">
           <label class="control-label col-lg-3" for="tlast">Payment for</label>
           <div class="col-lg-8">
@@ -410,17 +409,17 @@ h3{
                   <?php }?>
                 </select>
           </div>
-             </div> 
-                            
+             </div>
+                           
                              <div class="form-group">
           <label class="control-label col-lg-3" for="tlast">Amount</label>
           <div class="col-lg-8">
             <input type="hidden" class="form-control" id="tlast" name="balance" value="<?php echo $total;?>">  
                                      <input type="text" class="form-control" id="tlast" name="amount" placeholder="Amount" required>  
           </div>
-                             </div> 
-                            
-                      </div>       
+                             </div>
+                           
+                      </div>      
                       <!--end of modal body-->
                       <div class="modal-footer">
       <button type="submit" name="save" class="btn btn-primary">Save</button>
@@ -431,7 +430,7 @@ h3{
                <!--end of modal content-->
                 </form>
            </div>
-        </div>   
+        </div>  
 <!--end of teacherreg modal-->
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
@@ -448,7 +447,7 @@ h3{
     <script src="../dist/js/demo.js"></script>
     <script src="../plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
-    
+   
     <script>
       $(function () {
         $("#example1").DataTable();
@@ -460,9 +459,9 @@ h3{
           "info": true,
           "autoWidth": false
         });
-
+ 
       });
-
+ 
       $(document).ready(function(){
         $x = $(".warning_month").val()
                   if($x == 1){
@@ -471,20 +470,20 @@ h3{
                   if($x > 1){
                     $(".border_marker").css({"background-color": "#c0392b", "color": "#fff"});    
                   }
-      }) 
+      })
     </script>
      <script>
       $(function () {
         //Initialize Select2 Elements
         $(".select2").select2();
-
+ 
         //Datemask dd/mm/yyyy
         $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
         //Datemask2 mm/dd/yyyy
         $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
         //Money Euro
         $("[data-mask]").inputmask();
-
+ 
         //Date range picker
         $('#reservation').daterangepicker();
         //Date range picker with time picker
@@ -507,7 +506,7 @@ h3{
           $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
         }
         );
-
+ 
         //iCheck for checkbox and radio inputs
         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
           checkboxClass: 'icheckbox_minimal-blue',
@@ -523,12 +522,12 @@ h3{
           checkboxClass: 'icheckbox_flat-green',
           radioClass: 'iradio_flat-green'
         });
-
+ 
         //Colorpicker
         $(".my-colorpicker1").colorpicker();
         //color picker with addon
         $(".my-colorpicker2").colorpicker();
-
+ 
         //Timepicker
         $(".timepicker").timepicker({
           showInputs: false

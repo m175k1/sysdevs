@@ -33,40 +33,42 @@ javascript:window.history.forward(1);
           }
       }
     </style>
-    
+   
  </head>
   <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
   <body class="hold-transition skin-blue layout-top-nav">
     <div class="wrapper">
-      
+     
       <!-- Full Width Column -->
       <div class="content-wrapper">
         <div class="container">
-
+ 
           <section class="content">
             <div class="row">
-        <div class="col-md-12">
+          <div class="col-md-12">
               <div class="">
-                
+               
                 <div class="box-body">
                   <!-- Date range -->
                   <form method="post" action="">
 <?php
 include('../dist/includes/dbcon.php');
-
+ 
 $branch=$_SESSION['branch'];
     $query=mysqli_query($con,"select * from branch where branch_id='$branch'")or die(mysqli_error());
-  
+ 
         $rowb=mysqli_fetch_array($query);
-        
+       
 ?>      
-    
-
+   
+ 
 <?php
-
+ 
     $sid=$_SESSION['sid'];
-    $query=mysqli_query($con,"select * from sales natural join customer natural join term where sales.sales_id='$sid'")or die(mysqli_error($con));
-      
+ 
+    //$query=mysqli_query($con,"select * from sales natural join customer natural join term where sales.sales_id='$sid'")or die(mysqli_error($con));
+    $query=mysqli_query($con,"SELECT a.cust_id, a.cust_last, a.cust_first, a.cust_address, a.cust_contact, a.comaker, b.user_id, c.interest, c.down, c.term, c.payable_for, c.due_date, c.due FROM customer a LEFT JOIN sales b ON a.cust_id = b.cust_id LEFT JOIN term c ON b.sales_id = c.sales_id WHERE b.sales_id = '$sid'")or die(mysqli_error($con));
+     
         $row=mysqli_fetch_array($query);
         $last=$row['cust_last'];
         $first=$row['cust_first'];
@@ -75,14 +77,14 @@ $branch=$_SESSION['branch'];
         $down=$row['down'];
         $interest=$row['interest'];
         $user_id=$row['user_id'];
-
+ 
          $query1=mysqli_query($con,"select * from payment where sales_id='$sid' order by payment_id desc LIMIT 0,1")or die(mysqli_error($con));
-
+ 
          $query2 = mysqli_query($con, 'SELECT MAX(sales_id) as or_no FROM sales')or die(mysqli_error($con));
-        $row2 = mysqli_fetch_array($query2); 
-      
+        $row2 = mysqli_fetch_array($query2);
+     
         $row1=mysqli_fetch_array($query1);
-      
+     
 ?>          
            <table class="table">
                     <thead>
@@ -92,13 +94,13 @@ $branch=$_SESSION['branch'];
                       </tr>
                       <tr>
                         <th colspan="3"><h6><?php echo $rowb['branch_address'];?></h6></th>
-                        <th><span style="font-size: 16px;color: red"><?php 
-              if ((intval($row2['or_no']) >= 0) && (intval($row2['or_no']) < 9)) {
-                          ?>              
+                        <th><span style="font-size: 16px;color: red"><?php
+                          if ((intval($row2['or_no']) >= 0) && (intval($row2['or_no']) < 9)) {
+                          ?>                         
                           No. 000<?php echo $row2['or_no'];?></span></th>  
                           <?php } elseif((intval($row2['or_no']) >= 10) && (intval($row2['or_no']) < 99)){ ?>
                           No. 00<?php echo $row2['or_no'];?></span></th>
-              <?php } elseif((intval($row2['or_no']) >= 100) && (intval($row2['or_no']) < 999)){ ?>
+                          <?php } elseif((intval($row2['or_no']) >= 100) && (intval($row2['or_no']) < 999)){ ?>
                           No. 0<?php echo $row2['or_no'];?></span></th>
                           <?php }?></span></th>
                       </tr>
@@ -106,7 +108,7 @@ $branch=$_SESSION['branch'];
                         <th colspan="3"><h6>Contact #: <?php echo $rowb['branch_contact'];?></h6></th>
                         <th></th>
                       </tr>
-                      
+                     
                     </thead>
                     <thead>
          
@@ -138,38 +140,38 @@ $branch=$_SESSION['branch'];
                   </table>
                   <table class="table">
                     <thead>
-
+ 
                       <tr>
                         <th>QTY</th>
                         <th>UNIT</th>
                         <th>ARTICLES</th>
-                        <th>Unit Price</th>
-                        <th class="text-right">AMOUNT</th>
+                                    <th>Unit Price</th>
+                                    <th class="text-right">AMOUNT</th>
                       </tr>
                     </thead>
                     <tbody>
 <?php
-    $query1=mysqli_query($con,"select * from sales natural join sales_details left join masterfile on sales_details.prod_id = masterfile.master_id where sales_id='$sid'")or die(mysqli_error());
-      $grand=0;
-    while($row1=mysqli_fetch_array($query1)){
-        
-        $total= $row1['qty']*$row1['price'];
-        $grand=$grand+$total;
+        $query1=mysqli_query($con,"select * from sales natural join sales_details left join masterfile on sales_details.prod_id = masterfile.master_id where sales_id='$sid'")or die(mysqli_error());
+            $grand=0;
+        while($row1=mysqli_fetch_array($query1)){
+               
+                $total= $row1['qty']*$row1['price'];
+                $grand=$grand+$total;
         $due=$row1['amount_due'];
-        
        
+           
 ?>
                       <tr>
-                        <td><?php echo $row1['qty'];?></td>
+                                    <td><?php echo $row1['qty'];?></td>
                         <td>pc/s</td>
                         <td class="record"><?php echo $row1['prod_name'];?></td>
-                        <td><?php echo number_format($row1['price'],2);?></td>
-                        <td style="text-align:right"><?php echo number_format($total,2);?></td>
-                                    
+                                    <td><?php echo number_format($row1['price'],2);?></td>
+                                    <td style="text-align:right"><?php echo number_format($total,2);?></td>
+                                   
                       </tr>
-            
-
-<?php }?>         
+                     
+ 
+<?php }?>                  
                       <tr>
                         <td></td>
                         <td></td>
@@ -197,11 +199,11 @@ $branch=$_SESSION['branch'];
                         <td></td>
                         <td></td>
                         <td class="text-right"><b>Remaining Balance</b></td>
-                        <td style="text-align:right"><b><?php 
+                        <td style="text-align:right"><b><?php
                           $total=$grand+$interest-$row['down'];
                           echo number_format($total,2);?></b></td>
                       </tr>
-
+ 
                       <tr>
                         <th>Prepared by: </th>
                         <td></td>
@@ -211,7 +213,7 @@ $branch=$_SESSION['branch'];
 <?php
 $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(mysqli_error($con));  
     $row2=mysqli_fetch_array($query2);
-
+ 
 ?>                    
                       <tr>
                         <th><?php echo $row2['name'];?> </th>
@@ -221,34 +223,34 @@ $query2=mysqli_query($con,"select * from user where user_id='$user_id'")or die(m
                       </tr>
                      
                     </tbody>
-                    
+                   
                   </table>
                 </div><!-- /.box-body -->
-
-        </div>  
+ 
+                </div> 
             <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
-                <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
-                  
-                  
-        </form> 
+                <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>  
+                 
+                 
+                </form>
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col (right) -->
            
           </div><!-- /.row -->
-    
-            
+     
+           
           </section><!-- /.content -->
         </div><!-- /.container -->
       </div><!-- /.content-wrapper -->
      
     </div><!-- ./wrapper -->
-  
-  
-  <script type="text/javascript" src="autosum.js"></script>
+   
+   
+    <script type="text/javascript" src="autosum.js"></script>
     <!-- jQuery 2.1.4 -->
     <script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
-  <script src="../dist/js/jquery.min.js"></script>
+    <script src="../dist/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../plugins/select2/select2.full.min.js"></script>
