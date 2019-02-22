@@ -34,18 +34,6 @@
       .main-footer  {
       display:none !important;
       }
-      div.dataTables_length label { 
-        display: none !important;
-      }
-      div.dataTables_filter label{
-        display: none !important;
-      }
-      div.dataTables_paginate ul.pagination{
-        display: none !important;
-      }
-      div.dataTables_info{
-        display: none !important;
-      }
       .col-md-4{
         display: none;
       }
@@ -384,12 +372,10 @@ h3{
       <script>
          $(function () {
            $("#example1").DataTable({
-             "paging": false,
-             "lengthChange": false,
-             "searching": true,
-             "ordering": true,
-             "info": true,
-             "autoWidth": false
+              paging: true,
+              searching: true,
+              info: true
+
            });
 
           $("#example1").on('DOMSubtreeModified',function(e) {
