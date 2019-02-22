@@ -290,7 +290,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                         <?php $total_profit = $grand - $base_total;
                            
                         ?>
-                          <div class="form-group">
+                          <div class="form-group" style="display:none;">
                             <label for="date">Total Profit</label>
                            
                                 <input type="text" class="form-control text-right" id="profit" name="profit" value="<?php echo $total_profit;?>" tabindex="6"  onFocus="" onBlur="" readonly>
