@@ -98,12 +98,12 @@ h3{
                   $cid=$_REQUEST['cid'];
  
                   include('../dist/includes/dbcon.php');
-                  $query2=mysqli_query($con,"select * from masterfile where branch_id='$branch' order by prod_name")or die(mysqli_error());
+                  $query2=mysqli_query($con,"select * from product where branch_id='$branch' order by prod_name")or die(mysqli_error());
                                          
                                           while($row=mysqli_fetch_array($query2)){
                                           $prod_name = $row["prod_name"];
                                           $qty = $row["prod_qty"];
-                                          $prod_id = $row["master_id"];
+                                          $prod_id = $row["prod_id"];
  
                         ?>      
                                        <option value="<?php echo $prod_id;?>"><?php echo $prod_name;?> | <?php echo $qty;?></option>
