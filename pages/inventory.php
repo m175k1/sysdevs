@@ -182,8 +182,8 @@ h3{
                                  </tbody>
                                  <tfoot>
                                     <tr>
-                                       <th colspan="6">Total</th>
-                                       <th colspan="2">P<?php echo number_format($grand,2);?></th>
+                                       <th colspan="3">Total</th>
+                                       <th colspan="4">P<?php echo number_format($grand,2);?></th>
                                     </tr>
                                     <tr>
                                        <th></th>
