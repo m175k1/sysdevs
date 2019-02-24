@@ -9,32 +9,35 @@ include('../dist/includes/dbcon.php');
     $id = $_POST['prod_name'];
     $qty = $_POST['qty'];
     $price = $_POST['price'];
+    //$prod_qty = 0;
        
    
-        $query=mysqli_query($con,"select * from masterfile where master_id='$id'")or die(mysqli_error());
-        $row=mysqli_fetch_array($query);
+        $query=mysqli_query($con,"SELECT * FROM `product` WHERE `prod_id` = '$id'")or die(mysqli_error());
+        //$row=mysqli_fetch_array($query);
        
-        $prod_qty=$row['prod_qty'];
-       
-    if($qty <= $prod_qty ){
+        while($row=mysqli_fetch_array($query)){
+            $prod_qty=$row['prod_qty'];
+        }   
+   
+
+if($qty <= $prod_qty){
  
-        $query1=mysqli_query($con,"select * from temp_trans where prod_id='$id' and branch_id='$branch'")or die(mysqli_error());
-        $count=mysqli_num_rows($query1);
-       
-        $total=$price*$qty;
-       
-        /*if ($count>0){
-            mysqli_query($con,"update temp_trans set qty=qty+'$qty',price=price+'$total' where prod_id='$id' and branch_id='$branch'")or die(mysqli_error());  
-        }
-        else{*/
-            mysqli_query($con,"INSERT INTO temp_trans(prod_id,qty,price,branch_id) VALUES('$id','$qty','$price','$branch')")or die(mysqli_error($con));
-        //}
-    }else{
-        echo "<script>alert('Sorry there is not enough stock for this product')</script>";  
-    }
-       
-   
-   
+                $query1=mysqli_query($con,"select * from temp_trans where prod_id='$id' and branch_id='$branch'")or die(mysqli_error());
+                $count=mysqli_num_rows($query1);
+               
+                $total=$price*$qty;
+               
+                /*if ($count>0){
+                    mysqli_query($con,"update temp_trans set qty=qty+'$qty',price=price+'$total' where prod_id='$id' and branch_id='$branch'")or die(mysqli_error());  
+                }
+                else{*/
+                    mysqli_query($con,"INSERT INTO temp_trans(prod_id,qty,price,branch_id) VALUES('$id','$qty','$price','$branch')")or die(mysqli_error($con));
+                //}
+            }else{
+                echo "<script>alert('Sorry there is not enough stock for this product')</script>";  
+            }
+
+
         echo "<script>document.location='transaction.php?cid=$cid'</script>";  
    
 ?>

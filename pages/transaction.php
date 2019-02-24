@@ -159,7 +159,7 @@ $queryb=mysqli_query($con,"select balance from customer where cust_id='$cid'")or
                     <tbody>
 <?php
    
-    $query=mysqli_query($con,"select * from temp_trans a left join masterfile b on a.prod_id = b.master_id where a.branch_id='$branch'")or die(mysqli_error());
+    $query=mysqli_query($con,"select * from temp_trans a left join product b on a.prod_id = b.prod_id where a.branch_id='$branch'")or die(mysqli_error());
       $grand=0;
     while($row=mysqli_fetch_array($query)){
         $id=$row['temp_trans_id'];

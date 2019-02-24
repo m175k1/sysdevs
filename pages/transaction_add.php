@@ -11,7 +11,7 @@ include('../dist/includes/dbcon.php');
 	$price = $_POST['price'];
 	$prod_qty = 0;
 	
-		$query=mysqli_query($con,"select * from product where prod_id='$prod_id'")or die(mysqli_error());
+		$query=mysqli_query($con,"SELECT * FROM `product` WHERE `prod_id` = '$prod_id'")or die(mysqli_error());
 		
 		while($row=mysqli_fetch_array($query)){
 			$prod_qty=$row['prod_qty'];
