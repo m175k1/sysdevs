@@ -151,7 +151,7 @@ $branch=$_SESSION['branch'];
                     </thead>
                     <tbody>
 <?php
-        $query1=mysqli_query($con,"select * from sales natural join sales_details left join masterfile on sales_details.prod_id = masterfile.master_id where sales_id='$sid'")or die(mysqli_error());
+        $query1=mysqli_query($con,"select * from sales natural join sales_details left join product on sales_details.prod_id = product.prod_id where sales_id='$sid'")or die(mysqli_error());
             $grand=0;
         while($row1=mysqli_fetch_array($query1)){
                

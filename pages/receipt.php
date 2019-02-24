@@ -172,7 +172,7 @@ $branch=$_SESSION['branch'];
                     </thead>
                     <tbody>
 <?php
-    $query=mysqli_query($con,"select * from sales_details as a left join masterfile as b on a.prod_id = b.master_id where a.sales_id='$sid'")or die(mysqli_error($con));
+    $query=mysqli_query($con,"select * from sales_details as a left join product as b on a.prod_id = b.prod_id where a.sales_id='$sid'")or die(mysqli_error($con));
       $grand=0;
     while($row=mysqli_fetch_array($query)){
         //$id=$row['temp_trans_id'];
