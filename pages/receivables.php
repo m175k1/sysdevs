@@ -34,10 +34,29 @@ endif;
       @media print {
           .btn-print {
             display:none !important;
-      }
+          }
       .main-footer  {
       display:none !important;
       }
+      div.dataTables_length label {
+        display: none !important;
+      }
+      div.dataTables_filter label{
+        display: none !important;
+      }
+      div.dataTables_paginate ul.pagination{
+        display: none !important;
+      }
+      div.dataTables_info{
+        display: none !important;
+      }
+      table.table-bordered th:last-child{
+        display:none;
+      }
+      tfoot{
+        display:none;
+      }
+    }
       
     </style>
  </head>
