@@ -244,11 +244,11 @@ h3{
       <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
       <script>
          $(function () {
-           $("#example1").DataTable();
-           $('#example2').DataTable({
-             "paging": true,
+           //$("#example1").DataTable();
+           $('#example1').DataTable({
+             "paging": false,
              "lengthChange": false,
-             "searching": false,
+             "searching": true,
              "ordering": true,
              "info": true,
              "autoWidth": false
