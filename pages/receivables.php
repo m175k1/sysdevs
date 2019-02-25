@@ -82,7 +82,7 @@ $branch=$_SESSION['branch'];
           <a class = "btn btn-success btn-print" href = "" onclick = "window.print()"><i class ="glyphicon glyphicon-print"></i> Print</a>
               <a class = "btn btn-primary btn-print" href = "home.php"><i class ="glyphicon glyphicon-arrow-left"></i> Back to Homepage</a>   
             
-                 <table id="example1" class="table table-bordered table-striped">
+                <table id="example1" class="table table-bordered table-striped">
                     <thead>
                       <tr>
                         <th>Credit #</th>
@@ -269,18 +269,18 @@ $branch=$_SESSION['branch'];
     <script src="../plugins/datatables/dataTables.bootstrap.min.js"></script>
     
     <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
+         $(function () {
+           //$("#example1").DataTable();
+           $('#example1').DataTable({
+             "paging": false,
+             "lengthChange": false,
+             "searching": true,
+             "ordering": true,
+             "info": true,
+             "autoWidth": false
+           });
+         });
+      </script>
      <script>
       $(function () {
         //Initialize Select2 Elements
