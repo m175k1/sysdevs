@@ -167,7 +167,7 @@ $branch=$_SESSION['branch'];
                     </thead>
                     <tbody>
 <?php
-    $query=mysqli_query($con,"select * from sales a left join sales_details b on a.sales_id = b.sales_id left join masterfile c on b.prod_id = c.master_id left join customer d on a.cust_id = d.cust_id where date(date_added)>='$start' and date(date_added)<='$end' and a.branch_id='$branch' and status = ''")or die(mysqli_error($con));
+    $query=mysqli_query($con,"select * from sales a left join sales_details b on a.sales_id = b.sales_id left join product c on b.prod_id = c.prod_id left join customer d on a.cust_id = d.cust_id where date(date_added)>='$start' and date(date_added)<='$end' and a.branch_id='$branch' and status = ''")or die(mysqli_error($con));
         $qty=0;$grand=0;$discount=0;$total_profit=0;
                                 while($row=mysqli_fetch_array($query)){
                 $total=$row['qty']*$row['price'];
@@ -182,7 +182,7 @@ $branch=$_SESSION['branch'];
             <td><?php echo $row['sales_id'];;?></td>
             <td><?php echo $row['cust_last'].", ".$row['cust_first'];?></td>
             <td><?php echo $row['prod_name'];?></td>
-            <td><?php echo $row['master_id'];?></td>
+            <td><?php echo $row['prod_id'];?></td>
             <td><?php echo $row['qty'];?></td>
             <td><?php echo $row['price'];?></td>
             <td style="text-align:right"><?php echo number_format($total,2);

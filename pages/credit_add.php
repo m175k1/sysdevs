@@ -36,7 +36,7 @@ include('../dist/includes/dbcon.php');
 			
 			mysqli_query($con,"INSERT INTO sales_details(prod_id,qty,price,sales_id, profit) VALUES('$pid','$qty','$price','$sales_id', '$profit')")or die(mysqli_error($con));
 			
-			$prod_qty_q = mysqli_query($con,"select * from masterfile where master_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));			
+			$prod_qty_q = mysqli_query($con,"select * from product where prod_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));			
 			while ($rowsqty=mysqli_fetch_array($prod_qty_q))
 			{
 				$prod_name = $rowsqty['prod_name'];
@@ -62,7 +62,7 @@ include('../dist/includes/dbcon.php');
 					}
 				}				
 			}
-			mysqli_query($con,"UPDATE masterfile SET prod_qty= prod_qty -'$qty' where master_id='$pid' and branch_id='$branch'") or die(mysqli_error($con)); 
+			/*mysqli_query($con,"UPDATE product SET prod_qty= prod_qty -'$qty' where prod_id='$pid' and branch_id='$branch'") or die(mysqli_error($con)); */
 		}
 		
 				mysqli_query($con,"UPDATE customer SET balance=balance+'$total' where cust_id='$cid'") or die(mysqli_error($con)); 

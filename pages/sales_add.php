@@ -29,7 +29,7 @@ include('../dist/includes/dbcon.php');
             $qty=$row['qty'];
             $price=$row['price'];
  
-            $query_prod = mysqli_query($con, "SELECT * FROM masterfile WHERE master_id = '$pid'");
+            $query_prod = mysqli_query($con, "SELECT * FROM product WHERE prod_id = '$pid'");
             while ($row_prod = mysqli_fetch_array($query_prod))
             {
                 $base_price = $row_prod['base_price'];
@@ -51,7 +51,7 @@ include('../dist/includes/dbcon.php');
             }
    
 */
-            $prod_qty_q = mysqli_query($con,"select * from masterfile where master_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));        
+            $prod_qty_q = mysqli_query($con,"select * from product where prod_id = '$pid' and branch_id='$branch'")or die(mysqli_error($con));        
             while ($rowsqty=mysqli_fetch_array($prod_qty_q))
             {
                 $prod_name = $rowsqty['prod_name'];
@@ -80,7 +80,7 @@ include('../dist/includes/dbcon.php');
  
             $new_qty = $prod_qty_masterfile - $qty;
  
-            mysqli_query($con,"UPDATE masterfile SET prod_qty='$new_qty' where master_id='$pid' and branch_id='$branch'" ) or die(mysqli_error($con));
+            mysqli_query($con,"UPDATE product SET prod_qty='$new_qty' where prod_id='$pid' and branch_id='$branch'" ) or die(mysqli_error($con));
         }
  
  
